@@ -14,6 +14,8 @@ class TransactionCubit extends Cubit<TransactionStates> {
   AppDatabase? database;
   TransactionDao? dao;
   List<Transaction>? transactions = [];
+  List<Transaction>? revenues = [];
+  List<Transaction>? expenses = [];
   FinancialReport? report;
   List<FinancialReport>? reports;
   List<FinancialReport>? transactionByContact;
@@ -33,9 +35,19 @@ class TransactionCubit extends Cubit<TransactionStates> {
   }
 
   void getTransactionsFromDatabase() {
+    revenues!.clear();
+    expenses!.clear();
     this.dao!.findAllTransaction().then((value) {
       transactions = value;
-      if (value!.length > 0) {
+
+      for(int i = 0 ; i < value!.length ; i++){
+        if (value[i].isIncome == 0){
+          revenues!.add(value[i]);
+        }else{
+          expenses!.add(value[i]);
+        }
+      }
+      if (value.length > 0) {
         lastId = value[value.length - 1].id;
       } else {
         lastId = 0;

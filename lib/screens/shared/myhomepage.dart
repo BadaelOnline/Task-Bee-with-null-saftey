@@ -83,11 +83,28 @@ class MyHomePage extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.6,
                   color: Colors.amberAccent,
                   child: CustomRaisdButton(
+                      text: 'expenses',
+                      onPressed: () => Navigator.of(context).pushNamed('/expensesHome')),
+                ),
+                SizedBox(
+                  height: kDefaultPadding / 2,
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.6,
+                  color: Colors.amberAccent,
+                  child: CustomRaisdButton(
+                      text: 'revenues',
+                      onPressed: () => Navigator.of(context).pushNamed('/revenuesHome')),
+                ),
+                SizedBox(
+                  height: kDefaultPadding / 2,
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.6,
+                  color: Colors.amberAccent,
+                  child: CustomRaisdButton(
                       text: 'Reports',
-                      onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ReportSearch()))),
+                      onPressed: () => Navigator.of(context).pushNamed('/reportSearch')),
                   // TextButton(
                   //     onPressed: () => Navigator.push(context,
                   //         MaterialPageRoute(builder: (context) => TransactionHome())),

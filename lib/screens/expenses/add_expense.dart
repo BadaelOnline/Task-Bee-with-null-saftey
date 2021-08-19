@@ -368,10 +368,7 @@ class AddExpense extends StatelessWidget {
               BlocConsumer<WalletCubit, WalletStates>(
                 listener: (context, WalletStates state) {
                   if (state is UpdateWalletsToDatabaseState) {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => TransactionHome()));
+                    Navigator.of(context).pop();
                   }
                 },
                 builder: (context, WalletStates state) {

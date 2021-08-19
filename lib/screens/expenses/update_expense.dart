@@ -40,8 +40,7 @@ class UpdateExpense extends StatelessWidget {
       body:BlocConsumer<TransactionCubit,TransactionStates>(
         listener: (context,state){
           if(state is UpdateTransactionsToDatabaseState){
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => TransactionHome()));
+            Navigator.of(context).pop();
           }
         },
         builder: (context,state){

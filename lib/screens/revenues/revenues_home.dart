@@ -27,7 +27,7 @@ class RevenuesHome extends StatelessWidget {
         return Scaffold(
             appBar: CustomAppBar(Icon(Icons.wallet_giftcard), 'Transaction'),
             body: ListView.builder(
-              itemCount: transactionCubit.transactions!.length,
+              itemCount: transactionCubit.revenues!.length,
               itemBuilder: (BuildContext context, int index) {
                 return BlocConsumer<CurrencyCubit, CurrencyStates>(
                   listener: (context, state) {
@@ -35,35 +35,38 @@ class RevenuesHome extends StatelessWidget {
                   },
                   builder: (context, state) {
                     return TransactionCard(
-                    contact: '${contactCubit.getContactName(contactId: transactionCubit.transactions![index].contactId)}',
+                    contact: '${contactCubit.getContactName(contactId: transactionCubit.revenues![index].contactId)}',
                     datetime:
-                    '${transactionCubit.transactions![index].transactionDate}',
+                    '${transactionCubit.revenues![index].transactionDate}',
                     iconExchange: Image.asset(
-                        '${exchangeCubit.getExchangeIcon(exchangeId: transactionCubit.transactions![index].exchangeId)}'),
+                        '${exchangeCubit.getExchangeIcon(exchangeId: transactionCubit.revenues![index].exchangeId)}'),
                     imageWallet:
-                    Image.asset('${walletCubit.getWalletIconFromId(walletId:transactionCubit.transactions![index].walletId )}'),
+                    Image.asset('${walletCubit.getWalletIconFromId(walletId:transactionCubit.revenues![index].walletId )}'),
                     iconMoneyType:
-                    Image.asset('${walletCubit.getWalletIconFromId(walletId:transactionCubit.transactions![index].walletId )}'),
+                    Image.asset('${walletCubit.getWalletIconFromId(walletId:transactionCubit.revenues![index].walletId )}'),
                     note:
-                    '${transactionCubit.transactions![index].description}',
+                    '${transactionCubit.revenues![index].description}',
                     paidMoney:
-                    '${transactionCubit.transactions![index].paid}',
+                    '${transactionCubit.revenues![index].paid}',
                     totalMoney:
-                    '${transactionCubit.transactions![index].total}',
+                    '${transactionCubit.revenues![index].total}',
                     restMoney:
-                    '${transactionCubit.transactions![index].rest}',
+                    '${transactionCubit.revenues![index].rest}',
+                        deleteTransaction:() {
+                          transactionCubit.deleteTransactionFromDatabase(
+                              id: transactionCubit.revenues![index].id);
+                        },
                     titleExchange:
-                    '${exchangeCubit.getExchangeName(exchangeId: transactionCubit.transactions![index].exchangeId)}',
-                    walletType: '${walletCubit.getWalletName(walletId: transactionCubit.transactions![index].walletId)}',
-                    currency: '${currencyCubit.getCurrencyOfWallet(currencyId: walletCubit.getWalletCurrencyId(walletId: transactionCubit.transactions![index].walletId))}');
+                    '${exchangeCubit.getExchangeName(exchangeId: transactionCubit.revenues![index].exchangeId)}',
+                    walletType: '${walletCubit.getWalletName(walletId: transactionCubit.revenues![index].walletId)}',
+                    currency: '${currencyCubit.getCurrencyOfWallet(currencyId: walletCubit.getWalletCurrencyId(walletId: transactionCubit.revenues![index].walletId))}');
   },
 );
               },
             ),
             floatingActionButton: CustomFloatingActionButton(
               icon: Icon(Icons.add),
-              onPressed: () => Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => AddRevenues())),
+              onPressed: () => Navigator.of(context).pushNamed('/addRevenue'),
             )
             );
       },

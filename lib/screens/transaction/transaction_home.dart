@@ -52,6 +52,10 @@ class TransactionHome extends StatelessWidget {
                     '${transactionCubit.transactions![index].total}',
                     restMoney:
                     '${transactionCubit.transactions![index].rest}',
+                    deleteTransaction:() {
+                          transactionCubit.deleteTransactionFromDatabase(
+                              id: transactionCubit.transactions![index].id);
+                        },
                     titleExchange:
                     '${exchangeCubit.getExchangeName(exchangeId: transactionCubit.transactions![index].exchangeId)}',
                     walletType: '${walletCubit.getWalletName(walletId: transactionCubit.transactions![index].walletId)}',

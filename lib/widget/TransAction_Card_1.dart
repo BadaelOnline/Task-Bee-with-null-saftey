@@ -16,6 +16,7 @@ class TransactionCard extends StatelessWidget {
   final Image? iconExchange;
   final String? restMoney;
   final String? currency;
+  final Function()? deleteTransaction;
 
 
   const TransactionCard({
@@ -33,7 +34,7 @@ class TransactionCard extends StatelessWidget {
     this.paidMoney,
     this.iconExchange,
     this.restMoney,
-    this.currency,
+    this.currency, this.deleteTransaction,
   }) : super(key: key);
 
   @override
@@ -85,7 +86,8 @@ class TransactionCard extends StatelessWidget {
                       Container(
                         padding: EdgeInsets.only(left: 8.0),
                         child: IconButton(
-                          onPressed: () {},
+
+                          onPressed: deleteTransaction,
                           icon: Icon(
                             Icons.delete,
                             size: 20,

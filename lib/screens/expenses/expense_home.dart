@@ -27,7 +27,7 @@ class ExpenseHome extends StatelessWidget {
         return Scaffold(
             appBar: CustomAppBar(Icon(Icons.wallet_giftcard), 'Transaction'),
             body: ListView.builder(
-              itemCount: transactionCubit.transactions!.length,
+              itemCount: transactionCubit.expenses!.length,
               itemBuilder: (BuildContext context, int index) {
                 return BlocConsumer<CurrencyCubit, CurrencyStates>(
                   listener: (context, state) {
@@ -35,35 +35,38 @@ class ExpenseHome extends StatelessWidget {
                   },
                   builder: (context, state) {
                     return TransactionCard(
-                    contact: '${contactCubit.getContactName(contactId: transactionCubit.transactions![index].contactId)}',
+                    contact: '${contactCubit.getContactName(contactId: transactionCubit.expenses![index].contactId)}',
                     datetime:
-                    '${transactionCubit.transactions![index].transactionDate}',
+                    '${transactionCubit.expenses![index].transactionDate}',
                     iconExchange: Image.asset(
-                        '${exchangeCubit.getExchangeIcon(exchangeId: transactionCubit.transactions![index].exchangeId)}'),
+                        '${exchangeCubit.getExchangeIcon(exchangeId: transactionCubit.expenses![index].exchangeId)}'),
                     imageWallet:
-                    Image.asset('${walletCubit.getWalletIconFromId(walletId:transactionCubit.transactions![index].walletId )}'),
+                    Image.asset('${walletCubit.getWalletIconFromId(walletId:transactionCubit.expenses![index].walletId )}'),
                     iconMoneyType:
-                    Image.asset('${walletCubit.getWalletIconFromId(walletId:transactionCubit.transactions![index].walletId )}'),
+                    Image.asset('${walletCubit.getWalletIconFromId(walletId:transactionCubit.expenses![index].walletId )}'),
                     note:
-                    '${transactionCubit.transactions![index].description}',
+                    '${transactionCubit.expenses![index].description}',
                     paidMoney:
-                    '${transactionCubit.transactions![index].paid}',
+                    '${transactionCubit.expenses![index].paid}',
+                        deleteTransaction:() {
+                          transactionCubit.deleteTransactionFromDatabase(
+                              id: transactionCubit.expenses![index].id);
+                        },
                     totalMoney:
-                    '${transactionCubit.transactions![index].total}',
+                    '${transactionCubit.expenses![index].total}',
                     restMoney:
-                    '${transactionCubit.transactions![index].rest}',
+                    '${transactionCubit.expenses![index].rest}',
                     titleExchange:
-                    '${exchangeCubit.getExchangeName(exchangeId: transactionCubit.transactions![index].exchangeId)}',
-                    walletType: '${walletCubit.getWalletName(walletId: transactionCubit.transactions![index].walletId)}',
-                    currency: '${currencyCubit.getCurrencyOfWallet(currencyId: walletCubit.getWalletCurrencyId(walletId: transactionCubit.transactions![index].walletId))}');
+                    '${exchangeCubit.getExchangeName(exchangeId: transactionCubit.expenses![index].exchangeId)}',
+                    walletType: '${walletCubit.getWalletName(walletId: transactionCubit.expenses![index].walletId)}',
+                    currency: '${currencyCubit.getCurrencyOfWallet(currencyId: walletCubit.getWalletCurrencyId(walletId: transactionCubit.expenses![index].walletId))}');
   },
 );
               },
             ),
             floatingActionButton: CustomFloatingActionButton(
               icon: Icon(Icons.add),
-              onPressed: () => Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => AddExpense())),
+              onPressed: () => Navigator.of(context).pushNamed('/addExpense'),
             )
             );
       },

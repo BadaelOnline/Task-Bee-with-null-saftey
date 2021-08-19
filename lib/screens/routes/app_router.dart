@@ -8,6 +8,15 @@ import 'package:financial/screens/exchange_category/add_exchange.dart';
 import 'package:financial/screens/exchange_category/category.dart';
 import 'package:financial/screens/exchange_category/exchange_home.dart';
 import 'package:financial/screens/exchange_category/update_exchange.dart';
+import 'package:financial/screens/expenses/add_expense.dart';
+import 'package:financial/screens/expenses/expense_home.dart';
+import 'package:financial/screens/expenses/update_expense.dart';
+import 'package:financial/screens/report/report_home.dart';
+import 'package:financial/screens/report/report_search.dart';
+import 'package:financial/screens/report/report_search_result.dart';
+import 'package:financial/screens/revenues/add_revenues.dart';
+import 'package:financial/screens/revenues/revenues_home.dart';
+import 'package:financial/screens/revenues/update_revenues.dart';
 import 'package:financial/screens/shared/myhomepage.dart';
 import 'package:financial/screens/transaction/add_transaction.dart';
 import 'package:financial/screens/transaction/transaction_home.dart';
@@ -173,18 +182,52 @@ class AppRouter {
         );
 
 
+    /// revenues routes
+      case '/revenuesHome':
+        return MaterialPageRoute(
+          builder: (_) => RevenuesHome(),
+        );
+      case '/addRevenue':
+        return MaterialPageRoute(
+          builder: (_) => AddRevenues(),
+        );
+      case '/updateRevenue':
+        return MaterialPageRoute(
+            builder: (_) => UpdateRevenues(),
+            settings: RouteSettings(arguments: settings.arguments)
+        );
+
+
+
+
+    /// expenses routes
+      case '/expensesHome':
+        return MaterialPageRoute(
+          builder: (_) => ExpenseHome(),
+        );
+      case '/addExpense':
+        return MaterialPageRoute(
+          builder: (_) => AddExpense(),
+        );
+      case '/updateExpense':
+        return MaterialPageRoute(
+            builder: (_) => UpdateExpense(),
+            settings: RouteSettings(arguments: settings.arguments)
+        );
+
+
     /// reports routes
-      case '/transactionHome':
+      case '/reportHome':
         return MaterialPageRoute(
-          builder: (_) => TransactionHome(),
+          builder: (_) => ReportHome(),
         );
-      case '/addTransaction':
+      case '/reportSearch':
         return MaterialPageRoute(
-          builder: (_) => AddTransaction(),
+          builder: (_) => ReportSearch(),
         );
-      case '/updateTransaction':
+      case '/reportSearchResult':
         return MaterialPageRoute(
-            builder: (_) => UpdateTransaction(),
+            builder: (_) => ReportSearchResult(),
             settings: RouteSettings(arguments: settings.arguments)
         );
 
