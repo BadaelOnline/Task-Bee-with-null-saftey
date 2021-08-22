@@ -69,16 +69,16 @@ class MyHomePage extends StatelessWidget {
                 SizedBox(
                   height:kDefaultPadding / 2,
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.6,
-                  color: Colors.amberAccent,
-                  child: CustomRaisdButton(
-                      text: 'Transaction',
-                      onPressed: () => Navigator.of(context).pushNamed('/transactionHome')),
-                ),
-                SizedBox(
-                  height: kDefaultPadding / 2,
-                ),
+                // Container(
+                //   width: MediaQuery.of(context).size.width * 0.6,
+                //   color: Colors.amberAccent,
+                //   child: CustomRaisdButton(
+                //       text: 'Transaction',
+                //       onPressed: () => Navigator.of(context).pushNamed('/transactionHome')),
+                // ),
+                // SizedBox(
+                //   height: kDefaultPadding / 2,
+                // ),
                 Container(
                   width: MediaQuery.of(context).size.width * 0.6,
                   color: Colors.amberAccent,

@@ -21,7 +21,6 @@ import 'package:intl/intl.dart';
 class AddRevenues extends StatelessWidget {
   TextEditingController totalController = TextEditingController();
   TextEditingController paidController = TextEditingController();
-  TextEditingController restController = TextEditingController();
   TextEditingController transactionDateController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController exchangeIdController = TextEditingController();
@@ -61,7 +60,7 @@ class AddRevenues extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(Icon(Icons.wallet_giftcard), 'Add Transaction'),
+      appBar: CustomAppBar(Icon(Icons.wallet_giftcard), 'Add Revenues'),
       body: BlocConsumer<TransactionCubit, TransactionStates>(
         listener: (context, state) {
         },
@@ -86,13 +85,13 @@ class AddRevenues extends StatelessWidget {
               SizedBox(
                 height: 25,
               ),
-              CustomTextFormField(
-                  label: 'Rest',
-                  controller: restController,
-                  type: TextInputType.number),
-              SizedBox(
-                height: 25,
-              ),
+              // CustomTextFormField(
+              //     label: 'Rest',
+              //     controller: restController,
+              //     type: TextInputType.number),
+              // SizedBox(
+              //   height: 25,
+              // ),
               // CustomTextFormField(
               //     label: 'Date',
               //     controller: transactionDateController,
@@ -389,7 +388,7 @@ class AddRevenues extends StatelessWidget {
                               description: descriptionController.text,
                               exchangeId: eId,
                               paid: paidController.text,
-                              rest: restController.text,
+                              rest:'${int.parse(totalController.text) - int.parse(paidController.text)}',
                               total: totalController.text,
                               isIncome: 0,
                               transactionDate: transactionDateController.text,
