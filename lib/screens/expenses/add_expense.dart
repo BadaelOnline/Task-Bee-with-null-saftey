@@ -4,6 +4,8 @@ import 'package:financial/models/wallet.dart';
 import 'package:financial/screens/transaction/transaction_home.dart';
 import 'package:financial/services/bloc/contact/cubit.dart';
 import 'package:financial/services/bloc/contact/states.dart';
+import 'package:financial/services/bloc/datepicker/cubit.dart';
+import 'package:financial/services/bloc/datepicker/state.dart';
 import 'package:financial/services/bloc/exchang_category/cubit.dart';
 import 'package:financial/services/bloc/exchang_category/states.dart';
 import 'package:financial/services/bloc/transaction/cubit.dart';
@@ -39,6 +41,7 @@ class AddExpense extends StatelessWidget {
       timeOfDay = pickTime;
       time = TimeOfDay(hour: pickTime.hour, minute: pickTime.minute)
           .format(context);
+      DatePickerCubit.get(context).choseDate(date: date,time: time);
     }
   }
 
@@ -54,6 +57,7 @@ class AddExpense extends StatelessWidget {
     if (pickedDate != null) {
       dateTime = pickedDate;
       date = DateFormat('yyyy-MM-dd').format(pickedDate);
+      DatePickerCubit.get(context).choseDate(date: date,time: time);
     }
   }
 
@@ -85,20 +89,6 @@ class AddExpense extends StatelessWidget {
               SizedBox(
                 height: 25,
               ),
-              // CustomTextFormField(
-              //     label: 'Rest',
-              //     controller: restController,
-              //     type: TextInputType.number),
-              // SizedBox(
-              //   height: 25,
-              // ),
-              // CustomTextFormField(
-              //     label: 'Date',
-              //     controller: transactionDateController,
-              //     type: TextInputType.number),
-              // SizedBox(
-              //   height: 25,
-              // ),
               CustomTextFormField(
                   label: 'description',
                   controller: descriptionController,
@@ -107,79 +97,101 @@ class AddExpense extends StatelessWidget {
               SizedBox(
                 height: 50,
               ),
-              SizedBox(
-                height: 50,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    height: 60,
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    decoration: BoxDecoration(
-                      border:
+              // BlocConsumer<DatePickerCubit, DatePickerStates>(
+              //   listener: (context, state) {
+              //     // TODO: implement listener
+              //   },
+              //   builder: (context, state) {
+              //     return CustomTextFormField(
+              //         label: 'Date and Time',
+              //         controller: transactionDateController=
+              //             TextEditingController(text: '${DatePickerCubit.get(context).chosenDate}'),
+              //         isClickable: false,
+              //         type: TextInputType.datetime);
+              //   },
+              // ),
+              // SizedBox(
+              //   height: 50,
+              // ),
+              BlocConsumer<DatePickerCubit, DatePickerStates>(
+                listener: (context, state) {
+                  if(state is ChoseDateState){
+                    transactionDateController.text = DatePickerCubit.get(context).chosenDate!;
+                  }
+                },
+                builder: (context, state) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        height: 60,
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        decoration: BoxDecoration(
+                          border:
                           Border.all(color: Colors.amber[400]!, width: 1.0),
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        IconButton(
-                            icon: Image.asset(
-                              "assets/wallet/clock.png",
-                            ),
-                            onPressed: () {
-                              selectedTodotime(context);
-                            }),
-                        Center(
-                          child: time == null
-                              ? Text(TimeOfDay(
-                                      minute: timeOfDay.minute,
-                                      hour: timeOfDay.hour)
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            IconButton(
+                                icon: Image.asset(
+                                  "assets/wallet/clock.png",
+                                ),
+                                onPressed: () {
+                                  selectedTodotime(context);
+                                }),
+                            Center(
+                              child: time == null
+                                  ? Text(TimeOfDay(
+                                  minute: timeOfDay.minute,
+                                  hour: timeOfDay.hour)
                                   .format(context))
-                              : Text(
-                                  '$time',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 17,
-                                  ),
+                                  : Text(
+                                '$time',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 17,
                                 ),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    height: 60,
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    decoration: BoxDecoration(
-                      border:
+                      ),
+                      Container(
+                        height: 60,
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        decoration: BoxDecoration(
+                          border:
                           Border.all(color: Colors.amber[400]!, width: 1.0),
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        IconButton(
-                            icon: Image.asset("assets/wallet/calendar.png"),
-                            onPressed: () {
-                              selectedTodoDate(context);
-                            }),
-                        Center(
-                          child: date == null
-                              ? Text(
-                                  DateFormat('yyyy-MM-dd').format(dateTime))
-                              : Text(
-                                  '$date',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 17,
-                                  ),
-                                ),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
-                      ],
-                    ),
-                  ),
-                ],
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            IconButton(
+                                icon: Image.asset("assets/wallet/calendar.png"),
+                                onPressed: () {
+                                  selectedTodoDate(context);
+                                }),
+                            Center(
+                              child: date == null
+                                  ? Text(
+                                  DateFormat('yyyy-MM-dd').format(dateTime))
+                                  : Text(
+                                '$date',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 17,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
               SizedBox(
                 height: 25,
@@ -397,8 +409,10 @@ class AddExpense extends StatelessWidget {
                                 rest: '${int.parse(totalController.text) - int.parse(paidController.text)}',
                                 total: totalController.text,
                                 isIncome: 1,
-                                transactionDate:
-                                    transactionDateController.text,
+                                transactionDate:'${date != null ? date : DateFormat('yyyy-MM-dd').format(dateTime) } ${time != null ? time :TimeOfDay(
+                                    minute: timeOfDay.minute,
+                                    hour: timeOfDay.hour)
+                                    .format(context)}',
                                 walletId: wId,
                               );
                               String walletBalance = WalletCubit.get(context)

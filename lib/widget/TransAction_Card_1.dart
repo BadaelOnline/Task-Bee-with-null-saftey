@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
@@ -73,36 +74,44 @@ class TransactionCard extends StatelessWidget {
                       ),
                     ]),
                   ),
-                  Row(
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+
+                      Row(
+                        children: [
+
+                          Container(
+                            padding: EdgeInsets.only(left: 8.0),
+                            child: IconButton(
+
+                              onPressed: deleteTransaction,
+                              icon: Icon(
+                                Icons.delete,
+                                size: 20,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(left: 8.0),
+                            child: IconButton(
+
+                              onPressed: updateTransaction,
+                              icon: Icon(
+                                Icons.edit,
+                                size: 20,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                       Container(
                         padding: EdgeInsets.only(left: 10),
                         child: Text(
                           datetime!,
                           style: TextStyle(
                             fontSize: 12.0,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(left: 8.0),
-                        child: IconButton(
-
-                          onPressed: deleteTransaction,
-                          icon: Icon(
-                            Icons.delete,
-                            size: 20,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(left: 8.0),
-                        child: IconButton(
-
-                          onPressed: updateTransaction,
-                          icon: Icon(
-                            Icons.edit,
-                            size: 20,
                           ),
                         ),
                       ),
