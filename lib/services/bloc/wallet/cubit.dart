@@ -163,4 +163,15 @@ class WalletCubit extends Cubit<WalletStates> {
     }
     return 0;
   }
+
+  Wallet? getWallet({
+    @required int? walletId,
+  }) {
+    for (int i = 0; i < wallets!.length; i++) {
+      if (wallets![i].id == walletId) {
+        return wallets![i];
+      }
+    }
+    return null;
+  }
 }
