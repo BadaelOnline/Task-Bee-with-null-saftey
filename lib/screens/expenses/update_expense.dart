@@ -4,6 +4,8 @@ import 'package:financial/models/transaction.dart';
 import 'package:financial/models/wallet.dart';
 import 'package:financial/services/bloc/contact/cubit.dart';
 import 'package:financial/services/bloc/contact/states.dart';
+import 'package:financial/services/bloc/datepicker/cubit.dart';
+import 'package:financial/services/bloc/datepicker/state.dart';
 import 'package:financial/services/bloc/exchang_category/cubit.dart';
 import 'package:financial/services/bloc/exchang_category/states.dart';
 import 'package:financial/services/bloc/transaction/cubit.dart';
@@ -14,6 +16,7 @@ import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 // ignore: must_be_immutable
 class UpdateExpense extends StatelessWidget {
@@ -22,11 +25,43 @@ class UpdateExpense extends StatelessWidget {
   TextEditingController totalController = TextEditingController();
   TextEditingController paidController = TextEditingController();
   TextEditingController restController = TextEditingController();
-  TextEditingController transactionDateController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController exchangeIdController = TextEditingController();
   TextEditingController walletIdController = TextEditingController();
   TextEditingController contactIdController = TextEditingController();
+  String? date;
+  String? time;
+
+  TimeOfDay timeOfDay = TimeOfDay.now();
+  DateTime dateTime = DateTime.now();
+  selectedTodotime(BuildContext context) async {
+    var pickTime = await showTimePicker(
+      context: context,
+      initialTime: timeOfDay,
+    );
+    if (pickTime != null) {
+      timeOfDay = pickTime;
+      time = TimeOfDay(hour: pickTime.hour, minute: pickTime.minute)
+          .format(context);
+      DatePickerCubit.get(context).choseDate(date: date,time: time);
+    }
+  }
+
+
+  selectedTodoDate(BuildContext context) async {
+    var pickedDate = await showDatePicker(
+      context: context,
+      initialDate: dateTime,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+    );
+
+    if (pickedDate != null) {
+      dateTime = pickedDate;
+      date = DateFormat('yyyy-MM-dd').format(pickedDate);
+      DatePickerCubit.get(context).choseDate(date: date,time: time);
+    }
+  }
 
 
 
@@ -38,6 +73,9 @@ class UpdateExpense extends StatelessWidget {
   Widget build(BuildContext context) {
     final Map arguments = ModalRoute.of(context)!.settings.arguments as Map;
     transaction = arguments['transaction'];
+    date = transaction!.transactionDate.substring(0, 10);
+    time = transaction!.transactionDate.substring(11, 18);
+    dateTime = DateFormat('yyyy-MM-dd hh:mm aaa').parse(transaction!.transactionDate);
     return Scaffold(
       appBar: CustomAppBar(Icon(Icons.wallet_giftcard), 'Update Expense'),
       body:BlocConsumer<TransactionCubit,TransactionStates>(
@@ -73,24 +111,6 @@ class UpdateExpense extends StatelessWidget {
               SizedBox(
                 height: 50,
               ),
-              // CustomTextFormField(
-              //     label :'rest',
-              //     controller :restController=
-              //         TextEditingController(text: '${transaction!.rest}'),
-              //     prefix:Icons.person,
-              //     type :TextInputType.number),
-              // SizedBox(
-              //   height: 50,
-              // ),
-              CustomTextFormField(
-                  label :'transactionDate',
-                  controller :transactionDateController=
-                      TextEditingController(text: '${transaction!.transactionDate}'),
-                  prefix: Icons.date_range,
-                  type :TextInputType.text),
-              SizedBox(
-                height: 50,
-              ),
               CustomTextFormField(
                   label :'description',
                   controller :descriptionController=
@@ -99,6 +119,89 @@ class UpdateExpense extends StatelessWidget {
                   type :TextInputType.text),
               SizedBox(
                 height: 50,
+              ),
+              BlocConsumer<DatePickerCubit, DatePickerStates>(
+                listener: (context, state) {
+                  if(state is ChoseDateState){
+                    // transactionDateController.text = DatePickerCubit.get(context).chosenDate!;
+                  }
+                },
+                builder: (context, state) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        height: 60,
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        decoration: BoxDecoration(
+                          border:
+                          Border.all(color: Colors.amber[400]!, width: 1.0),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            IconButton(
+                                icon: Image.asset(
+                                  "assets/wallet/clock.png",
+                                ),
+                                onPressed: () {
+                                  selectedTodotime(context);
+                                }),
+                            Center(
+                              child: time == null
+                                  ? Text(TimeOfDay(
+                                  minute: timeOfDay.minute,
+                                  hour: timeOfDay.hour)
+                                  .format(context))
+                                  : Text(
+                                '$time',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 17,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        height: 60,
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        decoration: BoxDecoration(
+                          border:
+                          Border.all(color: Colors.amber[400]!, width: 1.0),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            IconButton(
+                                icon: Image.asset("assets/wallet/calendar.png"),
+                                onPressed: () {
+                                  selectedTodoDate(context);
+                                }),
+                            Center(
+                              child: date == null
+                                  ? Text(
+                                  DateFormat('yyyy-MM-dd').format(dateTime))
+                                  : Text(
+                                '$date',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 17,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
+              SizedBox(
+                height: 25,
               ),
               BlocConsumer<ExchangeCubit,ExchangeStates>(
                 listener: (context,ExchangeStates state){},
@@ -277,7 +380,10 @@ class UpdateExpense extends StatelessWidget {
                             paid: paidController.text,
                             rest: '${int.parse(totalController.text) - int.parse(paidController.text)}',
                             total: totalController.text,
-                            transactionDate: transactionDateController.text,
+                            transactionDate: '${date != null ? date : DateFormat('yyyy-MM-dd').format(dateTime) } ${time != null ? time :TimeOfDay(
+                                minute: timeOfDay.minute,
+                                hour: timeOfDay.hour)
+                                .format(context)}',
                             walletId: WalletCubit.get(context).getWalletId(walletName: walletIdController.text),
                             income: 1
                         );
@@ -300,7 +406,10 @@ class UpdateExpense extends StatelessWidget {
                             paid: paidController.text,
                             rest: '${int.parse(totalController.text) - int.parse(paidController.text)}',
                             total: totalController.text,
-                            transactionDate: transactionDateController.text,
+                            transactionDate: '${date != null ? date : DateFormat('yyyy-MM-dd').format(dateTime) } ${time != null ? time :TimeOfDay(
+                                minute: timeOfDay.minute,
+                                hour: timeOfDay.hour)
+                                .format(context)}',
                             walletId: WalletCubit.get(context).getWalletId(walletName: walletIdController.text),
                             income: 1
                         );
@@ -314,7 +423,10 @@ class UpdateExpense extends StatelessWidget {
                           paid: paidController.text,
                           rest: '${int.parse(totalController.text) - int.parse(paidController.text)}',
                           total: totalController.text,
-                          transactionDate: transactionDateController.text,
+                          transactionDate: '${date != null ? date : DateFormat('yyyy-MM-dd').format(dateTime) } ${time != null ? time :TimeOfDay(
+                              minute: timeOfDay.minute,
+                              hour: timeOfDay.hour)
+                              .format(context)}',
                           walletId: WalletCubit.get(context).getWalletId(walletName: walletIdController.text),
                           income: 1
                       );

@@ -9,9 +9,9 @@ class CustomTextFormField extends StatelessWidget {
   final  onTap;
   final String? label;
   final IconData? prefix;
-  final bool isClickable = true;
+  final bool? isClickable;
   const CustomTextFormField({
-    Key? key, this.controller, this.type, this.onSubmit, this.onChange, this.onTap, this.label, this.prefix,
+    Key? key, this.controller, this.type, this.onSubmit, this.onChange, this.onTap, this.label, this.prefix, this.isClickable,
   }) : super(key: key);
 
   @override
