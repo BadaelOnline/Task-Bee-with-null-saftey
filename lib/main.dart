@@ -16,7 +16,7 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
   final database =
-  await $FloorAppDatabase.databaseBuilder('database_wallet.db').build();
+      await $FloorAppDatabase.databaseBuilder('database_wallet.db').build();
   final dao = database.walletDao;
 
   runApp(MyApp());
@@ -28,27 +28,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => ContactCubit()..createDatabase()),
-        BlocProvider(
-            create: (context) => WalletCubit()..createDatabase()),
-        BlocProvider(
-            create: (context) => CurrencyCubit()..createDatabase()),
-        BlocProvider(
-            create: (context) => ExchangeCubit()..createDatabase()),
-        BlocProvider(
-            create: (context) => TransactionCubit()..createDatabase()),
+        BlocProvider(create: (context) => ContactCubit()..createDatabase()),
+        BlocProvider(create: (context) => WalletCubit()..createDatabase()),
+        BlocProvider(create: (context) => CurrencyCubit()..createDatabase()),
+        BlocProvider(create: (context) => ExchangeCubit()..createDatabase()),
+        BlocProvider(create: (context) => TransactionCubit()..createDatabase()),
       ],
-
-
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        onGenerateRoute:_appRouter.onGenerateRoute ,
+        onGenerateRoute: _appRouter.onGenerateRoute,
       ),
-    ) ;
+    );
   }
 }
