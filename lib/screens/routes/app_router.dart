@@ -1,3 +1,5 @@
+import 'package:financial/screens/Debts/debts_form.dart';
+import 'package:financial/screens/Debts/home_debts.dart';
 import 'package:financial/screens/contact/add_contact.dart';
 import 'package:financial/screens/contact/contact_home.dart';
 import 'package:financial/screens/contact/update_contact.dart';
@@ -40,13 +42,12 @@ import 'package:flutter/material.dart';
 class AppRouter {
   Route onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+
       /// home page
       case '/':
         return MaterialPageRoute(
           builder: (_) => MyHomePage(),
         );
-
-
 
       /// wallets routes
       case '/walletHome':
@@ -88,31 +89,23 @@ class AppRouter {
       case '/updatePlanerSave':
         return MaterialPageRoute(
             builder: (_) => UpdatePlannerSave(),
-            settings: RouteSettings(arguments: settings.arguments)
-        );
+            settings: RouteSettings(arguments: settings.arguments));
       case '/updateBankAccount':
         return MaterialPageRoute(
             builder: (_) => UpdateBankAccount(),
-            settings: RouteSettings(arguments: settings.arguments)
-        );
+            settings: RouteSettings(arguments: settings.arguments));
       case '/updateCashWallet':
         return MaterialPageRoute(
             builder: (_) => Updatewallet(),
-            settings: RouteSettings(arguments: settings.arguments)
-        );
+            settings: RouteSettings(arguments: settings.arguments));
       case '/updateCreditCard':
         return MaterialPageRoute(
             builder: (_) => UpdateCreditCard(),
-            settings: RouteSettings(arguments: settings.arguments)
-        );
+            settings: RouteSettings(arguments: settings.arguments));
       case '/updatePriberdCard':
         return MaterialPageRoute(
             builder: (_) => UpdatePrepaidCard(),
-            settings: RouteSettings(arguments: settings.arguments)
-        );
-
-
-
+            settings: RouteSettings(arguments: settings.arguments));
 
       /// exchanges routes
       case '/exchangeHome':
@@ -129,10 +122,8 @@ class AppRouter {
         );
       case '/updateExchange':
         return MaterialPageRoute(
-          builder: (_) => UpdateExchange(),
-          settings: RouteSettings(arguments: settings.arguments)
-        );
-
+            builder: (_) => UpdateExchange(),
+            settings: RouteSettings(arguments: settings.arguments));
 
       /// contacts routes
       case '/contactHome':
@@ -145,12 +136,10 @@ class AppRouter {
         );
       case '/updateContact':
         return MaterialPageRoute(
-          builder: (_) => UpdateContact(),
-          settings: RouteSettings(arguments: settings.arguments)
-        );
+            builder: (_) => UpdateContact(),
+            settings: RouteSettings(arguments: settings.arguments));
 
-
-    /// currency routes
+      /// currency routes
       case '/currencyHome':
         return MaterialPageRoute(
           builder: (_) => CurrencyHome(),
@@ -161,12 +150,10 @@ class AppRouter {
         );
       case '/updateCurrency':
         return MaterialPageRoute(
-          builder: (_) => UpdateCurrency(),
-          settings: RouteSettings(arguments: settings.arguments)
-        );
+            builder: (_) => UpdateCurrency(),
+            settings: RouteSettings(arguments: settings.arguments));
 
-
-    /// transactions routes
+      /// transactions routes
       case '/transactionHome':
         return MaterialPageRoute(
           builder: (_) => TransactionHome(),
@@ -178,11 +165,9 @@ class AppRouter {
       case '/updateTransaction':
         return MaterialPageRoute(
             builder: (_) => UpdateTransaction(),
-            settings: RouteSettings(arguments: settings.arguments)
-        );
+            settings: RouteSettings(arguments: settings.arguments));
 
-
-    /// revenues routes
+      /// revenues routes
       case '/revenuesHome':
         return MaterialPageRoute(
           builder: (_) => RevenuesHome(),
@@ -194,13 +179,9 @@ class AppRouter {
       case '/updateRevenue':
         return MaterialPageRoute(
             builder: (_) => UpdateRevenues(),
-            settings: RouteSettings(arguments: settings.arguments)
-        );
+            settings: RouteSettings(arguments: settings.arguments));
 
-
-
-
-    /// expenses routes
+      /// expenses routes
       case '/expensesHome':
         return MaterialPageRoute(
           builder: (_) => ExpenseHome(),
@@ -212,11 +193,9 @@ class AppRouter {
       case '/updateExpense':
         return MaterialPageRoute(
             builder: (_) => UpdateExpense(),
-            settings: RouteSettings(arguments: settings.arguments)
-        );
+            settings: RouteSettings(arguments: settings.arguments));
 
-
-    /// reports routes
+      /// reports routes
       case '/reportHome':
         return MaterialPageRoute(
           builder: (_) => ReportHome(),
@@ -228,7 +207,17 @@ class AppRouter {
       case '/reportSearchResult':
         return MaterialPageRoute(
             builder: (_) => ReportSearchResult(),
-            settings: RouteSettings(arguments: settings.arguments)
+            settings: RouteSettings(arguments: settings.arguments));
+
+      // debts routes
+      case '/debtsHome':
+        return MaterialPageRoute(
+          builder: (_) => DebtsHome(),
+        );
+
+      case '/debtsForm':
+        return MaterialPageRoute(
+          builder: (_) => DebtsForm(),
         );
 
       default:
@@ -236,6 +225,5 @@ class AppRouter {
           builder: (_) => MyHomePage(),
         );
     }
-
   }
 }
