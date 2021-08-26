@@ -19,6 +19,7 @@ import 'package:financial/screens/report/report_search_result.dart';
 import 'package:financial/screens/revenues/add_revenues.dart';
 import 'package:financial/screens/revenues/revenues_home.dart';
 import 'package:financial/screens/revenues/update_revenues.dart';
+import 'package:financial/screens/shared/HomePage.dart';
 import 'package:financial/screens/shared/myhomepage.dart';
 import 'package:financial/screens/transaction/add_transaction.dart';
 import 'package:financial/screens/transaction/transaction_home.dart';
@@ -208,17 +209,14 @@ class AppRouter {
         return MaterialPageRoute(
             builder: (_) => ReportSearchResult(),
             settings: RouteSettings(arguments: settings.arguments));
-
-      // debts routes
       case '/debtsHome':
         return MaterialPageRoute(
-          builder: (_) => DebtsHome(),
-        );
-
+            builder: (_) => ReportSearchResult(),
+            settings: RouteSettings(arguments: settings.arguments));
       case '/debtsForm':
         return MaterialPageRoute(
-          builder: (_) => DebtsForm(),
-        );
+            builder: (_) => ReportSearchResult(),
+            settings: RouteSettings(arguments: settings.arguments));
 
       default:
         return MaterialPageRoute(

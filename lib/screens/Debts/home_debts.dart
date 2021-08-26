@@ -28,7 +28,7 @@ class _DebtsHomeState extends State<DebtsHome> {
         body: Stack(
           children: [
             TabBar(
-              padding: EdgeInsets.all(15),
+              // padding: EdgeInsets.all(15),
               indicatorColor: Colors.amber[400],
               labelPadding: EdgeInsets.all(15),
               tabs: [
