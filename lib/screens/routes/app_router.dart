@@ -1,3 +1,5 @@
+import 'package:financial/screens/Debts/debts_form.dart';
+import 'package:financial/screens/Debts/home_debts.dart';
 import 'package:financial/screens/contact/add_contact.dart';
 import 'package:financial/screens/contact/contact_home.dart';
 import 'package:financial/screens/contact/update_contact.dart';

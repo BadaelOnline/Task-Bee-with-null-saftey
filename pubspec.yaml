@@ -66,7 +66,11 @@ flutter:
     - assets/image_wallet/
     - assets/category/
     - assets/wallet/
+<<<<<<< HEAD
     - assets/homepage/
+=======
+    - assets/icons/
+>>>>>>> 1c3051c88297534778eef6ee52a023c2a052d09b
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
