@@ -209,6 +209,14 @@ class AppRouter {
         return MaterialPageRoute(
             builder: (_) => ReportSearchResult(),
             settings: RouteSettings(arguments: settings.arguments));
+      case '/debtsHome':
+        return MaterialPageRoute(
+            builder: (_) => ReportSearchResult(),
+            settings: RouteSettings(arguments: settings.arguments));
+      case '/debtsForm':
+        return MaterialPageRoute(
+            builder: (_) => ReportSearchResult(),
+            settings: RouteSettings(arguments: settings.arguments));
 
       default:
         return MaterialPageRoute(

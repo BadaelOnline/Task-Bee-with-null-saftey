@@ -274,10 +274,14 @@ class MyHomePage extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Image.asset(
-                        'assets/homepage/qrood.png',
-                        height: 40,
-                        width: 40,
+                      InkWell(
+                        onTap: () =>
+                            Navigator.of(context).pushNamed('/debtsHome'),
+                        child: Image.asset(
+                          'assets/homepage/qrood.png',
+                          height: 40,
+                          width: 40,
+                        ),
                       ),
                       Text('Debts')
                     ],
