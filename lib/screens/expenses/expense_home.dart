@@ -25,7 +25,7 @@ class ExpenseHome extends StatelessWidget {
         WalletCubit walletCubit = WalletCubit.get(context);
         CurrencyCubit currencyCubit = CurrencyCubit.get(context);
         return Scaffold(
-            appBar: CustomAppBar(Icon(Icons.wallet_giftcard), 'Transaction'),
+            appBar: CustomAppBar(Icon(Icons.wallet_giftcard), 'Expense'),
             body: ListView.builder(
               itemCount: transactionCubit.expenses!.length,
               itemBuilder: (BuildContext context, int index) {
@@ -48,9 +48,15 @@ class ExpenseHome extends StatelessWidget {
                     '${transactionCubit.expenses![index].description}',
                     paidMoney:
                     '${transactionCubit.expenses![index].paid}',
-                        deleteTransaction:() {
+                    deleteTransaction:() {
                           transactionCubit.deleteTransactionFromDatabase(
                               id: transactionCubit.expenses![index].id);
+                        },
+                    updateTransaction:() {
+                      Navigator.of(context).pushNamed('/updateExpense',
+                      arguments: {
+                        'transaction': transactionCubit.expenses![index]
+                      });
                         },
                     totalMoney:
                     '${transactionCubit.expenses![index].total}',

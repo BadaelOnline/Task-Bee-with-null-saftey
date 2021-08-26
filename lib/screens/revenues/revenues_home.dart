@@ -25,7 +25,7 @@ class RevenuesHome extends StatelessWidget {
         WalletCubit walletCubit = WalletCubit.get(context);
         CurrencyCubit currencyCubit = CurrencyCubit.get(context);
         return Scaffold(
-            appBar: CustomAppBar(Icon(Icons.wallet_giftcard), 'Transaction'),
+            appBar: CustomAppBar(Icon(Icons.wallet_giftcard), 'Revenues'),
             body: ListView.builder(
               itemCount: transactionCubit.revenues!.length,
               itemBuilder: (BuildContext context, int index) {
@@ -55,6 +55,12 @@ class RevenuesHome extends StatelessWidget {
                         deleteTransaction:() {
                           transactionCubit.deleteTransactionFromDatabase(
                               id: transactionCubit.revenues![index].id);
+                        },
+                        updateTransaction:() {
+                          Navigator.of(context).pushNamed('/updateRevenue',
+                              arguments: {
+                                'transaction': transactionCubit.revenues![index]
+                              });
                         },
                     titleExchange:
                     '${exchangeCubit.getExchangeName(exchangeId: transactionCubit.revenues![index].exchangeId)}',

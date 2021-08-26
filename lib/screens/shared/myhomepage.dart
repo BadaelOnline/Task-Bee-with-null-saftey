@@ -1,8 +1,19 @@
 import 'package:financial/common/constant/constants.dart';
 import 'package:financial/screens/report/report_search.dart';
+import 'package:financial/services/bloc/contact/cubit.dart';
+import 'package:financial/services/bloc/contact/states.dart';
+import 'package:financial/services/bloc/currency/cubit.dart';
+import 'package:financial/services/bloc/currency/states.dart';
+import 'package:financial/services/bloc/exchang_category/cubit.dart';
+import 'package:financial/services/bloc/exchang_category/states.dart';
+import 'package:financial/services/bloc/transaction/cubit.dart';
+import 'package:financial/services/bloc/transaction/states.dart';
+import 'package:financial/services/bloc/wallet/cubit.dart';
+import 'package:financial/services/bloc/wallet/states.dart';
 import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyHomePage extends StatelessWidget {
   @override

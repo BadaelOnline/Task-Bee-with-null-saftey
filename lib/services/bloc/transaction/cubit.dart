@@ -113,10 +113,11 @@ class TransactionCubit extends Cubit<TransactionStates> {
     @required int? exchangeId,
     @required int? walletId,
     @required int? contactId,
+    @required int? income,
   }) async {
     dao!
         .updateTransaction(Transaction(isId!, total!, paid!, rest!, transactionDate!,
-            description!, 1, 1, 1, exchangeId!, walletId!, contactId!))
+            description!, 1, 1, income!, exchangeId!, walletId!, contactId!))
         .then((value) {
       emit(UpdateTransactionsToDatabaseState());
       getTransactionsFromDatabase();

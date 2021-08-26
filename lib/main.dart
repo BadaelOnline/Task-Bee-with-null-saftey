@@ -2,6 +2,7 @@ import 'package:financial/screens/routes/app_router.dart';
 import 'package:financial/screens/shared/myhomepage.dart';
 import 'package:financial/services/bloc/contact/cubit.dart';
 import 'package:financial/services/bloc/currency/cubit.dart';
+import 'package:financial/services/bloc/datepicker/cubit.dart';
 import 'package:financial/services/bloc/exchang_category/cubit.dart';
 import 'package:financial/services/bloc/transaction/cubit.dart';
 import 'package:financial/services/bloc/wallet/cubit.dart';
@@ -28,11 +29,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => ContactCubit()..createDatabase()),
-        BlocProvider(create: (context) => WalletCubit()..createDatabase()),
-        BlocProvider(create: (context) => CurrencyCubit()..createDatabase()),
-        BlocProvider(create: (context) => ExchangeCubit()..createDatabase()),
-        BlocProvider(create: (context) => TransactionCubit()..createDatabase()),
+BlocProvider(
+          create: (context) => ContactCubit()..createDatabase()),
+        BlocProvider(
+            create: (context) => WalletCubit()..createDatabase()),
+        BlocProvider(
+            create: (context) => CurrencyCubit()..createDatabase()),
+        BlocProvider(
+            create: (context) => ExchangeCubit()..createDatabase()),
+        BlocProvider(
+            create: (context) => TransactionCubit()..createDatabase()),
+        BlocProvider(
+            create: (context) => DatePickerCubit()..createCubit()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
