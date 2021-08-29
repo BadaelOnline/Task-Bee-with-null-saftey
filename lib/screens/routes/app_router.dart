@@ -211,11 +211,11 @@ class AppRouter {
             settings: RouteSettings(arguments: settings.arguments));
       case '/debtsHome':
         return MaterialPageRoute(
-            builder: (_) => ReportSearchResult(),
+            builder: (_) => DebtsHome(),
             settings: RouteSettings(arguments: settings.arguments));
       case '/debtsForm':
         return MaterialPageRoute(
-            builder: (_) => ReportSearchResult(),
+            builder: (_) => DebtsForm(),
             settings: RouteSettings(arguments: settings.arguments));
 
       default:

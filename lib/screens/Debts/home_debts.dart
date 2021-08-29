@@ -20,7 +20,7 @@ class _DebtsHomeState extends State<DebtsHome> {
         appBar: CustomAppBar(
           Container(
             child: Image(
-              image: AssetImage('assets/icons/1.png'),
+              image: AssetImage('assets/homepage/qrood.png'),
             ),
           ),
           'Debts',

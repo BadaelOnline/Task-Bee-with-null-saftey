@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'contact_home.dart';
 
-
 // ignore: must_be_immutable
 class UpdateContact extends StatelessWidget {
   int? contactId;
@@ -71,23 +70,21 @@ class UpdateContact extends StatelessWidget {
               SizedBox(
                 height: 100,
               ),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    CustomRaisdButton(
-                        text: 'Update',
-                        onPressed: () {
-                          ContactCubit.get(context).updateContactDatabase(
-                            isId: contactId,
-                            contactName: nameController.text,
-                          );
-                        }),
-                    CustomRaisdButton(
-                        text: 'Cansel',
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        }),
-                  ])
+              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+                CustomRaisdButton(
+                    text: 'Update',
+                    onPressed: () {
+                      ContactCubit.get(context).updateContactDatabase(
+                        isId: contactId,
+                        contactName: nameController.text,
+                      );
+                    }),
+                CustomRaisdButton(
+                    text: 'Cansel',
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    }),
+              ])
             ])),
           );
         },
