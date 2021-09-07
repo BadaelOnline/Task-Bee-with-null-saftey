@@ -10,7 +10,6 @@ import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_floating_action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'add_expense.dart';
 
 class ExpenseHome extends StatelessWidget {
@@ -25,58 +24,59 @@ class ExpenseHome extends StatelessWidget {
         WalletCubit walletCubit = WalletCubit.get(context);
         CurrencyCubit currencyCubit = CurrencyCubit.get(context);
         return Scaffold(
-            appBar: CustomAppBar(Icon(Icons.wallet_giftcard), 'Expense'),
+            appBar: CustomAppBar(
+                Image(
+                  image: AssetImage('assets/homepage/minus_icon.png'),
+                ),
+                'Pay / Exchange'),
             body: ListView.builder(
               itemCount: transactionCubit.expenses!.length,
               itemBuilder: (BuildContext context, int index) {
                 return BlocConsumer<CurrencyCubit, CurrencyStates>(
-                  listener: (context, state) {
-                    // TODO: implement listener
-                  },
+                  listener: (context, state) {},
                   builder: (context, state) {
                     return TransactionCard(
-                    contact: '${contactCubit.getContactName(contactId: transactionCubit.expenses![index].contactId)}',
-                    datetime:
-                    '${transactionCubit.expenses![index].transactionDate}',
-                    iconExchange: Image.asset(
-                        '${exchangeCubit.getExchangeIcon(exchangeId: transactionCubit.expenses![index].exchangeId)}'),
-                    imageWallet:
-                    Image.asset('${walletCubit.getWalletIconFromId(walletId:transactionCubit.expenses![index].walletId )}'),
-                    iconMoneyType:
-                    Image.asset('${walletCubit.getWalletIconFromId(walletId:transactionCubit.expenses![index].walletId )}'),
-                    note:
-                    '${transactionCubit.expenses![index].description}',
-                    paidMoney:
-                    '${transactionCubit.expenses![index].paid}',
-                    deleteTransaction:() {
+                        contact:
+                            '${contactCubit.getContactName(contactId: transactionCubit.expenses![index].contactId)}',
+                        datetime:
+                            '${transactionCubit.expenses![index].transactionDate}',
+                        iconExchange: Image.asset(
+                            '${exchangeCubit.getExchangeIcon(exchangeId: transactionCubit.expenses![index].exchangeId)}'),
+                        imageWallet: Image.asset(
+                            '${walletCubit.getWalletIconFromId(walletId: transactionCubit.expenses![index].walletId)}'),
+                        iconMoneyType: Image.asset(
+                            '${walletCubit.getWalletIconFromId(walletId: transactionCubit.expenses![index].walletId)}'),
+                        note:
+                            '${transactionCubit.expenses![index].description}',
+                        paidMoney: '${transactionCubit.expenses![index].paid}',
+                        deleteTransaction: () {
                           transactionCubit.deleteTransactionFromDatabase(
                               id: transactionCubit.expenses![index].id);
                         },
-                    updateTransaction:() {
-                      Navigator.of(context).pushNamed('/updateExpense',
-                      arguments: {
-                        'transaction': transactionCubit.expenses![index]
-                      });
+                        updateTransaction: () {
+                          Navigator.of(context).pushNamed('/updateExpense',
+                              arguments: {
+                                'transaction': transactionCubit.expenses![index]
+                              });
                         },
-                    totalMoney:
-                    '${transactionCubit.expenses![index].total}',
-                    restMoney:
-                    '${transactionCubit.expenses![index].rest}',
-                    titleExchange:
-                    '${exchangeCubit.getExchangeName(exchangeId: transactionCubit.expenses![index].exchangeId)}',
-                    walletType: '${walletCubit.getWalletName(walletId: transactionCubit.expenses![index].walletId)}',
-                    currency: '${currencyCubit.getCurrencyOfWallet(currencyId: walletCubit.getWalletCurrencyId(walletId: transactionCubit.expenses![index].walletId))}');
-  },
-);
+                        totalMoney:
+                            '${transactionCubit.expenses![index].total}',
+                        restMoney: '${transactionCubit.expenses![index].rest}',
+                        titleExchange:
+                            '${exchangeCubit.getExchangeName(exchangeId: transactionCubit.expenses![index].exchangeId)}',
+                        walletType:
+                            '${walletCubit.getWalletName(walletId: transactionCubit.expenses![index].walletId)}',
+                        currency:
+                            '${currencyCubit.getCurrencyOfWallet(currencyId: walletCubit.getWalletCurrencyId(walletId: transactionCubit.expenses![index].walletId))}');
+                  },
+                );
               },
             ),
             floatingActionButton: CustomFloatingActionButton(
               icon: Icon(Icons.add),
               onPressed: () => Navigator.of(context).pushNamed('/addExpense'),
-            )
-            );
+            ));
       },
     );
   }
-
 }
