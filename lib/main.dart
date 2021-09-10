@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => DatePickerCubit()..createCubit()),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
