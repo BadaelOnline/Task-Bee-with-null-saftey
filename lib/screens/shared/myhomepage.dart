@@ -1,5 +1,4 @@
 import 'package:financial/common/constant/constants.dart';
-import 'package:financial/screens/report/report_search.dart';
 import 'package:financial/services/bloc/contact/cubit.dart';
 import 'package:financial/services/bloc/contact/states.dart';
 import 'package:financial/services/bloc/currency/cubit.dart';
@@ -27,9 +26,7 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             BlocConsumer<WalletCubit, WalletStates>(
-              listener: (context, state) {
-                // TODO: implement listener
-              },
+              listener: (context, state) {},
               builder: (context, state) {
                 return Container(
                   width: MediaQuery.of(context).size.width * 0.6,
@@ -45,9 +42,7 @@ class HomePage extends StatelessWidget {
               height: kDefaultPadding / 2,
             ),
             BlocConsumer<CurrencyCubit, CurrencyStates>(
-              listener: (context, state) {
-                // TODO: implement listener
-              },
+              listener: (context, state) {},
               builder: (context, state) {
                 return Container(
                   width: MediaQuery.of(context).size.width * 0.6,
@@ -56,10 +51,6 @@ class HomePage extends StatelessWidget {
                       text: 'Currency',
                       onPressed: () =>
                           Navigator.of(context).pushNamed('/currencyHome')),
-                  //   TextButton(
-                  //       onPressed: () => Navigator.push(context,
-                  //           MaterialPageRoute(builder: (context) => ContactHome())),
-                  //       child: Text('Contact')),
                 );
               },
             ),
@@ -67,9 +58,7 @@ class HomePage extends StatelessWidget {
               height: kDefaultPadding / 2,
             ),
             BlocConsumer<ExchangeCubit, ExchangeStates>(
-              listener: (context, state) {
-                // TODO: implement listener
-              },
+              listener: (context, state) {},
               builder: (context, state) {
                 return Container(
                   width: MediaQuery.of(context).size.width * 0.6,

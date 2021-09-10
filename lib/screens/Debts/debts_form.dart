@@ -53,7 +53,7 @@ class _DebtsFormState extends State<DebtsForm> {
       appBar: CustomAppBar(
         Container(
           child: Image(
-            image: AssetImage('assets/icons/1.png'),
+            image: AssetImage('assets/homepage/qrood.png'),
           ),
         ),
         'Debts',
@@ -92,7 +92,7 @@ class _DebtsFormState extends State<DebtsForm> {
             Container(
               padding: EdgeInsets.all(10),
               child: CustomTextFormField(
-                label: 'Total Debt',
+                label: 'Total',
                 controller: totaldebt,
                 // onChange: (String val) {},
                 // onSubmit: (String val) {},

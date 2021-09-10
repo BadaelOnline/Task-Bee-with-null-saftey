@@ -27,24 +27,28 @@ class _DebtsHomeState extends State<DebtsHome> {
         ),
         body: Stack(
           children: [
-            TabBar(
-              // padding: EdgeInsets.all(15),
-              indicatorColor: Colors.amber[400],
-              labelPadding: EdgeInsets.all(15),
-              tabs: [
-                Container(
-                  child: Text(
-                    'Creditors / theirs',
-                    style: TextStyle(color: Colors.red),
+            Container(
+              height: 35,
+              color: Colors.white,
+              child: TabBar(
+                // padding: EdgeInsets.all(15),
+                indicatorColor: Colors.amber[400],
+
+                tabs: [
+                  Container(
+                    child: Text(
+                      'Creditors / theirs',
+                      style: TextStyle(color: Colors.red),
+                    ),
                   ),
-                ),
-                Container(
-                  child: Text(
-                    'Debtors / on them',
-                    style: TextStyle(color: Colors.green),
+                  Container(
+                    child: Text(
+                      'Debtors / on them',
+                      style: TextStyle(color: Colors.green),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             TabBarView(children: [
               Icon(Icons.car_rental),
