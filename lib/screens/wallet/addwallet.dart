@@ -5,6 +5,7 @@ import 'package:financial/services/bloc/currency/cubit.dart';
 import 'package:financial/services/bloc/currency/states.dart';
 import 'package:financial/services/bloc/wallet/cubit.dart';
 import 'package:financial/services/bloc/wallet/states.dart';
+import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_text_form_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,11 +22,11 @@ class AddWallet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Add Wallet'),
-        centerTitle: true,
-        backgroundColor: Colors.amber[400],
-      ),
+      appBar: CustomAppBar(
+          Image(
+            image: AssetImage('assets/homepage/wallet.png'),
+          ),
+          'Add Wallet'),
       body: BlocConsumer<WalletCubit, WalletStates>(
         listener: (context, state) {
           if (state is InsertWalletsToDatabaseState) {
@@ -87,8 +88,7 @@ class AddWallet extends StatelessWidget {
                       underline: Container(
                         decoration: const BoxDecoration(
                             border: Border(
-                                bottom:
-                                    BorderSide(color: Colors.transparent))),
+                                bottom: BorderSide(color: Colors.transparent))),
                       ),
                       icon: new Icon(Icons.keyboard_arrow_down),
                       items: x.currencies!.map((Currency value) {
