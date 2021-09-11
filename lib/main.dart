@@ -20,6 +20,7 @@ void main() async {
   await $FloorAppDatabase.databaseBuilder('database_wallet.db').build();
   final dao = database.walletDao;
 
+
   runApp(MyApp());
 }
 
@@ -50,7 +51,9 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
+        debugShowCheckedModeBanner: false,
         onGenerateRoute:_appRouter.onGenerateRoute ,
+
       ),
     ) ;
   }

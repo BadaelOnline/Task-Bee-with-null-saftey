@@ -4,6 +4,7 @@ import 'package:financial/screens/contact/update_contact.dart';
 import 'package:financial/screens/currency/add_currency.dart';
 import 'package:financial/screens/currency/currency_home.dart';
 import 'package:financial/screens/currency/update_currency.dart';
+import 'package:financial/screens/debts/debts_home.dart';
 import 'package:financial/screens/exchange_category/add_exchange.dart';
 import 'package:financial/screens/exchange_category/category.dart';
 import 'package:financial/screens/exchange_category/exchange_home.dart';
@@ -229,6 +230,13 @@ class AppRouter {
         return MaterialPageRoute(
             builder: (_) => ReportSearchResult(),
             settings: RouteSettings(arguments: settings.arguments)
+        );
+
+
+    /// debts routes
+      case '/debtsHome':
+        return MaterialPageRoute(
+          builder: (_) => DebtsHome(),
         );
 
       default:

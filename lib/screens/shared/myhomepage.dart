@@ -156,6 +156,20 @@ class MyHomePage extends StatelessWidget {
                   //         MaterialPageRoute(builder: (context) => TransactionHome())),
                   //     child: Text('Transaction')),
                 ),
+                SizedBox(
+                  height: kDefaultPadding / 2,
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.6,
+                  color: Colors.amberAccent,
+                  child: CustomRaisdButton(
+                      text: 'Debts',
+                      onPressed: () => Navigator.of(context).pushNamed('/debtsHome')),
+                  // TextButton(
+                  //     onPressed: () => Navigator.push(context,
+                  //         MaterialPageRoute(builder: (context) => TransactionHome())),
+                  //     child: Text('Transaction')),
+                ),
           ],
         )),
       ),

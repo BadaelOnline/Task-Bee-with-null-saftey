@@ -125,6 +125,7 @@ class ExchangeHome extends StatelessWidget {
                 ),
             floatingActionButton: CustomFloatingActionButton(
               icon: Icon(Icons.add),
+              text: 'add category',
               onPressed: () => Navigator.of(context).pushNamed('/addExchange'),
             ));
       },

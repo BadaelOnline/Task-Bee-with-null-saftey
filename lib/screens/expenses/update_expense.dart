@@ -1,3 +1,4 @@
+import 'package:financial/common/constant/constants.dart';
 import 'package:financial/models/contact.dart';
 import 'package:financial/models/exchange_category.dart';
 import 'package:financial/models/transaction.dart';
@@ -135,7 +136,7 @@ class UpdateExpense extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * 0.4,
                         decoration: BoxDecoration(
                           border:
-                          Border.all(color: Colors.amber[400]!, width: 1.0),
+                          Border.all(color: kDefaultPrimaryColor!, width: 1.0),
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
                         child: Row(
