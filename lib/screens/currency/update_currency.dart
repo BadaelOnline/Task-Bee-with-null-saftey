@@ -1,7 +1,7 @@
 import 'package:financial/services/bloc/currency/cubit.dart';
 import 'package:financial/services/bloc/currency/states.dart';
 import 'package:financial/widget/custom_appBar.dart';
-import 'package:financial/widget/custom_text_form_field.dart';
+import 'package:financial/widget/custom_Text_Total.dart';
 import 'package:floor/floor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,11 +37,12 @@ class UpdateCurrency extends StatelessWidget {
               height: 20,
             ),
             CustomTextFormField(
-              label:  'Name Currency',
-              controller: nameController = TextEditingController(text: '$currencyName'),
-              prefix: Icons.money,
-              onTap:   () {},
-              type:   TextInputType.text),
+                label: 'Name Currency',
+                controller: nameController =
+                    TextEditingController(text: '$currencyName'),
+                prefix: Icons.money,
+                onTap: () {},
+                type: TextInputType.text),
             SizedBox(
               height: 50,
             ),

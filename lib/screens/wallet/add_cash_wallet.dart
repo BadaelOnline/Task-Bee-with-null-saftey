@@ -5,7 +5,7 @@ import 'package:financial/services/bloc/currency/states.dart';
 import 'package:financial/services/bloc/wallet/cubit.dart';
 import 'package:financial/services/bloc/wallet/states.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
-import 'package:financial/widget/custom_text_form_field.dart';
+import 'package:financial/widget/custom_Text_Total.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -51,11 +51,9 @@ class AddCashWallet extends StatelessWidget {
         },
         builder: (context, state) {
           return SingleChildScrollView(
-              keyboardDismissBehavior:
-                  ScrollViewKeyboardDismissBehavior.onDrag,
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
               padding: EdgeInsets.all(15),
-              child:
-                  Column(children: [
+              child: Column(children: [
                 Container(
                   height: 100,
                   width: 100,
@@ -85,7 +83,7 @@ class AddCashWallet extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                    CustomTextFormField(
+                CustomTextFormField(
                     label: 'Wallet Name',
                     controller: nameController,
                     type: TextInputType.text,

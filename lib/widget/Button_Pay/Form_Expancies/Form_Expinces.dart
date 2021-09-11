@@ -1,14 +1,12 @@
-import 'package:financial/widget/Form_Pay_Expencies/2-All_Visibility.dart';
-import 'package:financial/widget/Form_Pay_Expencies/widget_container_contact.dart';
-import 'package:financial/widget/Form_Pay_Expencies/widget_container_expencies.dart';
-import 'package:financial/widget/Form_Pay_Expencies/widget_container_wallet.dart';
-import 'package:financial/widget/custom_FormField_pad.dart';
+import 'package:financial/widget/custom_Text_pad.dart';
 import 'package:financial/widget/date_time_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:financial/services/bloc/transaction/cubit.dart';
 import 'package:financial/services/bloc/transaction/states.dart';
-import 'package:financial/widget/custom_text_form_field.dart';
+import 'package:financial/widget/custom_Text_Total.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'All_Visibility/All_Visibility.dart';
+import 'Column_wallet_Expancies_Contact/column_wallet_expancies_contact.dart';
 
 class FormExpencies extends StatefulWidget {
   const FormExpencies({Key? key}) : super(key: key);
@@ -20,16 +18,6 @@ class FormExpencies extends StatefulWidget {
 class _FormExpenciesState extends State<FormExpencies> {
   TextEditingController totalController = TextEditingController();
   TextEditingController paidController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
-  TextEditingController exchangeIdController = TextEditingController();
-  TextEditingController walletIdController = TextEditingController();
-  TextEditingController contactIdController = TextEditingController();
-  TextEditingController descreptionController = TextEditingController();
-
-  bool isVisabile = false;
-  bool isVisabile2 = false;
-  bool isVisabile3 = false;
-  bool isVisabile4 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -47,41 +35,24 @@ class _FormExpenciesState extends State<FormExpencies> {
                     controller: totalController,
                     type: TextInputType.number),
                 SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 CustomTextFormFieldPayd(
                   controller: paidController,
                   label: 'Paid',
                   type: TextInputType.number,
                 ),
-                // CustomTextFormField(
-                //     label: 'Paid',
-                //     controller: paidController,
-                //     type: TextInputType.number),
                 SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
-                Widget_Container_wallet(),
+                Column_Wallet_Expancies_contact(),
                 SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
-                widget_container_expencies(),
-                SizedBox(
-                  height: 20,
-                ),
-
-                widget_Container_contact(),
-                SizedBox(
-                  height: 20,
-                ),
-                //Date_Time_Widget//
                 DateTimeWidget(),
                 SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
-                //////////////////////////////////////
-                //Visibility_Widget_All_widget_Pay
-                /////////////////////////////////////
                 AllVisibility(),
                 SizedBox(
                   height: 50,

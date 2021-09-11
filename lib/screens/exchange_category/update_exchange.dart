@@ -1,7 +1,7 @@
 import 'package:financial/services/bloc/exchang_category/cubit.dart';
 import 'package:financial/services/bloc/exchang_category/states.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
-import 'package:financial/widget/custom_text_form_field.dart';
+import 'package:financial/widget/custom_Text_Total.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'category.dart';
@@ -61,40 +61,42 @@ class UpdateExchange extends StatelessWidget {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => Category()));
                           },
-                          child:ExchangeCubit.get(context).chosenImage == '' ?
-                          Container(
-                            height: 100,
-                            width: 100,
-                            decoration: BoxDecoration(
-                              color: Colors.grey[100],
-                              image: DecorationImage(
-                                scale: 0.5,
-                                image: AssetImage('$catImage'),
-                              ),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(100.0)),
-                              border: Border.all(
-                                color: Colors.amber[400]!,
-                                width: 2,
-                              ),
-                            ),
-                          ):Container(
-                            height: 100,
-                            width: 100,
-                            decoration: BoxDecoration(
-                              color: Colors.grey[100],
-                              image: DecorationImage(
-                                scale: 0.5,
-                                image: AssetImage('${ExchangeCubit.get(context).chosenImage}'),
-                              ),
-                              borderRadius:
-                              BorderRadius.all(Radius.circular(100.0)),
-                              border: Border.all(
-                                color: Colors.amber[400]!,
-                                width: 2,
-                              ),
-                            ),
-                          ),
+                          child: ExchangeCubit.get(context).chosenImage == ''
+                              ? Container(
+                                  height: 100,
+                                  width: 100,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey[100],
+                                    image: DecorationImage(
+                                      scale: 0.5,
+                                      image: AssetImage('$catImage'),
+                                    ),
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(100.0)),
+                                    border: Border.all(
+                                      color: Colors.amber[400]!,
+                                      width: 2,
+                                    ),
+                                  ),
+                                )
+                              : Container(
+                                  height: 100,
+                                  width: 100,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey[100],
+                                    image: DecorationImage(
+                                      scale: 0.5,
+                                      image: AssetImage(
+                                          '${ExchangeCubit.get(context).chosenImage}'),
+                                    ),
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(100.0)),
+                                    border: Border.all(
+                                      color: Colors.amber[400]!,
+                                      width: 2,
+                                    ),
+                                  ),
+                                ),
                         ),
                       ],
                     ),
@@ -123,13 +125,13 @@ class UpdateExchange extends StatelessWidget {
                       children: [
                         CustomRaisdButton(
                             onPressed: () {
-                              ExchangeCubit.get(context)
-                                  .updateExchangeDatabase(
+                              ExchangeCubit.get(context).updateExchangeDatabase(
                                 isId: exchangeId,
                                 exchangeName: nameController.text,
-                                icon:ExchangeCubit.get(context).chosenImage == '' ?
-                                  catImage
-                                  :ExchangeCubit.get(context).chosenImage,
+                                icon: ExchangeCubit.get(context).chosenImage ==
+                                        ''
+                                    ? catImage
+                                    : ExchangeCubit.get(context).chosenImage,
                               );
                             },
                             text: 'Update'),

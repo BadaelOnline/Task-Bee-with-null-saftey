@@ -10,8 +10,7 @@ class DetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: GridView.count(
-            scrollDirection: Axis.horizontal,
-            crossAxisCount: 2,
+            crossAxisCount: 1,
             mainAxisSpacing: 3,
             children: List.generate(images.length, (index) {
               Asset asset = images[index];
