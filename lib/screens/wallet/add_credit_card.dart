@@ -6,7 +6,7 @@ import 'package:financial/services/bloc/wallet/cubit.dart';
 import 'package:financial/services/bloc/wallet/states.dart';
 import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
-import 'package:financial/widget/custom_text_form_field.dart';
+import 'package:financial/widget/custom_Text_Total.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -53,8 +53,7 @@ class AddCreditCard extends StatelessWidget {
                           image: AssetImage(image),
                           // fit: BoxFit.cover,
                         ),
-                        borderRadius:
-                            BorderRadius.all(Radius.circular(100.0)),
+                        borderRadius: BorderRadius.all(Radius.circular(100.0)),
                       ),
                     ),
                     Container(
@@ -106,8 +105,7 @@ class AddCreditCard extends StatelessWidget {
                                   ),
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide: const BorderSide(
-                                        color: Colors.amberAccent,
-                                        width: 1.0),
+                                        color: Colors.amberAccent, width: 1.0),
                                   ),
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide:
@@ -118,8 +116,7 @@ class AddCreditCard extends StatelessWidget {
                                       decoration: const BoxDecoration(
                                           border: Border(
                                               bottom: BorderSide(
-                                                  color:
-                                                      Colors.transparent))),
+                                                  color: Colors.transparent))),
                                     ),
                                     icon: new Icon(Icons.keyboard_arrow_down),
                                     items: x.currencies!.map((Currency value) {
@@ -179,8 +176,7 @@ class AddCreditCard extends StatelessWidget {
                                   ),
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide: const BorderSide(
-                                        color: Colors.amberAccent,
-                                        width: 1.0),
+                                        color: Colors.amberAccent, width: 1.0),
                                   ),
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide:
@@ -191,8 +187,7 @@ class AddCreditCard extends StatelessWidget {
                                       decoration: const BoxDecoration(
                                           border: Border(
                                               bottom: BorderSide(
-                                                  color:
-                                                      Colors.transparent))),
+                                                  color: Colors.transparent))),
                                     ),
                                     icon: new Icon(Icons.keyboard_arrow_down),
                                     items: x.currencies!.map((Currency value) {
@@ -251,8 +246,7 @@ class AddCreditCard extends StatelessWidget {
                                   ),
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide: const BorderSide(
-                                        color: Colors.amberAccent,
-                                        width: 1.0),
+                                        color: Colors.amberAccent, width: 1.0),
                                   ),
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide:
@@ -263,8 +257,7 @@ class AddCreditCard extends StatelessWidget {
                                       decoration: const BoxDecoration(
                                           border: Border(
                                               bottom: BorderSide(
-                                                  color:
-                                                      Colors.transparent))),
+                                                  color: Colors.transparent))),
                                     ),
                                     icon: new Icon(Icons.keyboard_arrow_down),
                                     items: x.currencies!.map((Currency value) {

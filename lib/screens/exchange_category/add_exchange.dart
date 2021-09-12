@@ -1,7 +1,7 @@
 import 'package:financial/services/bloc/exchang_category/cubit.dart';
 import 'package:financial/services/bloc/exchang_category/states.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
-import 'package:financial/widget/custom_text_form_field.dart';
+import 'package:financial/widget/custom_Text_Total.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,7 +37,6 @@ class AddExchange extends StatelessWidget {
           }
         },
         builder: (context, state) {
-
           return Container(
             padding: EdgeInsets.all(15),
             child: SingleChildScrollView(
@@ -46,49 +45,51 @@ class AddExchange extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     BlocConsumer<ExchangeCubit, ExchangeStates>(
-                     listener: (context, state) {
-                      // TODO: implement listener
-                    },
-                      builder: (context, state) {
-                      return InkWell(
-                      onTap: () {
-                        Navigator.of(context).pushNamed('/category');
+                      listener: (context, state) {
+                        // TODO: implement listener
                       },
-                      child: ExchangeCubit.get(context).chosenImage == ''
-                          ? Container(
-                              height: 100,
-                              width: 100,
-                              child: Center(child: Text('Upload Image')),
-                              decoration: BoxDecoration(
-                                color: Colors.grey[100],
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(100.0)),
-                                border: Border.all(
-                                  color: Colors.amber[400]!,
-                                  width: 2,
+                      builder: (context, state) {
+                        return InkWell(
+                          onTap: () {
+                            Navigator.of(context).pushNamed('/category');
+                          },
+                          child: ExchangeCubit.get(context).chosenImage == ''
+                              ? Container(
+                                  height: 100,
+                                  width: 100,
+                                  child: Center(child: Text('Upload Image')),
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey[100],
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(100.0)),
+                                    border: Border.all(
+                                      color: Colors.amber[400]!,
+                                      width: 2,
+                                    ),
+                                  ),
+                                )
+                              : Container(
+                                  height: 100,
+                                  width: 100,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey[100],
+                                    image: DecorationImage(
+                                      scale: 0.5,
+                                      image: AssetImage(
+                                          ExchangeCubit.get(context)
+                                              .chosenImage!),
+                                    ),
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(100.0)),
+                                    border: Border.all(
+                                      color: Colors.amber[400]!,
+                                      width: 2,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            )
-                          : Container(
-                              height: 100,
-                              width: 100,
-                              decoration: BoxDecoration(
-                                color: Colors.grey[100],
-                                image: DecorationImage(
-                                  scale: 0.5,
-                                  image: AssetImage(ExchangeCubit.get(context).chosenImage!),
-                                ),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(100.0)),
-                                border: Border.all(
-                                  color: Colors.amber[400]!,
-                                  width: 2,
-                                ),
-                              ),
-                            ),
-                    );
-  },
-),
+                        );
+                      },
+                    ),
                   ],
                 ),
                 SizedBox(

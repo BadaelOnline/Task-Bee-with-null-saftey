@@ -13,7 +13,7 @@ import 'package:financial/services/bloc/transaction/states.dart';
 import 'package:financial/services/bloc/wallet/cubit.dart';
 import 'package:financial/services/bloc/wallet/states.dart';
 import 'package:financial/widget/custom_appBar.dart';
-import 'package:financial/widget/custom_text_form_field.dart';
+import 'package:financial/widget/custom_Text_Total.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,7 +41,7 @@ class AddRevenues extends StatelessWidget {
       timeOfDay = pickTime;
       time = TimeOfDay(hour: pickTime.hour, minute: pickTime.minute)
           .format(context);
-      DatePickerCubit.get(context).choseDate(date: date,time: time);
+      DatePickerCubit.get(context).choseDate(date: date, time: time);
     }
   }
 
@@ -57,7 +57,7 @@ class AddRevenues extends StatelessWidget {
     if (pickedDate != null) {
       dateTime = pickedDate;
       date = DateFormat('yyyy-MM-dd').format(pickedDate);
-      DatePickerCubit.get(context).choseDate(date: date,time: time);
+      DatePickerCubit.get(context).choseDate(date: date, time: time);
     }
   }
 
@@ -66,8 +66,7 @@ class AddRevenues extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(Icon(Icons.wallet_giftcard), 'Add Revenues'),
       body: BlocConsumer<TransactionCubit, TransactionStates>(
-        listener: (context, state) {
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           return Padding(
             padding: const EdgeInsets.all(15.0),
@@ -92,7 +91,7 @@ class AddRevenues extends StatelessWidget {
               CustomTextFormField(
                   label: 'description',
                   controller: descriptionController,
-                  prefix:Icons.description,
+                  prefix: Icons.description,
                   type: TextInputType.text),
               SizedBox(
                 height: 50,
@@ -116,8 +115,9 @@ class AddRevenues extends StatelessWidget {
               ),
               BlocConsumer<DatePickerCubit, DatePickerStates>(
                 listener: (context, state) {
-                  if(state is ChoseDateState){
-                    transactionDateController.text = DatePickerCubit.get(context).chosenDate!;
+                  if (state is ChoseDateState) {
+                    transactionDateController.text =
+                        DatePickerCubit.get(context).chosenDate!;
                   }
                 },
                 builder: (context, state) {
@@ -129,7 +129,7 @@ class AddRevenues extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * 0.4,
                         decoration: BoxDecoration(
                           border:
-                          Border.all(color: Colors.amber[400]!, width: 1.0),
+                              Border.all(color: Colors.amber[400]!, width: 1.0),
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
                         child: Row(
@@ -145,16 +145,16 @@ class AddRevenues extends StatelessWidget {
                             Center(
                               child: time == null
                                   ? Text(TimeOfDay(
-                                  minute: timeOfDay.minute,
-                                  hour: timeOfDay.hour)
-                                  .format(context))
+                                          minute: timeOfDay.minute,
+                                          hour: timeOfDay.hour)
+                                      .format(context))
                                   : Text(
-                                '$time',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 17,
-                                ),
-                              ),
+                                      '$time',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 17,
+                                      ),
+                                    ),
                             ),
                           ],
                         ),
@@ -164,7 +164,7 @@ class AddRevenues extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * 0.4,
                         decoration: BoxDecoration(
                           border:
-                          Border.all(color: Colors.amber[400]!, width: 1.0),
+                              Border.all(color: Colors.amber[400]!, width: 1.0),
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
                         child: Row(
@@ -178,14 +178,14 @@ class AddRevenues extends StatelessWidget {
                             Center(
                               child: date == null
                                   ? Text(
-                                  DateFormat('yyyy-MM-dd').format(dateTime))
+                                      DateFormat('yyyy-MM-dd').format(dateTime))
                                   : Text(
-                                '$date',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 17,
-                                ),
-                              ),
+                                      '$date',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 17,
+                                      ),
+                                    ),
                             ),
                           ],
                         ),
@@ -228,7 +228,7 @@ class AddRevenues extends StatelessWidget {
                           decoration: const BoxDecoration(
                               border: Border(
                                   bottom:
-                                  BorderSide(color: Colors.transparent))),
+                                      BorderSide(color: Colors.transparent))),
                         ),
                         icon: new Icon(Icons.keyboard_arrow_down),
                         items: x.exchanges!.map((ExchangeCategory value) {
@@ -289,7 +289,7 @@ class AddRevenues extends StatelessWidget {
                           decoration: const BoxDecoration(
                               border: Border(
                                   bottom:
-                                  BorderSide(color: Colors.transparent))),
+                                      BorderSide(color: Colors.transparent))),
                         ),
                         icon: new Icon(Icons.keyboard_arrow_down),
                         items: x.contacts!.map((Contact value) {
@@ -347,7 +347,7 @@ class AddRevenues extends StatelessWidget {
                           decoration: const BoxDecoration(
                               border: Border(
                                   bottom:
-                                  BorderSide(color: Colors.transparent))),
+                                      BorderSide(color: Colors.transparent))),
                         ),
                         icon: new Icon(Icons.keyboard_arrow_down),
                         items: x.wallets!.map((Wallet value) {
@@ -380,7 +380,6 @@ class AddRevenues extends StatelessWidget {
               BlocConsumer<WalletCubit, WalletStates>(
                 listener: (context, WalletStates state) {
                   if (state is UpdateWalletsToDatabaseState) {
-
                     Navigator.of(context).pop();
                   }
                 },
@@ -395,32 +394,30 @@ class AddRevenues extends StatelessWidget {
                         int wId = WalletCubit.get(context)
                             .getWalletId(walletName: walletIdController.text);
                         String walIcon = WalletCubit.get(context)
-                            .getWalletIcon(walletName:walletIdController.text );
+                            .getWalletIcon(walletName: walletIdController.text);
                         if (eId != null && wId != null && cId != null) {
                           TransactionCubit.get(context).insertToDatabase(
                             contactId: cId,
                             description: descriptionController.text,
                             exchangeId: eId,
                             paid: paidController.text,
-                            rest:'${int.parse(totalController.text) - int.parse(paidController.text)}',
+                            rest:
+                                '${int.parse(totalController.text) - int.parse(paidController.text)}',
                             total: totalController.text,
                             isIncome: 0,
-                            transactionDate: '${date != null ? date : DateFormat('yyyy-MM-dd').format(dateTime) } ${time != null ? time :TimeOfDay(
-                                minute: timeOfDay.minute,
-                                hour: timeOfDay.hour)
-                                .format(context)}',
+                            transactionDate:
+                                '${date != null ? date : DateFormat('yyyy-MM-dd').format(dateTime)} ${time != null ? time : TimeOfDay(minute: timeOfDay.minute, hour: timeOfDay.hour).format(context)}',
                             walletId: wId,
                           );
                           String walletBalance = WalletCubit.get(context)
                               .getWalletBalance(
-                              walletName: walletIdController.text);
+                                  walletName: walletIdController.text);
                           int currencyId = WalletCubit.get(context)
                               .getWalletCurrency(
-                              walletName: walletIdController.text);
+                                  walletName: walletIdController.text);
                           int newBalance = int.parse(walletBalance) +
                               int.parse(totalController.text);
-                          if ( walletBalance != null &&
-                              currencyId != null) {
+                          if (walletBalance != null && currencyId != null) {
                             WalletCubit.get(context).updateWalletDatabase(
                                 icon: walIcon,
                                 isId: wId,
@@ -428,7 +425,6 @@ class AddRevenues extends StatelessWidget {
                                 walletBalance: '$newBalance',
                                 currencyId: currencyId);
                           }
-
                         }
                       });
                 },
