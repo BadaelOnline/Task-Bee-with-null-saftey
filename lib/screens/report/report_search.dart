@@ -69,8 +69,7 @@ class ReportSearch extends StatelessWidget {
                       underline: Container(
                         decoration: const BoxDecoration(
                             border: Border(
-                                bottom:
-                                    BorderSide(color: Colors.transparent))),
+                                bottom: BorderSide(color: Colors.transparent))),
                       ),
                       icon: new Icon(Icons.keyboard_arrow_down),
                       items: x.contacts!.map((Contact value) {
@@ -130,8 +129,7 @@ class ReportSearch extends StatelessWidget {
                       underline: Container(
                         decoration: const BoxDecoration(
                             border: Border(
-                                bottom:
-                                    BorderSide(color: Colors.transparent))),
+                                bottom: BorderSide(color: Colors.transparent))),
                       ),
                       icon: new Icon(Icons.keyboard_arrow_down),
                       items: x.wallets!.map((Wallet value) {
@@ -191,8 +189,7 @@ class ReportSearch extends StatelessWidget {
                       underline: Container(
                         decoration: const BoxDecoration(
                             border: Border(
-                                bottom:
-                                    BorderSide(color: Colors.transparent))),
+                                bottom: BorderSide(color: Colors.transparent))),
                       ),
                       icon: new Icon(Icons.keyboard_arrow_down),
                       items: x.exchanges!.map((ExchangeCategory value) {
@@ -222,27 +219,29 @@ class ReportSearch extends StatelessWidget {
             BlocConsumer<ContactCubit, ContactStates>(
               listener: (context, ContactStates states) {},
               builder: (context, ContactStates states) {
-                return FlatButton(
+                return TextButton(
                     child: Text('save'),
                     onPressed: () {
                       TransactionCubit.get(context)
                           .getTransactionByContactFromDatabase(
-                              contactId: ContactCubit.get(context)
-                                  .getContactId(
-                                      contactName: contactIdController.text),
+                              contactId:
+                                  ContactCubit.get(context)
+                                      .getContactId(
+                                          contactName:
+                                              contactIdController.text),
                               walletId: WalletCubit.get(context).getWalletId(
                                   walletName: walletIdController.text),
                               categoryId: ExchangeCubit.get(context)
                                   .getExchangeId(
-                                      exchangeName:
-                                          exchangeIdController.text));
-                      int? x = ContactCubit.get(context).getContactId(
-                          contactName: contactIdController.text);
+                                      exchangeName: exchangeIdController.text));
+                      int? x = ContactCubit.get(context)
+                          .getContactId(contactName: contactIdController.text);
                       int? y = WalletCubit.get(context)
                           .getWalletId(walletName: walletIdController.text);
                       int? z = ExchangeCubit.get(context).getExchangeId(
                           exchangeName: exchangeIdController.text);
-                      print('************************************* $x **** $y **** $z');
+                      print(
+                          '************************************* $x **** $y **** $z');
                       Navigator.push(
                           context,
                           MaterialPageRoute(

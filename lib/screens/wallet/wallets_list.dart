@@ -1,10 +1,4 @@
 import 'package:flutter/material.dart';
-import 'add_bank_account.dart';
-import 'add_cash_wallet.dart';
-import 'add_credit_card.dart';
-import 'add_planer_save.dart';
-import 'add_priberd_card.dart';
-import 'wallet_home.dart';
 
 class WalletsList extends StatelessWidget {
   @override
@@ -30,7 +24,8 @@ class WalletsList extends StatelessWidget {
             children: [
               // ignore: deprecated_member_use
               RaisedButton(
-                onPressed: () => Navigator.of(context).pushNamed('/addCashWallet'),
+                onPressed: () =>
+                    Navigator.of(context).pushNamed('/addCashWallet'),
                 color: Colors.white,
                 child: ListTile(
                   horizontalTitleGap: 50,
@@ -55,7 +50,8 @@ class WalletsList extends StatelessWidget {
               ),
               // ignore: deprecated_member_use
               RaisedButton(
-                onPressed: () => Navigator.of(context).pushNamed('/addBankAccount'),
+                onPressed: () =>
+                    Navigator.of(context).pushNamed('/addBankAccount'),
                 color: Colors.white,
                 child: ListTile(
                   horizontalTitleGap: 50,
@@ -80,7 +76,8 @@ class WalletsList extends StatelessWidget {
               ),
               // ignore: deprecated_member_use
               RaisedButton(
-                onPressed: () => Navigator.of(context).pushNamed('/addCreditCard'),
+                onPressed: () =>
+                    Navigator.of(context).pushNamed('/addCreditCard'),
                 color: Colors.white,
                 child: ListTile(
                   horizontalTitleGap: 50,
@@ -105,7 +102,8 @@ class WalletsList extends StatelessWidget {
               ),
               // ignore: deprecated_member_use
               RaisedButton(
-                onPressed: () => Navigator.of(context).pushNamed('/addPrepaidCard'),
+                onPressed: () =>
+                    Navigator.of(context).pushNamed('/addPrepaidCard'),
                 color: Colors.white,
                 child: ListTile(
                   horizontalTitleGap: 50,
@@ -131,7 +129,8 @@ class WalletsList extends StatelessWidget {
               // ignore: deprecated_member_use
               RaisedButton(
                 color: Colors.white,
-                onPressed: () => Navigator.of(context).pushNamed('/addPlannerSave'),
+                onPressed: () =>
+                    Navigator.of(context).pushNamed('/addPlannerSave'),
                 child: ListTile(
                   horizontalTitleGap: 50,
                   leading: Container(

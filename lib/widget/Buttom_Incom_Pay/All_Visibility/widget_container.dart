@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: camel_case_types
 class Widget_container extends StatelessWidget {
   const Widget_container({
     Key? key,

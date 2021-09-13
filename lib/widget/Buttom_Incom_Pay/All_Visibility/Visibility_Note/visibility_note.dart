@@ -1,6 +1,8 @@
-import 'package:financial/widget/Button_Pay/Form_Expancies/All_Visibility/widget_container.dart';
 import 'package:flutter/material.dart';
 
+import '../widget_container.dart';
+
+// ignore: camel_case_types
 class Visibility_Note extends StatefulWidget {
   const Visibility_Note({Key? key}) : super(key: key);
 
@@ -8,6 +10,7 @@ class Visibility_Note extends StatefulWidget {
   _Visibility_NoteState createState() => _Visibility_NoteState();
 }
 
+// ignore: camel_case_types
 class _Visibility_NoteState extends State<Visibility_Note> {
   TextEditingController descreptionController = TextEditingController();
   bool isVisabile4 = false;
@@ -25,9 +28,6 @@ class _Visibility_NoteState extends State<Visibility_Note> {
             text: 'Description',
           ),
         ),
-        //////////////////////////////////////
-        //Visibility_Widget_description
-        /////////////////////////////////////
         Visibility(
           visible: isVisabile4,
           child: Padding(

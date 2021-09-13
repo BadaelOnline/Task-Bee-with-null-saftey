@@ -1,12 +1,11 @@
 import 'package:financial/models/currency.dart';
-import 'package:financial/screens/shared/myhomepage.dart';
-import 'package:financial/screens/wallet/wallet_home.dart';
+
 import 'package:financial/services/bloc/currency/cubit.dart';
 import 'package:financial/services/bloc/currency/states.dart';
 import 'package:financial/services/bloc/wallet/cubit.dart';
 import 'package:financial/services/bloc/wallet/states.dart';
 import 'package:financial/widget/custom_appBar.dart';
-import 'package:financial/widget/custom_Text_Total.dart';
+import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,7 +37,7 @@ class AddWallet extends StatelessWidget {
             SizedBox(
               height: 50,
             ),
-            CustomTextFormField(
+            Custom_Text(
                 label: 'Wallet',
                 controller: nameController,
                 prefix: Icons.wallet_giftcard,
@@ -49,7 +48,7 @@ class AddWallet extends StatelessWidget {
             SizedBox(
               height: 50,
             ),
-            CustomTextFormField(
+            Custom_Text(
                 label: 'balance',
                 controller: balanceController,
                 prefix: Icons.account_balance,

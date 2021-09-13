@@ -1,16 +1,15 @@
 import 'package:financial/models/currency.dart';
-import 'package:financial/screens/wallet/wallet_home.dart';
+
 import 'package:financial/services/bloc/currency/cubit.dart';
 import 'package:financial/services/bloc/currency/states.dart';
 import 'package:financial/services/bloc/wallet/cubit.dart';
 import 'package:financial/services/bloc/wallet/states.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
-import 'package:financial/widget/custom_Text_Total.dart';
+import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'wallets_list.dart';
 
 class AddCashWallet extends StatelessWidget {
   TextEditingController nameController = TextEditingController();
@@ -83,7 +82,7 @@ class AddCashWallet extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                CustomTextFormField(
+                Custom_Text(
                     label: 'Wallet Name',
                     controller: nameController,
                     type: TextInputType.text,
@@ -97,7 +96,7 @@ class AddCashWallet extends StatelessWidget {
                   children: [
                     Expanded(
                       flex: 3,
-                      child: CustomTextFormField(
+                      child: Custom_Text(
                           label: 'balance ',
                           controller: balanceController,
                           // prefix: Icons.account_balance,

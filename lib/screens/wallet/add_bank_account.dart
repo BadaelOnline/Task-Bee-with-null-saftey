@@ -4,14 +4,11 @@ import 'package:financial/services/bloc/currency/states.dart';
 import 'package:financial/services/bloc/wallet/cubit.dart';
 import 'package:financial/services/bloc/wallet/states.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
-import 'package:financial/widget/custom_Text_Total.dart';
+import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/cupertino.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'wallet_home.dart';
 import 'wallets_list.dart';
 
 // ignore: must_be_immutable
@@ -79,7 +76,7 @@ class AddBankAccount extends StatelessWidget {
                             fontSize: 18),
                       ),
                     ),
-                    CustomTextFormField(
+                    Custom_Text(
                         label: 'Wallet\n name',
                         controller: nameController,
                         type: TextInputType.text,
@@ -90,7 +87,7 @@ class AddBankAccount extends StatelessWidget {
                       children: [
                         Expanded(
                           flex: 3,
-                          child: CustomTextFormField(
+                          child: Custom_Text(
                               label: 'balance ',
                               controller: balanceController,
                               // prefix: Icons.account_balance,

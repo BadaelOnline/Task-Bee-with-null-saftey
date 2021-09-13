@@ -1,13 +1,11 @@
 import 'package:financial/models/currency.dart';
-import 'package:financial/screens/shared/myhomepage.dart';
-import 'package:financial/screens/wallet/wallet_home.dart';
 import 'package:financial/services/bloc/currency/cubit.dart';
 import 'package:financial/services/bloc/currency/states.dart';
 import 'package:financial/services/bloc/wallet/cubit.dart';
 import 'package:financial/services/bloc/wallet/states.dart';
 import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
-import 'package:financial/widget/custom_Text_Total.dart';
+import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -75,7 +73,7 @@ class Updatewallet extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            CustomTextFormField(
+            Custom_Text(
                 label: 'Wallet Name',
                 controller: nameController = TextEditingController(
                   text: '$walletName',
@@ -91,7 +89,7 @@ class Updatewallet extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 3,
-                  child: CustomTextFormField(
+                  child: Custom_Text(
                       label: 'balance ',
                       controller: balanceController =
                           TextEditingController(text: '$walletBalance'),

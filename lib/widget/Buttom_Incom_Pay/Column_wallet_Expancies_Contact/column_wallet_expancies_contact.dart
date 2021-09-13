@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'widget_container.dart';
 
+// ignore: camel_case_types
 class Column_Wallet_Expancies_contact extends StatelessWidget {
-  const Column_Wallet_Expancies_contact({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Column(

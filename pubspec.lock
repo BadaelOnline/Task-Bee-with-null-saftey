@@ -413,13 +413,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
-  multi_image_picker:
+  multi_image_picker2:
     dependency: "direct main"
     description:
-      name: multi_image_picker
+      name: multi_image_picker2
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.8.01"
+    version: "5.0.02"
   nested:
     dependency: transitive
     description:
@@ -497,6 +497,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.1"
+  permission_handler:
+    dependency: "direct main"
+    description:
+      name: permission_handler
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "8.1.6"
+  permission_handler_platform_interface:
+    dependency: transitive
+    description:
+      name: permission_handler_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.6.1"
   photo_view:
     dependency: "direct main"
     description:
