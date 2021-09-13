@@ -1,12 +1,12 @@
 import 'package:financial/models/currency.dart';
-import 'package:financial/screens/wallet/wallet_home.dart';
+
 import 'package:financial/services/bloc/currency/cubit.dart';
 import 'package:financial/services/bloc/currency/states.dart';
 import 'package:financial/services/bloc/wallet/cubit.dart';
 import 'package:financial/services/bloc/wallet/states.dart';
 import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
-import 'package:financial/widget/custom_Text_Total.dart';
+import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
@@ -70,7 +70,7 @@ class AddPlannerSave extends StatelessWidget {
                             fontSize: 18),
                       ),
                     ),
-                    CustomTextFormField(
+                    Custom_Text(
                         label: 'Planner\nname',
                         controller: nameController,
                         type: TextInputType.text,
@@ -81,7 +81,7 @@ class AddPlannerSave extends StatelessWidget {
                       children: [
                         Expanded(
                           flex: 3,
-                          child: CustomTextFormField(
+                          child: Custom_Text(
                               label: 'Planner\nAmount ',
                               controller: balanceController,
                               // prefix: Icons.account_balance,
@@ -151,7 +151,7 @@ class AddPlannerSave extends StatelessWidget {
                       children: [
                         Expanded(
                           flex: 3,
-                          child: CustomTextFormField(
+                          child: Custom_Text(
                               label: 'Primary\nBalance ',
                               controller: balanceController,
                               // prefix: Icons.account_balance,

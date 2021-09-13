@@ -78,9 +78,7 @@ class HomePage extends StatelessWidget {
               height: kDefaultPadding / 2,
             ),
             BlocConsumer<ContactCubit, ContactStates>(
-              listener: (context, state) {
-                // TODO: implement listener
-              },
+              listener: (context, state) {},
               builder: (context, state) {
                 return Container(
                   width: MediaQuery.of(context).size.width * 0.6,
@@ -110,9 +108,7 @@ class HomePage extends StatelessWidget {
             //   height: kDefaultPadding / 2,
             // ),
             BlocConsumer<TransactionCubit, TransactionStates>(
-              listener: (context, state) {
-                // TODO: implement listener
-              },
+              listener: (context, state) {},
               builder: (context, state) {
                 return Container(
                   width: MediaQuery.of(context).size.width * 0.6,

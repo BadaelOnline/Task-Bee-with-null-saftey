@@ -1,7 +1,7 @@
 import 'package:financial/services/bloc/currency/cubit.dart';
 import 'package:financial/services/bloc/currency/states.dart';
 import 'package:financial/widget/custom_appBar.dart';
-import 'package:financial/widget/custom_Text_Total.dart';
+import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,7 +27,7 @@ class AddCurrency extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            CustomTextFormField(
+            Custom_Text(
               label: 'Name Currency',
               controller: nameController,
               prefix: Icons.money,
@@ -36,7 +36,7 @@ class AddCurrency extends StatelessWidget {
             SizedBox(
               height: 50,
             ),
-            FlatButton(
+            TextButton(
                 child: Text('save'),
                 onPressed: () {
                   CurrencyCubit.get(context).insertToDatabase(

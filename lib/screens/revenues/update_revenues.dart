@@ -13,7 +13,7 @@ import 'package:financial/services/bloc/transaction/states.dart';
 import 'package:financial/services/bloc/wallet/cubit.dart';
 import 'package:financial/services/bloc/wallet/states.dart';
 import 'package:financial/widget/custom_appBar.dart';
-import 'package:financial/widget/custom_Text_Total.dart';
+import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -89,7 +89,7 @@ class UpdateRevenues extends StatelessWidget {
               SizedBox(
                 height: 50,
               ),
-              CustomTextFormField(
+              Custom_Text(
                   label: 'total transaction',
                   controller: totalController =
                       TextEditingController(text: '${transaction!.total}'),
@@ -98,7 +98,7 @@ class UpdateRevenues extends StatelessWidget {
               SizedBox(
                 height: 50,
               ),
-              CustomTextFormField(
+              Custom_Text(
                   label: 'paid',
                   controller: paidController =
                       TextEditingController(text: '${transaction!.paid}'),
@@ -125,7 +125,7 @@ class UpdateRevenues extends StatelessWidget {
               // SizedBox(
               //   height: 50,
               // ),
-              CustomTextFormField(
+              Custom_Text(
                   label: 'description',
                   controller: descriptionController = TextEditingController(
                       text: '${transaction!.description}'),

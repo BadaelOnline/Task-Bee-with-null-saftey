@@ -1,11 +1,9 @@
 import 'package:financial/services/bloc/contact/cubit.dart';
 import 'package:financial/services/bloc/contact/states.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
-import 'package:financial/widget/custom_Text_Total.dart';
+import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'contact_home.dart';
 
 // ignore: must_be_immutable
 class UpdateContact extends StatelessWidget {
@@ -61,7 +59,7 @@ class UpdateContact extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Container(
-                    child: CustomTextFormField(
+                    child: Custom_Text(
                         label: 'Name Contact',
                         controller: nameController =
                             TextEditingController(text: '$contactName'),

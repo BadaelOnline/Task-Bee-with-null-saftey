@@ -10,14 +10,14 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'common/constant/bloc-observer.dart';
-import 'common/database/database.dart';
+// import 'common/database/database.dart';
 
 void main() async {
   Bloc.observer = MyBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
-  final database =
-      await $FloorAppDatabase.databaseBuilder('database_wallet.db').build();
-  final dao = database.walletDao;
+  // final database =
+  //     await $FloorAppDatabase.databaseBuilder('database_wallet.db').build();
+  // // final dao = database.walletDao;
 
   runApp(MyApp());
 }

@@ -1,7 +1,7 @@
 import 'package:financial/services/bloc/exchang_category/cubit.dart';
 import 'package:financial/services/bloc/exchang_category/states.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
-import 'package:financial/widget/custom_Text_Total.dart';
+import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'category.dart';
@@ -106,7 +106,7 @@ class UpdateExchange extends StatelessWidget {
                     Row(
                       children: [
                         Expanded(
-                            child: CustomTextFormField(
+                            child: Custom_Text(
                                 label: 'Name Category',
                                 controller: nameController =
                                     TextEditingController(

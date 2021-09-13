@@ -11,7 +11,7 @@ import 'package:financial/services/bloc/transaction/states.dart';
 import 'package:financial/services/bloc/wallet/cubit.dart';
 import 'package:financial/services/bloc/wallet/states.dart';
 import 'package:financial/widget/custom_appBar.dart';
-import 'package:financial/widget/custom_Text_Total.dart';
+import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -72,21 +72,21 @@ class AddTransaction extends StatelessWidget {
               SizedBox(
                 height: 5,
               ),
-              CustomTextFormField(
+              Custom_Text(
                   label: 'total transaction',
                   controller: totalController,
                   type: TextInputType.number),
               SizedBox(
                 height: 25,
               ),
-              CustomTextFormField(
+              Custom_Text(
                   label: 'Paid',
                   controller: paidController,
                   type: TextInputType.number),
               SizedBox(
                 height: 25,
               ),
-              CustomTextFormField(
+              Custom_Text(
                   label: 'Rest',
                   controller: restController,
                   type: TextInputType.number),
@@ -100,14 +100,14 @@ class AddTransaction extends StatelessWidget {
               // SizedBox(
               //   height: 25,
               // ),
-              CustomTextFormField(
+              Custom_Text(
                   label: 'IScome',
                   controller: isIncomeController,
                   type: TextInputType.number),
               SizedBox(
                 height: 50,
               ),
-              CustomTextFormField(
+              Custom_Text(
                   label: 'description',
                   controller: descriptionController,
                   prefix: Icons.description,
@@ -379,7 +379,7 @@ class AddTransaction extends StatelessWidget {
                   }
                 },
                 builder: (context, WalletStates state) {
-                  return FlatButton(
+                  return TextButton(
                       child: Text('save'),
                       onPressed: () {
                         int cId = ContactCubit.get(context).getContactId(

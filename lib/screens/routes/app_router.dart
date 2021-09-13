@@ -16,14 +16,12 @@ import 'package:financial/screens/expenses/update_expense.dart';
 import 'package:financial/screens/report/report_home.dart';
 import 'package:financial/screens/report/report_search.dart';
 import 'package:financial/screens/report/report_search_result.dart';
-import 'package:financial/screens/revenues/add_revenues.dart';
+import 'package:financial/screens/revenues/Add_Revenue.dart';
 import 'package:financial/screens/revenues/revenues_home.dart';
 import 'package:financial/screens/revenues/update_revenues.dart';
 import 'package:financial/screens/shared/HomePage.dart';
-import 'package:financial/screens/shared/myhomepage.dart';
 import 'package:financial/screens/transaction/add_transaction.dart';
 import 'package:financial/screens/transaction/transaction_home.dart';
-import 'package:financial/screens/transaction/update_transaction.dart';
 import 'package:financial/screens/wallet/add_bank_account.dart';
 import 'package:financial/screens/wallet/add_cash_wallet.dart';
 import 'package:financial/screens/wallet/add_credit_card.dart';
@@ -163,10 +161,10 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => AddTransaction(),
         );
-      case '/updateTransaction':
-        return MaterialPageRoute(
-            builder: (_) => UpdateTransaction(),
-            settings: RouteSettings(arguments: settings.arguments));
+      // case '/updateTransaction':
+      //   return MaterialPageRoute(
+      //       builder: (_) => UpdateTransaction(),
+      //       settings: RouteSettings(arguments: settings.arguments));
 
       /// revenues routes
       case '/revenuesHome':
@@ -175,7 +173,7 @@ class AppRouter {
         );
       case '/addRevenue':
         return MaterialPageRoute(
-          builder: (_) => AddRevenues(),
+          builder: (_) => Add_Revenue(),
         );
       case '/updateRevenue':
         return MaterialPageRoute(

@@ -1,37 +1,16 @@
-import 'package:financial/widget/Buttom_Incom_Pay/Button_Pay/Form_Debtors.dart';
-import 'package:financial/widget/Buttom_Incom_Pay/Button_Pay/Form_Expinces.dart';
+import 'package:financial/widget/Buttom_Incom_Pay/Buttom_Income/Form_Debtors_Income.dart';
+import 'package:financial/widget/Buttom_Incom_Pay/Buttom_Income/Form_Expencies_Income.dart';
 import 'package:financial/widget/custom_appBar.dart';
 import 'package:flutter/material.dart';
 
-class AddExpense extends StatefulWidget {
+// ignore: camel_case_types
+class Add_Revenue extends StatefulWidget {
   @override
-  _AddExpenseState createState() => _AddExpenseState();
+  _Add_RevenueState createState() => _Add_RevenueState();
 }
 
-class _AddExpenseState extends State<AddExpense> {
-  Future<void> _showMyDialog(context) async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('oops'),
-          content: SingleChildScrollView(
-            child: Text('sorry wallet balance less than total of transaction'),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: const Text('ok'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
+// ignore: camel_case_types
+class _Add_RevenueState extends State<Add_Revenue> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -40,25 +19,25 @@ class _AddExpenseState extends State<AddExpense> {
       child: Scaffold(
         appBar: CustomAppBar(
             Image(
-              image: AssetImage('assets/homepage/masaref.png'),
+              image: AssetImage('assets/homepage/dollar.png'),
             ),
-            'Pay / Exchange'),
+            'Income'),
         body: Stack(children: [
           Container(
             height: 40,
             color: Colors.white,
             child: TabBar(
-              indicatorColor: Colors.red,
+              indicatorColor: Color(0xff16c8b1),
               tabs: [
                 Container(
                   child: Text(
-                    'Expencies',
+                    'Revenue',
                     style: TextStyle(color: Colors.grey[800], fontSize: 15),
                   ),
                 ),
                 Container(
                   child: Text(
-                    'Pay Debts',
+                    'Recive Debts',
                     style: TextStyle(color: Colors.grey[800], fontSize: 15),
                   ),
                 ),
@@ -72,8 +51,8 @@ class _AddExpenseState extends State<AddExpense> {
             ),
           ),
           TabBarView(children: [
-            FormExpencies(),
-            FormDebtors(),
+            FormExpencies_Income(),
+            FormDebtors_Income(),
             Center(
               child: Text('Soon..'),
             ),
