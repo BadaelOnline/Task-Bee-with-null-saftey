@@ -4,7 +4,9 @@ class CustomFloatingActionButton extends StatelessWidget {
   final Icon? icon;
   final Function()? onPressed;
   const CustomFloatingActionButton({
-    Key? key, this.icon, this.onPressed,
+    Key? key,
+    this.icon,
+    this.onPressed,
   }) : super(key: key);
 
   @override
@@ -14,8 +16,8 @@ class CustomFloatingActionButton extends StatelessWidget {
         onPressed: onPressed,
         child: Icon(
           Icons.add,
-          color: Colors.blue,
-          size: 25,
+          color: Colors.white,
+          size: 35,
         ));
   }
 }

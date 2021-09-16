@@ -3,7 +3,6 @@ import 'package:financial/services/bloc/exchang_category/states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'add_exchange.dart';
-import 'exchange_home.dart';
 
 class Category extends StatelessWidget {
   @override
@@ -47,15 +46,13 @@ class Category extends StatelessWidget {
 
 List<Widget> _buildGridImages(numberOfImage, context) {
   List<Container> containers =
-  List<Container>.generate(numberOfImage, (int index) {
+      List<Container>.generate(numberOfImage, (int index) {
     final imageName = index < 9
         ? 'assets/category/image0${index + 1}.png'
         : 'assets/category/image${index + 1}.png';
     return Container(
       child: BlocConsumer<ExchangeCubit, ExchangeStates>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           return InkWell(
             child: Image.asset(imageName),

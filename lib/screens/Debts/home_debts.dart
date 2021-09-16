@@ -20,32 +20,35 @@ class _DebtsHomeState extends State<DebtsHome> {
         appBar: CustomAppBar(
           Container(
             child: Image(
-              image: AssetImage('assets/icons/1.png'),
+              image: AssetImage('assets/homepage/qrood.png'),
             ),
           ),
           'Debts',
         ),
         body: Stack(
           children: [
-            TabBar(
-              padding: EdgeInsets.all(15),
-              indicatorColor: Colors.amber[400],
-              labelPadding: EdgeInsets.all(15),
-              isScrollable: true,
-              tabs: [
-                Container(
-                  child: Text(
-                    'Creditors / theirs',
-                    style: TextStyle(color: Colors.red),
+            Container(
+              height: 35,
+              color: Colors.white,
+              child: TabBar(
+                // padding: EdgeInsets.all(15),
+                indicatorColor: Colors.amber[400],
+
+                tabs: [
+                  Container(
+                    child: Text(
+                      'Creditors / theirs',
+                      style: TextStyle(color: Colors.red),
+                    ),
                   ),
-                ),
-                Container(
-                  child: Text(
-                    'Debtors / on them',
-                    style: TextStyle(color: Colors.green),
+                  Container(
+                    child: Text(
+                      'Debtors / on them',
+                      style: TextStyle(color: Colors.green),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             Expanded(
               child: TabBarView(children: [

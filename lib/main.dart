@@ -1,5 +1,4 @@
 import 'package:financial/screens/routes/app_router.dart';
-import 'package:financial/screens/shared/myhomepage.dart';
 import 'package:financial/services/bloc/contact/cubit.dart';
 import 'package:financial/services/bloc/currency/cubit.dart';
 import 'package:financial/services/bloc/datepicker/cubit.dart';
@@ -11,14 +10,14 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'common/constant/bloc-observer.dart';
-import 'common/database/database.dart';
+// import 'common/database/database.dart';
 
 void main() async {
   Bloc.observer = MyBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
-  final database =
-      await $FloorAppDatabase.databaseBuilder('database_wallet.db').build();
-  final dao = database.walletDao;
+  // final database =
+  //     await $FloorAppDatabase.databaseBuilder('database_wallet.db').build();
+  // // final dao = database.walletDao;
 
   runApp(MyApp());
 }
@@ -34,8 +33,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => CurrencyCubit()..createDatabase()),
         BlocProvider(create: (context) => ExchangeCubit()..createDatabase()),
         BlocProvider(create: (context) => TransactionCubit()..createDatabase()),
+        BlocProvider(create: (context) => DatePickerCubit()..createCubit()),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,

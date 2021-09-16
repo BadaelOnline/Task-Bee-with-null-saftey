@@ -1,5 +1,5 @@
 import 'package:financial/widget/custom_appBar.dart';
-import 'package:financial/widget/custom_text_form_field.dart';
+import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -53,7 +53,7 @@ class _DebtsFormState extends State<DebtsForm> {
       appBar: CustomAppBar(
         Container(
           child: Image(
-            image: AssetImage('assets/icons/1.png'),
+            image: AssetImage('assets/homepage/qrood.png'),
           ),
         ),
         'Debts',
@@ -65,7 +65,7 @@ class _DebtsFormState extends State<DebtsForm> {
             Container(
               margin: EdgeInsets.all(10),
               color: Colors.grey[200],
-              child: FlatButton(
+              child: TextButton(
                 child: Row(
                   children: [
                     Container(
@@ -91,8 +91,8 @@ class _DebtsFormState extends State<DebtsForm> {
             ),
             Container(
               padding: EdgeInsets.all(10),
-              child: CustomTextFormField(
-                label: 'Total Debt',
+              child: Custom_Text(
+                label: 'Total',
                 controller: totaldebt,
                 // onChange: (String val) {},
                 // onSubmit: (String val) {},
@@ -103,7 +103,7 @@ class _DebtsFormState extends State<DebtsForm> {
             Container(
               margin: EdgeInsets.all(10),
               color: Colors.grey[200],
-              child: FlatButton(
+              child: TextButton(
                 child: Row(
                   children: [
                     Container(
@@ -326,7 +326,7 @@ class _DebtsFormState extends State<DebtsForm> {
                                       ),
                                     ],
                                   ),
-                                  CustomTextFormField(
+                                  Custom_Text(
                                     controller: installment,
                                     label: 'installment',
                                     type: TextInputType.number,

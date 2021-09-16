@@ -4,14 +4,11 @@ import 'package:financial/services/bloc/currency/states.dart';
 import 'package:financial/services/bloc/wallet/cubit.dart';
 import 'package:financial/services/bloc/wallet/states.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
-import 'package:financial/widget/custom_text_form_field.dart';
+import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/cupertino.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'wallet_home.dart';
 import 'wallets_list.dart';
 
 // ignore: must_be_immutable
@@ -67,8 +64,7 @@ class AddBankAccount extends StatelessWidget {
                           image: AssetImage(image),
                           // fit: BoxFit.cover,
                         ),
-                        borderRadius:
-                            BorderRadius.all(Radius.circular(100.0)),
+                        borderRadius: BorderRadius.all(Radius.circular(100.0)),
                       ),
                     ),
                     Container(
@@ -80,7 +76,7 @@ class AddBankAccount extends StatelessWidget {
                             fontSize: 18),
                       ),
                     ),
-                    CustomTextFormField(
+                    Custom_Text(
                         label: 'Wallet\n name',
                         controller: nameController,
                         type: TextInputType.text,
@@ -91,7 +87,7 @@ class AddBankAccount extends StatelessWidget {
                       children: [
                         Expanded(
                           flex: 3,
-                          child: CustomTextFormField(
+                          child: Custom_Text(
                               label: 'balance ',
                               controller: balanceController,
                               // prefix: Icons.account_balance,
@@ -119,8 +115,7 @@ class AddBankAccount extends StatelessWidget {
                                   ),
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide: const BorderSide(
-                                        color: Colors.amberAccent,
-                                        width: 1.0),
+                                        color: Colors.amberAccent, width: 1.0),
                                   ),
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide:
@@ -131,8 +126,7 @@ class AddBankAccount extends StatelessWidget {
                                       decoration: const BoxDecoration(
                                           border: Border(
                                               bottom: BorderSide(
-                                                  color:
-                                                      Colors.transparent))),
+                                                  color: Colors.transparent))),
                                     ),
                                     icon: new Icon(Icons.keyboard_arrow_down),
                                     items: x.currencies!.map((Currency value) {
@@ -200,7 +194,7 @@ class AddBankAccount extends StatelessWidget {
                                           .getCurrencyId(
                                               currencyName:
                                                   currencyController.text));
-                                  }),
+                                }),
                           ],
                         );
                       },

@@ -1,12 +1,9 @@
 import 'package:financial/services/bloc/contact/cubit.dart';
 import 'package:financial/services/bloc/contact/states.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
-import 'package:financial/widget/custom_text_form_field.dart';
+import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'contact_home.dart';
-
 
 // ignore: must_be_immutable
 class UpdateContact extends StatelessWidget {
@@ -62,7 +59,7 @@ class UpdateContact extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Container(
-                    child: CustomTextFormField(
+                    child: Custom_Text(
                         label: 'Name Contact',
                         controller: nameController =
                             TextEditingController(text: '$contactName'),
@@ -71,23 +68,21 @@ class UpdateContact extends StatelessWidget {
               SizedBox(
                 height: 100,
               ),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    CustomRaisdButton(
-                        text: 'Update',
-                        onPressed: () {
-                          ContactCubit.get(context).updateContactDatabase(
-                            isId: contactId,
-                            contactName: nameController.text,
-                          );
-                        }),
-                    CustomRaisdButton(
-                        text: 'Cansel',
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        }),
-                  ])
+              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+                CustomRaisdButton(
+                    text: 'Update',
+                    onPressed: () {
+                      ContactCubit.get(context).updateContactDatabase(
+                        isId: contactId,
+                        contactName: nameController.text,
+                      );
+                    }),
+                CustomRaisdButton(
+                    text: 'Cansel',
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    }),
+              ])
             ])),
           );
         },

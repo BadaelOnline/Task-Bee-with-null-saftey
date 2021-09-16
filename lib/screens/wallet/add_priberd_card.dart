@@ -1,12 +1,12 @@
 import 'package:financial/models/currency.dart';
-import 'package:financial/screens/wallet/wallet_home.dart';
+
 import 'package:financial/services/bloc/currency/cubit.dart';
 import 'package:financial/services/bloc/currency/states.dart';
 import 'package:financial/services/bloc/wallet/cubit.dart';
 import 'package:financial/services/bloc/wallet/states.dart';
 import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
-import 'package:financial/widget/custom_text_form_field.dart';
+import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
@@ -54,8 +54,7 @@ class AddPrepaidCard extends StatelessWidget {
                           image: AssetImage(image),
                           // fit: BoxFit.cover,
                         ),
-                        borderRadius:
-                            BorderRadius.all(Radius.circular(100.0)),
+                        borderRadius: BorderRadius.all(Radius.circular(100.0)),
                         // border: Border.all(
                         //   color: Colors.amber[400],
                         //   width: 2,
@@ -71,7 +70,7 @@ class AddPrepaidCard extends StatelessWidget {
                             fontSize: 18),
                       ),
                     ),
-                    CustomTextFormField(
+                    Custom_Text(
                         label: 'Wallet\n name',
                         controller: nameController,
                         type: TextInputType.text,
@@ -82,7 +81,7 @@ class AddPrepaidCard extends StatelessWidget {
                       children: [
                         Expanded(
                           flex: 3,
-                          child: CustomTextFormField(
+                          child: Custom_Text(
                               label: 'balance ',
                               controller: balanceController,
                               // prefix: Icons.account_balance,
@@ -110,8 +109,7 @@ class AddPrepaidCard extends StatelessWidget {
                                   ),
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide: const BorderSide(
-                                        color: Colors.amberAccent,
-                                        width: 1.0),
+                                        color: Colors.amberAccent, width: 1.0),
                                   ),
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide:
@@ -122,8 +120,7 @@ class AddPrepaidCard extends StatelessWidget {
                                       decoration: const BoxDecoration(
                                           border: Border(
                                               bottom: BorderSide(
-                                                  color:
-                                                      Colors.transparent))),
+                                                  color: Colors.transparent))),
                                     ),
                                     icon: new Icon(Icons.keyboard_arrow_down),
                                     items: x.currencies!.map((Currency value) {

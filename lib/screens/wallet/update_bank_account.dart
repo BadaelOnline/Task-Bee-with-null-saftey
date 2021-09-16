@@ -6,7 +6,7 @@ import 'package:financial/services/bloc/wallet/cubit.dart';
 import 'package:financial/services/bloc/wallet/states.dart';
 import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
-import 'package:financial/widget/custom_text_form_field.dart';
+import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,9 +25,7 @@ class UpdateBankAccount extends StatelessWidget {
   int? isID;
   String? image = 'assets/wallet/account.png';
 
-  UpdateBankAccount(
-      {Key? key})
-      : super(key: key);
+  UpdateBankAccount({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,14 +37,14 @@ class UpdateBankAccount extends StatelessWidget {
     image = arguments['image'];
     return Scaffold(
       appBar: CustomAppBar(
-         Icon(Icons.wallet_giftcard),
+        Icon(Icons.wallet_giftcard),
         'Add Wallet',
       ),
       body: BlocConsumer<WalletCubit, WalletStates>(
         listener: (context, state) {
           if (state is UpdateWalletsToDatabaseState) {
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => WalletHome()));
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (context) => WalletHome()));
           }
         },
         builder: (context, state) {
@@ -93,7 +91,7 @@ class UpdateBankAccount extends StatelessWidget {
                   SizedBox(
                     height: 30,
                   ),
-                  CustomTextFormField(
+                  Custom_Text(
                       label: 'Wallet\n name',
                       controller: nameController =
                           TextEditingController(text: '$walletName'),
@@ -108,7 +106,7 @@ class UpdateBankAccount extends StatelessWidget {
                     children: [
                       Expanded(
                         flex: 3,
-                        child: CustomTextFormField(
+                        child: Custom_Text(
                             label: 'balance ',
                             controller: balanceController =
                                 TextEditingController(text: '$walletBalance'),

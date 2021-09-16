@@ -6,7 +6,8 @@ import 'package:financial/services/bloc/wallet/cubit.dart';
 import 'package:financial/services/bloc/wallet/states.dart';
 import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
-import 'package:financial/widget/custom_text_form_field.dart';
+import 'package:financial/widget/custom_text.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -25,9 +26,7 @@ class UpdateCreditCard extends StatelessWidget {
   int? isID;
   String? image = 'assets/wallet/card.png';
 
-  UpdateCreditCard(
-      {Key? key})
-      : super(key: key);
+  UpdateCreditCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +87,7 @@ class UpdateCreditCard extends StatelessWidget {
                   SizedBox(
                     height: 30,
                   ),
-                  CustomTextFormField(
+                  Custom_Text(
                       label: 'Wallet\n name',
                       controller: nameController =
                           TextEditingController(text: '$walletName'),
@@ -103,7 +102,7 @@ class UpdateCreditCard extends StatelessWidget {
                     children: [
                       Expanded(
                         flex: 3,
-                        child: CustomTextFormField(
+                        child: Custom_Text(
                             label: 'Credit\n limit ',
                             controller: balanceController =
                                 TextEditingController(text: '$walletBalance'),
@@ -183,7 +182,7 @@ class UpdateCreditCard extends StatelessWidget {
                     children: [
                       Expanded(
                         flex: 3,
-                        child: CustomTextFormField(
+                        child: Custom_Text(
                             label: 'available\n balance ',
                             controller: balanceController,
                             // prefix: Icons.account_balance,
@@ -260,7 +259,7 @@ class UpdateCreditCard extends StatelessWidget {
                     children: [
                       Expanded(
                         flex: 3,
-                        child: CustomTextFormField(
+                        child: Custom_Text(
                             label: 'Amount\n payable ',
                             controller: balanceController,
                             // prefix: Icons.account_balance,
