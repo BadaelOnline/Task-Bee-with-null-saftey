@@ -1,5 +1,6 @@
 import 'package:financial/services/bloc/exchang_category/cubit.dart';
 import 'package:financial/services/bloc/exchang_category/states.dart';
+import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
 import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,18 +18,8 @@ class AddExchange extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context)
-                .pop(MaterialPageRoute(builder: (context) => ExchangeHome()));
-          },
-        ),
-        centerTitle: true,
-        title: Text('Add Exchange Category'),
-        backgroundColor: Colors.amber[400],
-      ),
+      appBar: CustomAppBar(
+          Image.asset('assets/homepage/masaref.png'), 'Add Exchang Categoray'),
       body: BlocConsumer<ExchangeCubit, ExchangeStates>(
         listener: (context, ExchangeStates state) {
           if (state is InsertExchangesToDatabaseState) {
@@ -38,7 +29,7 @@ class AddExchange extends StatelessWidget {
         },
         builder: (context, state) {
           return Container(
-            padding: EdgeInsets.all(15),
+            alignment: Alignment.center,
             child: SingleChildScrollView(
               child: Column(children: [
                 Row(
@@ -93,17 +84,12 @@ class AddExchange extends StatelessWidget {
                 SizedBox(
                   height: 25,
                 ),
-                Row(
-                  children: [
-                    Expanded(
-                        child: Custom_Text(
-                            label: 'Name Category',
-                            controller: nameController,
-                            prefix: Icons.category)),
-                    SizedBox(
-                      width: 10,
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Custom_Text(
+                      label: 'Category',
+                      controller: nameController,
+                      prefix: Icons.category),
                 ),
                 SizedBox(
                   height: 100,

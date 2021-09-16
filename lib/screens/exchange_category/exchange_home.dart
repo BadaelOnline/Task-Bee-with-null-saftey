@@ -1,5 +1,6 @@
 import 'package:financial/services/bloc/exchang_category/cubit.dart';
 import 'package:financial/services/bloc/exchang_category/states.dart';
+import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_floating_action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,11 +13,11 @@ class ExchangeHome extends StatelessWidget {
       builder: (BuildContext context, ExchangeStates state) {
         ExchangeCubit cubit = ExchangeCubit.get(context);
         return Scaffold(
-            appBar: AppBar(
-              title: Text('Exchang Category'),
-              centerTitle: true,
-              backgroundColor: Colors.amber[400],
-            ),
+            appBar: CustomAppBar(
+                Image(
+                  image: AssetImage('assets/homepage/masaref.png'),
+                ),
+                'Choose Expancies'),
             body: ListView.builder(
               itemCount: cubit.exchanges!.length,
               itemBuilder: (BuildContext context, int index) {

@@ -11,8 +11,8 @@ class multi_icon_text extends StatelessWidget {
   }) : super(key: key);
 
   final onTap;
-  final Image icon1;
-  final Image icon2;
+  final Widget icon1;
+  final Widget icon2;
   final String? text1;
   final String? text2;
 

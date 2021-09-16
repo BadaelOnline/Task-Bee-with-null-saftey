@@ -25,7 +25,7 @@ class RevenuesHome extends StatelessWidget {
         return Scaffold(
             appBar: CustomAppBar(
                 Image(
-                  image: AssetImage('assets/homepage/plus_icon.png'),
+                  image: AssetImage('assets/homepage/dollar.png'),
                 ),
                 'Revenues'),
             body: ListView.builder(
