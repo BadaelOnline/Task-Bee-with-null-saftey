@@ -21,7 +21,7 @@ class Business_Project extends StatelessWidget {
               height: duoble,
               width: duoble,
             ),
-            text: 'Work Group',
+            text: 'Teams Managament',
           ),
           icon_text(
             icon: Image.asset(

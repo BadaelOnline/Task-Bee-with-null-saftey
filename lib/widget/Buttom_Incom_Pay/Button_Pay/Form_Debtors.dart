@@ -26,7 +26,7 @@ class _FormDebtorsState extends State<FormDebtors> {
                 label: 'Total',
               ),
               SizedBox(
-                height: 15,
+                height: 25,
               ),
               widget_Container(
                 image: Image.asset(
@@ -35,6 +35,7 @@ class _FormDebtorsState extends State<FormDebtors> {
                   height: 40,
                 ),
                 text: 'Wallet',
+                ontap: () => Navigator.of(context).pushNamed('/choosewallet'),
               ),
               SizedBox(
                 height: 15,
@@ -46,20 +47,21 @@ class _FormDebtorsState extends State<FormDebtors> {
                   height: 40,
                 ),
                 text: 'Contact',
+                ontap: () => Navigator.of(context).pushNamed('/choosecontact'),
               ),
               SizedBox(
-                height: 15,
+                height: 25,
               ),
               DateTimeWidget(),
               SizedBox(
-                height: 15,
+                height: 25,
               ),
               AllVisibility_Debtors(),
               SizedBox(
                 height: 15,
               ),
               CustomRaisdButton(
-                text: 'Save',
+                text: 'Pay',
               )
             ],
           ),

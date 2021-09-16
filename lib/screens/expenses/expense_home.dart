@@ -25,9 +25,9 @@ class ExpenseHome extends StatelessWidget {
         return Scaffold(
             appBar: CustomAppBar(
                 Image(
-                  image: AssetImage('assets/homepage/minus_icon.png'),
+                  image: AssetImage('assets/homepage/masaref.png'),
                 ),
-                'Pay / Exchange'),
+                'Pay'),
             body: ListView.builder(
               itemCount: transactionCubit.expenses!.length,
               itemBuilder: (BuildContext context, int index) {

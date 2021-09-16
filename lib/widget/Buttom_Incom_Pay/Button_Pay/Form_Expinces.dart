@@ -45,22 +45,22 @@ class _FormExpenciesState extends State<FormExpencies> {
                   type: TextInputType.number,
                 ),
                 SizedBox(
-                  height: 15,
+                  height: 25,
                 ),
                 Column_Wallet_Expancies_contact(),
                 SizedBox(
-                  height: 15,
+                  height: 25,
                 ),
                 DateTimeWidget(),
                 SizedBox(
-                  height: 15,
+                  height: 25,
                 ),
                 AllVisibility(),
                 SizedBox(
                   height: 15,
                 ),
                 CustomRaisdButton(
-                  text: 'Save',
+                  text: 'Pay',
                 )
               ]),
             );

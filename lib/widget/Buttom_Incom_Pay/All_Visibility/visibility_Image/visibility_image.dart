@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:multi_image_picker2/multi_image_picker2.dart';
+import 'package:multi_image_picker/multi_image_picker.dart';
 
 import '../widget_container.dart';
 import 'viewImage_afterPresson.dart';
