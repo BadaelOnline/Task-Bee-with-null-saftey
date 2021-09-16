@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:multi_image_picker2/multi_image_picker2.dart';
+import 'package:multi_image_picker/multi_image_picker.dart';
 
 // ignore: must_be_immutable
 class DetailScreen extends StatelessWidget {

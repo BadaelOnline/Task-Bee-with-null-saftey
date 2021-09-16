@@ -9,6 +9,7 @@ class AddExpense extends StatefulWidget {
 }
 
 class _AddExpenseState extends State<AddExpense> {
+  int x = 0;
   Future<void> _showMyDialog(context) async {
     return showDialog<void>(
       context: context,
@@ -36,13 +37,13 @@ class _AddExpenseState extends State<AddExpense> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
-      initialIndex: 0,
+      initialIndex: x,
       child: Scaffold(
         appBar: CustomAppBar(
             Image(
               image: AssetImage('assets/homepage/masaref.png'),
             ),
-            'Pay / Exchange'),
+            'Pay'),
         body: Stack(children: [
           Container(
             height: 40,
@@ -51,9 +52,17 @@ class _AddExpenseState extends State<AddExpense> {
               indicatorColor: Colors.red,
               tabs: [
                 Container(
-                  child: Text(
-                    'Expencies',
-                    style: TextStyle(color: Colors.grey[800], fontSize: 15),
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        x = 0;
+                      });
+                      print('mmmmmmm');
+                    },
+                    child: Text(
+                      'Expencies',
+                      style: TextStyle(color: Colors.grey[800], fontSize: 15),
+                    ),
                   ),
                 ),
                 Container(
