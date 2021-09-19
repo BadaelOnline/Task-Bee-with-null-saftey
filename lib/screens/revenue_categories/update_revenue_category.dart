@@ -4,17 +4,16 @@ import 'package:financial/widget/custom_raisd_button.dart';
 import 'package:financial/widget/custom_Text_Total.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'category.dart';
 
 // ignore: must_be_immutable
-class UpdateExchange extends StatelessWidget {
+class UpdateRevenueCategory extends StatelessWidget {
   int? exchangeId;
   String? exchangeName;
   String? catImage;
 
   TextEditingController nameController = TextEditingController();
 
-  UpdateExchange({
+  UpdateRevenueCategory({
     Key? key,
     this.exchangeId,
     this.exchangeName,
@@ -36,7 +35,7 @@ class UpdateExchange extends StatelessWidget {
           },
         ),
         centerTitle: true,
-        title: Text('Update Exchange Category'),
+        title: Text('Update revenue Category'),
         backgroundColor: Colors.amber[400],
       ),
       body: BlocConsumer<ExchangeCubit, ExchangeStates>(
@@ -58,8 +57,7 @@ class UpdateExchange extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Category()));
+                            Navigator.of(context).pushNamed('/category');
                           },
                           child: ExchangeCubit.get(context).chosenImage == ''
                               ? Container(
@@ -126,7 +124,7 @@ class UpdateExchange extends StatelessWidget {
                         CustomRaisdButton(
                             onPressed: () {
                               ExchangeCubit.get(context).updateExchangeDatabase(
-                                isIncome: 0,
+                                isIncome: 1,
                                 isId: exchangeId,
                                 exchangeName: nameController.text,
                                 icon: ExchangeCubit.get(context).chosenImage ==

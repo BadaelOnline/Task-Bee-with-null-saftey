@@ -167,7 +167,6 @@ class WalletHome extends StatelessWidget {
             ),
             floatingActionButton: CustomFloatingActionButton(
               icon: Icon(Icons.add),
-              text: 'add wallet',
               onPressed: () => Navigator.of(context).pushNamed('/walletsList'),
             ));
       },

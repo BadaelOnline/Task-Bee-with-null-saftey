@@ -5,14 +5,15 @@ import 'package:financial/widget/custom_Text_Total.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'exchange_home.dart';
+
+import 'revenue_home.dart';
 
 // ignore: must_be_immutable
-class AddExchange extends StatelessWidget {
+class AddRevenueCategory extends StatelessWidget {
   // final String? catImage;
   TextEditingController? nameController = TextEditingController();
 
-  AddExchange({Key? key}) : super(key: key);
+  AddRevenueCategory({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +23,11 @@ class AddExchange extends StatelessWidget {
           icon: Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.of(context)
-                .pop(MaterialPageRoute(builder: (context) => ExchangeHome()));
+                .pop(MaterialPageRoute(builder: (context) => RevenueCategoryHome()));
           },
         ),
         centerTitle: true,
-        title: Text('Add Exchange Category'),
+        title: Text('Add revenue Category'),
         backgroundColor: Colors.amber[400],
       ),
       body: BlocConsumer<ExchangeCubit, ExchangeStates>(
@@ -116,7 +117,7 @@ class AddExchange extends StatelessWidget {
                     CustomRaisdButton(
                         onPressed: () {
                           ExchangeCubit.get(context).insertToDatabase(
-                            isIncome: 0,
+                            isIncome: 1,
                               exchangeName: nameController!.text,
                               catImage: ExchangeCubit.get(context).chosenImage);
                         },

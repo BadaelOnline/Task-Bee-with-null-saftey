@@ -66,7 +66,6 @@ class ContactHome extends StatelessWidget {
             ),
             floatingActionButton: CustomFloatingActionButton(
               icon: Icon(Icons.add),
-              text: 'add contact',
               onPressed: () => Navigator.of(context).pushNamed('/addContact'),
             ));
       },

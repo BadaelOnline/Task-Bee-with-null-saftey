@@ -6,7 +6,7 @@ import 'package:financial/services/bloc/wallet/cubit.dart';
 import 'package:financial/services/bloc/wallet/states.dart';
 import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
-import 'package:financial/widget/custom_text_form_field.dart';
+import 'package:financial/widget/custom_Text_Total.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
@@ -54,8 +54,7 @@ class AddPrepaidCard extends StatelessWidget {
                           image: AssetImage(image),
                           // fit: BoxFit.cover,
                         ),
-                        borderRadius:
-                            BorderRadius.all(Radius.circular(100.0)),
+                        borderRadius: BorderRadius.all(Radius.circular(100.0)),
                         // border: Border.all(
                         //   color: Colors.amber[400],
                         //   width: 2,
@@ -110,8 +109,7 @@ class AddPrepaidCard extends StatelessWidget {
                                   ),
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide: const BorderSide(
-                                        color: Colors.amberAccent,
-                                        width: 1.0),
+                                        color: Colors.amberAccent, width: 1.0),
                                   ),
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide:
@@ -122,8 +120,7 @@ class AddPrepaidCard extends StatelessWidget {
                                       decoration: const BoxDecoration(
                                           border: Border(
                                               bottom: BorderSide(
-                                                  color:
-                                                      Colors.transparent))),
+                                                  color: Colors.transparent))),
                                     ),
                                     icon: new Icon(Icons.keyboard_arrow_down),
                                     items: x.currencies!.map((Currency value) {

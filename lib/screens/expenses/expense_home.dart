@@ -74,7 +74,6 @@ class ExpenseHome extends StatelessWidget {
             ),
             floatingActionButton: CustomFloatingActionButton(
               icon: Icon(Icons.add),
-              text: 'add expenses',
               onPressed: () => Navigator.of(context).pushNamed('/addExpense'),
             ));
       },

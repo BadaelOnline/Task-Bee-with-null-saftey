@@ -41,7 +41,6 @@ class CurrencyHome extends StatelessWidget {
               ),
           floatingActionButton:CustomFloatingActionButton(
             icon: Icon(Icons.add),
-            text: 'add currency',
             onPressed: () => Navigator.of(context).pushNamed('/addCurrency'),)
         );
       },

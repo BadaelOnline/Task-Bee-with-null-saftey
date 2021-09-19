@@ -11,7 +11,7 @@ import 'package:financial/services/bloc/transaction/states.dart';
 import 'package:financial/services/bloc/wallet/cubit.dart';
 import 'package:financial/services/bloc/wallet/states.dart';
 import 'package:financial/widget/custom_appBar.dart';
-import 'package:financial/widget/custom_text_form_field.dart';
+import 'package:financial/widget/custom_Text_Total.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -64,8 +64,7 @@ class AddTransaction extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(Icon(Icons.wallet_giftcard), 'Add Transaction'),
       body: BlocConsumer<TransactionCubit, TransactionStates>(
-        listener: (context, state) {
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           return Padding(
             padding: const EdgeInsets.all(15.0),
@@ -111,7 +110,7 @@ class AddTransaction extends StatelessWidget {
               CustomTextFormField(
                   label: 'description',
                   controller: descriptionController,
-                  prefix:Icons.description,
+                  prefix: Icons.description,
                   type: TextInputType.text),
               SizedBox(
                 height: 50,
@@ -126,8 +125,7 @@ class AddTransaction extends StatelessWidget {
                     height: 60,
                     width: MediaQuery.of(context).size.width * 0.4,
                     decoration: BoxDecoration(
-                      border:
-                          Border.all(color: Colors.amber[400]!, width: 1.0),
+                      border: Border.all(color: Colors.amber[400]!, width: 1.0),
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                     child: Row(
@@ -161,8 +159,7 @@ class AddTransaction extends StatelessWidget {
                     height: 60,
                     width: MediaQuery.of(context).size.width * 0.4,
                     decoration: BoxDecoration(
-                      border:
-                          Border.all(color: Colors.amber[400]!, width: 1.0),
+                      border: Border.all(color: Colors.amber[400]!, width: 1.0),
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                     child: Row(
@@ -175,8 +172,7 @@ class AddTransaction extends StatelessWidget {
                             }),
                         Center(
                           child: date == null
-                              ? Text(
-                                  DateFormat('yyyy-MM-dd').format(dateTime))
+                              ? Text(DateFormat('yyyy-MM-dd').format(dateTime))
                               : Text(
                                   '$date',
                                   style: TextStyle(
@@ -393,7 +389,7 @@ class AddTransaction extends StatelessWidget {
                         int wId = WalletCubit.get(context)
                             .getWalletId(walletName: walletIdController.text);
                         String walIcon = WalletCubit.get(context)
-                        .getWalletIcon(walletName:walletIdController.text );
+                            .getWalletIcon(walletName: walletIdController.text);
                         String walletBalance = WalletCubit.get(context)
                             .getWalletBalance(
                                 walletName: walletIdController.text);
@@ -410,8 +406,7 @@ class AddTransaction extends StatelessWidget {
                                 rest: restController.text,
                                 total: totalController.text,
                                 isIncome: income,
-                                transactionDate:
-                                    transactionDateController.text,
+                                transactionDate: transactionDateController.text,
                                 walletId: wId,
                               );
                               String walletBalance = WalletCubit.get(context)
@@ -459,7 +454,7 @@ class AddTransaction extends StatelessWidget {
                                 walletBalance != null &&
                                 currencyId != null) {
                               WalletCubit.get(context).updateWalletDatabase(
-                                icon: walIcon,
+                                  icon: walIcon,
                                   isId: wId,
                                   walletName: walletIdController.text,
                                   walletBalance: '$newBalance',

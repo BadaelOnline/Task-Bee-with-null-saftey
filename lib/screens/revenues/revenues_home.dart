@@ -75,7 +75,6 @@ class RevenuesHome extends StatelessWidget {
             ),
             floatingActionButton: CustomFloatingActionButton(
               icon: Icon(Icons.add),
-              text: 'add revenues',
               onPressed: () => Navigator.of(context).pushNamed('/addRevenue'),
             ));
       },

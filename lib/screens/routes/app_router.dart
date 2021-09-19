@@ -6,7 +6,6 @@ import 'package:financial/screens/contact/update_contact.dart';
 import 'package:financial/screens/currency/add_currency.dart';
 import 'package:financial/screens/currency/currency_home.dart';
 import 'package:financial/screens/currency/update_currency.dart';
-import 'package:financial/screens/debts/debts_home.dart';
 import 'package:financial/screens/exchange_category/add_exchange.dart';
 import 'package:financial/screens/exchange_category/category.dart';
 import 'package:financial/screens/exchange_category/exchange_home.dart';
@@ -17,6 +16,9 @@ import 'package:financial/screens/expenses/update_expense.dart';
 import 'package:financial/screens/report/report_home.dart';
 import 'package:financial/screens/report/report_search.dart';
 import 'package:financial/screens/report/report_search_result.dart';
+import 'package:financial/screens/revenue_categories/add_revenue_category.dart';
+import 'package:financial/screens/revenue_categories/revenue_home.dart';
+import 'package:financial/screens/revenue_categories/update_revenue_category.dart';
 import 'package:financial/screens/revenues/add_revenues.dart';
 import 'package:financial/screens/revenues/revenues_home.dart';
 import 'package:financial/screens/revenues/update_revenues.dart';
@@ -127,6 +129,21 @@ class AppRouter {
             builder: (_) => UpdateExchange(),
             settings: RouteSettings(arguments: settings.arguments));
 
+
+    /// exchanges routes
+      case '/revenueCategoryHome':
+        return MaterialPageRoute(
+          builder: (_) => RevenueCategoryHome(),
+        );
+      case '/addRevenueCategory':
+        return MaterialPageRoute(
+          builder: (_) => AddRevenueCategory(),
+        );
+      case '/updateRevenueCategory':
+        return MaterialPageRoute(
+            builder: (_) => UpdateRevenueCategory(),
+            settings: RouteSettings(arguments: settings.arguments));
+
       /// contacts routes
       case '/contactHome':
         return MaterialPageRoute(
@@ -218,13 +235,6 @@ class AppRouter {
         return MaterialPageRoute(
             builder: (_) => DebtsForm(),
             settings: RouteSettings(arguments: settings.arguments));
-
-
-    /// debts routes
-      case '/debtsHome':
-        return MaterialPageRoute(
-          builder: (_) => DebtsHome(),
-        );
 
       default:
         return MaterialPageRoute(
