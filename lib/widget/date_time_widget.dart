@@ -5,18 +5,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class DateTimeWidget extends StatefulWidget {
-  const DateTimeWidget({Key? key}) : super(key: key);
+  const DateTimeWidget({Key? key, required this.transactionDateController})
+      : super(key: key);
+  final TextEditingController transactionDateController;
 
   @override
-  _DateTimeWidgetState createState() => _DateTimeWidgetState();
+  _DateTimeWidgetState createState() =>
+      _DateTimeWidgetState(transactionDateController);
 }
 
 class _DateTimeWidgetState extends State<DateTimeWidget> {
   String? date;
   String? time;
-  TextEditingController transactionDateController = TextEditingController();
+  final TextEditingController transactionDateController;
 
   TimeOfDay timeOfDay = TimeOfDay.now();
+
+  _DateTimeWidgetState(this.transactionDateController);
+
   selectedTodotime(BuildContext context) async {
     var pickTime = await showTimePicker(
       context: context,
@@ -31,6 +37,7 @@ class _DateTimeWidgetState extends State<DateTimeWidget> {
   }
 
   DateTime dateTime = DateTime.now();
+
   selectedTodoDate(BuildContext context) async {
     var pickedDate = await showDatePicker(
       context: context,

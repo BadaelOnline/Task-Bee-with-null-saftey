@@ -25,6 +25,7 @@ import 'package:financial/screens/report/report_search.dart';
 import 'package:financial/screens/report/report_search_result.dart';
 
 import 'package:financial/screens/revenue_categories/add_revenue_category.dart';
+import 'package:financial/screens/revenue_categories/choose_revenue.dart';
 import 'package:financial/screens/revenue_categories/revenue_home.dart';
 import 'package:financial/screens/revenue_categories/update_revenue_category.dart';
 import 'package:financial/screens/revenues/add_revenues.dart';
@@ -148,6 +149,10 @@ class AppRouter {
 
 
     /// exchanges routes
+      case '/chooseRevenue':
+        return MaterialPageRoute(
+          builder: (_) => ChooseRevenue(),
+        );
       case '/revenueCategoryHome':
         return MaterialPageRoute(
           builder: (_) => RevenueCategoryHome(),

@@ -10,6 +10,7 @@ class AddExpense extends StatefulWidget {
 
 class _AddExpenseState extends State<AddExpense> {
   int x = 0;
+
   Future<void> _showMyDialog(context) async {
     return showDialog<void>(
       context: context,

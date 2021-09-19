@@ -4,21 +4,25 @@ import 'Visibility_Repated_TransAction/visibal_repated_transaction.dart';
 import 'visibility_Image/visibility_image.dart';
 
 class AllVisibility extends StatefulWidget {
-  const AllVisibility({Key? key}) : super(key: key);
+  const AllVisibility({Key? key, this.descriptionController}) : super(key: key);
+  final TextEditingController? descriptionController;
 
   @override
-  _AllVisibilityState createState() => _AllVisibilityState();
+  _AllVisibilityState createState() => _AllVisibilityState(descriptionController);
 }
 
 class _AllVisibilityState extends State<AllVisibility> {
-  TextEditingController totalController = TextEditingController();
-  TextEditingController paidController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
-  TextEditingController exchangeIdController = TextEditingController();
-  TextEditingController walletIdController = TextEditingController();
-  TextEditingController contactIdController = TextEditingController();
+  final TextEditingController? descriptionController;
+  // TextEditingController totalController = TextEditingController();
+  // TextEditingController paidController = TextEditingController();
+  // TextEditingController descriptionController = TextEditingController();
+  // TextEditingController exchangeIdController = TextEditingController();
+  // TextEditingController walletIdController = TextEditingController();
+  // TextEditingController contactIdController = TextEditingController();
 
   bool isVisabile = false;
+
+  _AllVisibilityState(this.descriptionController);
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +70,7 @@ class _AllVisibilityState extends State<AllVisibility> {
               children: [
                 Visibal_RepatedtransAction(),
                 Visibility_Image(),
-                Visibility_Note(),
+                Visibility_Note(des: descriptionController,),
               ],
             ),
           ),

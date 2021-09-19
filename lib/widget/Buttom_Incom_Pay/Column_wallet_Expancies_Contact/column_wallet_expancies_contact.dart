@@ -1,44 +1,83 @@
+import 'package:financial/services/bloc/contact/cubit.dart';
+import 'package:financial/services/bloc/contact/states.dart';
+import 'package:financial/services/bloc/exchang_category/cubit.dart';
+import 'package:financial/services/bloc/exchang_category/states.dart';
+import 'package:financial/services/bloc/wallet/cubit.dart';
+import 'package:financial/services/bloc/wallet/states.dart';
 import 'package:flutter/material.dart';
 import 'widget_container.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 // ignore: camel_case_types
 class Column_Wallet_Expancies_contact extends StatelessWidget {
+  final String cat;
+
+  const Column_Wallet_Expancies_contact({Key? key, required this.cat}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        widget_Container(
-          image: Image.asset(
-            'assets/homepage/wallet.png',
-            width: 40,
-            height: 40,
-          ),
-          text: 'Wallet',
-          ontap: () => Navigator.of(context).pushNamed('/choosewallet'),
+        BlocConsumer<WalletCubit, WalletStates>(
+          listener: (context, state) {
+            // TODO: implement listener
+          },
+          builder: (context, state) {
+            // print('******************************${WalletCubit.get(context).chosenWallet!.name}');
+            return widget_Container(
+              image: Image.asset(
+                'assets/homepage/wallet.png',
+                width: 40,
+                height: 40,
+              ),
+              text: WalletCubit.get(context).chosenWallet != null
+                  ? WalletCubit.get(context).chosenWallet!.name
+                  : 'Wallet',
+              ontap: () => Navigator.of(context).pushNamed('/choosewallet'),
+            );
+          },
         ),
         SizedBox(
           height: 15,
         ),
-        widget_Container(
-          image: Image.asset(
-            'assets/homepage/masaref.png',
-            height: 40,
-            width: 40,
-          ),
-          text: 'Expancies item',
-          ontap: () => Navigator.of(context).pushNamed('/chooseexchang'),
+        BlocConsumer<ExchangeCubit, ExchangeStates>(
+          listener: (context, state) {
+            // TODO: implement listener
+          },
+          builder: (context, state) {
+            return widget_Container(
+              image: Image.asset(
+                'assets/homepage/masaref.png',
+                height: 40,
+                width: 40,
+              ),
+              text: ExchangeCubit.get(context).chosenCategory != null
+                  ? ExchangeCubit.get(context).chosenCategory!.name
+                  : cat == 'chooseexchang'? 'Expancies item' : 'Revenue item',
+              ontap: () => Navigator.of(context).pushNamed('/$cat'),
+            );
+          },
         ),
         SizedBox(
           height: 15,
         ),
-        widget_Container(
-          image: Image.asset(
-            'assets/homepage/person.png',
-            width: 40,
-            height: 40,
-          ),
-          text: 'Contact',
-          ontap: () => Navigator.of(context).pushNamed('/choosecontact'),
+        BlocConsumer<ContactCubit, ContactStates>(
+          listener: (context, state) {
+            // TODO: implement listener
+          },
+          builder: (context, state) {
+            ContactCubit cubit = ContactCubit.get(context);
+            return widget_Container(
+              image: Image.asset(
+                'assets/homepage/person.png',
+                width: 40,
+                height: 40,
+              ),
+              text: cubit.chosenContact != null
+                  ? cubit.chosenContact!.name
+                  : 'Contact',
+              ontap: () => Navigator.of(context).pushNamed('/choosecontact'),
+            );
+          },
         ),
       ],
     );

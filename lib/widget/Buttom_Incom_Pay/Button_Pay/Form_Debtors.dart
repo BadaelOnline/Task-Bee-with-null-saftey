@@ -13,6 +13,7 @@ class FormDebtors extends StatefulWidget {
 }
 
 class _FormDebtorsState extends State<FormDebtors> {
+  TextEditingController transactionDateController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -52,7 +53,7 @@ class _FormDebtorsState extends State<FormDebtors> {
               SizedBox(
                 height: 25,
               ),
-              DateTimeWidget(),
+              DateTimeWidget(transactionDateController: transactionDateController,),
               SizedBox(
                 height: 25,
               ),
