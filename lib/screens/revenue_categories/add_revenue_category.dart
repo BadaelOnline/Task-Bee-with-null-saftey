@@ -1,25 +1,35 @@
 import 'package:financial/services/bloc/exchang_category/cubit.dart';
 import 'package:financial/services/bloc/exchang_category/states.dart';
-import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
 import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'exchange_home.dart';
+
+import 'revenue_home.dart';
 
 // ignore: must_be_immutable
-class AddExchange extends StatelessWidget {
+class AddRevenueCategory extends StatelessWidget {
   // final String? catImage;
   TextEditingController? nameController = TextEditingController();
 
-  AddExchange({Key? key}) : super(key: key);
+  AddRevenueCategory({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-          Image.asset('assets/homepage/masaref.png'), 'Add Exchang Categoray'),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context)
+                .pop(MaterialPageRoute(builder: (context) => RevenueCategoryHome()));
+          },
+        ),
+        centerTitle: true,
+        title: Text('Add revenue Category'),
+        backgroundColor: Colors.amber[400],
+      ),
       body: BlocConsumer<ExchangeCubit, ExchangeStates>(
         listener: (context, ExchangeStates state) {
           if (state is InsertExchangesToDatabaseState) {
@@ -29,14 +39,16 @@ class AddExchange extends StatelessWidget {
         },
         builder: (context, state) {
           return Container(
-            alignment: Alignment.center,
+            padding: EdgeInsets.all(15),
             child: SingleChildScrollView(
               child: Column(children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     BlocConsumer<ExchangeCubit, ExchangeStates>(
-                      listener: (context, state) {},
+                      listener: (context, state) {
+                        // TODO: implement listener
+                      },
                       builder: (context, state) {
                         return InkWell(
                           onTap: () {
@@ -84,12 +96,17 @@ class AddExchange extends StatelessWidget {
                 SizedBox(
                   height: 25,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Custom_Text(
-                      label: 'Category',
-                      controller: nameController,
-                      prefix: Icons.category),
+                Row(
+                  children: [
+                    Expanded(
+                        child: Custom_Text(
+                            label: 'Name Category',
+                            controller: nameController,
+                            prefix: Icons.category)),
+                    SizedBox(
+                      width: 10,
+                    ),
+                  ],
                 ),
                 SizedBox(
                   height: 100,
@@ -100,7 +117,7 @@ class AddExchange extends StatelessWidget {
                     CustomRaisdButton(
                         onPressed: () {
                           ExchangeCubit.get(context).insertToDatabase(
-                            isIncome: 0,
+                            isIncome: 1,
                               exchangeName: nameController!.text,
                               catImage: ExchangeCubit.get(context).chosenImage);
                         },

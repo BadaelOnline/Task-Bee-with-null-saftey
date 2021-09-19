@@ -10,6 +10,7 @@ class Button_AllTransAction extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20, top: 16, bottom: 16),
       child: InkWell(
+        onTap:()=> Navigator.of(context).pushNamed('/transactionHome'),
         child: Container(
           alignment: Alignment.center,
           height: 50,

@@ -44,6 +44,7 @@ class Section_Group extends StatelessWidget {
                 width: duoble,
               ),
               text: 'Revnue',
+              onTap: () => Navigator.of(context).pushNamed('/revenueCategoryHome'),
             ),
             Icon_Text(
               icon: Image.asset(

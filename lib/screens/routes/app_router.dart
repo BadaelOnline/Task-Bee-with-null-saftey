@@ -23,6 +23,12 @@ import 'package:financial/screens/expenses/update_expense.dart';
 import 'package:financial/screens/report/report_home.dart';
 import 'package:financial/screens/report/report_search.dart';
 import 'package:financial/screens/report/report_search_result.dart';
+
+import 'package:financial/screens/revenue_categories/add_revenue_category.dart';
+import 'package:financial/screens/revenue_categories/revenue_home.dart';
+import 'package:financial/screens/revenue_categories/update_revenue_category.dart';
+import 'package:financial/screens/revenues/add_revenues.dart';
+
 import 'package:financial/screens/revenues/Add_Revenue.dart';
 import 'package:financial/screens/revenues/revenues_home.dart';
 import 'package:financial/screens/revenues/update_revenues.dart';
@@ -138,6 +144,21 @@ class AppRouter {
       case '/updateExchange':
         return MaterialPageRoute(
             builder: (_) => UpdateExchange(),
+            settings: RouteSettings(arguments: settings.arguments));
+
+
+    /// exchanges routes
+      case '/revenueCategoryHome':
+        return MaterialPageRoute(
+          builder: (_) => RevenueCategoryHome(),
+        );
+      case '/addRevenueCategory':
+        return MaterialPageRoute(
+          builder: (_) => AddRevenueCategory(),
+        );
+      case '/updateRevenueCategory':
+        return MaterialPageRoute(
+            builder: (_) => UpdateRevenueCategory(),
             settings: RouteSettings(arguments: settings.arguments));
 
       /// contacts routes
