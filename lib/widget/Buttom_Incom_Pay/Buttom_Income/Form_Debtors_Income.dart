@@ -16,6 +16,8 @@ class FormDebtors_Income extends StatefulWidget {
 
 // ignore: camel_case_types
 class _FormDebtors_IncomeState extends State<FormDebtors_Income> {
+
+  TextEditingController transactionDateController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -55,7 +57,7 @@ class _FormDebtors_IncomeState extends State<FormDebtors_Income> {
               SizedBox(
                 height: 25,
               ),
-              DateTimeWidget(),
+              DateTimeWidget(transactionDateController: transactionDateController,),
               SizedBox(
                 height: 25,
               ),

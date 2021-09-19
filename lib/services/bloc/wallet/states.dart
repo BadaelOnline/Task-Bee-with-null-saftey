@@ -11,3 +11,5 @@ class InsertWalletsToDatabaseState extends WalletStates{}
 class UpdateWalletsToDatabaseState extends WalletStates{}
 
 class DeleteWalletsFromDatabaseState extends WalletStates{}
+
+class ChoseWalletFromChooseWalletPageState extends WalletStates{}

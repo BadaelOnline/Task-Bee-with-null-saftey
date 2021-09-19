@@ -6,14 +6,14 @@ import 'package:financial/widget/custom_floating_action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ChooseExchang extends StatefulWidget {
-  const ChooseExchang({Key? key}) : super(key: key);
+class ChooseRevenue extends StatefulWidget {
+  const ChooseRevenue({Key? key}) : super(key: key);
 
   @override
-  _ChooseExchangState createState() => _ChooseExchangState();
+  _ChooseRevenueState createState() => _ChooseRevenueState();
 }
 
-class _ChooseExchangState extends State<ChooseExchang> {
+class _ChooseRevenueState extends State<ChooseRevenue> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ExchangeCubit, ExchangeStates>(
@@ -29,11 +29,11 @@ class _ChooseExchangState extends State<ChooseExchang> {
                 ),
                 'Choose Expancies'),
             body: ListView.builder(
-              itemCount: cubit.exchanges!.length,
+              itemCount: cubit.revenues!.length,
               itemBuilder: (BuildContext context, int index) {
                 return InkWell(
                   onTap: (){
-                    cubit.choseCategory(category: cubit.exchanges![index]);
+                    cubit.choseCategory(category: cubit.revenues![index]);
                     Navigator.of(context).pop();
                   },
                   child: Container(
@@ -50,7 +50,7 @@ class _ChooseExchangState extends State<ChooseExchang> {
                             children: [
                               Container(
                                 padding: EdgeInsets.only(left: 8.0),
-                                child: cubit.exchanges![index].icon == ''
+                                child: cubit.revenues![index].icon == ''
                                     ? Container(
                                   height: 50,
                                   width: 50,
@@ -72,7 +72,7 @@ class _ChooseExchangState extends State<ChooseExchang> {
                                     image: DecorationImage(
                                       scale: 0.5,
                                       image: AssetImage(
-                                          cubit.exchanges![index].icon),
+                                          cubit.revenues![index].icon),
                                     ),
                                     borderRadius: BorderRadius.all(
                                         Radius.circular(100.0)),
@@ -86,7 +86,7 @@ class _ChooseExchangState extends State<ChooseExchang> {
                               Container(
                                   padding: EdgeInsets.only(left: 8.0),
                                   child: Text(
-                                    cubit.exchanges![index].name,
+                                    cubit.revenues![index].name,
                                     style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold,

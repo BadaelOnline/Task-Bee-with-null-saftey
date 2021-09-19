@@ -15,6 +15,7 @@ class ContactCubit extends Cubit<ContactStates>{
   ContactDao? dao  ;
   List<Contact>? contacts = [];
   int? lastId ;
+  Contact? chosenContact;
 
   void createDatabase(){
     $FloorAppDatabase.databaseBuilder('database_wallet.db').build().then((value) {
@@ -103,6 +104,14 @@ class ContactCubit extends Cubit<ContactStates>{
       }
     }
     return 'error';
+  }
+
+  void choseContact({
+    @required Contact? contact,
+  }){
+    print('ooooooooooooooooooooooooooooooooo $contact');
+    chosenContact = contact;
+    emit(ChoseContactFromChooseContactPageState());
   }
 
 

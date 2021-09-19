@@ -13,3 +13,5 @@ class UpdateExchangesToDatabaseState extends ExchangeStates{}
 class DeleteExchangesFromDatabaseState extends ExchangeStates{}
 
 class ChoseImageFromCategoryImagePageState extends ExchangeStates{}
+
+class ChoseCategoryFromChooseCategoryPageState extends ExchangeStates{}

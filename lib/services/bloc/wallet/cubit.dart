@@ -14,6 +14,7 @@ class WalletCubit extends Cubit<WalletStates> {
   WalletDao? dao;
   List<Wallet>? wallets = [];
   int? lastId;
+  Wallet? chosenWallet ;
 
   void createDatabase() {
     $FloorAppDatabase
@@ -174,4 +175,13 @@ class WalletCubit extends Cubit<WalletStates> {
     }
     return null;
   }
+
+  void choseWallet({
+    @required Wallet? wallet,
+  }){
+    print('ooooooooooooooooooooooooooooooooo $wallet');
+    chosenWallet = wallet;
+    emit(ChoseWalletFromChooseWalletPageState());
+  }
 }
+
