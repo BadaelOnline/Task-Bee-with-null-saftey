@@ -27,7 +27,9 @@ class ContactHome extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.only(top: 5),
                     child: CardContact(
-                      onTap:() => Navigator.of(context).pushNamed('/previewcontact') ,
+                      onTap:() => Navigator.of(context).pushNamed('/previewcontact', arguments: {
+                        'contact': cubit.contacts![index]
+                      }) ,
                       delete: () {
                         cubit.deleteContactFromDatabase(
                             id: cubit.contacts![index].id);
