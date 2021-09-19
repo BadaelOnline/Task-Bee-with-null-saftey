@@ -42,7 +42,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               //   ),
               // ),
               IconButton(
-                icon: Icon(Icons.cancel, size: 30, color: Colors.grey),
+                icon: Image.asset(
+                  'assets/homepage/cancel.png',
+                  scale: 6,
+                ),
                 onPressed: () => Navigator.pop(context),
               ),
             ],

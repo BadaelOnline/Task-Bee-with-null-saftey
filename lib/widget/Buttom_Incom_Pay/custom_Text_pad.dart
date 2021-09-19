@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomTextFormField extends StatelessWidget {
+class Custom_Text_Paid extends StatelessWidget {
   final TextEditingController? controller;
   final TextInputType? type;
   final Function(String)? onSubmit;
@@ -9,7 +9,7 @@ class CustomTextFormField extends StatelessWidget {
   final String? label;
   final IconData? prefix;
   final bool? isClickable;
-  const CustomTextFormField({
+  const Custom_Text_Paid({
     Key? key,
     this.controller,
     this.type,
@@ -53,7 +53,7 @@ class CustomTextFormField extends StatelessWidget {
             style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: Colors.grey[700]),
+                color: Colors.red[700]),
             autofocus: true,
             controller: controller,
             keyboardType: type,

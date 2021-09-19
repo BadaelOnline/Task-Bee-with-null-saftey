@@ -1,9 +1,3 @@
-import 'package:financial/screens/wallet/update_bank_account.dart';
-import 'package:financial/screens/wallet/update_cash_Wallet.dart';
-import 'package:financial/screens/wallet/update_credit_card.dart';
-import 'package:financial/screens/wallet/update_planer_save.dart';
-import 'package:financial/screens/wallet/update_priberd_card.dart';
-import 'package:financial/screens/wallet/wallets_list.dart';
 import 'package:financial/services/bloc/currency/cubit.dart';
 import 'package:financial/services/bloc/currency/states.dart';
 import 'package:financial/services/bloc/wallet/cubit.dart';

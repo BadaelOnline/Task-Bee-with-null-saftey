@@ -14,13 +14,13 @@ import 'package:financial/services/dao/dao_transaction.dart';
 import 'package:financial/services/dao/dao_wallet.dart';
 import 'package:financial/services/dao/dao_currency.dart';
 import 'package:floor/floor.dart';
-import 'package:flutter/foundation.dart';
-import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart' as sqflite;
 
 part 'database.g.dart'; // the generated code will be there
 
-@Database(version: 1, entities: [Wallet, Currency,Transaction,Contact,ExchangeCategory])
+@Database(
+    version: 1,
+    entities: [Wallet, Currency, Transaction, Contact, ExchangeCategory])
 abstract class AppDatabase extends FloorDatabase {
   WalletDao get walletDao;
   CurrencyDao get currencyDao;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class widget_Container extends StatelessWidget {
-  const widget_Container({
+class Widget_Container_Contact extends StatelessWidget {
+  const Widget_Container_Contact({
     Key? key,
     this.ontap,
     this.text,
@@ -10,7 +10,7 @@ class widget_Container extends StatelessWidget {
 
   final ontap;
   final String? text;
-  final Image image;
+  final Widget image;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +22,14 @@ class widget_Container extends StatelessWidget {
         child: Row(
           children: [
             Padding(
-                padding: const EdgeInsets.only(
-                    top: 5, left: 5, bottom: 5, right: 10),
-                child: image),
+              padding:
+                  const EdgeInsets.only(top: 5, left: 5, bottom: 5, right: 10),
+              child: Container(
+                child: image,
+                height: 30,
+                width: 30,
+              ),
+            ),
             Text('$text')
           ],
         ),

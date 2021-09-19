@@ -1,7 +1,7 @@
-import 'package:financial/widget/Button_Pay/Form_Expancies/Form_Expinces.dart';
+import 'package:financial/widget/Buttom_Incom_Pay/Button_Pay/Form_Debtors.dart';
+import 'package:financial/widget/Buttom_Incom_Pay/Button_Pay/Form_Expinces.dart';
 import 'package:financial/widget/custom_appBar.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
 
 class AddExpense extends StatefulWidget {
   @override
@@ -9,6 +9,7 @@ class AddExpense extends StatefulWidget {
 }
 
 class _AddExpenseState extends State<AddExpense> {
+  int x = 0;
   Future<void> _showMyDialog(context) async {
     return showDialog<void>(
       context: context,
@@ -36,13 +37,13 @@ class _AddExpenseState extends State<AddExpense> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
-      initialIndex: 0,
+      initialIndex: x,
       child: Scaffold(
         appBar: CustomAppBar(
             Image(
               image: AssetImage('assets/homepage/masaref.png'),
             ),
-            'Pay / Exchange'),
+            'Pay'),
         body: Stack(children: [
           Container(
             height: 40,
@@ -51,14 +52,22 @@ class _AddExpenseState extends State<AddExpense> {
               indicatorColor: Colors.red,
               tabs: [
                 Container(
-                  child: Text(
-                    'Expencies',
-                    style: TextStyle(color: Colors.grey[800], fontSize: 15),
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        x = 0;
+                      });
+                      print('mmmmmmm');
+                    },
+                    child: Text(
+                      'Expencies',
+                      style: TextStyle(color: Colors.grey[800], fontSize: 15),
+                    ),
                   ),
                 ),
                 Container(
                   child: Text(
-                    'Debtors',
+                    'Pay Debts',
                     style: TextStyle(color: Colors.grey[800], fontSize: 15),
                   ),
                 ),
@@ -73,8 +82,10 @@ class _AddExpenseState extends State<AddExpense> {
           ),
           TabBarView(children: [
             FormExpencies(),
-            Icon(Icons.ac_unit),
-            Icon(Icons.ac_unit),
+            FormDebtors(),
+            Center(
+              child: Text('Soon..'),
+            ),
           ])
         ]),
       ),

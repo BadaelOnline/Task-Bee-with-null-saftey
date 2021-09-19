@@ -1,16 +1,17 @@
-import 'package:financial/widget/Button_Pay/Form_Expancies/All_Visibility/Visibility_Repated_TransAction/visibal_repated_transaction.dart';
-import 'package:financial/widget/Button_Pay/Form_Expancies/All_Visibility/visibility_Image/visibility_image.dart';
-import 'package:financial/widget/Button_Pay/Form_Expancies/All_Visibility/Visibility_Note/visibility_note.dart';
 import 'package:flutter/material.dart';
+import 'Visibility_Note/visibility_note.dart';
+import 'visibility_Image/visibility_image.dart';
 
-class AllVisibility extends StatefulWidget {
-  const AllVisibility({Key? key}) : super(key: key);
+// ignore: camel_case_types
+class AllVisibility_Debtors extends StatefulWidget {
+  const AllVisibility_Debtors({Key? key}) : super(key: key);
 
   @override
-  _AllVisibilityState createState() => _AllVisibilityState();
+  _AllVisibility_DebtorsState createState() => _AllVisibility_DebtorsState();
 }
 
-class _AllVisibilityState extends State<AllVisibility> {
+// ignore: camel_case_types
+class _AllVisibility_DebtorsState extends State<AllVisibility_Debtors> {
   TextEditingController totalController = TextEditingController();
   TextEditingController paidController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
@@ -64,7 +65,6 @@ class _AllVisibilityState extends State<AllVisibility> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Visibal_RepatedtransAction(),
                 Visibility_Image(),
                 Visibility_Note(),
               ],

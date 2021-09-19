@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CustomTextFormFieldPayd extends StatelessWidget {
+// ignore: camel_case_types
+class Custom_Text_Total extends StatelessWidget {
   final TextEditingController? controller;
   final TextInputType? type;
   final Function(String)? onSubmit;
@@ -9,7 +10,7 @@ class CustomTextFormFieldPayd extends StatelessWidget {
   final String? label;
   final IconData? prefix;
   final bool? isClickable;
-  const CustomTextFormFieldPayd({
+  const Custom_Text_Total({
     Key? key,
     this.controller,
     this.type,
@@ -53,7 +54,7 @@ class CustomTextFormFieldPayd extends StatelessWidget {
             style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: Colors.red[700]),
+                color: Colors.grey[700]),
             autofocus: true,
             controller: controller,
             keyboardType: type,

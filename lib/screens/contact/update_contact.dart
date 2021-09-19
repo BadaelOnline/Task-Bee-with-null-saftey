@@ -1,11 +1,11 @@
 import 'package:financial/services/bloc/contact/cubit.dart';
 import 'package:financial/services/bloc/contact/states.dart';
-import 'package:financial/widget/custom_raisd_button.dart';
-import 'package:financial/widget/custom_Text_Total.dart';
+import 'package:financial/widget/Contact/image.dart';
+import 'package:financial/widget/Contact/update_button_update_cancel.dart';
+import 'package:financial/widget/custom_appBar.dart';
+import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'contact_home.dart';
 
 // ignore: must_be_immutable
 class UpdateContact extends StatelessWidget {
@@ -23,17 +23,11 @@ class UpdateContact extends StatelessWidget {
     contactName = arguments['contactName'];
 
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        centerTitle: true,
-        title: Text('Update Contact'),
-        backgroundColor: Colors.amber[400],
-      ),
+      appBar: CustomAppBar(
+          Image(
+            image: AssetImage('assets/homepage/person.png'),
+          ),
+          'Update Contact'),
       body: BlocConsumer<ContactCubit, ContactStates>(
         listener: (context, state) {
           if (state is UpdateContactsToDatabaseState) {
@@ -45,24 +39,15 @@ class UpdateContact extends StatelessWidget {
             alignment: Alignment.center,
             child: SingleChildScrollView(
                 child: Column(children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/image/user.png',
-                    width: 100,
-                    height: 100,
-                  ),
-                ],
-              ),
+              image(),
               SizedBox(
                 height: 25,
               ),
               Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Container(
-                    child: CustomTextFormField(
-                        label: 'Name Contact',
+                    child: Custom_Text(
+                        label: 'Name',
                         controller: nameController =
                             TextEditingController(text: '$contactName'),
                         prefix: Icons.person)),
@@ -70,21 +55,8 @@ class UpdateContact extends StatelessWidget {
               SizedBox(
                 height: 100,
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-                CustomRaisdButton(
-                    text: 'Update',
-                    onPressed: () {
-                      ContactCubit.get(context).updateContactDatabase(
-                        isId: contactId,
-                        contactName: nameController.text,
-                      );
-                    }),
-                CustomRaisdButton(
-                    text: 'Cansel',
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    }),
-              ])
+              update_button_update_cancel(
+                  contactId: contactId, nameController: nameController)
             ])),
           );
         },

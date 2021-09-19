@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'widget_container.dart';
 
+// ignore: camel_case_types
 class Column_Wallet_Expancies_contact extends StatelessWidget {
-  const Column_Wallet_Expancies_contact({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -15,6 +14,7 @@ class Column_Wallet_Expancies_contact extends StatelessWidget {
             height: 40,
           ),
           text: 'Wallet',
+          ontap: () => Navigator.of(context).pushNamed('/choosewallet'),
         ),
         SizedBox(
           height: 15,
@@ -26,6 +26,7 @@ class Column_Wallet_Expancies_contact extends StatelessWidget {
             width: 40,
           ),
           text: 'Expancies item',
+          ontap: () => Navigator.of(context).pushNamed('/chooseexchang'),
         ),
         SizedBox(
           height: 15,
@@ -37,6 +38,7 @@ class Column_Wallet_Expancies_contact extends StatelessWidget {
             height: 40,
           ),
           text: 'Contact',
+          ontap: () => Navigator.of(context).pushNamed('/choosecontact'),
         ),
       ],
     );

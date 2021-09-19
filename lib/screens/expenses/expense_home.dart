@@ -10,7 +10,6 @@ import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_floating_action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'add_expense.dart';
 
 class ExpenseHome extends StatelessWidget {
   @override
@@ -26,9 +25,9 @@ class ExpenseHome extends StatelessWidget {
         return Scaffold(
             appBar: CustomAppBar(
                 Image(
-                  image: AssetImage('assets/homepage/minus_icon.png'),
+                  image: AssetImage('assets/homepage/masaref.png'),
                 ),
-                'Pay / Exchange'),
+                'Pay'),
             body: ListView.builder(
               itemCount: transactionCubit.expenses!.length,
               itemBuilder: (BuildContext context, int index) {

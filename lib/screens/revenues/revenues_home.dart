@@ -11,8 +11,6 @@ import 'package:financial/widget/custom_floating_action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'add_revenues.dart';
-
 class RevenuesHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -27,7 +25,7 @@ class RevenuesHome extends StatelessWidget {
         return Scaffold(
             appBar: CustomAppBar(
                 Image(
-                  image: AssetImage('assets/homepage/plus_icon.png'),
+                  image: AssetImage('assets/homepage/dollar.png'),
                 ),
                 'Revenues'),
             body: ListView.builder(

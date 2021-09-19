@@ -1,10 +1,11 @@
-import 'package:financial/widget/Button_Pay/Form_Expancies/All_Visibility/widget_container.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
+import '../widget_container.dart';
 import 'viewImage_afterPresson.dart';
 
+// ignore: camel_case_types
 class Visibility_Image extends StatefulWidget {
   const Visibility_Image({Key? key}) : super(key: key);
 
@@ -12,6 +13,7 @@ class Visibility_Image extends StatefulWidget {
   _Visibility_ImageState createState() => _Visibility_ImageState();
 }
 
+// ignore: camel_case_types
 class _Visibility_ImageState extends State<Visibility_Image> {
   bool isVisabile3 = false;
 

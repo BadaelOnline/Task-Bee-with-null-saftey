@@ -1,6 +1,8 @@
-import 'package:financial/widget/Button_Pay/Form_Expancies/All_Visibility/widget_container.dart';
 import 'package:flutter/material.dart';
 
+import '../widget_container.dart';
+
+// ignore: camel_case_types
 class Visibal_RepatedtransAction extends StatefulWidget {
   const Visibal_RepatedtransAction({Key? key}) : super(key: key);
 
@@ -9,6 +11,7 @@ class Visibal_RepatedtransAction extends StatefulWidget {
       _Visibal_RepatedtransActionState();
 }
 
+// ignore: camel_case_types
 class _Visibal_RepatedtransActionState
     extends State<Visibal_RepatedtransAction> {
   bool isVisabile2 = false;
@@ -48,60 +51,74 @@ class _Visibal_RepatedtransActionState
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Radio(
-                    value: 1,
-                    groupValue: val,
-                    onChanged: (value) {
-                      setState(() {
-                        val = value;
-                      });
-                    },
+                children: [
+                  Row(
+                    children: [
+                      Radio(
+                        value: 1,
+                        groupValue: val,
+                        onChanged: (value) {
+                          setState(() {
+                            val = value;
+                          });
+                        },
+                      ),
+                      Text(
+                        'Daily',
+                        style: TextStyle(fontSize: 11.75),
+                      ),
+                    ],
                   ),
-                  Text(
-                    'daily',
-                    style: new TextStyle(fontSize: 12.0),
+                  Row(
+                    children: [
+                      Radio(
+                        value: 2,
+                        groupValue: val,
+                        onChanged: (value) {
+                          setState(() {
+                            val = value;
+                          });
+                        },
+                      ),
+                      Text(
+                        'Weekly',
+                        style: TextStyle(fontSize: 11.75),
+                      ),
+                    ],
                   ),
-                  Radio(
-                    value: 2,
-                    groupValue: val,
-                    onChanged: (value) {
-                      setState(() {
-                        val = value;
-                      });
-                    },
+                  Row(
+                    children: [
+                      Radio(
+                        value: 3,
+                        groupValue: val,
+                        onChanged: (value) {
+                          setState(() {
+                            val = value;
+                          });
+                        },
+                      ),
+                      Text(
+                        'Monthly',
+                        style: TextStyle(fontSize: 11.75),
+                      ),
+                    ],
                   ),
-                  Text(
-                    'weekly',
-                    style: new TextStyle(
-                      fontSize: 12.0,
-                    ),
-                  ),
-                  Radio(
-                    value: 3,
-                    groupValue: val,
-                    onChanged: (value) {
-                      setState(() {
-                        val = value;
-                      });
-                    },
-                  ),
-                  Text(
-                    'Monthly',
-                    style: new TextStyle(fontSize: 12.0),
-                  ),
-                  Radio(
-                    value: 4,
-                    groupValue: val,
-                    onChanged: (value) {
-                      setState(() {
-                        val = value;
-                      });
-                    },
-                  ),
-                  Text(
-                    'yearly',
-                    style: new TextStyle(fontSize: 12.0),
+                  Row(
+                    children: [
+                      Radio(
+                        value: 4,
+                        groupValue: val,
+                        onChanged: (value) {
+                          setState(() {
+                            val = value;
+                          });
+                        },
+                      ),
+                      Text(
+                        'yearly',
+                        style: TextStyle(fontSize: 11.75),
+                      ),
+                    ],
                   ),
                 ],
               ),

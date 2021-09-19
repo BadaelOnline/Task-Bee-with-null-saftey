@@ -1,13 +1,20 @@
 import 'package:financial/screens/Debts/debts_form.dart';
 import 'package:financial/screens/Debts/home_debts.dart';
 import 'package:financial/screens/contact/add_contact.dart';
+import 'package:financial/screens/contact/choosecontact.dart';
 import 'package:financial/screens/contact/contact_home.dart';
+import 'package:financial/screens/contact/preview_contact/preview_contact.dart';
+import 'package:financial/screens/contact/preview_contact/preview_debts.dart';
+import 'package:financial/screens/contact/preview_contact/preview_tasks.dart';
+import 'package:financial/screens/contact/preview_contact/preview_team_work.dart';
+import 'package:financial/screens/contact/preview_contact/preview_transaction.dart';
 import 'package:financial/screens/contact/update_contact.dart';
 import 'package:financial/screens/currency/add_currency.dart';
 import 'package:financial/screens/currency/currency_home.dart';
 import 'package:financial/screens/currency/update_currency.dart';
 import 'package:financial/screens/exchange_category/add_exchange.dart';
 import 'package:financial/screens/exchange_category/category.dart';
+import 'package:financial/screens/exchange_category/choose_exchang.dart';
 import 'package:financial/screens/exchange_category/exchange_home.dart';
 import 'package:financial/screens/exchange_category/update_exchange.dart';
 import 'package:financial/screens/expenses/add_expense.dart';
@@ -16,23 +23,25 @@ import 'package:financial/screens/expenses/update_expense.dart';
 import 'package:financial/screens/report/report_home.dart';
 import 'package:financial/screens/report/report_search.dart';
 import 'package:financial/screens/report/report_search_result.dart';
+
 import 'package:financial/screens/revenue_categories/add_revenue_category.dart';
 import 'package:financial/screens/revenue_categories/revenue_home.dart';
 import 'package:financial/screens/revenue_categories/update_revenue_category.dart';
 import 'package:financial/screens/revenues/add_revenues.dart';
+
+import 'package:financial/screens/revenues/Add_Revenue.dart';
 import 'package:financial/screens/revenues/revenues_home.dart';
 import 'package:financial/screens/revenues/update_revenues.dart';
 import 'package:financial/screens/shared/HomePage.dart';
-import 'package:financial/screens/shared/myhomepage.dart';
 import 'package:financial/screens/transaction/add_transaction.dart';
 import 'package:financial/screens/transaction/transaction_home.dart';
-import 'package:financial/screens/transaction/update_transaction.dart';
 import 'package:financial/screens/wallet/add_bank_account.dart';
 import 'package:financial/screens/wallet/add_cash_wallet.dart';
 import 'package:financial/screens/wallet/add_credit_card.dart';
 import 'package:financial/screens/wallet/add_planer_save.dart';
 import 'package:financial/screens/wallet/add_priberd_card.dart';
 import 'package:financial/screens/wallet/addwallet.dart';
+import 'package:financial/screens/wallet/choose_wallet.dart';
 import 'package:financial/screens/wallet/updateWallet.dart';
 import 'package:financial/screens/wallet/update_bank_account.dart';
 import 'package:financial/screens/wallet/update_cash_Wallet.dart';
@@ -54,6 +63,10 @@ class AppRouter {
         );
 
       /// wallets routes
+      case '/choosewallet':
+        return MaterialPageRoute(
+          builder: (_) => ChooseWallet(),
+        );
       case '/walletHome':
         return MaterialPageRoute(
           builder: (_) => WalletHome(),
@@ -112,6 +125,10 @@ class AppRouter {
             settings: RouteSettings(arguments: settings.arguments));
 
       /// exchanges routes
+      case '/chooseexchang':
+        return MaterialPageRoute(
+          builder: (_) => ChooseExchang(),
+        );
       case '/exchangeHome':
         return MaterialPageRoute(
           builder: (_) => ExchangeHome(),
@@ -145,6 +162,14 @@ class AppRouter {
             settings: RouteSettings(arguments: settings.arguments));
 
       /// contacts routes
+      case '/previewcontact':
+        return MaterialPageRoute(
+          builder: (_) => Preview_Contact(),
+        );
+      case '/choosecontact':
+        return MaterialPageRoute(
+          builder: (_) => ChooseContact(),
+        );
       case '/contactHome':
         return MaterialPageRoute(
           builder: (_) => ContactHome(),
@@ -157,6 +182,26 @@ class AppRouter {
         return MaterialPageRoute(
             builder: (_) => UpdateContact(),
             settings: RouteSettings(arguments: settings.arguments));
+      case '/previewtransaction':
+        return MaterialPageRoute(
+          builder: (_) => Preview_Transaction(),
+        );
+      case '/previewdebtes':
+        return MaterialPageRoute(
+          builder: (_) => Preview_Debts(),
+        );
+      case '/previewtasks':
+        return MaterialPageRoute(
+          builder: (_) => Preview_Tasks(),
+        );
+      case '/previewteamwork':
+        return MaterialPageRoute(
+          builder: (_) => Preview_TeamWork(),
+        );
+      case '/previewproject':
+        return MaterialPageRoute(
+          builder: (_) => Preview_TeamWork(),
+        );
 
       /// currency routes
       case '/currencyHome':
@@ -181,10 +226,10 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => AddTransaction(),
         );
-      case '/updateTransaction':
-        return MaterialPageRoute(
-            builder: (_) => UpdateTransaction(),
-            settings: RouteSettings(arguments: settings.arguments));
+      // case '/updateTransaction':
+      //   return MaterialPageRoute(
+      //       builder: (_) => UpdateTransaction(),
+      //       settings: RouteSettings(arguments: settings.arguments));
 
       /// revenues routes
       case '/revenuesHome':
@@ -193,7 +238,7 @@ class AppRouter {
         );
       case '/addRevenue':
         return MaterialPageRoute(
-          builder: (_) => AddRevenues(),
+          builder: (_) => Add_Revenue(),
         );
       case '/updateRevenue':
         return MaterialPageRoute(
