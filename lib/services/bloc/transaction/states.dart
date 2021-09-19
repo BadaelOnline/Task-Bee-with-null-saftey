@@ -11,3 +11,5 @@ class InsertTransactionsToDatabaseState extends TransactionStates{}
 class UpdateTransactionsToDatabaseState extends TransactionStates{}
 
 class DeleteTransactionsFromDatabaseState extends TransactionStates{}
+
+class GetTransactionsFromDatabaseFOrContactState extends TransactionStates{}

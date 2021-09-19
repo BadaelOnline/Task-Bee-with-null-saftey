@@ -170,6 +170,7 @@ class AppRouter {
       case '/previewcontact':
         return MaterialPageRoute(
           builder: (_) => Preview_Contact(),
+          settings: RouteSettings(arguments: settings.arguments)
         );
       case '/choosecontact':
         return MaterialPageRoute(
