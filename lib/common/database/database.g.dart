@@ -469,9 +469,9 @@ class _$TransactionDao extends TransactionDao {
                   row['total'] as String,
                   row['paid'] as String,
                   row['rest'] as String,
-                  row['description'] as String,
+                  row['transaction_date'] as String,
                   row['is_income'] as int,
-                  row['transaction_date'] as String));
+                  row['description'] as String));
     }else if(contactId == 0 && walletId != 0 && categoryId != 0){
       return _queryAdapter.queryList(
           'SELECT t.id,w.name_wallet,c.name_contact,e.name_exchange_category,t.total,t.paid,t.rest,t.description,t.transaction_date,t.is_income FROM "transaction" t,Wallet w,Contact c,exchange_category e WHERE t.wallet_id=w.id and w.id = ? and e.id = ? and t.contact_id=c.id and t.exchange_id=e.id GROUP BY t.id',
@@ -485,9 +485,9 @@ class _$TransactionDao extends TransactionDao {
                   row['total'] as String,
                   row['paid'] as String,
                   row['rest'] as String,
-                  row['description'] as String,
+                  row['transaction_date'] as String,
                   row['is_income'] as int,
-                  row['transaction_date'] as String));
+                  row['description'] as String));
     }else if (contactId != 0 && walletId == 0 && categoryId != 0){
       return _queryAdapter.queryList(
           'SELECT t.id,w.name_wallet,c.name_contact,e.name_exchange_category,t.total,t.paid,t.rest,t.description,t.transaction_date,t.is_income FROM "transaction" t,Wallet w,Contact c,exchange_category e WHERE t.wallet_id=w.id and c.id = ? and e.id = ? and t.contact_id=c.id and t.exchange_id=e.id GROUP BY t.id',
@@ -501,9 +501,9 @@ class _$TransactionDao extends TransactionDao {
                   row['total'] as String,
                   row['paid'] as String,
                   row['rest'] as String,
-                  row['description'] as String,
+                  row['transaction_date'] as String,
                   row['is_income'] as int,
-                  row['transaction_date'] as String));
+                  row['description'] as String));
     }else if (contactId != 0 && walletId != 0 && categoryId == 0) {
       return _queryAdapter.queryList(
           'SELECT t.id,w.name_wallet,c.name_contact,e.name_exchange_category,t.total,t.paid,t.rest,t.description,t.transaction_date,t.is_income FROM "transaction" t,Wallet w,Contact c,exchange_category e WHERE t.wallet_id=w.id and c.id = ? and w.id = ? and t.contact_id=c.id and t.exchange_id=e.id GROUP BY t.id',
@@ -517,9 +517,9 @@ class _$TransactionDao extends TransactionDao {
                   row['total'] as String,
                   row['paid'] as String,
                   row['rest'] as String,
-                  row['description'] as String,
+                  row['transaction_date'] as String,
                   row['is_income'] as int,
-                  row['transaction_date'] as String));
+                  row['description'] as String));
     }else if(contactId == 0 && walletId == 0 && categoryId != 0){
       return _queryAdapter.queryList(
           'SELECT t.id,w.name_wallet,c.name_contact,e.name_exchange_category,t.total,t.paid,t.rest,t.description,t.transaction_date,t.is_income FROM "transaction" t,Wallet w,Contact c,exchange_category e WHERE t.wallet_id=w.id and e.id = ? and t.contact_id=c.id and t.exchange_id=e.id GROUP BY t.id',
@@ -533,9 +533,9 @@ class _$TransactionDao extends TransactionDao {
                   row['total'] as String,
                   row['paid'] as String,
                   row['rest'] as String,
-                  row['description'] as String,
+                  row['transaction_date'] as String,
                   row['is_income'] as int,
-                  row['transaction_date'] as String));
+                  row['description'] as String));
     }else if(contactId == 0 && walletId != 0 && categoryId == 0){
       return _queryAdapter.queryList(
           'SELECT t.id,w.name_wallet,c.name_contact,e.name_exchange_category,t.total,t.paid,t.rest,t.description,t.transaction_date,t.is_income FROM "transaction" t,Wallet w,Contact c,exchange_category e WHERE t.wallet_id=w.id and w.id = ? and t.contact_id=c.id and t.exchange_id=e.id GROUP BY t.id',
@@ -549,9 +549,9 @@ class _$TransactionDao extends TransactionDao {
                   row['total'] as String,
                   row['paid'] as String,
                   row['rest'] as String,
-                  row['description'] as String,
+                  row['transaction_date'] as String,
                   row['is_income'] as int,
-                  row['transaction_date'] as String));
+                  row['description'] as String));
     }else if(contactId != 0 && walletId == 0 && categoryId == 0){
       return _queryAdapter.queryList(
           'SELECT t.id,w.name_wallet,c.name_contact,e.name_exchange_category,t.total,t.paid,t.rest,t.description,t.transaction_date,t.is_income FROM "transaction" t,Wallet w,Contact c,exchange_category e WHERE t.wallet_id=w.id and c.id = ? and t.contact_id=c.id and t.exchange_id=e.id GROUP BY t.id',
@@ -565,9 +565,9 @@ class _$TransactionDao extends TransactionDao {
                   row['total'] as String,
                   row['paid'] as String,
                   row['rest'] as String,
-                  row['description'] as String,
+                  row['transaction_date'] as String,
                   row['is_income'] as int,
-                  row['transaction_date'] as String));
+                  row['description'] as String));
     }else{
       return _queryAdapter.queryList(
           'SELECT t.id,w.name_wallet,c.name_contact,e.name_exchange_category,t.total,t.paid,t.rest,t.description,t.transaction_date,t.is_income FROM "transaction" t,Wallet w,Contact c,exchange_category e WHERE t.wallet_id=w.id and t.contact_id=c.id and t.exchange_id=e.id GROUP BY t.id',
@@ -580,9 +580,9 @@ class _$TransactionDao extends TransactionDao {
                   row['total'] as String,
                   row['paid'] as String,
                   row['rest'] as String,
-                  row['description'] as String,
+                  row['transaction_date'] as String,
                   row['is_income'] as int,
-                  row['transaction_date'] as String));
+                  row['description'] as String));
     }
   }
 

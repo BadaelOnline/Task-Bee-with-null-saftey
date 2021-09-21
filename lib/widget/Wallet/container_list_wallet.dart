@@ -1,40 +1,42 @@
 import 'package:flutter/material.dart';
 
-class widget_Container extends StatelessWidget {
-  const widget_Container({
+class Container_List_Wallet extends StatelessWidget {
+  const Container_List_Wallet({
     Key? key,
     this.ontap,
     this.text,
     required this.image,
-    this.balanc,
-    this.currency,
   }) : super(key: key);
 
   final ontap;
   final String? text;
   final Widget image;
-  final String? balanc;
-  final String? currency;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: ontap,
       child: Container(
-        height: 50,
+        height: 55,
         width: MediaQuery.of(context).size.width,
         child: Row(
           children: [
             Padding(
-                padding: const EdgeInsets.only(
-                    top: 5, left: 5, bottom: 5, right: 10),
-                child: image),
-            Text('$text'),
-            SizedBox(
-              width: 25,
+              padding:
+                  const EdgeInsets.only(top: 5, left: 30, bottom: 5, right: 50),
+              child: Container(
+                child: image,
+                height: 35,
+                width: 35,
+              ),
             ),
-            Text(balanc != null ? '$balanc' : ''),
-            Text(currency != null ? "$balanc" : '')
+            Text(
+              '$text',
+              style: TextStyle(
+                  color: Colors.grey[500],
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16),
+            ),
           ],
         ),
         decoration: BoxDecoration(

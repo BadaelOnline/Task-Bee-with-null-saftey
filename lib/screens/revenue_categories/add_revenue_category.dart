@@ -7,18 +7,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'revenue_home.dart';
+
 // ignore: must_be_immutable
-class AddExchange extends StatelessWidget {
+class AddRevenueCategory extends StatelessWidget {
   // final String? catImage;
   TextEditingController? nameController = TextEditingController();
 
-  AddExchange({Key? key}) : super(key: key);
+  AddRevenueCategory({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-          Image.asset('assets/homepage/masaref.png'), 'Add Exchang Categoray'),
+          Image(
+            image: AssetImage('assets/homepage/dollar.png'),
+          ),
+          'Add Revnue Categoray'),
       body: BlocConsumer<ExchangeCubit, ExchangeStates>(
         listener: (context, ExchangeStates state) {
           if (state is InsertExchangesToDatabaseState) {
@@ -36,7 +41,9 @@ class AddExchange extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     BlocConsumer<ExchangeCubit, ExchangeStates>(
-                      listener: (context, state) {},
+                      listener: (context, state) {
+                        // TODO: implement listener
+                      },
                       builder: (context, state) {
                         return InkWell(
                           onTap: () {
@@ -85,8 +92,11 @@ class AddExchange extends StatelessWidget {
                   height: 25,
                 ),
                 Custom_Text(
-                  label: 'Category',
+                  label: ' Name \nCategory',
                   controller: nameController,
+                ),
+                SizedBox(
+                  width: 10,
                 ),
                 SizedBox(
                   height: 100,
@@ -97,7 +107,7 @@ class AddExchange extends StatelessWidget {
                     CustomRaisdButton(
                         onPressed: () {
                           ExchangeCubit.get(context).insertToDatabase(
-                              isIncome: 0,
+                              isIncome: 1,
                               exchangeName: nameController!.text,
                               catImage: ExchangeCubit.get(context).chosenImage);
                         },

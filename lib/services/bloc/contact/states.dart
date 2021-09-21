@@ -11,3 +11,5 @@ class InsertContactsToDatabaseState extends ContactStates{}
 class UpdateContactsToDatabaseState extends ContactStates{}
 
 class DeleteContactsFromDatabaseState extends ContactStates{}
+
+class ChoseContactFromChooseContactPageState extends ContactStates{}

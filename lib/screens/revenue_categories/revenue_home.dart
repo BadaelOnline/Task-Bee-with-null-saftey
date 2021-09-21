@@ -5,7 +5,7 @@ import 'package:financial/widget/custom_floating_action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ExchangeHome extends StatelessWidget {
+class RevenueCategoryHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ExchangeCubit, ExchangeStates>(
@@ -15,11 +15,11 @@ class ExchangeHome extends StatelessWidget {
         return Scaffold(
             appBar: CustomAppBar(
                 Image(
-                  image: AssetImage('assets/homepage/masaref.png'),
+                  image: AssetImage('assets/homepage/dollar.png'),
                 ),
-                'Expancies Categoray'),
+                'Revnue Categoray'),
             body: ListView.builder(
-              itemCount: cubit.exchanges!.length,
+              itemCount: cubit.revenues!.length,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
                   padding: EdgeInsets.all(10),
@@ -35,7 +35,7 @@ class ExchangeHome extends StatelessWidget {
                           children: [
                             Container(
                               padding: EdgeInsets.only(left: 8.0),
-                              child: cubit.exchanges![index].icon == ''
+                              child: cubit.revenues![index].icon == ''
                                   ? Container(
                                       height: 50,
                                       width: 50,
@@ -57,7 +57,7 @@ class ExchangeHome extends StatelessWidget {
                                         image: DecorationImage(
                                           scale: 0.5,
                                           image: AssetImage(
-                                              cubit.exchanges![index].icon),
+                                              cubit.revenues![index].icon),
                                         ),
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(100.0)),
@@ -71,7 +71,7 @@ class ExchangeHome extends StatelessWidget {
                             Container(
                                 padding: EdgeInsets.only(left: 8.0),
                                 child: Text(
-                                  cubit.exchanges![index].name,
+                                  cubit.revenues![index].name,
                                   style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
@@ -90,12 +90,13 @@ class ExchangeHome extends StatelessWidget {
                               ),
                             ),
                             IconButton(
-                              onPressed: () => Navigator.of(context)
-                                  .pushNamed('/updateExchange', arguments: {
-                                'categoryId': cubit.exchanges![index].id,
-                                'categoryName': cubit.exchanges![index].name,
-                                'categoryIcon': cubit.exchanges![index].icon,
-                              }),
+                              onPressed: () => Navigator.of(context).pushNamed(
+                                  '/updateRevenueCategory',
+                                  arguments: {
+                                    'categoryId': cubit.revenues![index].id,
+                                    'categoryName': cubit.revenues![index].name,
+                                    'categoryIcon': cubit.revenues![index].icon,
+                                  }),
                               icon: Icon(
                                 Icons.edit,
                                 size: 20,
@@ -104,7 +105,7 @@ class ExchangeHome extends StatelessWidget {
                             IconButton(
                               onPressed: () {
                                 cubit.deleteExchangeFromDatabase(
-                                    id: cubit.exchanges![index].id);
+                                    id: cubit.revenues![index].id);
                               },
                               icon: Icon(
                                 Icons.delete,
@@ -121,7 +122,8 @@ class ExchangeHome extends StatelessWidget {
             ),
             floatingActionButton: CustomFloatingActionButton(
               icon: Icon(Icons.add),
-              onPressed: () => Navigator.of(context).pushNamed('/addExchange'),
+              onPressed: () =>
+                  Navigator.of(context).pushNamed('/addRevenueCategory'),
             ));
       },
     );

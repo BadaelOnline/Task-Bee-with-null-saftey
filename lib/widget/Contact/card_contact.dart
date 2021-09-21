@@ -6,13 +6,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class CardContact extends StatelessWidget {
   final Function()? delete;
   final Function()? edit;
+  final Function()? onTap;
   final String? name;
 
   const CardContact({
     Key? key,
     this.delete,
     this.edit,
-    this.name,
+    this.name, this.onTap,
   }) : super(
           key: key,
         );
@@ -20,7 +21,8 @@ class CardContact extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.of(context).pushNamed('/previewcontact'),
+      onTap: onTap ,
+          // () => Navigator.of(context).pushNamed('/previewcontact'),
       child: Container(
           decoration: BoxDecoration(
             color: Colors.white,

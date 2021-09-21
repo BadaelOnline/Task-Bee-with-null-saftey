@@ -12,8 +12,11 @@ class ExchangeCubit extends Cubit<ExchangeStates> {
 
   AppDatabase? database;
   ExchangeCategoryDao? dao;
+  List<ExchangeCategory>? allCategories = [];
   List<ExchangeCategory>? exchanges = [];
+  List<ExchangeCategory>? revenues = [];
   String? chosenImage = '';
+  ExchangeCategory? chosenCategory;
 
   void createDatabase() {
     $FloorAppDatabase
@@ -29,8 +32,17 @@ class ExchangeCubit extends Cubit<ExchangeStates> {
   }
 
   void getExchangesFromDatabase() {
+    revenues!.clear();
+    exchanges!.clear();
     this.dao!.retrieveExchangeCategories().then((value) {
-      exchanges = value!;
+      allCategories = value;
+      for (int i = 0; i < value!.length; i++) {
+        if (value[i].isIncome == 1) {
+          revenues!.add(value[i]);
+        } else {
+          exchanges!.add(value[i]);
+        }
+      }
 
       emit(GetExchangesFromDatabaseState());
     });
@@ -38,35 +50,34 @@ class ExchangeCubit extends Cubit<ExchangeStates> {
 
   Future<void> insertToDatabase(
       {@required String? exchangeName,
-      @required String? catImage}) async {
-    int id = 0 ;
-    if (exchanges!.length == 0){
-      id = 1 ;
-    }else{
-      id = exchanges![exchanges!.length - 1].id + 1;
+      @required String? catImage,
+      @required int? isIncome}) async {
+    int id = 0;
+    if (allCategories!.length == 0) {
+      id = 1;
+    } else {
+      id = allCategories![allCategories!.length - 1].id + 1;
     }
 
-    if(id > 0 ){
-      dao!.insertExchangeCategory(
-          ExchangeCategory(id, exchangeName!, 1, catImage!, 0, 1))
+    if (id > 0) {
+      dao!
+          .insertExchangeCategory(
+              ExchangeCategory(id, exchangeName!, 1, catImage!, 0, isIncome!))
           .then((value) {
         emit(InsertExchangesToDatabaseState());
         getExchangesFromDatabase();
       });
     }
-
   }
 
-  Future<void> updateExchangeDatabase({
-    @required int? isId,
-    @required String? exchangeName,
-    @required String? icon,
-  }) async {
-    print('////////////////////////////////////333333333333 $isId');
-    print('////////////////////////////////////22222222222 $exchangeName');
-    print('////////////////////////////////////111111111 $icon');
-    dao!.updateExchangeCategory(
-            ExchangeCategory(isId!, exchangeName!, 1, icon!, 0, 1))
+  Future<void> updateExchangeDatabase(
+      {@required int? isId,
+      @required String? exchangeName,
+      @required String? icon,
+      @required int? isIncome}) async {
+    dao!
+        .updateExchangeCategory(
+            ExchangeCategory(isId!, exchangeName!, 1, icon!, 0, isIncome!))
         .then((value) {
       emit(UpdateExchangesToDatabaseState());
       getExchangesFromDatabase();
@@ -85,9 +96,9 @@ class ExchangeCubit extends Cubit<ExchangeStates> {
   int getExchangeId({
     @required String? exchangeName,
   }) {
-    for (int i = 0; i < exchanges!.length; i++) {
-      if (exchanges![i].name == exchangeName) {
-        return exchanges![i].id;
+    for (int i = 0; i < allCategories!.length; i++) {
+      if (allCategories![i].name == exchangeName) {
+        return allCategories![i].id;
       }
     }
     return 0;
@@ -96,9 +107,9 @@ class ExchangeCubit extends Cubit<ExchangeStates> {
   String getExchangeIcon({
     @required int? exchangeId,
   }) {
-    for (int i = 0; i < exchanges!.length; i++) {
-      if (exchanges![i].id == exchangeId) {
-        return exchanges![i].icon;
+    for (int i = 0; i < allCategories!.length; i++) {
+      if (allCategories![i].id == exchangeId) {
+        return allCategories![i].icon;
       }
     }
     return 'error';
@@ -107,19 +118,27 @@ class ExchangeCubit extends Cubit<ExchangeStates> {
   String getExchangeName({
     @required int? exchangeId,
   }) {
-    for (int i = 0; i < exchanges!.length; i++) {
-      if (exchanges![i].id == exchangeId) {
-        return exchanges![i].name;
+    for (int i = 0; i < allCategories!.length; i++) {
+      if (allCategories![i].id == exchangeId) {
+        return allCategories![i].name;
       }
     }
     return 'error';
   }
 
   void choseImage({
-  @required String? image,
-}){
+    @required String? image,
+  }) {
     print('ooooooooooooooooooooooooooooooooo $image');
     chosenImage = image;
     emit(ChoseImageFromCategoryImagePageState());
+  }
+
+  void choseCategory({
+    @required ExchangeCategory? category,
+  }) {
+    print('ooooooooooooooooooooooooooooooooo $category');
+    chosenCategory = category;
+    emit(ChoseCategoryFromChooseCategoryPageState());
   }
 }

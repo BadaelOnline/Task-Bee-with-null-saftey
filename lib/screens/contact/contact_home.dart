@@ -1,8 +1,7 @@
-import 'dart:ui';
-
 import 'package:financial/services/bloc/contact/cubit.dart';
 import 'package:financial/services/bloc/contact/states.dart';
 import 'package:financial/widget/Contact/card_contact.dart';
+import 'package:financial/widget/Contact/search_widget.dart';
 import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_floating_action_button.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +13,6 @@ class ContactHome extends StatefulWidget {
 }
 
 class _ContactHomeState extends State<ContactHome> {
-  bool open = true;
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ContactCubit, ContactStates>(
@@ -32,60 +29,7 @@ class _ContactHomeState extends State<ContactHome> {
               padding: const EdgeInsets.only(top: 10),
               child: Column(
                 children: [
-                  Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 8, left: 8),
-                      child: AnimatedContainer(
-                          duration: Duration(milliseconds: 400),
-                          width: open ? 50 : MediaQuery.of(context).size.width,
-                          height: 50,
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.circular(open ? 32 : 8),
-                              color: Colors.white,
-                              boxShadow: kElevationToShadow[1]),
-                          child: Row(children: [
-                            Expanded(
-                              child: Container(
-                                  padding: EdgeInsets.only(left: 25),
-                                  child: !open
-                                      ? TextField(
-                                          decoration: InputDecoration(
-                                              hintText: "Search",
-                                              hintStyle: TextStyle(
-                                                  color: Colors.black54),
-                                              border: InputBorder.none),
-                                        )
-                                      : null),
-                            ),
-                            AnimatedContainer(
-                              duration: Duration(
-                                milliseconds: 400,
-                              ),
-                              child: Material(
-                                type: MaterialType.transparency,
-                                child: InkWell(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(open ? 33 : 0),
-                                    topRight: Radius.circular(32),
-                                    bottomLeft: Radius.circular(open ? 33 : 0),
-                                    bottomRight: Radius.circular(32),
-                                  ),
-                                  child: Padding(
-                                      padding: const EdgeInsets.all(12.0),
-                                      child: Icon(
-                                          open ? Icons.search : Icons.close)),
-                                  onTap: () {
-                                    setState(() {
-                                      open = !open;
-                                    });
-                                  },
-                                ),
-                              ),
-                            )
-                          ])),
-                    ),
-                  ),
+                  Flexible(child: Search_Widget()),
                   Flexible(
                     child: ListView.builder(
                       itemCount: cubit.contacts!.length,
@@ -96,6 +40,10 @@ class _ContactHomeState extends State<ContactHome> {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 5),
                             child: CardContact(
+                              onTap: () => Navigator.of(context)
+                                  .pushNamed('/previewcontact', arguments: {
+                                'contact': cubit.contacts![index]
+                              }),
                               delete: () {
                                 cubit.deleteContactFromDatabase(
                                     id: cubit.contacts![index].id);

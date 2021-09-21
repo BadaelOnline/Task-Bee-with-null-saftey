@@ -4,16 +4,19 @@ import '../widget_container.dart';
 
 // ignore: camel_case_types
 class Visibility_Note extends StatefulWidget {
-  const Visibility_Note({Key? key}) : super(key: key);
+  const Visibility_Note({Key? key, this.des}) : super(key: key);
+  final TextEditingController? des;
 
   @override
-  _Visibility_NoteState createState() => _Visibility_NoteState();
+  _Visibility_NoteState createState() => _Visibility_NoteState(des);
 }
 
 // ignore: camel_case_types
 class _Visibility_NoteState extends State<Visibility_Note> {
-  TextEditingController descreptionController = TextEditingController();
+  final TextEditingController? descreptionController;
   bool isVisabile4 = false;
+
+  _Visibility_NoteState(this.descreptionController);
   @override
   Widget build(BuildContext context) {
     return Column(

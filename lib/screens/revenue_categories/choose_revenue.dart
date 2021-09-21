@@ -1,19 +1,18 @@
 import 'package:financial/services/bloc/exchang_category/cubit.dart';
-import 'package:financial/services/bloc/exchang_category/cubit.dart';
 import 'package:financial/services/bloc/exchang_category/states.dart';
 import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_floating_action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ChooseExchang extends StatefulWidget {
-  const ChooseExchang({Key? key}) : super(key: key);
+class ChooseRevenue extends StatefulWidget {
+  const ChooseRevenue({Key? key}) : super(key: key);
 
   @override
-  _ChooseExchangState createState() => _ChooseExchangState();
+  _ChooseRevenueState createState() => _ChooseRevenueState();
 }
 
-class _ChooseExchangState extends State<ChooseExchang> {
+class _ChooseRevenueState extends State<ChooseRevenue> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ExchangeCubit, ExchangeStates>(
@@ -29,11 +28,11 @@ class _ChooseExchangState extends State<ChooseExchang> {
                 ),
                 'Choose Expancies'),
             body: ListView.builder(
-              itemCount: cubit.exchanges!.length,
+              itemCount: cubit.revenues!.length,
               itemBuilder: (BuildContext context, int index) {
                 return InkWell(
-                  onTap: (){
-                    cubit.choseCategory(category: cubit.exchanges![index]);
+                  onTap: () {
+                    cubit.choseCategory(category: cubit.revenues![index]);
                     Navigator.of(context).pop();
                   },
                   child: Container(
@@ -46,47 +45,46 @@ class _ChooseExchangState extends State<ChooseExchang> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
-                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
                                 padding: EdgeInsets.only(left: 8.0),
-                                child: cubit.exchanges![index].icon == ''
+                                child: cubit.revenues![index].icon == ''
                                     ? Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey[100],
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(100.0)),
-                                    border: Border.all(
-                                      color: Colors.amber[400]!,
-                                      width: 2,
-                                    ),
-                                  ),
-                                )
+                                        height: 50,
+                                        width: 50,
+                                        decoration: BoxDecoration(
+                                          color: Colors.grey[100],
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(100.0)),
+                                          border: Border.all(
+                                            color: Colors.amber[400]!,
+                                            width: 2,
+                                          ),
+                                        ),
+                                      )
                                     : Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey[100],
-                                    image: DecorationImage(
-                                      scale: 0.5,
-                                      image: AssetImage(
-                                          cubit.exchanges![index].icon),
-                                    ),
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(100.0)),
-                                    border: Border.all(
-                                      color: Colors.amber[400]!,
-                                      width: 2,
-                                    ),
-                                  ),
-                                ),
+                                        height: 50,
+                                        width: 50,
+                                        decoration: BoxDecoration(
+                                          color: Colors.grey[100],
+                                          image: DecorationImage(
+                                            scale: 0.5,
+                                            image: AssetImage(
+                                                cubit.revenues![index].icon),
+                                          ),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(100.0)),
+                                          border: Border.all(
+                                            color: Colors.amber[400]!,
+                                            width: 2,
+                                          ),
+                                        ),
+                                      ),
                               ),
                               Container(
                                   padding: EdgeInsets.only(left: 8.0),
                                   child: Text(
-                                    cubit.exchanges![index].name,
+                                    cubit.revenues![index].name,
                                     style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold,
@@ -94,7 +92,6 @@ class _ChooseExchangState extends State<ChooseExchang> {
                                   )),
                             ],
                           ),
-
                         ],
                       ),
                     ]),
