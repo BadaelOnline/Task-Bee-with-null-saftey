@@ -1,5 +1,6 @@
 import 'package:financial/services/bloc/exchang_category/cubit.dart';
 import 'package:financial/services/bloc/exchang_category/states.dart';
+import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
 import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,18 +19,11 @@ class AddRevenueCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context)
-                .pop(MaterialPageRoute(builder: (context) => RevenueCategoryHome()));
-          },
-        ),
-        centerTitle: true,
-        title: Text('Add revenue Category'),
-        backgroundColor: Colors.amber[400],
-      ),
+      appBar: CustomAppBar(
+          Image(
+            image: AssetImage('assets/homepage/dollar.png'),
+          ),
+          'Add Revnue Categoray'),
       body: BlocConsumer<ExchangeCubit, ExchangeStates>(
         listener: (context, ExchangeStates state) {
           if (state is InsertExchangesToDatabaseState) {
@@ -39,6 +33,7 @@ class AddRevenueCategory extends StatelessWidget {
         },
         builder: (context, state) {
           return Container(
+            alignment: Alignment.center,
             padding: EdgeInsets.all(15),
             child: SingleChildScrollView(
               child: Column(children: [
@@ -96,17 +91,12 @@ class AddRevenueCategory extends StatelessWidget {
                 SizedBox(
                   height: 25,
                 ),
-                Row(
-                  children: [
-                    Expanded(
-                        child: Custom_Text(
-                            label: 'Name Category',
-                            controller: nameController,
-                            prefix: Icons.category)),
-                    SizedBox(
-                      width: 10,
-                    ),
-                  ],
+                Custom_Text(
+                  label: ' Name \nCategory',
+                  controller: nameController,
+                ),
+                SizedBox(
+                  width: 10,
                 ),
                 SizedBox(
                   height: 100,
@@ -117,7 +107,7 @@ class AddRevenueCategory extends StatelessWidget {
                     CustomRaisdButton(
                         onPressed: () {
                           ExchangeCubit.get(context).insertToDatabase(
-                            isIncome: 1,
+                              isIncome: 1,
                               exchangeName: nameController!.text,
                               catImage: ExchangeCubit.get(context).chosenImage);
                         },

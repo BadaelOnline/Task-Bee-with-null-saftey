@@ -12,7 +12,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class Column_Wallet_Expancies_contact extends StatelessWidget {
   final String cat;
 
-  const Column_Wallet_Expancies_contact({Key? key, required this.cat}) : super(key: key);
+  const Column_Wallet_Expancies_contact({Key? key, required this.cat})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,13 +26,18 @@ class Column_Wallet_Expancies_contact extends StatelessWidget {
             // print('******************************${WalletCubit.get(context).chosenWallet!.name}');
             return widget_Container(
               image: Image.asset(
-                'assets/homepage/wallet.png',
+                WalletCubit.get(context).chosenWallet != null
+                    ? WalletCubit.get(context).chosenWallet!.icon
+                    : 'assets/homepage/wallet.png',
                 width: 40,
                 height: 40,
               ),
               text: WalletCubit.get(context).chosenWallet != null
                   ? WalletCubit.get(context).chosenWallet!.name
                   : 'Wallet',
+              balanc: WalletCubit.get(context).chosenWallet != null
+                  ? WalletCubit.get(context).chosenWallet!.balance
+                  : '',
               ontap: () => Navigator.of(context).pushNamed('/choosewallet'),
             );
           },
@@ -46,13 +52,17 @@ class Column_Wallet_Expancies_contact extends StatelessWidget {
           builder: (context, state) {
             return widget_Container(
               image: Image.asset(
-                'assets/homepage/masaref.png',
+                ExchangeCubit.get(context).chosenCategory != null
+                    ? ExchangeCubit.get(context).chosenCategory!.icon
+                    : 'assets/homepage/dollar.png',
                 height: 40,
                 width: 40,
               ),
               text: ExchangeCubit.get(context).chosenCategory != null
                   ? ExchangeCubit.get(context).chosenCategory!.name
-                  : cat == 'chooseexchang'? 'Expancies item' : 'Revenue item',
+                  : cat == 'chooseexchang'
+                      ? 'Expancies item'
+                      : 'Revenue item',
               ontap: () => Navigator.of(context).pushNamed('/$cat'),
             );
           },
@@ -68,7 +78,9 @@ class Column_Wallet_Expancies_contact extends StatelessWidget {
             ContactCubit cubit = ContactCubit.get(context);
             return widget_Container(
               image: Image.asset(
-                'assets/homepage/person.png',
+                ExchangeCubit.get(context).chosenCategory != null
+                    ? 'assets/contact/group.png'
+                    : 'assets/homepage/person.png',
                 width: 40,
                 height: 40,
               ),

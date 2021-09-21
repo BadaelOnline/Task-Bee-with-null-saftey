@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class TransactionCard extends StatelessWidget {
   final String? titleExchange;
   final String? datetime;
@@ -20,7 +19,6 @@ class TransactionCard extends StatelessWidget {
   final Function()? deleteTransaction;
   final Function()? updateTransaction;
 
-
   const TransactionCard({
     Key? key,
     this.titleExchange,
@@ -36,7 +34,9 @@ class TransactionCard extends StatelessWidget {
     this.paidMoney,
     this.iconExchange,
     this.restMoney,
-    this.currency, this.deleteTransaction, this.updateTransaction,
+    this.currency,
+    this.deleteTransaction,
+    this.updateTransaction,
   }) : super(key: key);
 
   @override
@@ -78,14 +78,11 @@ class TransactionCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-
                       Row(
                         children: [
-
                           Container(
                             padding: EdgeInsets.only(left: 8.0),
                             child: IconButton(
-
                               onPressed: deleteTransaction,
                               icon: Icon(
                                 Icons.delete,
@@ -96,7 +93,6 @@ class TransactionCard extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.only(left: 8.0),
                             child: IconButton(
-
                               onPressed: updateTransaction,
                               icon: Icon(
                                 Icons.edit,
@@ -150,8 +146,8 @@ class TransactionCard extends StatelessWidget {
                                   Container(
                                     child: Text(
                                       titleExchange!,
-                                      style:
-                                          TextStyle(fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                 ],
@@ -201,6 +197,7 @@ class TransactionCard extends StatelessWidget {
                                   Container(
                                     child: Text(
                                       note!,
+                                      maxLines: 1,
                                     ),
                                   ),
                                 ],
@@ -277,15 +274,21 @@ class TransactionCard extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                currency != 'no currency for this wallet' ?Text(currency!):CircularProgressIndicator(),
+                                currency != 'no currency for this wallet'
+                                    ? Text(currency!)
+                                    : CircularProgressIndicator(),
                                 SizedBox(
                                   height: 5,
                                 ),
-                                currency != 'no currency for this wallet' ?Text(currency!):CircularProgressIndicator(),
+                                currency != 'no currency for this wallet'
+                                    ? Text(currency!)
+                                    : CircularProgressIndicator(),
                                 SizedBox(
                                   height: 5,
                                 ),
-                                currency != 'no currency for this wallet' ?Text(currency!):CircularProgressIndicator(),
+                                currency != 'no currency for this wallet'
+                                    ? Text(currency!)
+                                    : CircularProgressIndicator(),
                               ],
                             ),
                           ],

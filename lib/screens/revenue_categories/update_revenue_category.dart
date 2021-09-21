@@ -1,5 +1,6 @@
 import 'package:financial/services/bloc/exchang_category/cubit.dart';
 import 'package:financial/services/bloc/exchang_category/states.dart';
+import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
 import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -27,17 +28,8 @@ class UpdateRevenueCategory extends StatelessWidget {
     exchangeName = arguments['categoryName'];
     catImage = arguments['categoryIcon'];
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        centerTitle: true,
-        title: Text('Update revenue Category'),
-        backgroundColor: Colors.amber[400],
-      ),
+      appBar: CustomAppBar(
+          Image.asset('assets/homepage/dollar.png'), 'Update Categoray'),
       body: BlocConsumer<ExchangeCubit, ExchangeStates>(
         listener: (context, state) {
           if (state is UpdateExchangesToDatabaseState) {
@@ -47,6 +39,7 @@ class UpdateRevenueCategory extends StatelessWidget {
         },
         builder: (context, state) {
           return Container(
+            alignment: Alignment.center,
             padding: EdgeInsets.all(15),
             child: SingleChildScrollView(
               child: Column(
@@ -101,20 +94,11 @@ class UpdateRevenueCategory extends StatelessWidget {
                     SizedBox(
                       height: 25,
                     ),
-                    Row(
-                      children: [
-                        Expanded(
-                            child: Custom_Text(
-                                label: 'Name Category',
-                                controller: nameController =
-                                    TextEditingController(
-                                        text: '$exchangeName'),
-                                prefix: Icons.category)),
-                        SizedBox(
-                          width: 10,
-                        ),
-                      ],
-                    ),
+                    Custom_Text(
+                        label: 'Name Category',
+                        controller: nameController =
+                            TextEditingController(text: '$exchangeName'),
+                        prefix: Icons.category),
                     SizedBox(
                       height: 100,
                     ),

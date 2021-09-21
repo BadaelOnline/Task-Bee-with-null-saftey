@@ -1,5 +1,4 @@
 import 'package:financial/services/bloc/exchang_category/cubit.dart';
-import 'package:financial/services/bloc/exchang_category/cubit.dart';
 import 'package:financial/services/bloc/exchang_category/states.dart';
 import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_floating_action_button.dart';
@@ -32,7 +31,7 @@ class _ChooseRevenueState extends State<ChooseRevenue> {
               itemCount: cubit.revenues!.length,
               itemBuilder: (BuildContext context, int index) {
                 return InkWell(
-                  onTap: (){
+                  onTap: () {
                     cubit.choseCategory(category: cubit.revenues![index]);
                     Navigator.of(context).pop();
                   },
@@ -46,42 +45,41 @@ class _ChooseRevenueState extends State<ChooseRevenue> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
-                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
                                 padding: EdgeInsets.only(left: 8.0),
                                 child: cubit.revenues![index].icon == ''
                                     ? Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey[100],
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(100.0)),
-                                    border: Border.all(
-                                      color: Colors.amber[400]!,
-                                      width: 2,
-                                    ),
-                                  ),
-                                )
+                                        height: 50,
+                                        width: 50,
+                                        decoration: BoxDecoration(
+                                          color: Colors.grey[100],
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(100.0)),
+                                          border: Border.all(
+                                            color: Colors.amber[400]!,
+                                            width: 2,
+                                          ),
+                                        ),
+                                      )
                                     : Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey[100],
-                                    image: DecorationImage(
-                                      scale: 0.5,
-                                      image: AssetImage(
-                                          cubit.revenues![index].icon),
-                                    ),
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(100.0)),
-                                    border: Border.all(
-                                      color: Colors.amber[400]!,
-                                      width: 2,
-                                    ),
-                                  ),
-                                ),
+                                        height: 50,
+                                        width: 50,
+                                        decoration: BoxDecoration(
+                                          color: Colors.grey[100],
+                                          image: DecorationImage(
+                                            scale: 0.5,
+                                            image: AssetImage(
+                                                cubit.revenues![index].icon),
+                                          ),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(100.0)),
+                                          border: Border.all(
+                                            color: Colors.amber[400]!,
+                                            width: 2,
+                                          ),
+                                        ),
+                                      ),
                               ),
                               Container(
                                   padding: EdgeInsets.only(left: 8.0),
@@ -94,7 +92,6 @@ class _ChooseRevenueState extends State<ChooseRevenue> {
                                   )),
                             ],
                           ),
-
                         ],
                       ),
                     ]),

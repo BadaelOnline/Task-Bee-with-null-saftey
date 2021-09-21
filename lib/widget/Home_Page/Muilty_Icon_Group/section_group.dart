@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'icon_text.dart';
 
+// ignore: camel_case_types
 class Section_Group extends StatelessWidget {
   const Section_Group({
     Key? key,
@@ -44,7 +45,8 @@ class Section_Group extends StatelessWidget {
                 width: duoble,
               ),
               text: 'Revnue',
-              onTap: () => Navigator.of(context).pushNamed('/revenueCategoryHome'),
+              onTap: () =>
+                  Navigator.of(context).pushNamed('/revenueCategoryHome'),
             ),
             Icon_Text(
               icon: Image.asset(
