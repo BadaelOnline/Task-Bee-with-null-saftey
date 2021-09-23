@@ -24,69 +24,82 @@ class AddBankAccount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: CustomAppBar(
-            Image(
-              image: AssetImage('assets/homepage/wallet.png'),
-            ),
-            'Add Wallet'),
-        body: SingleChildScrollView(
-          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-          padding: EdgeInsets.all(15),
-          child: Column(children: [
-            Image_Wallet(
-              image: image,
-              scale: 9.0,
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Name_Wallet(
-              name: 'Bank Account',
-            ),
-            SizedBox(height: 20),
-            Text_Wallet_Name(
-                label: 'Name', controller: nameController, namecurrency: 'S.P'),
-            SizedBox(
-              height: 20,
-            ),
-            Text_Wallet_Balance(
-                label: 'balance ',
-                controller: balanceController,
-                namecurrency: 'S.P',
-                type: TextInputType.number),
-            SizedBox(
-              height: 20,
-            ),
-            checkbox_wallet(),
-            SizedBox(
-              height: 20,
-            ),
-            BlocConsumer<CurrencyCubit, CurrencyStates>(
-              listener: (context, state) {
-                if (state is InsertCurrenciesToDatabaseState) {
-                  Navigator.of(context).pop();
-                }
-              },
-              builder: (context, state) {
-                return Column(
-                  children: [
-                    CustomRaisdButton(
-                        text: 'save',
-                        onPressed: () {
-                          WalletCubit.get(context).insertToDatabase(
-                              icon: image,
-                              walletName: nameController.text,
-                              walletBalance: balanceController.text,
-                              currencyId: CurrencyCubit.get(context)
-                                  .getCurrencyId(
-                                      currencyName: currencyController.text));
-                        }),
-                  ],
-                );
-              },
-            )
-          ]),
-        ));
+    return BlocConsumer<WalletCubit, WalletStates>(
+      listener: (context, state) {
+        if(state is InsertWalletsToDatabaseState){
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        }
+      },
+      builder: (context, state) {
+        return Scaffold(
+            appBar: CustomAppBar(
+                Image(
+                  image: AssetImage('assets/homepage/wallet.png'),
+                ),
+                'Add Wallet'),
+            body: SingleChildScrollView(
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+              padding: EdgeInsets.all(15),
+              child: Column(children: [
+                Image_Wallet(
+                  image: image,
+                  scale: 9.0,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Name_Wallet(
+                  name: 'Bank Account',
+                ),
+                SizedBox(height: 20),
+                Text_Wallet_Name(
+                  label: 'Name', controller: nameController,
+                  // namecurrency: 'S.P',
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text_Wallet_Balance(
+                    label: 'balance ',
+                    controller: balanceController,
+                    namecurrency: 'S.P',
+                    type: TextInputType.number),
+                SizedBox(
+                  height: 20,
+                ),
+                checkbox_wallet(),
+                SizedBox(
+                  height: 20,
+                ),
+                BlocConsumer<CurrencyCubit, CurrencyStates>(
+                  listener: (context, state) {
+                    if (state is InsertCurrenciesToDatabaseState) {
+                      Navigator.of(context).pop();
+                    }
+                  },
+                  builder: (context, state) {
+                    return Column(
+                      children: [
+                        CustomRaisdButton(
+                            text: 'save',
+                            onPressed: () {
+                              WalletCubit.get(context).insertToDatabase(
+                                  icon: image,
+                                  walletName: nameController.text,
+                                  walletBalance: balanceController.text,
+                                  currencyId: CurrencyCubit
+                                      .get(context)
+                                      .chosenCurrency!
+                                      .id);
+                            }),
+                      ],
+                    );
+                  },
+                )
+              ]),
+            ));
+      },
+    );
   }
 }

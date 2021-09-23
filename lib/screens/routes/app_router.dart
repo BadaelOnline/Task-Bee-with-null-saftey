@@ -77,7 +77,7 @@ class AppRouter {
       case '/addCashWallet':
         return MaterialPageRoute(
             builder: (_) => Add_Cash_Wallet(),
-            settings: RouteSettings(arguments: settings.arguments));
+            );
       case '/addCreditCard':
         return MaterialPageRoute(
           builder: (_) => AddCreditCard(),

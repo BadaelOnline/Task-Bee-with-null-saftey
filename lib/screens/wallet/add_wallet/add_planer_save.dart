@@ -32,8 +32,9 @@ class AddPlannerSave extends StatelessWidget {
           'Add Wallet'),
       body: BlocConsumer<WalletCubit, WalletStates>(
         listener: (context, state) {
-          if (state is InsertWalletsToDatabaseState) {
-            Navigator.of(context).popAndPushNamed('/walletHome');
+          if(state is InsertWalletsToDatabaseState){
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
           }
         },
         builder: (context, state) {
@@ -60,7 +61,8 @@ class AddPlannerSave extends StatelessWidget {
                   Text_Wallet_Name(
                       label: 'Name',
                       controller: nameController,
-                      namecurrency: 'S.P'),
+                      // namecurrency: 'S.P',
+                  ),
                   SizedBox(
                     height: 20,
                   ),
@@ -98,10 +100,7 @@ class AddPlannerSave extends StatelessWidget {
                                     icon: image,
                                     walletName: nameController.text,
                                     walletBalance: balanceController.text,
-                                    currencyId: CurrencyCubit.get(context)
-                                        .getCurrencyId(
-                                            currencyName:
-                                                currencyController.text));
+                                    currencyId: CurrencyCubit.get(context).chosenCurrency!.id);
                               }),
                         ],
                       );

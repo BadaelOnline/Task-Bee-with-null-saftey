@@ -22,19 +22,15 @@ class ChooseCurrency extends StatelessWidget {
                   child: Card(
                       child: ListTile(
                     contentPadding: EdgeInsets.all(8.0),
-                    title: Text(cubit.currencies![index].name),
-                    leading: IconButton(
-                      icon: Icon(Icons.delete),
-                      onPressed: () {
-                        cubit.deleteCurrencyFromDatabase(
-                            id: cubit.currencies![index].id);
-                      },
+                    title: Center(
+                      child: Text(
+                        cubit.currencies![index].name,
+                      ),
                     ),
-                    onTap: () => Navigator.of(context)
-                        .pushNamed('/addCashWallet', arguments: {
-                      'currencyId': cubit.currencies![index].id,
-                      'currencyName': cubit.currencies![index].name
-                    }),
+                    onTap: () {
+                      cubit.choseCurrency(currency: cubit.currencies![index]);
+                      Navigator.of(context).pop();
+                    },
                   )),
                 );
               },

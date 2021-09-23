@@ -1,4 +1,9 @@
+import 'package:financial/common/constant/constants.dart';
+import 'package:financial/services/bloc/currency/cubit.dart';
+import 'package:financial/services/bloc/currency/cubit.dart';
+import 'package:financial/services/bloc/currency/states.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 // ignore: camel_case_types
 class Custom_Text_Total extends StatelessWidget {
@@ -10,6 +15,7 @@ class Custom_Text_Total extends StatelessWidget {
   final String? label;
   final IconData? prefix;
   final bool? isClickable;
+
   const Custom_Text_Total({
     Key? key,
     this.controller,
@@ -64,27 +70,37 @@ class Custom_Text_Total extends StatelessWidget {
             onTap: onTap,
           ),
         ),
-        Container(
-          alignment: Alignment.center,
-          width: MediaQuery.of(context).size.width * 0.2,
-          height: 50,
-          child: Text(
-            'S.P',
-            style: TextStyle(fontSize: 15),
+        InkWell(
+          onTap: () => Navigator.of(context).pushNamed('/choosecurrency'),
+          child: Container(
+            alignment: Alignment.center,
+            width: MediaQuery.of(context).size.width * 0.2,
+            height: 50,
+            child: BlocConsumer<CurrencyCubit, CurrencyStates>(
+              listener: (context, state) {
+                // TODO: implement listener
+              },
+              builder: (context, state) {
+                return Text(
+                  CurrencyCubit.get(context).chosenCurrency != null ? CurrencyCubit.get(context).chosenCurrency!.name : kDefaultCurrency.code,
+                  style: TextStyle(fontSize: 15),
+                );
+              },
+            ),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.2),
+                    spreadRadius: 1,
+                    blurRadius: 1,
+                    offset: Offset(0, 1), // changes position of shadow
+                  ),
+                ],
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(8),
+                    bottomRight: Radius.circular(8))),
           ),
-          decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  spreadRadius: 1,
-                  blurRadius: 1,
-                  offset: Offset(0, 1), // changes position of shadow
-                ),
-              ],
-              borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(8),
-                  bottomRight: Radius.circular(8))),
         ),
       ]),
     );

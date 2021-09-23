@@ -16,7 +16,6 @@ class WalletCubit extends Cubit<WalletStates> {
   List<Wallet>? wallets = [];
   int? lastId;
   Wallet? chosenWallet;
-  Currency? namecurrency;
 
   void createDatabase() {
     $FloorAppDatabase
@@ -194,11 +193,5 @@ class WalletCubit extends Cubit<WalletStates> {
     emit(ChoseWalletFromChooseWalletPageState());
   }
 
-  void chosenamecurrency({
-    @required Currency? currency,
-  }) {
-    print('ooooooooooooooooooooooooooooooooo $currency');
-    namecurrency = currency;
-    emit(ChoseNameCurrencyFromChooseNameCurrencyPageState());
-  }
+
 }
