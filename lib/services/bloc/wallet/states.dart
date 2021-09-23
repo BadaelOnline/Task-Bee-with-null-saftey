@@ -12,6 +12,4 @@ class UpdateWalletsToDatabaseState extends WalletStates {}
 
 class DeleteWalletsFromDatabaseState extends WalletStates {}
 
-class ChoseNameCurrencyFromChooseNameCurrencyPageState extends WalletStates {}
-
 class ChoseWalletFromChooseWalletPageState extends WalletStates {}

@@ -1,4 +1,8 @@
+import 'package:financial/common/constant/constants.dart';
+import 'package:financial/services/bloc/currency/cubit.dart';
+import 'package:financial/services/bloc/currency/states.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Custom_Text_Paid extends StatelessWidget {
   final TextEditingController? controller;
@@ -9,6 +13,7 @@ class Custom_Text_Paid extends StatelessWidget {
   final String? label;
   final IconData? prefix;
   final bool? isClickable;
+
   const Custom_Text_Paid({
     Key? key,
     this.controller,
@@ -67,9 +72,16 @@ class Custom_Text_Paid extends StatelessWidget {
           alignment: Alignment.center,
           width: MediaQuery.of(context).size.width * 0.2,
           height: 50,
-          child: Text(
-            'S.P',
-            style: TextStyle(fontSize: 15),
+          child: BlocConsumer<CurrencyCubit, CurrencyStates>(
+            listener: (context, state) {
+              // TODO: implement listener
+            },
+            builder: (context, state) {
+              return Text(
+                CurrencyCubit.get(context).chosenCurrency != null ? CurrencyCubit.get(context).chosenCurrency!.name : kDefaultCurrency.code,
+                style: TextStyle(fontSize: 15),
+              );
+            },
           ),
           decoration: BoxDecoration(
               color: Colors.white,

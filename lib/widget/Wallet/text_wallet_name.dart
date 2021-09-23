@@ -1,4 +1,9 @@
+import 'package:financial/common/constant/constants.dart';
+import 'package:financial/services/bloc/currency/cubit.dart';
+import 'package:financial/services/bloc/currency/cubit.dart';
+import 'package:financial/services/bloc/currency/states.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 // ignore: camel_case_types
 class Text_Wallet_Name extends StatelessWidget {
@@ -10,7 +15,7 @@ class Text_Wallet_Name extends StatelessWidget {
   final String? label;
   final IconData? prefix;
   final bool? isClickable;
-  final String? namecurrency;
+  // final String? namecurrency;
 
   const Text_Wallet_Name({
     Key? key,
@@ -22,7 +27,7 @@ class Text_Wallet_Name extends StatelessWidget {
     this.label,
     this.prefix,
     this.isClickable,
-    this.namecurrency,
+    // this.namecurrency,
   }) : super(key: key);
 
   @override
@@ -67,30 +72,37 @@ class Text_Wallet_Name extends StatelessWidget {
             onTap: onTap,
           ),
         ),
-        InkWell(
-          onTap: () => Navigator.of(context).pushNamed('/choosecurrency'),
-          child: Container(
-            alignment: Alignment.center,
-            width: MediaQuery.of(context).size.width * 0.2,
-            height: 50,
-            child: Text(
-              '$namecurrency',
-              style: TextStyle(fontSize: 15),
-            ),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.2),
-                    spreadRadius: 1,
-                    blurRadius: 1,
-                    offset: Offset(0, 1), // changes position of shadow
-                  ),
-                ],
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(8),
-                    bottomRight: Radius.circular(8))),
-          ),
+        BlocConsumer<CurrencyCubit, CurrencyStates>(
+          listener: (context, state) {
+            // TODO: implement listener
+          },
+          builder: (context, state) {
+            return InkWell(
+              onTap: () => Navigator.of(context).pushNamed('/choosecurrency'),
+              child: Container(
+                alignment: Alignment.center,
+                width: MediaQuery.of(context).size.width * 0.2,
+                height: 50,
+                child: Text(
+                  CurrencyCubit.get(context).chosenCurrency != null ? CurrencyCubit.get(context).chosenCurrency!.name : kDefaultCurrency.code,
+                  style: TextStyle(fontSize: 15),
+                ),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.2),
+                        spreadRadius: 1,
+                        blurRadius: 1,
+                        offset: Offset(0, 1), // changes position of shadow
+                      ),
+                    ],
+                    borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(8),
+                        bottomRight: Radius.circular(8))),
+              ),
+            );
+          },
         ),
       ]),
     );
