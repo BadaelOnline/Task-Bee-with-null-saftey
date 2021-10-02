@@ -8,7 +8,6 @@ class Preview_Contact extends StatelessWidget {
   Preview_Contact({Key? key}) : super(key: key);
   Contact? contact;
 
-
   @override
   Widget build(BuildContext context) {
     final Map arguments = ModalRoute.of(context)!.settings.arguments as Map;
@@ -25,10 +24,21 @@ class Preview_Contact extends StatelessWidget {
             child: Column(
               children: [
                 image(),
-                Text('${contact!.name}'),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    '${contact!.name}',
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey[500],
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.all(12.0),
-                  child: ColumnContact(contact: contact,),
+                  child: ColumnContact(
+                    contact: contact,
+                  ),
                 ),
               ],
             ),

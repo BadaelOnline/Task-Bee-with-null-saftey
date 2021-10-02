@@ -29,6 +29,28 @@ class _FormDebtorsState extends State<FormDebtors> {
           padding: const EdgeInsets.all(15.0),
           child: ListView(
             children: [
+              BlocConsumer<ContactCubit, ContactStates>(
+                listener: (context, state) {
+                  // TODO: implement listener
+                },
+                builder: (context, state) {
+                  return widget_Container(
+                    image: Image.asset(
+                      'assets/homepage/person.png',
+                      width: 40,
+                      height: 40,
+                    ),
+                    text: ContactCubit.get(context).chosenContact != null
+                        ? ContactCubit.get(context).chosenContact!.name
+                        : 'Contact',
+                    ontap: () =>
+                        Navigator.of(context).pushNamed('/choosecontact'),
+                  );
+                },
+              ),
+              SizedBox(
+                height: 25,
+              ),
               Custom_Text_Total(
                 label: 'Total',
               ),
@@ -56,28 +78,6 @@ class _FormDebtorsState extends State<FormDebtors> {
               ),
               SizedBox(
                 height: 15,
-              ),
-              BlocConsumer<ContactCubit, ContactStates>(
-                listener: (context, state) {
-                  // TODO: implement listener
-                },
-                builder: (context, state) {
-                  return widget_Container(
-                    image: Image.asset(
-                      'assets/homepage/person.png',
-                      width: 40,
-                      height: 40,
-                    ),
-                    text: ContactCubit.get(context).chosenContact != null
-                        ? ContactCubit.get(context).chosenContact!.name
-                        : 'Contact',
-                    ontap: () =>
-                        Navigator.of(context).pushNamed('/choosecontact'),
-                  );
-                },
-              ),
-              SizedBox(
-                height: 25,
               ),
               DateTimeWidget(
                 transactionDateController: transactionDateController,

@@ -1,4 +1,3 @@
-import 'package:financial/common/constant/constants.dart';
 import 'package:financial/services/bloc/currency/cubit.dart';
 import 'package:financial/services/bloc/currency/states.dart';
 import 'package:financial/services/bloc/wallet/cubit.dart';
@@ -6,44 +5,29 @@ import 'package:financial/services/bloc/wallet/states.dart';
 import 'package:financial/widget/Wallet/Image_Text_Wallet/name_wallet.dart';
 import 'package:financial/widget/Wallet/checkbox_wallet.dart';
 import 'package:financial/widget/Wallet/Image_Text_Wallet/image_wallet.dart';
-import 'package:financial/widget/Wallet/text_wallet_name.dart';
-import 'package:financial/widget/Wallet/text_wallet_balance.dart';
+import 'package:financial/widget/Wallet/text_wallet_currency.dart';
 import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
+import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class Add_Cash_Wallet extends StatelessWidget {
-  // String? currencyName;
-  // int? currencyId;
+import '../wallet_home.dart';
 
+class Add_Cash_Wallet extends StatelessWidget {
   TextEditingController nameController = TextEditingController();
   TextEditingController balanceController = TextEditingController();
   TextEditingController currencyController = TextEditingController();
-  int dropdownValue = 1;
-  String image = 'assets/wallet/dollar.png';
 
-  // Add_Cash_Wallet(
-  //     {this.walletId,
-  //     this.walletName,
-  //     this.walletCurrencyId,
-  //     this.walletbalance});
-  //
-  // final walletId;
-  // final String? walletName;
-  // final walletCurrencyId;
-  // final walletbalance;
+  String image = 'assets/wallet/dollar.png';
 
   @override
   Widget build(BuildContext context) {
-    // final Map arguments = ModalRoute.of(context)!.settings.arguments as Map;
-    // currencyId = arguments['currencyId'];
-    // currencyName = arguments['currencyName'];
     return BlocConsumer<WalletCubit, WalletStates>(
       listener: (context, state) {
-        if(state is InsertWalletsToDatabaseState){
+        if (state is InsertWalletsToDatabaseState) {
           Navigator.of(context).pop();
           Navigator.of(context).pop();
         }
@@ -73,24 +57,31 @@ class Add_Cash_Wallet extends StatelessWidget {
                   SizedBox(
                     height: 20,
                   ),
-                  Text_Wallet_Name(
+                  Custom_Text(
                     label: 'Name',
                     controller: nameController,
-                    // namecurrency: kDefaultCurrency.code != null ? kDefaultCurrency.code : 'S.P',
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  Text_Wallet_Balance(
-                      label: 'balance ',
-                      controller: balanceController,
-                      namecurrency: kDefaultCurrency.code != null
-                          ? kDefaultCurrency.code
-                          : 'S.P',
-                      type: TextInputType.number),
+                  Text_Wallet_Name(
+                    label: 'Balance',
+                    controller: balanceController,
+                    type: TextInputType.number,
+                  ),
                   SizedBox(
                     height: 20,
                   ),
+                  // Text_Wallet_Balance(
+                  //     label: 'balance ',
+                  //     controller: balanceController,
+                  //     namecurrency: kDefaultCurrency.code != null
+                  //         ? kDefaultCurrency.code
+                  //         : 'S.P',
+                  //     type: TextInputType.number),
+                  // SizedBox(
+                  //   height: 20,
+                  // ),
                   checkbox_wallet(),
                   SizedBox(
                     height: 20,
@@ -98,7 +89,8 @@ class Add_Cash_Wallet extends StatelessWidget {
                   BlocConsumer<CurrencyCubit, CurrencyStates>(
                     listener: (context, state) {
                       if (state is InsertCurrenciesToDatabaseState) {
-                        Navigator.of(context).popAndPushNamed('/walletHome');
+                        Navigator.of(context).pop();
+                        Navigator.of(context).pop();
                       }
                     },
                     builder: (context, state) {

@@ -1,12 +1,6 @@
-import 'package:financial/common/constant/constants.dart';
-import 'package:financial/services/bloc/currency/cubit.dart';
-import 'package:financial/services/bloc/currency/cubit.dart';
-import 'package:financial/services/bloc/currency/states.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-// ignore: camel_case_types
-class Text_Wallet_Name extends StatelessWidget {
+class Text_Namewallet extends StatelessWidget {
   final TextEditingController? controller;
   final TextInputType? type;
   final Function(String)? onSubmit;
@@ -15,9 +9,8 @@ class Text_Wallet_Name extends StatelessWidget {
   final String? label;
   final IconData? prefix;
   final bool? isClickable;
-  // final String? namecurrency;
 
-  const Text_Wallet_Name({
+  const Text_Namewallet({
     Key? key,
     this.controller,
     this.type,
@@ -27,7 +20,6 @@ class Text_Wallet_Name extends StatelessWidget {
     this.label,
     this.prefix,
     this.isClickable,
-    // this.namecurrency,
   }) : super(key: key);
 
   @override
@@ -40,7 +32,7 @@ class Text_Wallet_Name extends StatelessWidget {
         ),
       ),
       height: 50,
-      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
         Container(
           child: Text(
             label.toString(),
@@ -54,55 +46,27 @@ class Text_Wallet_Name extends StatelessWidget {
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(8), bottomLeft: Radius.circular(8))),
         ),
-        Container(
-          alignment: Alignment.bottomCenter,
-          height: 50,
-          width: MediaQuery.of(context).size.width * 0.5,
-          child: TextFormField(
-            style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.grey[700]),
-            autofocus: false,
-            controller: controller,
-            keyboardType: type,
-            onFieldSubmitted: onSubmit,
-            onChanged: onChange,
-            enabled: isClickable,
-            onTap: onTap,
-          ),
-        ),
-        BlocConsumer<CurrencyCubit, CurrencyStates>(
-          listener: (context, state) {
-            // TODO: implement listener
-          },
-          builder: (context, state) {
-            return InkWell(
-              onTap: () => Navigator.of(context).pushNamed('/choosecurrency'),
-              child: Container(
-                alignment: Alignment.center,
-                width: MediaQuery.of(context).size.width * 0.2,
-                height: 50,
-                child: Text(
-                  CurrencyCubit.get(context).chosenCurrency != null ? CurrencyCubit.get(context).chosenCurrency!.name : kDefaultCurrency.code,
-                  style: TextStyle(fontSize: 15),
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        spreadRadius: 1,
-                        blurRadius: 1,
-                        offset: Offset(0, 1), // changes position of shadow
-                      ),
-                    ],
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(8),
-                        bottomRight: Radius.circular(8))),
+        Center(
+          child: Container(
+            alignment: Alignment.bottomCenter,
+            height: 50,
+            width: MediaQuery.of(context).size.width * 0.7,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 5),
+              child: TextFormField(
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87),
+                controller: controller,
+                keyboardType: type,
+                onFieldSubmitted: onSubmit,
+                onChanged: onChange,
+                enabled: isClickable,
+                onTap: onTap,
               ),
-            );
-          },
+            ),
+          ),
         ),
       ]),
     );
