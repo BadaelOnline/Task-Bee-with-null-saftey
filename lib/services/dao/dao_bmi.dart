@@ -3,10 +3,10 @@ import 'package:floor/floor.dart';
 
 @dao
 abstract class BmiDao {
-  @Query('SELECT * FROM Contact')
+  @Query('SELECT * FROM Bmi')
   Future<List<Bmi>?> findAllBmi();
 
-  @Query('DELETE FROM Contact WHERE id = :id')
+  @Query('DELETE FROM Bmi WHERE id = :id')
   Future<Bmi?> deleteBmi(int id);
 
   @update

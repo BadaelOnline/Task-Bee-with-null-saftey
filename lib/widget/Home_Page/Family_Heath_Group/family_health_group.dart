@@ -1,3 +1,4 @@
+import 'package:financial/screens/bmi/bmi_home.dart';
 import 'package:flutter/material.dart';
 import 'muilty_icon_text.dart';
 
@@ -20,10 +21,13 @@ class Family_Health extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 multi_icon_text(
-                  icon1: Image.asset(
-                    'assets/homepage/pmi.png',
-                    height: duoble,
-                    width: duoble,
+                  icon1: InkWell(
+                    onTap: () => Navigator.of(context).pushNamed('/BmiHome'),
+                    child: Image.asset(
+                      'assets/homepage/pmi.png',
+                      height: duoble,
+                      width: duoble,
+                    ),
                   ),
                   icon2: Image.asset(
                     'assets/homepage/study.png',

@@ -702,7 +702,7 @@ class _$BmiDao extends BmiDao {
 
   @override
   Future<List<Bmi>?> findAllBmi() async {
-    return _queryAdapter.queryList('SELECT * FROM Contact',
+    return _queryAdapter.queryList('SELECT * FROM Bmi',
         mapper: (Map<String, Object?> row) => Bmi(
             row['id'] as int,
             row['length'] as double,
@@ -712,7 +712,7 @@ class _$BmiDao extends BmiDao {
 
   @override
   Future<Bmi?> deleteBmi(int id) async {
-    return _queryAdapter.query('DELETE FROM Contact WHERE id = ?1',
+    return _queryAdapter.query('DELETE FROM Bmi WHERE id = ?1',
         mapper: (Map<String, Object?> row) => Bmi(
             row['id'] as int,
             row['length'] as double,

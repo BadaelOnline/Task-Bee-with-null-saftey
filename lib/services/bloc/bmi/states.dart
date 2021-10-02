@@ -11,3 +11,5 @@ class InsertBmiToDatabaseState extends BmiStates {}
 class UpdateBmiToDatabaseState extends BmiStates {}
 
 class DeleteBmiFromDatabaseState extends BmiStates {}
+
+class GetBmiArguments extends BmiStates {}
