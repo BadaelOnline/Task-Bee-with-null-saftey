@@ -1,5 +1,4 @@
 import 'package:financial/common/database/database.dart';
-import 'package:financial/models/currency.dart';
 import 'package:financial/models/wallet.dart';
 import 'package:financial/services/bloc/wallet/states.dart';
 import 'package:financial/services/dao/dao_wallet.dart';
@@ -192,6 +191,4 @@ class WalletCubit extends Cubit<WalletStates> {
     chosenWallet = wallet;
     emit(ChoseWalletFromChooseWalletPageState());
   }
-
-
 }

@@ -41,6 +41,7 @@ import 'package:financial/screens/wallet/add_wallet/add_planer_save.dart';
 import 'package:financial/screens/wallet/add_wallet/add_priberd_card.dart';
 import 'package:financial/screens/wallet/addwallet.dart';
 import 'package:financial/screens/wallet/choose_wallet.dart';
+import 'package:financial/screens/wallet/transferring_between_wallet/transfer_wallets.dart';
 import 'package:financial/screens/wallet/updateWallet.dart';
 import 'package:financial/screens/wallet/update_wallet/update_bank_account.dart';
 import 'package:financial/screens/wallet/update_wallet/update_cash_Wallet.dart';
@@ -61,7 +62,11 @@ class AppRouter {
           builder: (_) => MyHomePage(),
         );
 
-      /// wallets routes
+      /// wallets routes////////////////////////////////////////////////////////
+      case '/transferwallet':
+        return MaterialPageRoute(
+          builder: (_) => Transfer_Wallet(),
+        );
       case '/choosewallet':
         return MaterialPageRoute(
           builder: (_) => ChooseWallet(),
@@ -76,8 +81,8 @@ class AppRouter {
         );
       case '/addCashWallet':
         return MaterialPageRoute(
-            builder: (_) => Add_Cash_Wallet(),
-            );
+          builder: (_) => Add_Cash_Wallet(),
+        );
       case '/addCreditCard':
         return MaterialPageRoute(
           builder: (_) => AddCreditCard(),

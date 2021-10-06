@@ -1,4 +1,3 @@
-import 'package:financial/models/currency.dart';
 import 'package:financial/services/bloc/currency/cubit.dart';
 import 'package:financial/services/bloc/currency/states.dart';
 import 'package:financial/services/bloc/wallet/cubit.dart';
@@ -6,10 +5,10 @@ import 'package:financial/services/bloc/wallet/states.dart';
 import 'package:financial/widget/Wallet/Image_Text_Wallet/image_wallet.dart';
 import 'package:financial/widget/Wallet/Image_Text_Wallet/name_wallet.dart';
 import 'package:financial/widget/Wallet/checkbox_wallet.dart';
-import 'package:financial/widget/Wallet/text_wallet_balance.dart';
-import 'package:financial/widget/Wallet/text_wallet_name.dart';
+import 'package:financial/widget/Wallet/text_wallet_currency.dart';
 import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
+import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -33,7 +32,7 @@ class AddPrepaidCard extends StatelessWidget {
           'Add Wallet'),
       body: BlocConsumer<WalletCubit, WalletStates>(
         listener: (context, state) {
-          if(state is InsertWalletsToDatabaseState){
+          if (state is InsertWalletsToDatabaseState) {
             Navigator.of(context).pop();
             Navigator.of(context).pop();
           }
@@ -56,18 +55,16 @@ class AddPrepaidCard extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Text_Wallet_Name(
-                  label: 'Name',
-                  controller: nameController,
-                  // namecurrency: 'S.P',
+              Custom_Text(
+                label: 'Name',
+                controller: nameController,
               ),
               SizedBox(
                 height: 20,
               ),
-              Text_Wallet_Balance(
-                  label: 'balance ',
+              Text_Wallet_Name(
+                  label: 'Balance',
                   controller: balanceController,
-                  namecurrency: 'S.P',
                   type: TextInputType.number),
               SizedBox(
                 height: 20,
@@ -92,7 +89,9 @@ class AddPrepaidCard extends StatelessWidget {
                                 icon: image,
                                 walletName: nameController.text,
                                 walletBalance: balanceController.text,
-                                currencyId: CurrencyCubit.get(context).chosenCurrency!.id);
+                                currencyId: CurrencyCubit.get(context)
+                                    .chosenCurrency!
+                                    .id);
                           }),
                     ],
                   );

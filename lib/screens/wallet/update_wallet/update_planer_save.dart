@@ -4,6 +4,11 @@ import 'package:financial/services/bloc/currency/cubit.dart';
 import 'package:financial/services/bloc/currency/states.dart';
 import 'package:financial/services/bloc/wallet/cubit.dart';
 import 'package:financial/services/bloc/wallet/states.dart';
+import 'package:financial/widget/Wallet/Image_Text_Wallet/image_wallet.dart';
+import 'package:financial/widget/Wallet/Image_Text_Wallet/name_wallet.dart';
+import 'package:financial/widget/Wallet/checkbox_wallet.dart';
+import 'package:financial/widget/Wallet/text_wallet_balance.dart';
+import 'package:financial/widget/Wallet/text_wallet_currency.dart';
 import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
 import 'package:financial/widget/custom_text.dart';
@@ -20,6 +25,7 @@ class UpdatePlannerSave extends StatelessWidget {
   TextEditingController nameController = TextEditingController();
   TextEditingController balanceController = TextEditingController();
   TextEditingController currencyController = TextEditingController();
+  TextEditingController ammountController = TextEditingController();
   int dropdownValue = 1;
 
   int? isID;
@@ -36,7 +42,11 @@ class UpdatePlannerSave extends StatelessWidget {
     walletBalance = arguments['walletBalance'];
     image = arguments['image'];
     return Scaffold(
-      appBar: CustomAppBar(Icon(Icons.wallet_giftcard), 'Add Wallet'),
+      appBar: CustomAppBar(
+          Image(
+            image: AssetImage('assets/homepage/wallet.png'),
+          ),
+          'Update Wallet'),
       body: BlocConsumer<WalletCubit, WalletStates>(
         listener: (context, state) {
           if (state is UpdateWalletsToDatabaseState) {
@@ -46,263 +56,73 @@ class UpdatePlannerSave extends StatelessWidget {
         builder: (context, state) {
           return SingleChildScrollView(
             padding: EdgeInsets.all(15),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Container(
-                    width: 150.0,
-                    height: 150.0,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[100],
-                      image: DecorationImage(
-                        // alignment: Alignment.center,
-                        scale: 15,
-                        image: AssetImage(image!),
-                        // fit: BoxFit.cover,
-                      ),
-                      borderRadius: BorderRadius.all(Radius.circular(100.0)),
-                      // border: Border.all(
-                      //   color: Colors.amber[400],
-                      //   width: 2,
-                      // ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Container(
-                    child: Text(
-                      'Bank Account',
-                      style: TextStyle(
-                          color: Colors.grey[500],
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Custom_Text(
-                      label: 'Planner\nname',
-                      controller: nameController =
-                          TextEditingController(text: '$walletName'),
-                      type: TextInputType.text,
-                      onChange: (String value) {},
-                      onSubmit: (String value) {},
-                      onTap: () {}),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Row(
+            child: Column(children: [
+              Image_Wallet(
+                image: image!,
+                scale: 25,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Name_Wallet(
+                name: 'Planner Save',
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Custom_Text(
+                label: 'Planner\n Name',
+                controller: nameController =
+                    TextEditingController(text: '$walletName'),
+                type: TextInputType.text,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text_Wallet_Name(
+                label: 'Planner\nAmount',
+                controller: ammountController,
+                type: TextInputType.number,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text_Wallet_Balance(
+                  label: 'Primary\nBalance',
+                  controller: balanceController =
+                      TextEditingController(text: '$walletBalance'),
+                  type: TextInputType.number,
+                  namecurrency: 'S.P'),
+              SizedBox(
+                height: 20,
+              ),
+              checkbox_wallet(),
+              BlocConsumer<CurrencyCubit, CurrencyStates>(
+                listener: (context, state) {
+                  if (state is InsertCurrenciesToDatabaseState) {
+                    Navigator.of(context).pop();
+                  }
+                },
+                builder: (context, state) {
+                  return Column(
                     children: [
-                      Expanded(
-                        flex: 3,
-                        child: Custom_Text(
-                            label: 'Planner\nAmount ',
-                            controller: balanceController =
-                                TextEditingController(text: '$walletBalance'),
-                            // prefix: Icons.account_balance,
-                            type: TextInputType.number),
-                      ),
-                      BlocConsumer<CurrencyCubit, CurrencyStates>(
-                        listener: (context, CurrencyStates state) {},
-                        builder: (context, CurrencyStates state) {
-                          var x = CurrencyCubit.get(context);
-                          // ignore: unrelated_type_equality_checks
-                          return Expanded(
-                            flex: 1,
-                            child: TextField(
-                              // onSubmitted: (value) => _childInfo(context),
-                              textAlign: TextAlign.right,
-                              readOnly: true,
-                              controller: currencyController =
-                                  TextEditingController(
-                                      text: '$walletCurrency'),
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                color: Colors.amberAccent,
-                              ),
-                              cursorColor: Colors.amberAccent,
-                              decoration: InputDecoration(
-                                labelStyle: new TextStyle(
-                                  color: Colors.amberAccent,
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: Colors.amberAccent, width: 1.0),
-                                ),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Colors.amberAccent),
-                                ),
-                                prefixIcon: new DropdownButton<String>(
-                                  underline: Container(
-                                    decoration: const BoxDecoration(
-                                        border: Border(
-                                            bottom: BorderSide(
-                                                color: Colors.transparent))),
-                                  ),
-                                  icon: new Icon(Icons.keyboard_arrow_down),
-                                  items: x.currencies!.map((Currency value) {
-                                    return new DropdownMenuItem<String>(
-                                      value: value.name,
-                                      child: Text(value.name),
-                                    );
-                                  }).toList(),
-                                  onChanged: (String? value) {
-                                    currencyController.text = value!;
-                                  },
-                                ),
-                                hintText: 'Currency',
-                                hintStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.bold),
-                                hoverColor: Colors.amberAccent,
-                                focusColor: Colors.amberAccent,
-                              ),
-                              //                        onSubmitted: (value) =>  Navigator.push(
-                              //                            context,
-                              //                            MaterialPageRoute(builder: (context) => ChildInfo(children[0]))) ,
-                            ),
-                          );
-                        },
-                      ),
+                      CustomRaisdButton(
+                          text: 'Edit',
+                          onPressed: () {
+                            WalletCubit.get(context).updateWalletDatabase(
+                                isId: walletId,
+                                icon: image,
+                                walletName: nameController.text,
+                                walletBalance: balanceController.text,
+                                currencyId: CurrencyCubit.get(context)
+                                    .chosenCurrency!
+                                    .id);
+                          }),
                     ],
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 3,
-                        child: Custom_Text(
-                            label: 'Primary\nBalance ',
-                            controller: balanceController,
-                            // prefix: Icons.account_balance,
-                            type: TextInputType.number),
-                      ),
-                      BlocConsumer<CurrencyCubit, CurrencyStates>(
-                        listener: (context, CurrencyStates state) {},
-                        builder: (context, CurrencyStates state) {
-                          var x = CurrencyCubit.get(context);
-                          // ignore: unrelated_type_equality_checks
-                          return Expanded(
-                            flex: 1,
-                            child: TextField(
-                              // onSubmitted: (value) => _childInfo(context),
-                              textAlign: TextAlign.right,
-                              readOnly: true,
-                              controller: currencyController,
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                color: Colors.amberAccent,
-                              ),
-                              cursorColor: Colors.amberAccent,
-                              decoration: InputDecoration(
-                                labelStyle: new TextStyle(
-                                  color: Colors.amberAccent,
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: Colors.amberAccent, width: 1.0),
-                                ),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Colors.amberAccent),
-                                ),
-                                prefixIcon: new DropdownButton<String>(
-                                  underline: Container(
-                                    decoration: const BoxDecoration(
-                                        border: Border(
-                                            bottom: BorderSide(
-                                                color: Colors.transparent))),
-                                  ),
-                                  icon: new Icon(Icons.keyboard_arrow_down),
-                                  items: x.currencies!.map((Currency value) {
-                                    return new DropdownMenuItem<String>(
-                                      value: value.name,
-                                      child: Text(value.name),
-                                    );
-                                  }).toList(),
-                                  onChanged: (String? value) {
-                                    currencyController.text = value!;
-                                  },
-                                ),
-                                hintText: 'Currency',
-                                hintStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.bold),
-                                hoverColor: Colors.amberAccent,
-                                focusColor: Colors.amberAccent,
-                              ),
-                              //                        onSubmitted: (value) =>  Navigator.push(
-                              //                            context,
-                              //                            MaterialPageRoute(builder: (context) => ChildInfo(children[0]))) ,
-                            ),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 50,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Row(
-                        children: [
-                          Checkbox(
-                            value: false,
-                            onChanged: (val) {},
-                            checkColor: Colors.amber,
-                          ),
-                          Text('Hide Wallet'),
-                        ],
-                      ),
-                      Text(
-                          'The wallet and its balance will be hidden \n You can create any transactions even unhide'),
-                    ],
-                  ),
-                  BlocConsumer<CurrencyCubit, CurrencyStates>(
-                    listener: (context, state) {
-                      if (state is InsertCurrenciesToDatabaseState) {
-                        Navigator.of(context).pop();
-                      }
-                    },
-                    builder: (context, state) {
-                      var x = CurrencyCubit.get(context).currencies;
-                      return Column(
-                        children: [
-                          SizedBox(
-                            height: 30,
-                          ),
-                          CustomRaisdButton(
-                              text: 'Edit',
-                              onPressed: () {
-                                WalletCubit.get(context).updateWalletDatabase(
-                                    isId: walletId,
-                                    icon: image,
-                                    walletName: nameController.text,
-                                    walletBalance: balanceController.text,
-                                    currencyId: CurrencyCubit.get(context)
-                                        .getCurrencyId(
-                                            currencyName:
-                                                currencyController.text));
-                              }),
-                        ],
-                      );
-                    },
-                  )
-                ]),
+                  );
+                },
+              )
+            ]),
           );
         },
       ),

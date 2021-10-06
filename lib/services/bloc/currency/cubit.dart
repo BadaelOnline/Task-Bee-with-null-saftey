@@ -5,20 +5,21 @@ import 'package:financial/services/dao/dao_currency.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CurrencyCubit extends Cubit<CurrencyStates>{
-
-
+class CurrencyCubit extends Cubit<CurrencyStates> {
   CurrencyCubit() : super(CurrencyIntialState());
 
   static CurrencyCubit get(context) => BlocProvider.of(context);
 
-  AppDatabase? database ;
-  CurrencyDao? dao  ;
+  AppDatabase? database;
+  CurrencyDao? dao;
   List<Currency>? currencies = [];
   Currency? chosenCurrency;
 
-  void createDatabase(){
-    $FloorAppDatabase.databaseBuilder('database_wallet.db').build().then((value) {
+  void createDatabase() {
+    $FloorAppDatabase
+        .databaseBuilder('database_wallet.db')
+        .build()
+        .then((value) {
       database = value;
       dao = database!.currencyDao;
       emit(CurrencyCreateDatabaseState());
@@ -27,62 +28,55 @@ class CurrencyCubit extends Cubit<CurrencyStates>{
     });
   }
 
-  void getCurrenciesFromDatabase(){
+  void getCurrenciesFromDatabase() {
     this.dao!.findAllCurrencies().then((value) {
       currencies = value;
       emit(GetCurrenciesFromDatabaseState());
-
-
     });
   }
 
   void insertToDatabase({
     @required String? currencyName,
-  }){
-    int id = 0 ;
-    if (currencies!.length == 0){
-      id = 1 ;
-    }else{
-       id = currencies![currencies!.length - 1].id + 1;
+  }) {
+    int id = 0;
+    if (currencies!.length == 0) {
+      id = 1;
+    } else {
+      id = currencies![currencies!.length - 1].id + 1;
     }
 
-    if(id > 0 ){
-      dao!.insertCurrency(Currency(id, currencyName!,'','')).then((value) {
+    if (id > 0) {
+      dao!.insertCurrency(Currency(id, currencyName!, '', '')).then((value) {
         emit(InsertCurrenciesToDatabaseState());
         getCurrenciesFromDatabase();
-
       });
     }
-
   }
-
-
 
   Future<void> updateCurrencyDatabase({
     @required int? isId,
     @required String? currencyName,
-  })async {
-    dao!.updateCurrency(Currency(isId!, currencyName!, '','')).then((value) {
+  }) async {
+    dao!.updateCurrency(Currency(isId!, currencyName!, '', '')).then((value) {
       emit(UpdateCurrencyToDatabaseState());
       getCurrenciesFromDatabase();
-
     });
   }
 
   void deleteCurrencyFromDatabase({
     @required int? id,
-  }){
-    dao!.deleteCurrency(id!).then((value)  {
+  }) {
+    dao!.deleteCurrency(id!).then((value) {
       emit(DeleteCurrenciesFromDatabaseState());
       getCurrenciesFromDatabase();
     });
   }
 
   String getCurrencyOfWallet({
-    @required int? currencyId,
-  }){
-    for(int i = 0 ; i <currencies!.length;i++){
-      if(currencies![i].id == currencyId){
+    int? currencyId,
+  }) {
+    for (int i = 0; i < currencies!.length; i++) {
+      if (currencies![i].id == currencyId) {
         return currencies![i].name;
       }
     }
@@ -91,9 +85,9 @@ class CurrencyCubit extends Cubit<CurrencyStates>{
 
   int getCurrencyId({
     @required String? currencyName,
-  }){
-    for(int i = 0 ; i <currencies!.length;i++){
-      if(currencies![i].name == currencyName){
+  }) {
+    for (int i = 0; i < currencies!.length; i++) {
+      if (currencies![i].name == currencyName) {
         return currencies![i].id;
       }
     }
@@ -102,13 +96,9 @@ class CurrencyCubit extends Cubit<CurrencyStates>{
 
   void choseCurrency({
     @required Currency? currency,
-  }){
+  }) {
     print('ooooooooooooooooooooooooooooooooo $currency');
     chosenCurrency = currency;
     emit(ChoseCurrencyFromChooseCurrencyPageState());
   }
-
-
-
-
 }
