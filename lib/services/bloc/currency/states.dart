@@ -11,3 +11,5 @@ class InsertCurrenciesToDatabaseState extends CurrencyStates{}
 class UpdateCurrencyToDatabaseState extends CurrencyStates{}
 
 class DeleteCurrenciesFromDatabaseState extends CurrencyStates{}
+
+class ChoseCurrencyFromChooseCurrencyPageState extends CurrencyStates{}

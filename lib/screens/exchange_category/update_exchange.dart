@@ -1,5 +1,6 @@
 import 'package:financial/services/bloc/exchang_category/cubit.dart';
 import 'package:financial/services/bloc/exchang_category/states.dart';
+import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
 import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -28,17 +29,8 @@ class UpdateExchange extends StatelessWidget {
     exchangeName = arguments['categoryName'];
     catImage = arguments['categoryIcon'];
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        centerTitle: true,
-        title: Text('Update Exchange Category'),
-        backgroundColor: Colors.amber[400],
-      ),
+      appBar: CustomAppBar(
+          Image.asset('assets/homepage/masaref.png'), 'Update Categoray'),
       body: BlocConsumer<ExchangeCubit, ExchangeStates>(
         listener: (context, state) {
           if (state is UpdateExchangesToDatabaseState) {
@@ -48,6 +40,7 @@ class UpdateExchange extends StatelessWidget {
         },
         builder: (context, state) {
           return Container(
+            alignment: Alignment.center,
             padding: EdgeInsets.all(15),
             child: SingleChildScrollView(
               child: Column(
@@ -103,19 +96,13 @@ class UpdateExchange extends StatelessWidget {
                     SizedBox(
                       height: 25,
                     ),
-                    Row(
-                      children: [
-                        Expanded(
-                            child: Custom_Text(
-                                label: 'Name Category',
-                                controller: nameController =
-                                    TextEditingController(
-                                        text: '$exchangeName'),
-                                prefix: Icons.category)),
-                        SizedBox(
-                          width: 10,
-                        ),
-                      ],
+                    Custom_Text(
+                      label: 'Name Category',
+                      controller: nameController =
+                          TextEditingController(text: '$exchangeName'),
+                    ),
+                    SizedBox(
+                      width: 10,
                     ),
                     SizedBox(
                       height: 100,
@@ -126,6 +113,7 @@ class UpdateExchange extends StatelessWidget {
                         CustomRaisdButton(
                             onPressed: () {
                               ExchangeCubit.get(context).updateExchangeDatabase(
+                                isIncome: 0,
                                 isId: exchangeId,
                                 exchangeName: nameController.text,
                                 icon: ExchangeCubit.get(context).chosenImage ==

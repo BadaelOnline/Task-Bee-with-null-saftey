@@ -462,9 +462,135 @@ class _$TransactionDao extends TransactionDao {
   @override
   Future<List<FinancialReport>?> transactionByContact(
       int contactId, int walletId, int categoryId) async {
-    await _queryAdapter.queryNoReturn(
-        'SELECT t.id,w.name_wallet,c.name,e.name_exchange_category,t.total,t.paid,t.rest,t.description,t.transaction_date,t.is_income FROM "transaction" t,Wallet w,Contact c,exchange_category e WHERE t.wallet=w.id and t.exchange = e.id and t.contact = ?1 and t.wallet = ?2 and t.exchange = ?3',
-        arguments: [contactId, walletId, categoryId]);
+    if (contactId != 0 && walletId != 0 && categoryId != 0) {
+      return _queryAdapter.queryList(
+          'SELECT t.id,w.name_wallet,c.name_contact,e.name_exchange_category,t.total,t.paid,t.rest,t.description,t.transaction_date,t.is_income FROM "transaction" t,Wallet w,Contact c,exchange_category e WHERE t.wallet_id=w.id and c.id = ? and w.id = ? and e.id = ? and t.contact_id=c.id and t.exchange_id=e.id GROUP BY t.id',
+          arguments: <Object>[contactId,walletId,categoryId],
+          mapper: (Map<String, dynamic> row) =>
+              FinancialReport(
+                  row['id'] as int,
+                  row['name_wallet'] as String,
+                  row['name_contact'] as String,
+                  row['name_exchange_category'] as String,
+                  row['total'] as String,
+                  row['paid'] as String,
+                  row['rest'] as String,
+                  row['transaction_date'] as String,
+                  row['is_income'] as int,
+                  row['description'] as String));
+    }else if(contactId == 0 && walletId != 0 && categoryId != 0){
+      return _queryAdapter.queryList(
+          'SELECT t.id,w.name_wallet,c.name_contact,e.name_exchange_category,t.total,t.paid,t.rest,t.description,t.transaction_date,t.is_income FROM "transaction" t,Wallet w,Contact c,exchange_category e WHERE t.wallet_id=w.id and w.id = ? and e.id = ? and t.contact_id=c.id and t.exchange_id=e.id GROUP BY t.id',
+          arguments: <Object>[walletId,categoryId],
+          mapper: (Map<String, dynamic> row) =>
+              FinancialReport(
+                  row['id'] as int,
+                  row['name_wallet'] as String,
+                  row['name_contact'] as String,
+                  row['name_exchange_category'] as String,
+                  row['total'] as String,
+                  row['paid'] as String,
+                  row['rest'] as String,
+                  row['transaction_date'] as String,
+                  row['is_income'] as int,
+                  row['description'] as String));
+    }else if (contactId != 0 && walletId == 0 && categoryId != 0){
+      return _queryAdapter.queryList(
+          'SELECT t.id,w.name_wallet,c.name_contact,e.name_exchange_category,t.total,t.paid,t.rest,t.description,t.transaction_date,t.is_income FROM "transaction" t,Wallet w,Contact c,exchange_category e WHERE t.wallet_id=w.id and c.id = ? and e.id = ? and t.contact_id=c.id and t.exchange_id=e.id GROUP BY t.id',
+          arguments: <Object>[contactId,categoryId],
+          mapper: (Map<String, dynamic> row) =>
+              FinancialReport(
+                  row['id'] as int,
+                  row['name_wallet'] as String,
+                  row['name_contact'] as String,
+                  row['name_exchange_category'] as String,
+                  row['total'] as String,
+                  row['paid'] as String,
+                  row['rest'] as String,
+                  row['transaction_date'] as String,
+                  row['is_income'] as int,
+                  row['description'] as String));
+    }else if (contactId != 0 && walletId != 0 && categoryId == 0) {
+      return _queryAdapter.queryList(
+          'SELECT t.id,w.name_wallet,c.name_contact,e.name_exchange_category,t.total,t.paid,t.rest,t.description,t.transaction_date,t.is_income FROM "transaction" t,Wallet w,Contact c,exchange_category e WHERE t.wallet_id=w.id and c.id = ? and w.id = ? and t.contact_id=c.id and t.exchange_id=e.id GROUP BY t.id',
+          arguments: <Object>[contactId,walletId],
+          mapper: (Map<String, dynamic> row) =>
+              FinancialReport(
+                  row['id'] as int,
+                  row['name_wallet'] as String,
+                  row['name_contact'] as String,
+                  row['name_exchange_category'] as String,
+                  row['total'] as String,
+                  row['paid'] as String,
+                  row['rest'] as String,
+                  row['transaction_date'] as String,
+                  row['is_income'] as int,
+                  row['description'] as String));
+    }else if(contactId == 0 && walletId == 0 && categoryId != 0){
+      return _queryAdapter.queryList(
+          'SELECT t.id,w.name_wallet,c.name_contact,e.name_exchange_category,t.total,t.paid,t.rest,t.description,t.transaction_date,t.is_income FROM "transaction" t,Wallet w,Contact c,exchange_category e WHERE t.wallet_id=w.id and e.id = ? and t.contact_id=c.id and t.exchange_id=e.id GROUP BY t.id',
+          arguments: <Object>[categoryId],
+          mapper: (Map<String, dynamic> row) =>
+              FinancialReport(
+                  row['id'] as int,
+                  row['name_wallet'] as String,
+                  row['name_contact'] as String,
+                  row['name_exchange_category'] as String,
+                  row['total'] as String,
+                  row['paid'] as String,
+                  row['rest'] as String,
+                  row['transaction_date'] as String,
+                  row['is_income'] as int,
+                  row['description'] as String));
+    }else if(contactId == 0 && walletId != 0 && categoryId == 0){
+      return _queryAdapter.queryList(
+          'SELECT t.id,w.name_wallet,c.name_contact,e.name_exchange_category,t.total,t.paid,t.rest,t.description,t.transaction_date,t.is_income FROM "transaction" t,Wallet w,Contact c,exchange_category e WHERE t.wallet_id=w.id and w.id = ? and t.contact_id=c.id and t.exchange_id=e.id GROUP BY t.id',
+          arguments: <Object>[walletId],
+          mapper: (Map<String, dynamic> row) =>
+              FinancialReport(
+                  row['id'] as int,
+                  row['name_wallet'] as String,
+                  row['name_contact'] as String,
+                  row['name_exchange_category'] as String,
+                  row['total'] as String,
+                  row['paid'] as String,
+                  row['rest'] as String,
+                  row['transaction_date'] as String,
+                  row['is_income'] as int,
+                  row['description'] as String));
+    }else if(contactId != 0 && walletId == 0 && categoryId == 0){
+      return _queryAdapter.queryList(
+          'SELECT t.id,w.name_wallet,c.name_contact,e.name_exchange_category,t.total,t.paid,t.rest,t.description,t.transaction_date,t.is_income FROM "transaction" t,Wallet w,Contact c,exchange_category e WHERE t.wallet_id=w.id and c.id = ? and t.contact_id=c.id and t.exchange_id=e.id GROUP BY t.id',
+          arguments: <Object>[contactId],
+          mapper: (Map<String, dynamic> row) =>
+              FinancialReport(
+                  row['id'] as int,
+                  row['name_wallet'] as String,
+                  row['name_contact'] as String,
+                  row['name_exchange_category'] as String,
+                  row['total'] as String,
+                  row['paid'] as String,
+                  row['rest'] as String,
+                  row['transaction_date'] as String,
+                  row['is_income'] as int,
+                  row['description'] as String));
+    }else{
+      return _queryAdapter.queryList(
+          'SELECT t.id,w.name_wallet,c.name_contact,e.name_exchange_category,t.total,t.paid,t.rest,t.description,t.transaction_date,t.is_income FROM "transaction" t,Wallet w,Contact c,exchange_category e WHERE t.wallet_id=w.id and t.contact_id=c.id and t.exchange_id=e.id GROUP BY t.id',
+          mapper: (Map<String, dynamic> row) =>
+              FinancialReport(
+                  row['id'] as int,
+                  row['name_wallet'] as String,
+                  row['name_contact'] as String,
+                  row['name_exchange_category'] as String,
+                  row['total'] as String,
+                  row['paid'] as String,
+                  row['rest'] as String,
+                  row['transaction_date'] as String,
+                  row['is_income'] as int,
+                  row['description'] as String));
+    }
+
   }
 
   @override

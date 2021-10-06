@@ -14,6 +14,7 @@ class WalletCubit extends Cubit<WalletStates> {
   WalletDao? dao;
   List<Wallet>? wallets = [];
   int? lastId;
+  Wallet? chosenWallet;
 
   void createDatabase() {
     $FloorAppDatabase
@@ -31,8 +32,7 @@ class WalletCubit extends Cubit<WalletStates> {
   void getWalletsFromDatabase() {
     this.dao!.retrieveWallets().then((value) {
       wallets = value;
-      for(int i = 0 ; i < value!.length ; i++){
-      }
+      for (int i = 0; i < value!.length; i++) {}
       if (value.length > 0) {
         lastId = value[value.length - 1].id;
       } else {
@@ -48,19 +48,28 @@ class WalletCubit extends Cubit<WalletStates> {
       @required String? walletBalance,
       @required int? currencyId,
       @required String? icon}) async {
-    int id = 0 ;
-    if (wallets!.length == 0){
-      id = 1 ;
-    }else{
+    int id = 0;
+    if (wallets!.length == 0) {
+      id = 1;
+    } else {
       id = wallets![wallets!.length - 1].id + 1;
     }
-    if(id > 0 ){
-      dao!.insertWallet(Wallet(id,walletName!,walletBalance!,1,icon!,1,currencyId!,)).then((value) {
+    if (id > 0) {
+      dao!
+          .insertWallet(Wallet(
+        id,
+        walletName!,
+        walletBalance!,
+        1,
+        icon!,
+        1,
+        currencyId!,
+      ))
+          .then((value) {
         emit(InsertWalletsToDatabaseState());
         getWalletsFromDatabase();
       });
     }
-
   }
 
   Future<void> updateWalletDatabase(
@@ -70,8 +79,8 @@ class WalletCubit extends Cubit<WalletStates> {
       @required int? currencyId,
       @required String? icon}) async {
     dao!
-        .updateWallet(
-            Wallet(isId!, walletName!, walletBalance!, 1, icon!, 1, currencyId!))
+        .updateWallet(Wallet(
+            isId!, walletName!, walletBalance!, 1, icon!, 1, currencyId!))
         .then((value) {
       emit(UpdateWalletsToDatabaseState());
       getWalletsFromDatabase();
@@ -173,5 +182,13 @@ class WalletCubit extends Cubit<WalletStates> {
       }
     }
     return null;
+  }
+
+  void choseWallet({
+    @required Wallet? wallet,
+  }) {
+    print('ooooooooooooooooooooooooooooooooo $wallet');
+    chosenWallet = wallet;
+    emit(ChoseWalletFromChooseWalletPageState());
   }
 }

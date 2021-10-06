@@ -60,18 +60,18 @@ class TransactionCubit extends Cubit<TransactionStates> {
   }
 
 
-  void getTransactionByContactFromDatabase({
+  Future<void> getTransactionByContactFromDatabase({
     @required int? contactId,
     @required int? walletId,
     @required int? categoryId,
     int? currencyID,
-  }) {
+  }) async {
     this
         .dao!
         .transactionByContact(contactId!, walletId!, categoryId!)
         .then((value) {
       transactionByContact = value;
-      emit(GetTransactionsFromDatabaseState());
+      emit(GetTransactionsFromDatabaseFOrContactState());
     });
   }
 

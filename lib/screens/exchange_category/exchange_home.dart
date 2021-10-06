@@ -17,7 +17,7 @@ class ExchangeHome extends StatelessWidget {
                 Image(
                   image: AssetImage('assets/homepage/masaref.png'),
                 ),
-                'Choose Expancies'),
+                'Expancies Categoray'),
             body: ListView.builder(
               itemCount: cubit.exchanges!.length,
               itemBuilder: (BuildContext context, int index) {

@@ -6,7 +6,6 @@ import 'package:financial/widget/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'exchange_home.dart';
 
 // ignore: must_be_immutable
 class AddExchange extends StatelessWidget {
@@ -30,6 +29,7 @@ class AddExchange extends StatelessWidget {
         builder: (context, state) {
           return Container(
             alignment: Alignment.center,
+            padding: EdgeInsets.all(15),
             child: SingleChildScrollView(
               child: Column(children: [
                 Row(
@@ -84,12 +84,9 @@ class AddExchange extends StatelessWidget {
                 SizedBox(
                   height: 25,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Custom_Text(
-                      label: 'Category',
-                      controller: nameController,
-                      prefix: Icons.category),
+                Custom_Text(
+                  label: 'Category',
+                  controller: nameController,
                 ),
                 SizedBox(
                   height: 100,
@@ -100,6 +97,7 @@ class AddExchange extends StatelessWidget {
                     CustomRaisdButton(
                         onPressed: () {
                           ExchangeCubit.get(context).insertToDatabase(
+                              isIncome: 0,
                               exchangeName: nameController!.text,
                               catImage: ExchangeCubit.get(context).chosenImage);
                         },

@@ -13,6 +13,7 @@ import 'package:financial/screens/contact/preview_contact/preview_team_work.dart
 import 'package:financial/screens/contact/preview_contact/preview_transaction.dart';
 import 'package:financial/screens/contact/update_contact.dart';
 import 'package:financial/screens/currency/add_currency.dart';
+import 'package:financial/screens/currency/chose_currency.dart';
 import 'package:financial/screens/currency/currency_home.dart';
 import 'package:financial/screens/currency/update_currency.dart';
 import 'package:financial/screens/exchange_category/add_exchange.dart';
@@ -26,25 +27,30 @@ import 'package:financial/screens/expenses/update_expense.dart';
 import 'package:financial/screens/report/report_home.dart';
 import 'package:financial/screens/report/report_search.dart';
 import 'package:financial/screens/report/report_search_result.dart';
+import 'package:financial/screens/revenue_categories/add_revenue_category.dart';
+import 'package:financial/screens/revenue_categories/choose_revenue.dart';
+import 'package:financial/screens/revenue_categories/revenue_home.dart';
+import 'package:financial/screens/revenue_categories/update_revenue_category.dart';
 import 'package:financial/screens/revenues/Add_Revenue.dart';
 import 'package:financial/screens/revenues/revenues_home.dart';
 import 'package:financial/screens/revenues/update_revenues.dart';
 import 'package:financial/screens/shared/HomePage.dart';
 import 'package:financial/screens/transaction/add_transaction.dart';
 import 'package:financial/screens/transaction/transaction_home.dart';
-import 'package:financial/screens/wallet/add_bank_account.dart';
-import 'package:financial/screens/wallet/add_cash_wallet.dart';
-import 'package:financial/screens/wallet/add_credit_card.dart';
-import 'package:financial/screens/wallet/add_planer_save.dart';
-import 'package:financial/screens/wallet/add_priberd_card.dart';
+import 'package:financial/screens/wallet/add_wallet/add_bank_account.dart';
+import 'package:financial/screens/wallet/add_wallet/add_cash_wallet.dart';
+import 'package:financial/screens/wallet/add_wallet/add_credit_card.dart';
+import 'package:financial/screens/wallet/add_wallet/add_planer_save.dart';
+import 'package:financial/screens/wallet/add_wallet/add_priberd_card.dart';
 import 'package:financial/screens/wallet/addwallet.dart';
 import 'package:financial/screens/wallet/choose_wallet.dart';
+import 'package:financial/screens/wallet/transferring_between_wallet/transfer_wallets.dart';
 import 'package:financial/screens/wallet/updateWallet.dart';
-import 'package:financial/screens/wallet/update_bank_account.dart';
-import 'package:financial/screens/wallet/update_cash_Wallet.dart';
-import 'package:financial/screens/wallet/update_credit_card.dart';
-import 'package:financial/screens/wallet/update_planer_save.dart';
-import 'package:financial/screens/wallet/update_priberd_card.dart';
+import 'package:financial/screens/wallet/update_wallet/update_bank_account.dart';
+import 'package:financial/screens/wallet/update_wallet/update_cash_Wallet.dart';
+import 'package:financial/screens/wallet/update_wallet/update_credit_card.dart';
+import 'package:financial/screens/wallet/update_wallet/update_planer_save.dart';
+import 'package:financial/screens/wallet/update_wallet/update_priberd_card.dart';
 import 'package:financial/screens/wallet/wallet_home.dart';
 import 'package:financial/screens/wallet/wallets_list.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +65,11 @@ class AppRouter {
           builder: (_) => MyHomePage(),
         );
 
-      /// wallets routes
+      /// wallets routes////////////////////////////////////////////////////////
+      case '/transferwallet':
+        return MaterialPageRoute(
+          builder: (_) => Transfer_Wallet(),
+        );
       case '/choosewallet':
         return MaterialPageRoute(
           builder: (_) => ChooseWallet(),
@@ -74,7 +84,7 @@ class AppRouter {
         );
       case '/addCashWallet':
         return MaterialPageRoute(
-          builder: (_) => AddCashWallet(),
+          builder: (_) => Add_Cash_Wallet(),
         );
       case '/addCreditCard':
         return MaterialPageRoute(
@@ -143,11 +153,29 @@ class AppRouter {
             builder: (_) => UpdateExchange(),
             settings: RouteSettings(arguments: settings.arguments));
 
+      /// exchanges routes
+      case '/chooseRevenue':
+        return MaterialPageRoute(
+          builder: (_) => ChooseRevenue(),
+        );
+      case '/revenueCategoryHome':
+        return MaterialPageRoute(
+          builder: (_) => RevenueCategoryHome(),
+        );
+      case '/addRevenueCategory':
+        return MaterialPageRoute(
+          builder: (_) => AddRevenueCategory(),
+        );
+      case '/updateRevenueCategory':
+        return MaterialPageRoute(
+            builder: (_) => UpdateRevenueCategory(),
+            settings: RouteSettings(arguments: settings.arguments));
+
       /// contacts routes
       case '/previewcontact':
         return MaterialPageRoute(
-          builder: (_) => Preview_Contact(),
-        );
+            builder: (_) => Preview_Contact(),
+            settings: RouteSettings(arguments: settings.arguments));
       case '/choosecontact':
         return MaterialPageRoute(
           builder: (_) => ChooseContact(),
@@ -186,6 +214,10 @@ class AppRouter {
         );
 
       /// currency routes
+      case '/choosecurrency':
+        return MaterialPageRoute(
+          builder: (_) => ChooseCurrency(),
+        );
       case '/currencyHome':
         return MaterialPageRoute(
           builder: (_) => CurrencyHome(),

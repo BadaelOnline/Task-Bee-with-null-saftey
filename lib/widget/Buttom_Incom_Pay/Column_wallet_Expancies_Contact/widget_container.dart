@@ -6,11 +6,15 @@ class widget_Container extends StatelessWidget {
     this.ontap,
     this.text,
     required this.image,
+    this.balanc,
+    this.currency,
   }) : super(key: key);
 
   final ontap;
   final String? text;
   final Widget image;
+  final String? balanc;
+  final String? currency;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +29,12 @@ class widget_Container extends StatelessWidget {
                 padding: const EdgeInsets.only(
                     top: 5, left: 5, bottom: 5, right: 10),
                 child: image),
-            Text('$text')
+            Text('$text'),
+            SizedBox(
+              width: 25,
+            ),
+            Text(balanc != null ? '$balanc' : ''),
+            Text(currency != null ? "$balanc" : '')
           ],
         ),
         decoration: BoxDecoration(
