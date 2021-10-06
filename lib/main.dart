@@ -1,4 +1,5 @@
 import 'package:financial/screens/routes/app_router.dart';
+import 'package:financial/services/bloc/bmi/cubit.dart';
 import 'package:financial/services/bloc/contact/cubit.dart';
 import 'package:financial/services/bloc/currency/cubit.dart';
 import 'package:financial/services/bloc/datepicker/cubit.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => ExchangeCubit()..createDatabase()),
         BlocProvider(create: (context) => TransactionCubit()..createDatabase()),
         BlocProvider(create: (context) => DatePickerCubit()..createCubit()),
+        BlocProvider(create: (context) => BmiCubit()..createDataabase()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

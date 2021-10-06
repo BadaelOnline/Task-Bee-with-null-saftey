@@ -50,10 +50,38 @@ class _DebtsHomeState extends State<DebtsHome> {
                 ],
               ),
             ),
-            TabBarView(children: [
-              Icon(Icons.car_rental),
-              Icon(Icons.ac_unit),
-            ])
+            Expanded(
+              child: TabBarView(children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      margin: EdgeInsets.all(10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          ListTile(
+                            leading: Icon(Icons.person),
+                            title: Text('majd'),
+                          ),
+                          // ListTile(
+                          //   leading: Text('500.000'),
+                          //   title: Text('S.P'),
+                          // ),
+                          // IconButton(
+                          //   onPressed: () {},
+                          //   icon: Icon(Icons.info),
+                          // ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Icon(Icons.ac_unit),
+              ]),
+            )
           ],
         ),
         floatingActionButton: CustomFloatingActionButton(
