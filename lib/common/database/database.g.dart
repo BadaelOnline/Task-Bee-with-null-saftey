@@ -70,6 +70,8 @@ class _$AppDatabase extends AppDatabase {
 
   ContactDao? _contactDaoInstance;
 
+  BmiDao? _bmiDaoInstance;
+
   Future<sqflite.Database> open(String path, List<Migration> migrations,
       [Callback? callback]) async {
     final databaseOptions = sqflite.OpenDatabaseOptions(
@@ -98,6 +100,8 @@ class _$AppDatabase extends AppDatabase {
             'CREATE TABLE IF NOT EXISTS `contact` (`id` INTEGER NOT NULL, `name_contact` TEXT NOT NULL, `is_active` INTEGER NOT NULL, `is_appear` INTEGER NOT NULL, PRIMARY KEY (`id`))');
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `exchange_category` (`id` INTEGER NOT NULL, `name_exchange_category` TEXT NOT NULL, `icon` TEXT NOT NULL, `is_active` INTEGER NOT NULL, `is_default` INTEGER NOT NULL, `is_income` INTEGER NOT NULL, PRIMARY KEY (`id`))');
+        await database.execute(
+            'CREATE TABLE IF NOT EXISTS `Bmi` (`id` INTEGER NOT NULL, `length` REAL NOT NULL, `weight` REAL NOT NULL, `date` TEXT NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -130,6 +134,11 @@ class _$AppDatabase extends AppDatabase {
   @override
   ContactDao get contactDao {
     return _contactDaoInstance ??= _$ContactDao(database, changeListener);
+  }
+
+  @override
+  BmiDao get bmiDao {
+    return _bmiDaoInstance ??= _$BmiDao(database, changeListener);
   }
 }
 
@@ -366,7 +375,7 @@ class _$TransactionDao extends TransactionDao {
 
   @override
   Future<List<Transaction>?> findAllTransaction() async {
-    return _queryAdapter.queryList('SELECT * FROM "transaction"',
+    return _queryAdapter.queryList('SELECT * FROM transaction',
         mapper: (Map<String, Object?> row) => Transaction(
             row['id'] as int,
             row['total'] as String,
@@ -384,7 +393,7 @@ class _$TransactionDao extends TransactionDao {
 
   @override
   Future<Transaction?> findTransactionById(int id) async {
-    return _queryAdapter.query('SELECT * FROM "transaction" WHERE id = ?1',
+    return _queryAdapter.query('SELECT * FROM transaction WHERE id = ?1',
         mapper: (Map<String, Object?> row) => Transaction(
             row['id'] as int,
             row['total'] as String,
@@ -403,7 +412,7 @@ class _$TransactionDao extends TransactionDao {
 
   @override
   Future<List<Transaction>?> retrieveTransactions() async {
-    return _queryAdapter.queryList('SELECT * FROM "transaction"',
+    return _queryAdapter.queryList('SELECT * FROM transaction',
         mapper: (Map<String, Object?> row) => Transaction(
             row['id'] as int,
             row['total'] as String,
@@ -421,7 +430,7 @@ class _$TransactionDao extends TransactionDao {
 
   @override
   Future<Transaction?> deleteTransaction(int id) async {
-    return _queryAdapter.query('DELETE FROM "transaction" WHERE id = ?1',
+    return _queryAdapter.query('DELETE FROM transaction WHERE id = ?1',
         mapper: (Map<String, Object?> row) => Transaction(
             row['id'] as int,
             row['total'] as String,
@@ -440,17 +449,14 @@ class _$TransactionDao extends TransactionDao {
 
   @override
   Future<FinancialReport?> mixData() async {
-    return _queryAdapter.query('SELECT t.id,w.name_wallet,c.name,e.name_exchange_category,t.total,t.paid,t.rest,t.description,t.transaction_date,t.is_income FROM "transaction" t,Wallet w,Contact c,exchange_category e WHERE t.id = ? and w.id = ? and c.id = ? and e.id =?',
-        arguments: <Object>[1,1,1,1],
-        mapper: (Map<String, dynamic> row) =>FinancialReport(row['id'] as int, row['name_wallet'] as String, row['name'] as String, row['name_exchange_category'] as String, row['total'] as String, row['paid'] as String, row['rest'] as String, row['description'] as String, row['is_income'] as int, row['transaction_date'] as String));
-
+    await _queryAdapter.queryNoReturn(
+        'SELECT t.id,w.name_wallet,c.name,e.name_exchange_category,t.total,t.paid,t.rest,t.description,t.transaction_date,t.is_income FROM "transaction" t,Wallet w,Contact c,exchange_category e WHERE t.wallet=w.id and t.exchange = e.id and t.contact =c.id');
   }
 
   @override
   Future<List<FinancialReport>?> mixesData() async {
-    return _queryAdapter.queryList('SELECT t.id,w.name_wallet,c.name_contact,e.name_exchange_category,t.total,t.paid,t.rest,t.description,t.transaction_date,t.is_income FROM "transaction" t,Wallet w,Contact c,exchange_category e where t.wallet_id=w.id and t.contact_id=c.id and t.exchange_id=e.id GROUP By t.id',
-        mapper: (Map<String, dynamic> row) =>FinancialReport(row['id'] as int, row['name_wallet'] as String, row['name_contact'] as String, row['name_exchange_category'] as String, row['total'] as String, row['paid'] as String, row['rest'] as String, row['description'] as String, row['is_income'] as int, row['transaction_date'] as String));
-
+    await _queryAdapter.queryNoReturn(
+        'SELECT t.id,w.name_wallet,c.name,e.name_exchange_category,t.total,t.paid,t.rest,t.description,t.transaction_date,t.is_income FROM "transaction" t,Wallet w,Contact c,exchange_category e WHERE t.wallet=w.id and t.exchange = e.id and t.contact =c.id');
   }
 
   @override
@@ -584,6 +590,7 @@ class _$TransactionDao extends TransactionDao {
                   row['is_income'] as int,
                   row['description'] as String));
     }
+
   }
 
   @override
@@ -783,5 +790,71 @@ class _$ContactDao extends ContactDao {
   @override
   Future<void> updateContact(Contact contact) async {
     await _contactUpdateAdapter.update(contact, OnConflictStrategy.abort);
+  }
+}
+
+class _$BmiDao extends BmiDao {
+  _$BmiDao(this.database, this.changeListener)
+      : _queryAdapter = QueryAdapter(database),
+        _bmiInsertionAdapter = InsertionAdapter(
+            database,
+            'Bmi',
+            (Bmi item) => <String, Object?>{
+                  'id': item.id,
+                  'length': item.length,
+                  'weight': item.weight,
+                  'date': item.date
+                }),
+        _bmiUpdateAdapter = UpdateAdapter(
+            database,
+            'Bmi',
+            ['id'],
+            (Bmi item) => <String, Object?>{
+                  'id': item.id,
+                  'length': item.length,
+                  'weight': item.weight,
+                  'date': item.date
+                });
+
+  final sqflite.DatabaseExecutor database;
+
+  final StreamController<String> changeListener;
+
+  final QueryAdapter _queryAdapter;
+
+  final InsertionAdapter<Bmi> _bmiInsertionAdapter;
+
+  final UpdateAdapter<Bmi> _bmiUpdateAdapter;
+
+  @override
+  Future<List<Bmi>?> findAllBmi() async {
+    return _queryAdapter.queryList('SELECT * FROM Bmi',
+        mapper: (Map<String, Object?> row) => Bmi(
+            row['id'] as int,
+            row['length'] as double,
+            row['weight'] as double,
+            row['date'] as String));
+  }
+
+  @override
+  Future<Bmi?> deleteBmi(int id) async {
+    return _queryAdapter.query('DELETE FROM Bmi WHERE id = ?1',
+        mapper: (Map<String, Object?> row) => Bmi(
+            row['id'] as int,
+            row['length'] as double,
+            row['weight'] as double,
+            row['date'] as String),
+        arguments: [id]);
+  }
+
+  @override
+  Future<int> insertBmi(Bmi bmi) {
+    return _bmiInsertionAdapter.insertAndReturnId(
+        bmi, OnConflictStrategy.abort);
+  }
+
+  @override
+  Future<void> updateBmi(Bmi bmi) async {
+    await _bmiUpdateAdapter.update(bmi, OnConflictStrategy.abort);
   }
 }

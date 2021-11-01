@@ -6,6 +6,9 @@ import 'package:financial/screens/Debts/debtor/pay_debtor.dart';
 import 'package:financial/screens/Debts/debtor/recepit_debtor.dart';
 import 'package:financial/screens/Debts/debtor/view_debts_name_debtor.dart';
 import 'package:financial/screens/Debts/home_debts.dart';
+import 'package:financial/screens/bmi/bmi_archives.dart';
+import 'package:financial/screens/bmi/bmi_home.dart';
+import 'package:financial/screens/bmi/bmi_show_result.dart';
 import 'package:financial/screens/contact/add_contact.dart';
 import 'package:financial/screens/contact/choosecontact.dart';
 import 'package:financial/screens/contact/contact_home.dart';
@@ -327,7 +330,22 @@ class AppRouter {
 
       case '/recepitdebtor':
         return MaterialPageRoute(
-            builder: (_) => Recepitdebtor(),
+          builder: (_) => Recepitdebtor(),
+        );
+      //  bmi routes//////
+      case '/BmiHome':
+        return MaterialPageRoute(
+            builder: (_) => BmiHome(),
+            settings: RouteSettings(arguments: settings.arguments));
+
+      case '/BmiShowResult':
+        return MaterialPageRoute(
+            builder: (_) => BmiShowResult(),
+            settings: RouteSettings(arguments: settings.arguments));
+
+      case '/BmiArchives':
+        return MaterialPageRoute(
+            builder: (_) => BmiArchives(),
             settings: RouteSettings(arguments: settings.arguments));
 
       default:
