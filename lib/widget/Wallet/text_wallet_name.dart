@@ -54,6 +54,7 @@ class Text_Namewallet extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(left: 5),
               child: TextFormField(
+                textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,

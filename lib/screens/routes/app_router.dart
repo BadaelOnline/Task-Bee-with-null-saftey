@@ -1,4 +1,10 @@
-import 'package:financial/screens/Debts/debts_form.dart';
+import 'package:financial/screens/Debts/add_debts.dart';
+import 'package:financial/screens/Debts/creditor/pay_creditor.dart';
+import 'package:financial/screens/Debts/creditor/recepit_creditor.dart';
+import 'package:financial/screens/Debts/creditor/view_debts_name_creditor.dart';
+import 'package:financial/screens/Debts/debtor/pay_debtor.dart';
+import 'package:financial/screens/Debts/debtor/recepit_debtor.dart';
+import 'package:financial/screens/Debts/debtor/view_debts_name_debtor.dart';
 import 'package:financial/screens/Debts/home_debts.dart';
 import 'package:financial/screens/contact/add_contact.dart';
 import 'package:financial/screens/contact/choosecontact.dart';
@@ -283,6 +289,8 @@ class AppRouter {
         return MaterialPageRoute(
             builder: (_) => ReportSearchResult(),
             settings: RouteSettings(arguments: settings.arguments));
+
+      //////////////////////////////////////////////////// debts
       case '/debtsHome':
         return MaterialPageRoute(
             builder: (_) => DebtsHome(),
@@ -290,6 +298,36 @@ class AppRouter {
       case '/debtsForm':
         return MaterialPageRoute(
             builder: (_) => DebtsForm(),
+            settings: RouteSettings(arguments: settings.arguments));
+
+      case '/viewdebtscreditor':
+        return MaterialPageRoute(
+            builder: (_) => ViewDebts_Name_Creditor(),
+            settings: RouteSettings(arguments: settings.arguments));
+
+      case '/viewdebtsdebtor':
+        return MaterialPageRoute(
+            builder: (_) => ViewDebts_Name_Debtor(),
+            settings: RouteSettings(arguments: settings.arguments));
+
+      case '/paycreditor':
+        return MaterialPageRoute(
+            builder: (_) => payCreditor(),
+            settings: RouteSettings(arguments: settings.arguments));
+
+      case '/paydebtor':
+        return MaterialPageRoute(
+            builder: (_) => Paydebtor(),
+            settings: RouteSettings(arguments: settings.arguments));
+
+      case '/recepitcreditor':
+        return MaterialPageRoute(
+            builder: (_) => Recepit_creditor(),
+            settings: RouteSettings(arguments: settings.arguments));
+
+      case '/recepitdebtor':
+        return MaterialPageRoute(
+            builder: (_) => Recepitdebtor(),
             settings: RouteSettings(arguments: settings.arguments));
 
       default:

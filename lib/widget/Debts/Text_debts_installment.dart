@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // ignore: camel_case_types
-class Text_Wallet_Name extends StatelessWidget {
+class Text_Installment_debts extends StatelessWidget {
   final TextEditingController? controller;
   final TextInputType? type;
   final Function(String)? onSubmit;
@@ -14,9 +14,9 @@ class Text_Wallet_Name extends StatelessWidget {
   final String? label;
   final IconData? prefix;
   final bool? isClickable;
-  // final String? namecurrency;
+  final String? namecurrency;
 
-  const Text_Wallet_Name({
+  const Text_Installment_debts({
     Key? key,
     this.controller,
     this.type,
@@ -26,7 +26,7 @@ class Text_Wallet_Name extends StatelessWidget {
     this.label,
     this.prefix,
     this.isClickable,
-    // this.namecurrency,
+    this.namecurrency,
   }) : super(key: key);
 
   @override
@@ -39,6 +39,7 @@ class Text_Wallet_Name extends StatelessWidget {
         ),
       ),
       height: 50,
+      width: MediaQuery.of(context).size.width,
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Container(
           child: Text(
@@ -46,7 +47,7 @@ class Text_Wallet_Name extends StatelessWidget {
             style: TextStyle(fontSize: 15),
           ),
           alignment: Alignment.center,
-          width: MediaQuery.of(context).size.width * 0.2,
+          width: MediaQuery.of(context).size.width * 0.175,
           height: 50,
           decoration: BoxDecoration(
               color: Colors.grey[200],
@@ -56,7 +57,7 @@ class Text_Wallet_Name extends StatelessWidget {
         Container(
           alignment: Alignment.bottomCenter,
           height: 50,
-          width: MediaQuery.of(context).size.width * 0.5,
+          width: MediaQuery.of(context).size.width * 0.45,
           child: TextFormField(
             textAlign: TextAlign.center,
             style: TextStyle(
@@ -77,32 +78,29 @@ class Text_Wallet_Name extends StatelessWidget {
             // TODO: implement listener
           },
           builder: (context, state) {
-            return InkWell(
-              onTap: () => Navigator.of(context).pushNamed('/choosecurrency'),
-              child: Container(
-                alignment: Alignment.center,
-                width: MediaQuery.of(context).size.width * 0.2,
-                height: 50,
-                child: Text(
-                  CurrencyCubit.get(context).chosenCurrency != null
-                      ? CurrencyCubit.get(context).chosenCurrency!.name
-                      : kDefaultCurrency.code,
-                  style: TextStyle(fontSize: 15),
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        spreadRadius: 1,
-                        blurRadius: 1,
-                        offset: Offset(0, 1), // changes position of shadow
-                      ),
-                    ],
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(8),
-                        bottomRight: Radius.circular(8))),
+            return Container(
+              alignment: Alignment.center,
+              width: MediaQuery.of(context).size.width * 0.175,
+              height: 50,
+              child: Text(
+                CurrencyCubit.get(context).chosenCurrency != null
+                    ? CurrencyCubit.get(context).chosenCurrency!.name
+                    : kDefaultCurrency.code,
+                style: TextStyle(fontSize: 15),
               ),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 1,
+                      offset: Offset(0, 1), // changes position of shadow
+                    ),
+                  ],
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(8),
+                      bottomRight: Radius.circular(8))),
             );
           },
         ),

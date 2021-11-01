@@ -3,6 +3,7 @@ import 'package:financial/services/bloc/contact/states.dart';
 import 'package:financial/widget/Contact/card_contact.dart';
 import 'package:financial/widget/Contact/search_widget.dart';
 import 'package:financial/widget/custom_appBar.dart';
+import 'package:financial/widget/custom_appbar_search.dart';
 import 'package:financial/widget/custom_floating_action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,10 +22,11 @@ class _ContactHomeState extends State<ContactHome> {
         ContactCubit cubit = ContactCubit.get(context);
         return Scaffold(
             appBar: CustomAppBar(
-                Image.asset(
-                  'assets/homepage/person.png',
-                ),
-                'My Contact'),
+              Image.asset(
+                'assets/homepage/person.png',
+              ),
+              'My Contact',
+            ),
             body: Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Column(

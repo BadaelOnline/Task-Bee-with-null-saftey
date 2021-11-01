@@ -55,6 +55,7 @@ class Custom_Text_Paid extends StatelessWidget {
           height: 50,
           width: MediaQuery.of(context).size.width * 0.5,
           child: TextFormField(
+            textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -78,7 +79,9 @@ class Custom_Text_Paid extends StatelessWidget {
             },
             builder: (context, state) {
               return Text(
-                CurrencyCubit.get(context).chosenCurrency != null ? CurrencyCubit.get(context).chosenCurrency!.name : kDefaultCurrency.code,
+                CurrencyCubit.get(context).chosenCurrency != null
+                    ? CurrencyCubit.get(context).chosenCurrency!.name
+                    : kDefaultCurrency.code,
                 style: TextStyle(fontSize: 15),
               );
             },

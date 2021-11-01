@@ -13,7 +13,8 @@ class CardContact extends StatelessWidget {
     Key? key,
     this.delete,
     this.edit,
-    this.name, this.onTap,
+    this.name,
+    this.onTap,
   }) : super(
           key: key,
         );
@@ -21,8 +22,8 @@ class CardContact extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap ,
-          // () => Navigator.of(context).pushNamed('/previewcontact'),
+      onTap: onTap,
+      // () => Navigator.of(context).pushNamed('/previewcontact'),
       child: Container(
           decoration: BoxDecoration(
             color: Colors.white,
@@ -42,13 +43,18 @@ class CardContact extends StatelessWidget {
             children: [
               Row(children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Image.asset(
-                    'assets/image/user.png',
-                    width: 40,
-                    height: 40,
-                  ),
-                ),
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Icon(
+                      Icons.person,
+                      color: Colors.grey[500],
+                      size: 35,
+                    )
+                    // Image.asset(
+                    //   'assets/image/user.png',
+                    //   width: 40,
+                    //   height: 40,
+                    // ),
+                    ),
                 SizedBox(
                   width: 15,
                 ),
