@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../main.dart';
+
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({Key? key}) : super(key: key);
 
@@ -23,6 +25,22 @@ class DrawerWidget extends StatelessWidget {
           title: const Text('Get Report'),
           onTap: () {
             Navigator.of(context).pushNamed('/reportSearch');
+          },
+        ),
+        ListTile(
+          title: const Text('language English'),
+          onTap: () {
+            MyApp.of(context)!
+                .setLocale(Locale.fromSubtags(languageCode: 'en'));
+            Navigator.of(context).pop();
+          },
+        ),
+        ListTile(
+          title: const Text('language Arabic'),
+          onTap: () {
+            MyApp.of(context)!
+                .setLocale(Locale.fromSubtags(languageCode: 'ar'));
+            Navigator.of(context).pop();
           },
         ),
       ]),

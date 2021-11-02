@@ -1,3 +1,4 @@
+import 'package:financial/common/applocal.dart';
 import 'package:flutter/material.dart';
 
 class Button_AllTransAction extends StatelessWidget {
@@ -10,7 +11,7 @@ class Button_AllTransAction extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20, top: 16, bottom: 16),
       child: InkWell(
-        onTap:()=> Navigator.of(context).pushNamed('/transactionHome'),
+        onTap: () => Navigator.of(context).pushNamed('/transactionHome'),
         child: Container(
           alignment: Alignment.center,
           height: 50,
@@ -27,7 +28,7 @@ class Button_AllTransAction extends StatelessWidget {
               ],
               borderRadius: BorderRadius.circular(8)),
           child: Text(
-            'All Transactions',
+            "${getLang(context, "All Transactions")}",
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.black54,

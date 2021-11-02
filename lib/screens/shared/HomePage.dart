@@ -1,3 +1,4 @@
+import 'package:financial/common/applocal.dart';
 import 'package:financial/widget/Drawer_Widget.dart';
 import 'package:financial/widget/Home_Page/Muilty_Icon_Group/section_group.dart';
 import 'package:financial/widget/Home_Page/Business_Group/business_group.dart';
@@ -44,11 +45,11 @@ class MyHomePage extends StatelessWidget {
           ),
           Calendar(),
           Title_container(
-            text: 'Family & Heailth Care',
+            text: "${getLang(context, "Family & Heailth Care")}",
           ),
           Family_Health(),
           Title_container(
-            text: 'Business & projects',
+            text: "${getLang(context, "Business & prjects")}",
           ),
           Business_Project(),
           Slogan(),

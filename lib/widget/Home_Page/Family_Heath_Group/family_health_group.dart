@@ -1,3 +1,4 @@
+import 'package:financial/common/applocal.dart';
 import 'package:financial/screens/bmi/bmi_home.dart';
 import 'package:flutter/material.dart';
 import 'muilty_icon_text.dart';
@@ -34,8 +35,8 @@ class Family_Health extends StatelessWidget {
                     height: duoble,
                     width: duoble,
                   ),
-                  text1: 'BMI',
-                  text2: 'Study',
+                  text1: "${getLang(context, "BMI")}",
+                  text2: "${getLang(context, "Study")}",
                 ),
                 multi_icon_text(
                   icon1: Image.asset(
@@ -48,8 +49,8 @@ class Family_Health extends StatelessWidget {
                     height: duoble,
                     width: duoble,
                   ),
-                  text1: 'Health',
-                  text2: 'Children',
+                  text1: "${getLang(context, "Health")}",
+                  text2: "${getLang(context, "Children")}",
                 ),
                 multi_icon_text(
                   icon1: Image.asset(
@@ -62,8 +63,8 @@ class Family_Health extends StatelessWidget {
                     height: duoble,
                     width: duoble,
                   ),
-                  text1: 'Medicine',
-                  text2: 'Notes',
+                  text1: "${getLang(context, "Medicine")}",
+                  text2: "${getLang(context, "Notes")}",
                 )
               ],
             )
