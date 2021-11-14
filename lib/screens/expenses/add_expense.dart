@@ -1,7 +1,9 @@
+import 'package:financial/common/applocal.dart';
 import 'package:financial/widget/Buttom_Incom_Pay/Button_Pay/Form_Debtors.dart';
 import 'package:financial/widget/Buttom_Incom_Pay/Button_Pay/Form_Expinces.dart';
 import 'package:financial/widget/custom_appBar.dart';
 import 'package:flutter/material.dart';
+import '../../main.dart';
 
 class AddExpense extends StatefulWidget {
   @override
@@ -9,6 +11,7 @@ class AddExpense extends StatefulWidget {
 }
 
 class _AddExpenseState extends State<AddExpense> {
+  var lang = mySharedPreferences!.getString('lang');
   Future<void> _showMyDialog(context) async {
     return showDialog<void>(
       context: context,
@@ -34,50 +37,59 @@ class _AddExpenseState extends State<AddExpense> {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      initialIndex: 0,
-      child: Scaffold(
-        appBar: CustomAppBar(
-            Image(
-              image: AssetImage('assets/homepage/masaref.png'),
-            ),
-            'Pay'),
-        body: Stack(children: [
+    double height = MediaQuery.of(context).size.height / 18;
+    return Scaffold(
+      appBar: CustomAppBar(
+        Image(
+          image: AssetImage('assets/homepage/masaref.png'),
+        ),
+        "${getLang(context, "Pay")}".toString(),
+      ),
+      body: DefaultTabController(
+        length: 3,
+        child: Column(children: [
           Container(
-            height: 40,
+            height: height,
             color: Colors.white,
             child: TabBar(
               indicatorColor: Colors.red,
               tabs: [
                 Container(
                   child: Text(
-                    'Expencies',
+                    "${getLang(context, "Expencies")}".toString(),
                     style: TextStyle(color: Colors.grey[800], fontSize: 15),
                   ),
                 ),
                 Container(
                   child: Text(
-                    'Pay Debts',
+                    "${getLang(context, "Pay Debts")}".toString(),
                     style: TextStyle(color: Colors.grey[800], fontSize: 15),
                   ),
                 ),
                 Container(
                   child: Text(
-                    'Projects',
+                    "${getLang(context, "Projects")}".toString(),
                     style: TextStyle(color: Colors.grey[800], fontSize: 15),
                   ),
                 ),
               ],
             ),
           ),
-          TabBarView(children: [
-            FormExpencies(),
-            FormDebtors(),
-            Center(
-              child: Text('Soon..'),
-            ),
-          ])
+          Expanded(
+            child: TabBarView(children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: FormExpencies(),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: FormDebtors(),
+              ),
+              Center(
+                child: Text('Soon..'),
+              ),
+            ]),
+          )
         ]),
       ),
     );

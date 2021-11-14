@@ -1,5 +1,8 @@
+import 'package:financial/common/applocal.dart';
+
 import 'package:flutter/material.dart';
 
+// ignore: camel_case_types
 class Custom_Text extends StatelessWidget {
   final TextEditingController? controller;
   final TextInputType? type;
@@ -24,6 +27,8 @@ class Custom_Text extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String name = "${getLang(context, "Name")}".toString();
+
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
@@ -35,16 +40,20 @@ class Custom_Text extends StatelessWidget {
       child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
         Container(
           child: Text(
-            label.toString(),
+            name,
             style: TextStyle(fontSize: 15),
           ),
           alignment: Alignment.center,
           width: MediaQuery.of(context).size.width * 0.2,
           height: 50,
           decoration: BoxDecoration(
-              color: Colors.grey[200],
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(8), bottomLeft: Radius.circular(8))),
+            color: Colors.grey[200],
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(name == "Name" ? 7.5 : 0),
+                bottomLeft: Radius.circular(name == "Name" ? 7.5 : 0),
+                topRight: Radius.circular(name == "Name" ? 0 : 7.5),
+                bottomRight: Radius.circular(name == "Name" ? 0 : 7.5)),
+          ),
         ),
         Center(
           child: Container(
@@ -52,7 +61,8 @@ class Custom_Text extends StatelessWidget {
             height: 50,
             width: MediaQuery.of(context).size.width * 0.7,
             child: Padding(
-              padding: const EdgeInsets.only(left: 5),
+              padding: EdgeInsets.only(
+                  left: name == "Name" ? 5 : 0, right: name == "الاسم" ? 5 : 0),
               child: TextFormField(
                 textAlign: TextAlign.center,
                 style: TextStyle(

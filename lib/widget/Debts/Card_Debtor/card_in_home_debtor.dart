@@ -97,6 +97,9 @@ class _Card_Home_DebtorState extends State<Card_Home_Debtor> {
                       children: [
                         InkWell(
                           child: Container(
+                            height: 34,
+                            width: 50,
+                            alignment: Alignment.center,
                             child: Text(
                               'pay    ',
                               style: TextStyle(
@@ -114,6 +117,9 @@ class _Card_Home_DebtorState extends State<Card_Home_Debtor> {
                         InkWell(
                           onTap: () => ShowDialogdebtor(context),
                           child: Container(
+                            height: 34,
+                            width: 50,
+                            alignment: Alignment.center,
                             child: Text(
                               'recepit',
                               style: TextStyle(

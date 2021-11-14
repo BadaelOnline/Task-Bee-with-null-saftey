@@ -31,12 +31,14 @@ Future<void> ShowDialog(BuildContext context) async {
                 ),
                 Divider(),
                 InkWell(
-                  child: Text(
-                    'Amount',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  onTap: () => Navigator.of(context).pushNamed('/paycreditor'),
-                ),
+                    child: Text(
+                      'Amount',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    onTap: () {
+                      Navigator.of(context).pushNamed('/paycreditor');
+                    }),
               ],
             ),
             SizedBox(

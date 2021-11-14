@@ -29,6 +29,7 @@ class _Visibility_NoteState extends State<Visibility_Note> {
           },
           child: Widget_container(
             text: 'Description',
+            image: Icon(Icons.add),
           ),
         ),
         Visibility(

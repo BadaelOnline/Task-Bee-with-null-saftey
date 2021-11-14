@@ -35,6 +35,7 @@ dependencies:
   step_progress_indicator: ^1.0.1
   shared_preferences: any
   provider: ^5.0.0
+  
 
 #localization
   flutter_localizations :
@@ -86,8 +87,8 @@ flutter:
     - assets/image_wallet/
     - assets/category/
     - assets/wallet/
+    - assets/flag/
     - assets/homepage/
-    - assets/icons/
     - assets/contact/
 
   # An image asset can refer to one or more resolution-specific "variants", see

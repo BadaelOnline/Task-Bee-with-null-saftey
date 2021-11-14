@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../main.dart';
 
-class DrawerWidget extends StatelessWidget {
+class DrawerWidget extends StatefulWidget {
   const DrawerWidget({Key? key}) : super(key: key);
+
+  @override
+  _DrawerWidgetState createState() => _DrawerWidgetState();
+}
+
+class _DrawerWidgetState extends State<DrawerWidget> {
+  var lang = mySharedPreferences!.getString('lang');
 
   @override
   Widget build(BuildContext context) {
@@ -30,19 +37,23 @@ class DrawerWidget extends StatelessWidget {
         ListTile(
           title: const Text('language English'),
           onTap: () {
-            MyApp.of(context)!
-                .setLocale(Locale.fromSubtags(languageCode: 'en'));
-            Navigator.of(context).pop();
+            setState(() {
+              MyApp.of(context)!.setLocale('en');
+              Navigator.of(context).pop();
+            });
           },
         ),
         ListTile(
           title: const Text('language Arabic'),
           onTap: () {
-            MyApp.of(context)!
-                .setLocale(Locale.fromSubtags(languageCode: 'ar'));
-            Navigator.of(context).pop();
+            setState(() {
+              MyApp.of(context)!.setLocale('ar');
+
+              Navigator.of(context).pop();
+            });
           },
         ),
+        Text(lang.toString())
       ]),
     );
   }

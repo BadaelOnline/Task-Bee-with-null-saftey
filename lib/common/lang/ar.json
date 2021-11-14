@@ -16,6 +16,39 @@
     "Project" : "المشاريع",
     "Teams Managament" : "مجموعات العمل",
     "Family & Heailth Care" : "الصحة والأسرة" ,
-    "Business & prjects"  : "الأعمال والمشاريع"  
+    "Business & prjects"  : "الأعمال والمشاريع" ,
+    "Name" : "الاسم" ,
+    "langapp" : "ar",
+    "Expencies" : "مصاريف",
+    "Pay Debts" : "دفع دين",
+    "Projects" : "مشاريع",
+    "Total" : "الإجمالي",
+    "Paid" : "المدفوع",
+    "Recived":"المقبوض",
+    "Wallet" :"المحفظة",
+    "Expancies item" : "فئة الصرف",
+    "Revenue item" : "فئة الإيراد",
+    "Contacts" : "جهة التعامل",
+    "Add some note" : "إضافة ملاحظة",
+    "More options" : "خيارات أكثر",
+    "Less options" : "خيارات أقل",
+    "Repated Transaction" : "تكرار المعاملة",
+    "Upload Image" :"تحميل صورة",
+    "Repeted" : "التكرار",
+    "Daily" : "يومي",
+    "Weekly" : "أسبوعي",
+    "Monthly" : "شهري",
+    "Yearly" : "سنوي",
+    "Transaction alert" : "التنبيه بالمعاملة",
+    "Befor one day" : "قبل يوم",
+    "Befor tow day" : "قبل يومين",
+    "At the same time" : "في نفس الوقت ",
+    "Revnuee" : "إيراد",
+    "Recive Debts" : "قبض دين",
+    "Recive" : "قبض",
+    "Payy" : "صرف"
+
+
+    
 
 }

@@ -28,8 +28,8 @@ class MyHomePage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                ContainerIncome(),
                 ContainerPay(),
+                ContainerIncome(),
               ],
             ),
           ),

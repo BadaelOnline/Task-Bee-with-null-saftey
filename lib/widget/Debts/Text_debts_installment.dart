@@ -60,6 +60,13 @@ class Text_Installment_debts extends StatelessWidget {
           width: MediaQuery.of(context).size.width * 0.45,
           child: TextFormField(
             textAlign: TextAlign.center,
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              focusedBorder: InputBorder.none,
+              enabledBorder: InputBorder.none,
+              errorBorder: InputBorder.none,
+              disabledBorder: InputBorder.none,
+            ),
             style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,

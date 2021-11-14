@@ -4,15 +4,15 @@ import 'Text_debts_installment.dart';
 import 'date_debts.dart';
 
 // ignore: camel_case_types
-class Visibal_RepatedDebts extends StatefulWidget {
-  const Visibal_RepatedDebts({Key? key}) : super(key: key);
+class Visibal_Installment extends StatefulWidget {
+  const Visibal_Installment({Key? key}) : super(key: key);
 
   @override
-  _Visibal_RepatedDebtsState createState() => _Visibal_RepatedDebtsState();
+  _Visibal_InstallmentState createState() => _Visibal_InstallmentState();
 }
 
 // ignore: camel_case_types
-class _Visibal_RepatedDebtsState extends State<Visibal_RepatedDebts> {
+class _Visibal_InstallmentState extends State<Visibal_Installment> {
   bool isVisabile2 = false;
 
   var val;
@@ -32,7 +32,13 @@ class _Visibal_RepatedDebtsState extends State<Visibal_RepatedDebts> {
               isVisabile2 = !isVisabile2;
             });
           },
-          child: Widget_container(text: 'Entitlement'),
+          child: Widget_container(
+            text: 'Entitlement',
+            image: Icon(
+              Icons.done_all,
+              color: Colors.black,
+            ),
+          ),
         ),
         Visibility(
           visible: isVisabile2,

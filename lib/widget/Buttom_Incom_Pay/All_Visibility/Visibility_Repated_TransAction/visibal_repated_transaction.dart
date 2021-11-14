@@ -1,3 +1,4 @@
+import 'package:financial/common/applocal.dart';
 import 'package:flutter/material.dart';
 
 import '../widget_container.dart';
@@ -32,7 +33,12 @@ class _Visibal_RepatedtransActionState
               isVisabile2 = !isVisabile2;
             });
           },
-          child: Widget_container(text: 'Repated Transaction'),
+          child: Widget_container(
+              text: "${getLang(context, "Repated Transaction")}".toString(),
+              image: Container(
+                  height: 25,
+                  width: 25,
+                  child: Image.asset('assets/homepage/repeat.png'))),
         ),
         Visibility(
           visible: isVisabile2,
@@ -43,7 +49,7 @@ class _Visibal_RepatedtransActionState
                 child: Row(
                   children: [
                     Text(
-                      'Repeated :',
+                      "${getLang(context, "Repeted")} :".toString(),
                       style: TextStyle(fontWeight: FontWeight.bold),
                     )
                   ],
@@ -64,7 +70,7 @@ class _Visibal_RepatedtransActionState
                         },
                       ),
                       Text(
-                        'Daily',
+                        "${getLang(context, "Daily")}".toString(),
                         style: TextStyle(fontSize: 11.75),
                       ),
                     ],
@@ -81,7 +87,7 @@ class _Visibal_RepatedtransActionState
                         },
                       ),
                       Text(
-                        'Weekly',
+                        "${getLang(context, "Weekly")}".toString(),
                         style: TextStyle(fontSize: 11.75),
                       ),
                     ],
@@ -98,7 +104,7 @@ class _Visibal_RepatedtransActionState
                         },
                       ),
                       Text(
-                        'Monthly',
+                        "${getLang(context, "Monthly")}".toString(),
                         style: TextStyle(fontSize: 11.75),
                       ),
                     ],
@@ -115,7 +121,7 @@ class _Visibal_RepatedtransActionState
                         },
                       ),
                       Text(
-                        'yearly',
+                        "${getLang(context, "Yearly")}".toString(),
                         style: TextStyle(fontSize: 11.75),
                       ),
                     ],
@@ -127,7 +133,7 @@ class _Visibal_RepatedtransActionState
                 child: Row(
                   children: [
                     Text(
-                      'Transaction alert :',
+                      "${getLang(context, "Transaction alert")} :".toString(),
                       style: TextStyle(fontWeight: FontWeight.bold),
                     )
                   ],
@@ -143,7 +149,9 @@ class _Visibal_RepatedtransActionState
                       });
                     },
                   ),
-                  Text('Before one day'),
+                  Text(
+                    "${getLang(context, "Befor one day")}".toString(),
+                  ),
                 ],
               ),
               Row(
@@ -156,7 +164,9 @@ class _Visibal_RepatedtransActionState
                       });
                     },
                   ),
-                  Text('Before Two days'),
+                  Text(
+                    "${getLang(context, "Befor tow day")}".toString(),
+                  ),
                 ],
               ),
               Row(
@@ -169,7 +179,9 @@ class _Visibal_RepatedtransActionState
                       });
                     },
                   ),
-                  Text('At the same time'),
+                  Text(
+                    "${getLang(context, "At the same time")}".toString(),
+                  ),
                 ],
               ),
             ],

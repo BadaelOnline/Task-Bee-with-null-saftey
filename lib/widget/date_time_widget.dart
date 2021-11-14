@@ -69,7 +69,7 @@ class _DateTimeWidgetState extends State<DateTimeWidget> {
             InkWell(
               onTap: () => selectedTodotime(context),
               child: Container(
-                height: 50,
+                height: MediaQuery.of(context).size.height / 13.7,
                 width: MediaQuery.of(context).size.width * 0.4,
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -113,7 +113,7 @@ class _DateTimeWidgetState extends State<DateTimeWidget> {
             InkWell(
               onTap: () => selectedTodoDate(context),
               child: Container(
-                height: 50,
+                height: MediaQuery.of(context).size.height / 13.7,
                 width: MediaQuery.of(context).size.width * 0.4,
                 decoration: BoxDecoration(
                     color: Colors.white,

@@ -9,6 +9,7 @@ import 'package:financial/widget/Debts/all_visibility_debts.dart';
 import 'package:financial/widget/Wallet/text_wallet_balance.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../date_time_widget.dart';
+import '../note_when_you_add_transaction.dart';
 
 // ignore: camel_case_types
 class Form_Add_Debts extends StatefulWidget {
@@ -23,6 +24,8 @@ class _Form_Add_DebtsState extends State<Form_Add_Debts> {
   String? date;
   String? time;
   TextEditingController datetime = TextEditingController();
+  TextEditingController total = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -60,6 +63,7 @@ class _Form_Add_DebtsState extends State<Form_Add_Debts> {
             ),
             Text_Wallet_Balance(
               label: 'Total',
+              controller: total,
               type: TextInputType.number,
             ),
             // COntainer2currency(
@@ -92,7 +96,11 @@ class _Form_Add_DebtsState extends State<Form_Add_Debts> {
               },
             ),
             SizedBox(
-              height: 20,
+              height: 15,
+            ),
+            Note_when_you_add_transaction(),
+            SizedBox(
+              height: 25,
             ),
             // Exchang_Currency(),
 

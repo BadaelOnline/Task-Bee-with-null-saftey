@@ -1,36 +1,30 @@
 import 'package:flutter/material.dart';
 
-class CustomAppBar_Search extends StatelessWidget
-    implements PreferredSizeWidget {
+class AppBarwithsearch extends StatefulWidget implements PreferredSizeWidget {
   final String title;
-  final Widget icon;
-  Icon customIcon = const Icon(
-    Icons.search,
-    color: Colors.grey,
-  );
-  Widget customSearchBar = const Text('My Personal Journal');
-  // final Widget sarecheIcon;
-  // final Function search;
-  // final Function trans;
+  final Widget? icon;
+  const AppBarwithsearch({Key? key, required this.title, required this.icon})
+      : super(
+          key: key,
+        );
 
-  CustomAppBar_Search(
-    this.icon,
-    // this.sarecheIcon,
-    this.title,
-    // this.search,
-    // this.trans,
-  );
+  @override
+  _AppBarwithsearchState createState() => _AppBarwithsearchState();
   @override
   Size get preferredSize => const Size.fromHeight(55);
+}
 
+class _AppBarwithsearchState extends State<AppBarwithsearch> {
+  late final String title;
+  late final Icon icon;
+  TextEditingController _controller = new TextEditingController();
+
+  Widget titletext = Text('title');
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.white,
-      title: Text(
-        title,
-        style: TextStyle(color: Colors.grey, fontSize: 18),
-      ),
+      title: titletext,
       leading: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Center(child: icon),
@@ -39,37 +33,37 @@ class CustomAppBar_Search extends StatelessWidget
         Container(
           child: Row(
             children: [
+              // IconButton(
+              //   onPressed: () {},
+              //   icon: Icon(
+              //     Icons.search,
+              //     color: Colors.grey[700],
+              //   ),
+              // ),
               IconButton(
-                  onPressed: () {
-                    if (customIcon.icon == Icons.search) {
-                      customIcon = const Icon(Icons.cancel);
-                      customSearchBar = const ListTile(
-                        leading: Icon(
-                          Icons.search,
-                          color: Colors.white,
-                          size: 28,
-                        ),
-                        title: TextField(
-                          decoration: InputDecoration(
-                            hintText: 'type in journal name...',
-                            hintStyle: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontStyle: FontStyle.italic,
-                            ),
-                            border: InputBorder.none,
-                          ),
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
+                icon: icon,
+                onPressed: () {
+                  setState(() {
+                    if (icon == Icons.search) {
+                      icon = new Icon(
+                        Icons.close,
+                        color: Colors.white,
                       );
-                    } else {
-                      customIcon = const Icon(Icons.search);
-                      customSearchBar = customSearchBar;
-                    }
-                  },
-                  icon: customIcon),
+                      titletext = TextField(
+                        controller: _controller,
+                        style: new TextStyle(
+                          color: Colors.white,
+                        ),
+                        decoration: new InputDecoration(
+                            prefixIcon:
+                                new Icon(Icons.search, color: Colors.white),
+                            hintText: "Search...",
+                            hintStyle: new TextStyle(color: Colors.white)),
+                      );
+                    } else {}
+                  });
+                },
+              ),
               IconButton(
                 icon: Image.asset(
                   'assets/homepage/cancel.png',

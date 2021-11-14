@@ -13,13 +13,17 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'common/applocal.dart';
 import 'common/constant/bloc-observer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'common/database/database.dart';
 
-SharedPreferences mySharedPreferences = mySharedPreferences;
+SharedPreferences? mySharedPreferences;
 
 void main() async {
   Bloc.observer = MyBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
   mySharedPreferences = await SharedPreferences.getInstance();
+
+  final database =
+      await $FloorAppDatabase.databaseBuilder('database_wallet.db').build();
 
   runApp(MyApp());
 }
@@ -33,11 +37,11 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final AppRouter _appRouter = AppRouter();
-  Locale? _locale;
+  var lang = mySharedPreferences!.getString('lang');
 
-  void setLocale(Locale value) {
+  void setLocale(String value) async {
     setState(() {
-      _locale = value;
+      lang = value;
     });
   }
 
@@ -54,7 +58,7 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(create: (context) => BmiCubit()..createDataabase()),
       ],
       child: MaterialApp(
-        locale: _locale,
+        locale: Locale(lang.toString()),
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
@@ -65,7 +69,8 @@ class _MyAppState extends State<MyApp> {
         localizationsDelegates: [
           AppLocale.delegate,
           GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: [
           Locale("en", ""),
@@ -75,12 +80,12 @@ class _MyAppState extends State<MyApp> {
           if (currentLang != null) {
             for (Locale locale in supportLang) {
               if (locale.languageCode == currentLang.languageCode) {
-                mySharedPreferences.setString("lang", currentLang.languageCode);
+                mySharedPreferences!
+                    .setString("lang", currentLang.languageCode);
                 return currentLang;
               }
             }
           }
-          return supportLang.first;
         },
       ),
     );

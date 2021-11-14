@@ -1,9 +1,10 @@
 import 'package:financial/common/constant/constants.dart';
 import 'package:financial/services/bloc/currency/cubit.dart';
-import 'package:financial/services/bloc/currency/cubit.dart';
 import 'package:financial/services/bloc/currency/states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../main.dart';
 
 // ignore: camel_case_types
 class Custom_Text_Total extends StatelessWidget {
@@ -30,6 +31,8 @@ class Custom_Text_Total extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang = mySharedPreferences!.getString('lang');
+    double height = MediaQuery.of(context).size.height / 13.7;
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
@@ -37,7 +40,7 @@ class Custom_Text_Total extends StatelessWidget {
           color: Color(0xffeeeeee),
         ),
       ),
-      height: 50,
+      height: height,
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Container(
           child: Text(
@@ -46,17 +49,27 @@ class Custom_Text_Total extends StatelessWidget {
           ),
           alignment: Alignment.center,
           width: MediaQuery.of(context).size.width * 0.2,
-          height: 50,
+          height: height,
           decoration: BoxDecoration(
               color: Colors.grey[200],
               borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(8), bottomLeft: Radius.circular(8))),
+                  topRight: Radius.circular(lang == 'en' ? 0 : 8),
+                  bottomRight: Radius.circular(lang == 'en' ? 0 : 8),
+                  topLeft: Radius.circular(lang == 'en' ? 8 : 0),
+                  bottomLeft: Radius.circular(lang == 'en' ? 8 : 0))),
         ),
         Container(
           alignment: Alignment.bottomCenter,
-          height: 50,
+          height: height,
           width: MediaQuery.of(context).size.width * 0.5,
           child: TextFormField(
+            decoration: new InputDecoration(
+              border: InputBorder.none,
+              focusedBorder: InputBorder.none,
+              enabledBorder: InputBorder.none,
+              errorBorder: InputBorder.none,
+              disabledBorder: InputBorder.none,
+            ),
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 16,
@@ -76,7 +89,7 @@ class Custom_Text_Total extends StatelessWidget {
           child: Container(
             alignment: Alignment.center,
             width: MediaQuery.of(context).size.width * 0.2,
-            height: 50,
+            height: height,
             child: BlocConsumer<CurrencyCubit, CurrencyStates>(
               listener: (context, state) {
                 // TODO: implement listener
@@ -101,8 +114,10 @@ class Custom_Text_Total extends StatelessWidget {
                   ),
                 ],
                 borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(8),
-                    bottomRight: Radius.circular(8))),
+                    topRight: Radius.circular(lang == 'en' ? 8 : 0),
+                    bottomRight: Radius.circular(lang == 'en' ? 8 : 0),
+                    topLeft: Radius.circular(lang == 'en' ? 0 : 8),
+                    bottomLeft: Radius.circular(lang == 'en' ? 0 : 8))),
           ),
         ),
       ]),

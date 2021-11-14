@@ -1,3 +1,4 @@
+import 'package:financial/common/applocal.dart';
 import 'package:financial/widget/Buttom_Incom_Pay/Buttom_Income/Form_Debtors_Income.dart';
 import 'package:financial/widget/Buttom_Incom_Pay/Buttom_Income/Form_Expencies_Income.dart';
 import 'package:financial/widget/custom_appBar.dart';
@@ -13,16 +14,16 @@ class Add_Revenue extends StatefulWidget {
 class _Add_RevenueState extends State<Add_Revenue> {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      initialIndex: 0,
-      child: Scaffold(
-        appBar: CustomAppBar(
-            Image(
-              image: AssetImage('assets/homepage/dollar.png'),
-            ),
-            'Income'),
-        body: Stack(children: [
+    return Scaffold(
+      appBar: CustomAppBar(
+        Image(
+          image: AssetImage('assets/homepage/dollar.png'),
+        ),
+        "${getLang(context, "Income")}".toString(),
+      ),
+      body: DefaultTabController(
+        length: 3,
+        child: Column(children: [
           Container(
             height: 40,
             color: Colors.white,
@@ -31,32 +32,42 @@ class _Add_RevenueState extends State<Add_Revenue> {
               tabs: [
                 Container(
                   child: Text(
-                    'Revenue',
+                    "${getLang(context, "Revnuee")}".toString(),
                     style: TextStyle(color: Colors.grey[800], fontSize: 15),
                   ),
                 ),
                 Container(
                   child: Text(
-                    'Recive Debts',
+                    "${getLang(context, "Recive Debts")}".toString(),
                     style: TextStyle(color: Colors.grey[800], fontSize: 15),
                   ),
                 ),
                 Container(
                   child: Text(
-                    'Projects',
+                    "${getLang(context, "Projects")}".toString(),
                     style: TextStyle(color: Colors.grey[800], fontSize: 15),
                   ),
                 ),
               ],
             ),
           ),
-          TabBarView(children: [
-            FormExpencies_Income(),
-            FormDebtors_Income(),
-            Center(
-              child: Text('Soon..'),
+          Expanded(
+            child: Container(
+              child: TabBarView(children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FormExpencies_Income(),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FormDebtors_Income(),
+                ),
+                Center(
+                  child: Text('Soon..'),
+                ),
+              ]),
             ),
-          ])
+          )
         ]),
       ),
     );

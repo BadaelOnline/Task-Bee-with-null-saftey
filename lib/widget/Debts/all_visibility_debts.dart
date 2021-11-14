@@ -1,4 +1,3 @@
-import 'package:financial/widget/Buttom_Incom_Pay/All_Visibility/Visibility_Note/visibility_note.dart';
 import 'package:financial/widget/Buttom_Incom_Pay/All_Visibility/visibility_Image/visibility_image.dart';
 import 'package:financial/widget/Debts/visibility_repeted_debts.dart';
 import 'package:flutter/material.dart';
@@ -42,13 +41,25 @@ class _AllVisibility_DebtsState extends State<AllVisibility_Debts> {
           ),
           child: InkWell(
             child: isVisabile == false
-                ? Icon(
-                    Icons.arrow_drop_down,
-                    size: 35,
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('More Options'),
+                      Icon(
+                        Icons.arrow_drop_down,
+                        size: 35,
+                      ),
+                    ],
                   )
-                : Icon(
-                    Icons.arrow_drop_up,
-                    size: 35,
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Less Options'),
+                      Icon(
+                        Icons.arrow_drop_up,
+                        size: 35,
+                      ),
+                    ],
                   ),
             onTap: () {
               setState(() {
@@ -65,11 +76,8 @@ class _AllVisibility_DebtsState extends State<AllVisibility_Debts> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Visibal_RepatedDebts(),
+                Visibal_Installment(),
                 Visibility_Image(),
-                Visibility_Note(
-                  des: descriptionController,
-                ),
               ],
             ),
           ),

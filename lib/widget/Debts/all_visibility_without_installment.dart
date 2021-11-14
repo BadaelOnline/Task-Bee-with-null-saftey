@@ -43,13 +43,25 @@ class _AllVisibility_DebtsState
           ),
           child: InkWell(
             child: isVisabile == false
-                ? Icon(
-                    Icons.arrow_drop_down,
-                    size: 35,
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('More Options'),
+                      Icon(
+                        Icons.arrow_drop_down,
+                        size: 35,
+                      ),
+                    ],
                   )
-                : Icon(
-                    Icons.arrow_drop_up,
-                    size: 35,
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Less Options'),
+                      Icon(
+                        Icons.arrow_drop_up,
+                        size: 35,
+                      ),
+                    ],
                   ),
             onTap: () {
               setState(() {
@@ -67,9 +79,6 @@ class _AllVisibility_DebtsState
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Visibility_Image(),
-                Visibility_Note(
-                  des: descriptionController,
-                ),
               ],
             ),
           ),

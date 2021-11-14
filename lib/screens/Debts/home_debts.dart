@@ -31,13 +31,10 @@ class _DebtsHomeState extends State<DebtsHome> with TickerProviderStateMixin {
             child: Column(
               children: [
                 Container(
-                  alignment: Alignment.center,
+                  // alignment: Alignment.center,
                   height: 40,
+                  color: Colors.white,
                   child: TabBar(
-                    indicatorSize: TabBarIndicatorSize.tab,
-                    // indicator: CircleTabIndicator(color: Colors.green, radius: 4),
-                    isScrollable: true,
-                    labelColor: Colors.black,
                     indicatorColor: Colors.red,
                     tabs: [
                       Container(

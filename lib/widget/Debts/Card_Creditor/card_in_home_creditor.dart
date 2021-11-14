@@ -99,6 +99,9 @@ class _Card_Home_CreditorState extends State<Card_Home_Creditor> {
                       children: [
                         InkWell(
                           child: Container(
+                            alignment: Alignment.center,
+                            height: 34,
+                            width: 50,
                             child: Text(
                               'pay    ',
                               style: TextStyle(
@@ -116,6 +119,9 @@ class _Card_Home_CreditorState extends State<Card_Home_Creditor> {
                           onTap: () => Navigator.of(context)
                               .pushNamed('/recepitcreditor'),
                           child: Container(
+                            alignment: Alignment.center,
+                            height: 34,
+                            width: 50,
                             child: Text(
                               'recepit',
                               style: TextStyle(

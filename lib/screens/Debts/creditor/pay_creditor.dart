@@ -1,8 +1,10 @@
 import 'package:financial/widget/Buttom_Incom_Pay/Column_wallet_Expancies_Contact/widget_container.dart';
+import 'package:financial/widget/Debts/Text_debts_installment.dart';
 import 'package:financial/widget/Debts/all_visibility_without_installment.dart';
 import 'package:financial/widget/Wallet/text_wallet_balance.dart';
 import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/date_time_widget.dart';
+import 'package:financial/widget/note_when_you_add_transaction.dart';
 import 'package:flutter/material.dart';
 
 class payCreditor extends StatelessWidget {
@@ -92,14 +94,7 @@ class payCreditor extends StatelessWidget {
                         '12000',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            ////////////////////////////////////////
-                            /// if open contact from Creditor
-                            color: Colors.red[500]
-                            //// Or //
-                            ///if open contact from debtor
-                            /// Colors.green[500]
-
-                            ),
+                            color: Colors.red[500]),
                       ),
                       Text('S.P')
                     ],
@@ -109,9 +104,9 @@ class payCreditor extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Text_Wallet_Balance(
+              Text_Installment_debts(
                 label: 'Total',
-                type: TextInputType.name,
+                type: TextInputType.number,
               ),
               SizedBox(
                 height: 20,
@@ -126,6 +121,10 @@ class payCreditor extends StatelessWidget {
                 balanc: '',
                 ontap: () => Navigator.of(context).pushNamed('/choosewallet'),
               ),
+              SizedBox(
+                height: 15,
+              ),
+              Note_when_you_add_transaction(),
               SizedBox(
                 height: 20,
               ),
