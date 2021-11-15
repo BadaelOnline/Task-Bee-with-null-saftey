@@ -58,6 +58,13 @@ class Text_Wallet_Name extends StatelessWidget {
           height: 50,
           width: MediaQuery.of(context).size.width * 0.5,
           child: TextFormField(
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              focusedBorder: InputBorder.none,
+              enabledBorder: InputBorder.none,
+              errorBorder: InputBorder.none,
+              disabledBorder: InputBorder.none,
+            ),
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 16,

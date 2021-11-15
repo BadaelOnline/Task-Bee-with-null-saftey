@@ -64,6 +64,13 @@ class Custom_Text extends StatelessWidget {
               padding: EdgeInsets.only(
                   left: name == "Name" ? 5 : 0, right: name == "الاسم" ? 5 : 0),
               child: TextFormField(
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  errorBorder: InputBorder.none,
+                  disabledBorder: InputBorder.none,
+                ),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 16,

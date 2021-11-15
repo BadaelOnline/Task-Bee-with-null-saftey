@@ -24,6 +24,7 @@
     "Projects" : "Projects",
     "Total" : "Total",
     "Paid" : "Paid",
+    "Rest": "Rest",
     "Recived" : "Recived",
     "Wallet" :"Wallet",
     "Expancies item" : "Expancies item",
@@ -46,6 +47,7 @@
     "Revnuee" : "Revnue",
     "Recive Debts" : "Recive Debts",
     "Recive" : "Recive",
-    "Payy" : "Pay"
+    "Payy" : "Pay",
+    "Purchases and Spending" :"Purchases and Spending"
 
 }

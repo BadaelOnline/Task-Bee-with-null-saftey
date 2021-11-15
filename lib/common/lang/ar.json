@@ -24,6 +24,7 @@
     "Projects" : "مشاريع",
     "Total" : "الإجمالي",
     "Paid" : "المدفوع",
+    "Rest": "المتبقي",
     "Recived":"المقبوض",
     "Wallet" :"المحفظة",
     "Expancies item" : "فئة الصرف",
@@ -46,7 +47,8 @@
     "Revnuee" : "إيراد",
     "Recive Debts" : "قبض دين",
     "Recive" : "قبض",
-    "Payy" : "صرف"
+    "Payy" : "صرف",
+    "Purchases and Spending" : "مصاريف ومشتريات"
 
 
     
