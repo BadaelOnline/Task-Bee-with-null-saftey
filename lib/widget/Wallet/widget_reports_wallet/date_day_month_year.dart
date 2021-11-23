@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class FirstDate extends StatelessWidget {
-  String formattedDate = DateFormat("yyyy MMMM").format(DateTime.now());
+class DateDayMonthYear extends StatelessWidget {
+  String formattedDate = DateFormat("yyyy MMMM dd").format(DateTime.now());
 
   @override
   Widget build(BuildContext context) {

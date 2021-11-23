@@ -1,29 +1,49 @@
-
-
+import 'package:financial/common/applocal.dart';
 import 'package:flutter/material.dart';
 
-import 'custom_raisd_button.dart';
-
 Widget customAlertDialog({
-  String? title,
   String? content,
   Function()? submitMethod,
   Function()? cancelMethod,
 }) {
   return AlertDialog(
+    title: Row(children: [
+      Icon(
+        Icons.auto_delete_rounded,
+        color: Colors.red[900],
+      ),
+      SizedBox(
+        width: 10,
+      ),
+      Text("Alert"
+          // "${getLang(context, "Alert")}"
+          ),
+    ]),
     content: Text(content!),
-    contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-    contentTextStyle: TextStyle(color: Colors.black38, fontSize: 15),
+    contentTextStyle: TextStyle(color: Colors.grey[700], fontSize: 15),
     actions: [
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          CustomRaisdButton(onPressed: submitMethod, text: 'ok'),
+          TextButton(
+              onPressed: submitMethod,
+              child: Text(
+                "Ok"
+                // "${getLang(context, "Ok")}"
+                ,
+                style: TextStyle(color: Colors.red[900]),
+              )),
           SizedBox(
             width: 30,
           ),
-          CustomRaisdButton(onPressed: cancelMethod, text: 'cancel'),
+          TextButton(
+              onPressed: cancelMethod,
+              child: Text(
+                  "Cancel"
+                  // "${getLang(context, "Cancel")}"
+                  ,
+                  style: TextStyle(color: Colors.black))),
         ],
       ),
     ],

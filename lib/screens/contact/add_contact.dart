@@ -1,3 +1,4 @@
+import 'package:financial/common/applocal.dart';
 import 'package:financial/services/bloc/contact/cubit.dart';
 import 'package:financial/services/bloc/contact/states.dart';
 import 'package:financial/widget/Contact/button_save_cancel.dart';
@@ -18,7 +19,7 @@ class AddContact extends StatelessWidget {
           Image(
             image: AssetImage('assets/homepage/person.png'),
           ),
-          'Add Contact'),
+          "${getLang(context, "Add Contact")}"),
       body: BlocConsumer<ContactCubit, ContactStates>(
         listener: (context, ContactStates state) {
           if (state is InsertContactsToDatabaseState) {
@@ -37,7 +38,7 @@ class AddContact extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Custom_Text(
-                    label: 'Name',
+                    label: "${getLang(context, "Name")}",
                     controller: nameController,
                     prefix: Icons.person,
                   ),

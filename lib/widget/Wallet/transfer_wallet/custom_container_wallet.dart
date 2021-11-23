@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../main.dart';
+
 class Container_wallet extends StatelessWidget {
   const Container_wallet({
     Key? key,
@@ -18,16 +20,21 @@ class Container_wallet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height / 13.7;
+    var lang = mySharedPreferences!.getString('lang');
     return InkWell(
       onTap: ontap,
       child: Container(
-        height: 50,
+        height: height,
         width: MediaQuery.of(context).size.width,
         child: Row(
           children: [
             Padding(
-                padding: const EdgeInsets.only(
-                    top: 5, left: 5, bottom: 5, right: 10),
+                padding: EdgeInsets.only(
+                    top: 5,
+                    left: lang == "en" ? 5 : 5,
+                    bottom: 5,
+                    right: lang == "en" ? 10 : 10),
                 child: image),
             Text('$text'),
             SizedBox(

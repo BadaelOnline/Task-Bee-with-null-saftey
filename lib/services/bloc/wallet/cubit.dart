@@ -189,6 +189,7 @@ class WalletCubit extends Cubit<WalletStates> {
   }) {
     print('ooooooooooooooooooooooooooooooooo $wallet');
     chosenWallet = wallet;
+
     emit(ChoseWalletFromChooseWalletPageState());
   }
 }

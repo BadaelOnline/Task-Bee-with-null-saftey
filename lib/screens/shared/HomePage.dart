@@ -22,7 +22,10 @@ class MyHomePage extends StatelessWidget {
       body: SingleChildScrollView(
           child: Column(
         children: [
-          FirstDate(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: FirstDate(),
+          ),
           Padding(
             padding: const EdgeInsets.only(right: 14, left: 14),
             child: Row(

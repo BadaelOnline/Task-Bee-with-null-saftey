@@ -1,3 +1,4 @@
+import 'package:financial/common/applocal.dart';
 import 'package:financial/services/bloc/contact/cubit.dart';
 import 'package:financial/services/bloc/contact/states.dart';
 import 'package:financial/widget/Contact/image.dart';
@@ -27,7 +28,7 @@ class UpdateContact extends StatelessWidget {
           Image(
             image: AssetImage('assets/homepage/person.png'),
           ),
-          'Update Contact'),
+          "${getLang(context, "Update Contact")}"),
       body: BlocConsumer<ContactCubit, ContactStates>(
         listener: (context, state) {
           if (state is UpdateContactsToDatabaseState) {
@@ -47,7 +48,7 @@ class UpdateContact extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
                     child: Custom_Text(
-                        label: 'Name',
+                        label: "${getLang(context, "Name")}",
                         controller: nameController =
                             TextEditingController(text: '$contactName'),
                         prefix: Icons.person)),

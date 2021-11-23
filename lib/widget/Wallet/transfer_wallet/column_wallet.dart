@@ -1,3 +1,4 @@
+import 'package:financial/common/applocal.dart';
 import 'package:financial/services/bloc/currency/cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:financial/services/bloc/wallet/cubit.dart';
@@ -12,6 +13,12 @@ class Column_Wallet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        Row(
+          children: [Text("${getLang(context, "From Wallet")}")],
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height / 100,
+        ),
         BlocConsumer<WalletCubit, WalletStates>(
           listener: (context, state) {
             // TODO: implement listener
@@ -27,7 +34,7 @@ class Column_Wallet extends StatelessWidget {
                           : 'assets/wallet/wallet_gray.png')),
               text: WalletCubit.get(context).chosenWallet != null
                   ? WalletCubit.get(context).chosenWallet!.name
-                  : 'Wallet / From',
+                  : "${getLang(context, "Choose Wallet")}",
               balanc: WalletCubit.get(context).chosenWallet != null
                   ? WalletCubit.get(context).chosenWallet!.balance
                   : '',
@@ -36,7 +43,13 @@ class Column_Wallet extends StatelessWidget {
           },
         ),
         SizedBox(
-          height: 20,
+          height: MediaQuery.of(context).size.height / 30,
+        ),
+        Row(
+          children: [Text("${getLang(context, "To Wallet")}")],
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height / 100,
         ),
         BlocConsumer<WalletCubit, WalletStates>(
           listener: (context, state) {
@@ -54,12 +67,9 @@ class Column_Wallet extends StatelessWidget {
                           : 'assets/wallet/wallet_gray.png')),
               text: WalletCubit.get(context).chosenWallet != null
                   ? WalletCubit.get(context).chosenWallet!.name
-                  : 'Wallet / To',
+                  : "${getLang(context, "Choose Wallet")}",
               balanc: WalletCubit.get(context).chosenWallet != null
                   ? WalletCubit.get(context).chosenWallet!.balance
-                  : '',
-              currency: CurrencyCubit.get(context).chosenCurrency != null
-                  ? CurrencyCubit.get(context).chosenCurrency!.name
                   : '',
               ontap: () => Navigator.of(context).pushNamed('/choosewallet'),
             );

@@ -1,8 +1,11 @@
+import 'package:financial/common/applocal.dart';
+import 'package:financial/widget/Wallet/raised_button_wallets.dart';
 import 'package:financial/widget/Wallet/text_wallet_balance.dart';
 import 'package:financial/widget/Wallet/transfer_wallet/all_visibility_wallets.dart';
 import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_raisd_button.dart';
 import 'package:financial/widget/date_time_widget.dart';
+import 'package:financial/widget/note_when_you_add_transaction.dart';
 import 'package:flutter/material.dart';
 import '../../../widget/Wallet/transfer_wallet/column_wallet.dart';
 
@@ -19,59 +22,46 @@ class _Transfer_WalletState extends State<Transfer_Wallet> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-          Image(
-            image: AssetImage('assets/homepage/wallet.png'),
-          ),
-          'Wallets'),
+        Image(
+          image: AssetImage('assets/homepage/wallet.png'),
+        ),
+        // "${getLang(context, "Wallets")}",
+        "${getLang(context, "Transfering Between Wallets")}",
+      ),
       body: SingleChildScrollView(
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-        padding: EdgeInsets.all(15),
+        padding: EdgeInsets.all(8),
         child: Column(
           children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: Container(
-                    width: 35,
-                    height: 35,
-                    child: Image.asset(
-                      'assets/wallet/transfer.png',
-                    ),
-                  ),
-                ),
-                Text('Transfering Between Wallets')
-              ],
-            ),
-            Divider(
-              color: Colors.grey[300],
-              thickness: 2,
-            ),
             SizedBox(
-              height: 20,
+              height: MediaQuery.of(context).size.height / 100,
             ),
             Column_Wallet(),
             SizedBox(
-              height: 20,
+              height: MediaQuery.of(context).size.height / 35,
             ),
             Text_Wallet_Balance(
-              label: 'Amount',
+              label: "${getLang(context, "Total")}",
             ),
             SizedBox(
-              height: 20,
+              height: MediaQuery.of(context).size.height / 35,
+            ),
+            Note_when_you_add_transaction(),
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 35,
             ),
             DateTimeWidget(
               transactionDateController: transactionDateController,
             ),
             SizedBox(
-              height: 20,
+              height: MediaQuery.of(context).size.height / 35,
             ),
             AllVisibility_Wallets(),
             SizedBox(
-              height: 15,
+              height: MediaQuery.of(context).size.height / 35,
             ),
-            CustomRaisdButton(
-              text: 'Transfering',
+            RaisedButtonWallets(
+              text: "${getLang(context, "Transfer")}",
             )
           ],
         ),

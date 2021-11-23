@@ -16,14 +16,14 @@ class ColumnContact extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height / 40;
     return Column(
       children: [
         BlocConsumer<TransactionCubit, TransactionStates>(
           listener: (context, state) {
-            if(state is GetTransactionsFromDatabaseFOrContactState){
-              Navigator.of(context).push(
-                  MaterialPageRoute(
-                      builder: (context) => Preview_Transaction()));
+            if (state is GetTransactionsFromDatabaseFOrContactState) {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => Preview_Transaction()));
             }
           },
           builder: (context, state) {
@@ -39,7 +39,7 @@ class ColumnContact extends StatelessWidget {
           },
         ),
         SizedBox(
-          height: 15,
+          height: height,
         ),
         Widget_Container_Contact(
           image: Image.asset('assets/contact/debtes.png'),
@@ -48,7 +48,7 @@ class ColumnContact extends StatelessWidget {
               .push(MaterialPageRoute(builder: (context) => Preview_Debts())),
         ),
         SizedBox(
-          height: 15,
+          height: height,
         ),
         Widget_Container_Contact(
           image: Image.asset('assets/contact/task.png'),
@@ -57,7 +57,7 @@ class ColumnContact extends StatelessWidget {
               .push(MaterialPageRoute(builder: (context) => Preview_Tasks())),
         ),
         SizedBox(
-          height: 15,
+          height: height,
         ),
         Widget_Container_Contact(
           image: Container(
@@ -70,7 +70,7 @@ class ColumnContact extends StatelessWidget {
               MaterialPageRoute(builder: (context) => Preview_TeamWork())),
         ),
         SizedBox(
-          height: 15,
+          height: height,
         ),
         Widget_Container_Contact(
           image: Image.asset('assets/contact/projects.png'),

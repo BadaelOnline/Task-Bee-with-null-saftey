@@ -2,6 +2,8 @@ import 'package:financial/common/applocal.dart';
 
 import 'package:flutter/material.dart';
 
+import '../main.dart';
+
 // ignore: camel_case_types
 class Custom_Text extends StatelessWidget {
   final TextEditingController? controller;
@@ -27,7 +29,8 @@ class Custom_Text extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String name = "${getLang(context, "Name")}".toString();
+    var lang = mySharedPreferences!.getString('lang');
+    double height = MediaQuery.of(context).size.height / 13.7;
 
     return Container(
       decoration: BoxDecoration(
@@ -36,33 +39,33 @@ class Custom_Text extends StatelessWidget {
           color: Color(0xffeeeeee),
         ),
       ),
-      height: 50,
+      height: height,
       child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
         Container(
           child: Text(
-            name,
+            label.toString(),
             style: TextStyle(fontSize: 15),
           ),
           alignment: Alignment.center,
           width: MediaQuery.of(context).size.width * 0.2,
-          height: 50,
+          height: height,
           decoration: BoxDecoration(
             color: Colors.grey[200],
             borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(name == "Name" ? 7.5 : 0),
-                bottomLeft: Radius.circular(name == "Name" ? 7.5 : 0),
-                topRight: Radius.circular(name == "Name" ? 0 : 7.5),
-                bottomRight: Radius.circular(name == "Name" ? 0 : 7.5)),
+                topLeft: Radius.circular(lang == 'en' ? 7.5 : 0),
+                bottomLeft: Radius.circular(lang == 'en' ? 7.5 : 0),
+                topRight: Radius.circular(lang == 'en' ? 0 : 7.5),
+                bottomRight: Radius.circular(lang == 'en' ? 0 : 7.5)),
           ),
         ),
         Center(
           child: Container(
-            alignment: Alignment.bottomCenter,
-            height: 50,
+            alignment: Alignment.center,
+            height: height,
             width: MediaQuery.of(context).size.width * 0.7,
             child: Padding(
               padding: EdgeInsets.only(
-                  left: name == "Name" ? 5 : 0, right: name == "الاسم" ? 5 : 0),
+                  left: lang == 'en' ? 5 : 0, right: lang == 'en' ? 5 : 0),
               child: TextFormField(
                 decoration: InputDecoration(
                   border: InputBorder.none,
@@ -86,17 +89,6 @@ class Custom_Text extends StatelessWidget {
             ),
           ),
         ),
-        // Container(
-        //   alignment: Alignment.center,
-        //   width: MediaQuery.of(context).size.width * 0.2,
-        //   height: 50,
-        //   child: Icon(prefix),
-        //   decoration: BoxDecoration(
-        //       color: Colors.grey[100],
-        //       borderRadius: BorderRadius.only(
-        //           topRight: Radius.circular(8),
-        //           bottomRight: Radius.circular(8))),
-        // ),
       ]),
     );
   }

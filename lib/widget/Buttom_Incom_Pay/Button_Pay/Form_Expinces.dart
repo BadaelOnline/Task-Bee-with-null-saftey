@@ -54,9 +54,9 @@ class _FormExpenciesState extends State<FormExpencies> {
                 height: space1,
               ),
               Custom_Text_Paid(
-                controller: paidController,
+                controller: paidController =
+                    TextEditingController(text: totalController.text),
                 label: "${getLang(context, "Paid")}".toString(),
-                hint: hint,
                 type: TextInputType.number,
               ),
               SizedBox(

@@ -50,7 +50,7 @@ class Custom_Text_recive extends StatelessWidget {
           ),
           alignment: Alignment.center,
           width: MediaQuery.of(context).size.width * 0.2,
-          height: 50,
+          height: height,
           decoration: BoxDecoration(
               color: Colors.grey[200],
               borderRadius: BorderRadius.only(
@@ -60,7 +60,7 @@ class Custom_Text_recive extends StatelessWidget {
                   bottomLeft: Radius.circular(lang == 'en' ? 8 : 0))),
         ),
         Container(
-          alignment: Alignment.bottomCenter,
+          alignment: Alignment.center,
           height: height,
           width: MediaQuery.of(context).size.width * 0.5,
           child: TextFormField(

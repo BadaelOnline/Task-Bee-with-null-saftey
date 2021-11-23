@@ -1,7 +1,8 @@
+import 'package:financial/common/applocal.dart';
 import 'package:financial/screens/contact/contact_home.dart';
 import 'package:financial/services/bloc/contact/cubit.dart';
+import 'package:financial/widget/Wallet/raised_button_wallets.dart';
 import 'package:flutter/material.dart';
-import '../custom_raisd_button.dart';
 
 class button_save_cancel extends StatelessWidget {
   const button_save_cancel({
@@ -16,19 +17,19 @@ class button_save_cancel extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        CustomRaisdButton(
+        RaisedButtonWallets(
             onPressed: () {
               ContactCubit.get(context).insertToDatabase(
                 contactName: nameController.text,
               );
             },
-            text: 'Save'),
-        CustomRaisdButton(
+            text: "${getLang(context, "Save")}"),
+        RaisedButtonWallets(
             onPressed: () {
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => ContactHome()));
             },
-            text: 'Cansel'),
+            text: "${getLang(context, "Cancel")}"),
       ],
     );
   }

@@ -21,6 +21,7 @@ class CardContact extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height / 11;
     return InkWell(
       onTap: onTap,
       // () => Navigator.of(context).pushNamed('/previewcontact'),
@@ -37,7 +38,7 @@ class CardContact extends StatelessWidget {
             ],
             borderRadius: BorderRadius.all(Radius.circular(8)),
           ),
-          height: 60,
+          height: height,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -46,7 +47,7 @@ class CardContact extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 8.0),
                     child: Icon(
                       Icons.person,
-                      color: Colors.grey[500],
+                      color: Colors.blue,
                       size: 35,
                     )
                     // Image.asset(

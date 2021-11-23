@@ -1,10 +1,9 @@
+import 'package:financial/common/applocal.dart';
 import 'package:financial/services/bloc/contact/cubit.dart';
 import 'package:financial/services/bloc/contact/states.dart';
 import 'package:financial/widget/Contact/card_contact.dart';
 import 'package:financial/widget/Contact/search_widget.dart';
 import 'package:financial/widget/custom_appBar.dart';
-
-import 'package:financial/widget/custom_appbar_search.dart';
 import 'package:financial/widget/custom_floating_action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,29 +21,17 @@ class _ContactHomeState extends State<ContactHome> {
       builder: (BuildContext context, ContactStates state) {
         ContactCubit cubit = ContactCubit.get(context);
         return Scaffold(
-            appBar:
-                // AppBarwithsearch(
-                //   icon: Icon(Icons.search),
-                //   title: 'my contact',
-                // ),
-                // CustomAppBar_Search(
-                //     Image.asset('assets/homepage/person.png'),
-                //     Icon(Icons.search),
-                //     'My Contact',
-                //     () {},
-                //     () {}),
-
-                CustomAppBar(
+            appBar: CustomAppBar(
               Image.asset(
                 'assets/homepage/person.png',
               ),
-              'My Contact',
+              "${getLang(context, "Contact")}",
             ),
             body: Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Column(
                 children: [
-                  Flexible(child: Search_Widget()),
+                  // Flexible(child: Search_Widget()),
                   Flexible(
                     child: ListView.builder(
                       itemCount: cubit.contacts!.length,

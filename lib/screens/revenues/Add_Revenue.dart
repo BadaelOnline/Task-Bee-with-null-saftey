@@ -14,6 +14,7 @@ class Add_Revenue extends StatefulWidget {
 class _Add_RevenueState extends State<Add_Revenue> {
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height / 18;
     return Scaffold(
       appBar: CustomAppBar(
         Image(
@@ -25,7 +26,7 @@ class _Add_RevenueState extends State<Add_Revenue> {
         length: 3,
         child: Column(children: [
           Container(
-            height: 40,
+            height: height,
             color: Colors.white,
             child: TabBar(
               indicatorColor: Color(0xff16c8b1),

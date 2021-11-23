@@ -59,8 +59,8 @@ class _FormExpencies_IncomeState extends State<FormExpencies_Income> {
                 height: space1,
               ),
               Custom_Text_recive(
-                controller: paidController,
-                hint: hint,
+                controller: paidController =
+                    TextEditingController(text: totalController.text),
                 label: "${getLang(context, "Recived")}".toString(),
                 type: TextInputType.number,
               ),

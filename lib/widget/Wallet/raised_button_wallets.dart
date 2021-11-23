@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
-class CustomRaisdButton extends StatelessWidget {
+class RaisedButtonWallets extends StatelessWidget {
   final Function()? onPressed;
   final String? text;
-  final Color? color;
-  const CustomRaisdButton({
+
+  const RaisedButtonWallets({
     Key? key,
     this.onPressed,
     this.text,
-    this.color,
   }) : super(key: key);
 
   @override
@@ -18,17 +17,16 @@ class CustomRaisdButton extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(5)),
-            color: color,
+            color: Colors.amber[400],
           ),
-          width: MediaQuery.of(context).size.width / 5,
-          height: MediaQuery.of(context).size.height / 20,
+          width: MediaQuery.of(context).size.width / 4,
+          height: MediaQuery.of(context).size.height / 18,
           child: TextButton(
             onPressed: onPressed,
             child: Text(
               text!,
               style: TextStyle(
                 color: Colors.white,
-                fontWeight: FontWeight.normal,
               ),
             ),
           ),

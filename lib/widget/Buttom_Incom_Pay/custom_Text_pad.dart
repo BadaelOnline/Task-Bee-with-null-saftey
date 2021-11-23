@@ -60,7 +60,7 @@ class Custom_Text_Paid extends StatelessWidget {
                   bottomLeft: Radius.circular(lang == 'en' ? 8 : 0))),
         ),
         Container(
-          alignment: Alignment.bottomCenter,
+          alignment: Alignment.center,
           height: height,
           width: MediaQuery.of(context).size.width * 0.5,
           child: TextFormField(

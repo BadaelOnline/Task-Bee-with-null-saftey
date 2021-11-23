@@ -47,9 +47,14 @@ import 'package:financial/screens/wallet/add_wallet/add_bank_account.dart';
 import 'package:financial/screens/wallet/add_wallet/add_cash_wallet.dart';
 import 'package:financial/screens/wallet/add_wallet/add_credit_card.dart';
 import 'package:financial/screens/wallet/add_wallet/add_planer_save.dart';
-import 'package:financial/screens/wallet/add_wallet/add_priberd_card.dart';
+import 'package:financial/screens/wallet/add_wallet/add_prepaid_card.dart';
 import 'package:financial/screens/wallet/addwallet.dart';
 import 'package:financial/screens/wallet/choose_wallet.dart';
+import 'package:financial/screens/wallet/page_report/bank_account_reports.dart';
+import 'package:financial/screens/wallet/page_report/cash_reports.dart';
+import 'package:financial/screens/wallet/page_report/credit_card_reports.dart';
+import 'package:financial/screens/wallet/page_report/planer_save_reports.dart';
+import 'package:financial/screens/wallet/page_report/prepaid_card_reports.dart';
 import 'package:financial/screens/wallet/transferring_between_wallet/transfer_wallets.dart';
 import 'package:financial/screens/wallet/updateWallet.dart';
 import 'package:financial/screens/wallet/update_wallet/update_bank_account.dart';
@@ -135,6 +140,29 @@ class AppRouter {
       case '/updatePriberdCard':
         return MaterialPageRoute(
             builder: (_) => UpdatePrepaidCard(),
+            settings: RouteSettings(arguments: settings.arguments));
+
+///// Report All Wallet
+
+      case '/cashreports':
+        return MaterialPageRoute(
+            builder: (_) => CashReports(),
+            settings: RouteSettings(arguments: settings.arguments));
+      case '/bankaccountreports':
+        return MaterialPageRoute(
+            builder: (_) => BankAccountReports(),
+            settings: RouteSettings(arguments: settings.arguments));
+      case '/creditcardreports':
+        return MaterialPageRoute(
+            builder: (_) => CreditCardReports(),
+            settings: RouteSettings(arguments: settings.arguments));
+      case '/prepaidcardreports':
+        return MaterialPageRoute(
+            builder: (_) => PrepaidCardReports(),
+            settings: RouteSettings(arguments: settings.arguments));
+      case '/plannersavereports':
+        return MaterialPageRoute(
+            builder: (_) => PlannerSaveReports(),
             settings: RouteSettings(arguments: settings.arguments));
 
       /// exchanges routes

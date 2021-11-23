@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../main.dart';
+
 class Card_Wallet extends StatelessWidget {
   final String? title;
   final Widget? image;
@@ -21,6 +23,8 @@ class Card_Wallet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang = mySharedPreferences!.getString('lang');
+    double height = MediaQuery.of(context).size.height / 10;
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -32,62 +36,94 @@ class Card_Wallet extends StatelessWidget {
             offset: Offset(0, 1), // changes position of shadow
           ),
         ],
-        borderRadius: BorderRadius.all(Radius.circular(8)),
+        borderRadius: BorderRadius.all(Radius.circular(5)),
       ),
-      height: 60,
+      height: height,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(children: [
-            Padding(padding: const EdgeInsets.only(left: 8.0), child: image),
+            Padding(
+                padding: EdgeInsets.only(
+                    left: lang == 'en' ? 8 : 0, right: lang == 'en' ? 0 : 8),
+                child: image),
             SizedBox(
-              width: 15,
+              width: MediaQuery.of(context).size.width / 12,
             ),
-            Text(
-              '$title',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey[700],
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  // title!.length > 10 ? '${title!.substring(0, 10)}...' : title!,
+                  '$title',
+
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 150,
+                ),
+                Row(
+                  children: [
+                    Container(
+                      child: Text(
+                        '$balance',
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey[700]),
+                      ),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width / 70,
+                    ),
+                    Container(
+                      child: currency != 'no currency for this wallet'
+                          ? Text(
+                              '$currency',
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.grey[700]),
+                            )
+                          : CircularProgressIndicator(),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ]),
           Row(
             children: [
-              Container(
-                child: Text(
-                  '$balance',
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.normal,
-                      color: Colors.grey[700]),
-                ),
-                padding: EdgeInsets.all(5),
-              ),
-              Container(
-                child: currency != 'no currency for this wallet'
-                    ? Text(
-                        '$currency',
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.normal,
-                            color: Colors.grey[700]),
-                      )
-                    : CircularProgressIndicator(),
-                padding: EdgeInsets.all(5),
-              ),
-            ],
-          ),
-          Row(
-            children: [
               IconButton(
-                onPressed: deleteMethod,
+                onPressed: transactionMethod,
+                splashRadius: 0.1,
                 icon: Icon(
-                  Icons.delete,
+                  Icons.library_books_rounded,
                   size: 20,
                   color: Colors.grey,
                 ),
               ),
+              // IconButton(
+              //   onPressed: transactionMethod,
+              //   icon: Icon(
+              //     Icons.edit,
+              //     size: 20,
+              //     color: Colors.grey,
+              //   ),
+              // ),
+              // IconButton(
+              //   onPressed: deleteMethod,
+              //   splashRadius: 0.1,
+              //   icon: Icon(
+              //     Icons.delete,
+              //     size: 20,
+              //     color: Colors.grey,
+              //   ),
+              // ),
             ],
           ),
         ],

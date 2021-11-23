@@ -1,4 +1,6 @@
+import 'package:financial/common/applocal.dart';
 import 'package:financial/services/bloc/contact/cubit.dart';
+import 'package:financial/widget/Wallet/raised_button_wallets.dart';
 import 'package:flutter/material.dart';
 
 import '../custom_raisd_button.dart';
@@ -16,16 +18,16 @@ class update_button_update_cancel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-      CustomRaisdButton(
-          text: 'Update',
+      RaisedButtonWallets(
+          text: "${getLang(context, "Update")}",
           onPressed: () {
             ContactCubit.get(context).updateContactDatabase(
               isId: contactId,
               contactName: nameController.text,
             );
           }),
-      CustomRaisdButton(
-          text: 'Cansel',
+      RaisedButtonWallets(
+          text: "${getLang(context, "Cancel")}",
           onPressed: () {
             Navigator.of(context).pop();
           }),
