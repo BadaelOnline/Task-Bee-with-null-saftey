@@ -94,7 +94,20 @@
     "From Wallet" : "من المحفظة",
     "To Wallet" : "إلى المحفظة",
     "Transfer" : "تحويل",
-    "Choose Wallet" :  "إختر محفظة"
+    "Choose Wallet" :  "إختر محفظة",
+    "Add Exchang Categoray" : "إضافة فئة صرف",
+    "Update Exchang Categoray" : "تعديل فئة صرف",
+    "Delete Categoray" : "حذف الفئة",
+    "Uploag Image" : "تحميل صورة",
+    "dialog delete Categoray" : "سيتم حذف الفئة وجميع المعاملات المرتبطة بها , وارجاع قيمة المعاملات الى المحفظات الخاصة بها",
+    "Attention Add Categoray" : "لإنشاء فئة جديدة يتوجب عليك ادخال اسم الفئة وصورة محددة",
+    "Attention Update Categoray" : "لا يمكن لحقل الأسم ان يكون فارغ",
+    "Add Revnue Categoray" : "إضافة فئة إيراد",
+    "Update Revnue Categoray" : "تعديل فئة إيراد",
+    "Categoray Report" : "تقارير الفئة",
+    "dialog Add Name" :  "لا يمكن لحقل الأسم أن يكون فارغ",
+    "dialog delete Name" :  "سيتم حذف الاسم ",
+    "Delete Name" : "حذف جهة التعامل"
 
     
 

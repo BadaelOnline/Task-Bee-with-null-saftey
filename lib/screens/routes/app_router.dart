@@ -26,6 +26,7 @@ import 'package:financial/screens/exchange_category/add_exchange.dart';
 import 'package:financial/screens/exchange_category/category.dart';
 import 'package:financial/screens/exchange_category/choose_exchang.dart';
 import 'package:financial/screens/exchange_category/exchange_home.dart';
+import 'package:financial/screens/exchange_category/report_categoray.dart';
 import 'package:financial/screens/exchange_category/update_exchange.dart';
 import 'package:financial/screens/expenses/add_expense.dart';
 import 'package:financial/screens/expenses/expense_home.dart';
@@ -165,7 +166,7 @@ class AppRouter {
             builder: (_) => PlannerSaveReports(),
             settings: RouteSettings(arguments: settings.arguments));
 
-      /// exchanges routes
+      /// exchanges routes /////////////////////////////////////////////////////////////////////
       case '/chooseexchang':
         return MaterialPageRoute(
           builder: (_) => ChooseExchang(),
@@ -203,6 +204,11 @@ class AppRouter {
       case '/updateRevenueCategory':
         return MaterialPageRoute(
             builder: (_) => UpdateRevenueCategory(),
+            settings: RouteSettings(arguments: settings.arguments));
+
+      case '/reportpagecategoray':
+        return MaterialPageRoute(
+            builder: (_) => ReportCategoray(),
             settings: RouteSettings(arguments: settings.arguments));
 
       /// contacts routes

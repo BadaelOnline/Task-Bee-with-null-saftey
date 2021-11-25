@@ -3,17 +3,16 @@ import 'dart:ui';
 import 'package:financial/common/applocal.dart';
 import 'package:flutter/material.dart';
 
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key, this.restorationId}) : super(key: key);
+class Multidate extends StatefulWidget {
+  const Multidate({Key? key, this.restorationId}) : super(key: key);
 
   final String? restorationId;
 
   @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+  State<Multidate> createState() => _MultidatetState();
 }
 
-class _MyStatefulWidgetState extends State<MyStatefulWidget>
-    with RestorationMixin {
+class _MultidatetState extends State<Multidate> with RestorationMixin {
   int x = 0;
   @override
   String? get restorationId => widget.restorationId;

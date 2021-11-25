@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
-class detailes_wallet_in_page_reports extends StatelessWidget {
-  const detailes_wallet_in_page_reports({
+// ignore: camel_case_types
+class detailes_Categoray_in_page_reports extends StatelessWidget {
+  const detailes_Categoray_in_page_reports({
     Key? key,
-    required this.image,
-    required this.walletName,
+    required this.categoryIcon,
+    required this.categorayName,
     // required this.walletBalance,
     // required this.walletCurrency,
   }) : super(key: key);
 
-  final String? image;
-  final String? walletName;
+  final String? categoryIcon;
+  final String? categorayName;
   // final String? walletBalance;
   // final String? walletCurrency;
 
@@ -22,11 +23,14 @@ class detailes_wallet_in_page_reports extends StatelessWidget {
         Container(
           height: 35,
           width: 35,
-          child: Image.asset(image!),
+          child: Image.asset(categoryIcon!),
         ),
-        Text(walletName!),
+        Text(categorayName!,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            )),
         // Text(
-        //   walletBalance!,
+        //   "",
         //   style: TextStyle(fontWeight: FontWeight.bold),
         // ),
         // Text(walletCurrency!)

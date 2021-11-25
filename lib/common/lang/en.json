@@ -94,7 +94,21 @@
     "From Wallet" : "From Wallet",
     "To Wallet" : "To Wallet",
     "Transfer" : "TransFer",
-    "Choose Wallet" :  "Choose Wallet"
+    "Choose Wallet" :  "Choose Wallet",
+    "Add Exchang Categoray" : "Add Exchang Categoray",
+    "Update Exchang Categoray" : "Update Exchang Categoray",
+    "Delete Categoray" : "Delete Categoray",
+    "Uploag Image" : "Uploag Image",
+    "dialog delete Categoray" : "The category and all transactions associated with it will be deleted, and the value of the transactions will be returned to their wallets",
+    "Attention Add Categoray" : "To create a new category, you must enter the category name and a choose picture",
+    "Attention Update Categoray" : "The name field cannot be empty",
+    "Add Revnue Categoray" : "Add Revnue Categoray",
+    "Update Revnue Categoray" : "Update Revnue Categoray",
+    "Categoray Report" : "Categoray Report",
+    "dialog Add Name" :  "The name field cannot be empty",
+    "dialog delete Name" :  "the name well be delete",
+    "Delete Name" : "Delete Contact"
+    
 
     
  

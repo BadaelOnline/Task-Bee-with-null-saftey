@@ -1,5 +1,7 @@
+import 'package:financial/common/applocal.dart';
 import 'package:financial/services/bloc/exchang_category/cubit.dart';
 import 'package:financial/services/bloc/exchang_category/states.dart';
+import 'package:financial/widget/custom_appBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'add_exchange.dart';
@@ -8,18 +10,11 @@ class Category extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.of(context)
-                  .pop(MaterialPageRoute(builder: (context) => AddExchange()));
-            },
-          ),
-          centerTitle: true,
-          title: Text('Chose Image'),
-          backgroundColor: Colors.amber[400],
-        ),
+        appBar: CustomAppBar(
+            Image(
+              image: AssetImage('assets/homepage/masaref.png'),
+            ),
+            "${getLang(context, "Upload Image")}"),
         body: BlocConsumer<ExchangeCubit, ExchangeStates>(
           listener: (context, ExchangeStates state) {
             if (state is InsertExchangesToDatabaseState) {

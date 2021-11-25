@@ -2,20 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../main.dart';
 
-class Card_Wallet extends StatelessWidget {
+class Card_Categoray extends StatelessWidget {
   final String? title;
   final Widget? image;
-  final Function()? deleteMethod;
-  final Function()? transactionMethod;
-  final String? balance;
-  final String? currency;
-  Card_Wallet({
+  final Function()? edit;
+  Card_Categoray({
     Key? key,
     this.title,
-    this.deleteMethod,
-    this.transactionMethod,
-    this.balance,
-    this.currency,
+    this.edit,
     this.image,
   }) : super(key: key);
 
@@ -66,40 +60,13 @@ class Card_Wallet extends StatelessWidget {
                 SizedBox(
                   height: MediaQuery.of(context).size.height / 150,
                 ),
-                Row(
-                  children: [
-                    Container(
-                      child: Text(
-                        '$balance',
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey[700]),
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 70,
-                    ),
-                    Container(
-                      child: currency != 'no currency for this wallet'
-                          ? Text(
-                              '$currency',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.grey[700]),
-                            )
-                          : CircularProgressIndicator(),
-                    ),
-                  ],
-                ),
               ],
             ),
           ]),
           Row(
             children: [
               IconButton(
-                onPressed: transactionMethod,
+                onPressed: edit,
                 splashRadius: 0.1,
                 icon: Icon(
                   Icons.edit_outlined,
@@ -107,23 +74,6 @@ class Card_Wallet extends StatelessWidget {
                   color: Colors.grey,
                 ),
               ),
-              // IconButton(
-              //   onPressed: transactionMethod,
-              //   icon: Icon(
-              //     Icons.edit,
-              //     size: 20,
-              //     color: Colors.grey,
-              //   ),
-              // ),
-              // IconButton(
-              //   onPressed: deleteMethod,
-              //   splashRadius: 0.1,
-              //   icon: Icon(
-              //     Icons.delete,
-              //     size: 20,
-              //     color: Colors.grey,
-              //   ),
-              // ),
             ],
           ),
         ],

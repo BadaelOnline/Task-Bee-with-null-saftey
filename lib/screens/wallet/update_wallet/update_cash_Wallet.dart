@@ -122,7 +122,7 @@ class Updatewallet extends StatelessWidget {
                     onTap: () {
                       showDialog(
                         context: context,
-                        builder: (_) => customAlertDialog(
+                        builder: (_) => AlertDialogWallet(
                           content:
                               "${getLang(context, "dialog delete wallet")}",
                           cancelMethod: () {

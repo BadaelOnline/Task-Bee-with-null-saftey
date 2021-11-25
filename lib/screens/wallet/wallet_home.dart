@@ -39,7 +39,7 @@ class WalletHome extends StatelessWidget {
                       if (cubit.wallets![index].icon ==
                           'assets/wallet/dollar.png') {
                         Navigator.of(context)
-                            .pushNamed('/updateCashWallet', arguments: {
+                            .pushNamed('/cashreports', arguments: {
                           'walletId': cubit.wallets![index].id,
                           'walletName': cubit.wallets![index].name,
                           'walletBalance': cubit.wallets![index].balance,
@@ -50,7 +50,7 @@ class WalletHome extends StatelessWidget {
                       } else if (cubit.wallets![index].icon ==
                           'assets/wallet/account.png') {
                         Navigator.of(context)
-                            .pushNamed('/updateBankAccount', arguments: {
+                            .pushNamed('/bankaccountreports', arguments: {
                           'walletId': cubit.wallets![index].id,
                           'walletName': cubit.wallets![index].name,
                           'walletBalance': cubit.wallets![index].balance,
@@ -61,7 +61,7 @@ class WalletHome extends StatelessWidget {
                       } else if (cubit.wallets![index].icon ==
                           'assets/wallet/card.png') {
                         Navigator.of(context)
-                            .pushNamed('/updateCreditCard', arguments: {
+                            .pushNamed('/creditcardreports', arguments: {
                           'walletId': cubit.wallets![index].id,
                           'walletName': cubit.wallets![index].name,
                           'walletBalance': cubit.wallets![index].balance,
@@ -72,7 +72,7 @@ class WalletHome extends StatelessWidget {
                       } else if (cubit.wallets![index].icon ==
                           'assets/wallet/credit-cards.png') {
                         Navigator.of(context)
-                            .pushNamed('/updatePriberdCard', arguments: {
+                            .pushNamed('/prepaidcardreports', arguments: {
                           'walletId': cubit.wallets![index].id,
                           'walletName': cubit.wallets![index].name,
                           'walletBalance': cubit.wallets![index].balance,
@@ -83,7 +83,7 @@ class WalletHome extends StatelessWidget {
                       } else if (cubit.wallets![index].icon ==
                           'assets/wallet/revenue.png') {
                         Navigator.of(context)
-                            .pushNamed('/updatePlanerSave', arguments: {
+                            .pushNamed('/plannersavereports', arguments: {
                           'walletId': cubit.wallets![index].id,
                           'walletName': cubit.wallets![index].name,
                           'walletBalance': cubit.wallets![index].balance,
@@ -116,7 +116,7 @@ class WalletHome extends StatelessWidget {
                             deleteMethod: () {
                               showDialog(
                                 context: context,
-                                builder: (_) => customAlertDialog(
+                                builder: (_) => AlertDialogWallet(
                                   content:
                                       'This wallet will be deleted along with all transactions made on it and delete associated debt transactions',
                                   cancelMethod: () {
@@ -134,7 +134,7 @@ class WalletHome extends StatelessWidget {
                               if (cubit.wallets![index].icon ==
                                   'assets/wallet/dollar.png') {
                                 Navigator.of(context)
-                                    .pushNamed('/cashreports', arguments: {
+                                    .pushNamed('/updateCashWallet', arguments: {
                                   'walletId': cubit.wallets![index].id,
                                   'walletName': cubit.wallets![index].name,
                                   'walletBalance':
@@ -148,7 +148,7 @@ class WalletHome extends StatelessWidget {
                               } else if (cubit.wallets![index].icon ==
                                   'assets/wallet/account.png') {
                                 Navigator.of(context).pushNamed(
-                                    '/bankaccountreports',
+                                    '/updateBankAccount',
                                     arguments: {
                                       'walletId': cubit.wallets![index].id,
                                       'walletName': cubit.wallets![index].name,
@@ -162,23 +162,22 @@ class WalletHome extends StatelessWidget {
                                     });
                               } else if (cubit.wallets![index].icon ==
                                   'assets/wallet/card.png') {
-                                Navigator.of(context).pushNamed(
-                                    '/creditcardreports',
-                                    arguments: {
-                                      'walletId': cubit.wallets![index].id,
-                                      'walletName': cubit.wallets![index].name,
-                                      'walletBalance':
-                                          cubit.wallets![index].balance,
-                                      'currencyId':
-                                          currencyCubit.getCurrencyOfWallet(
-                                              currencyId: cubit
-                                                  .wallets![index].currencyId),
-                                      'image': cubit.wallets![index].icon
-                                    });
+                                Navigator.of(context)
+                                    .pushNamed('/updateCreditCard', arguments: {
+                                  'walletId': cubit.wallets![index].id,
+                                  'walletName': cubit.wallets![index].name,
+                                  'walletBalance':
+                                      cubit.wallets![index].balance,
+                                  'currencyId':
+                                      currencyCubit.getCurrencyOfWallet(
+                                          currencyId:
+                                              cubit.wallets![index].currencyId),
+                                  'image': cubit.wallets![index].icon
+                                });
                               } else if (cubit.wallets![index].icon ==
                                   'assets/wallet/credit-cards.png') {
                                 Navigator.of(context).pushNamed(
-                                    '/prepaidcardreports',
+                                    '/updatePriberdCard',
                                     arguments: {
                                       'walletId': cubit.wallets![index].id,
                                       'walletName': cubit.wallets![index].name,
@@ -192,19 +191,18 @@ class WalletHome extends StatelessWidget {
                                     });
                               } else if (cubit.wallets![index].icon ==
                                   'assets/wallet/revenue.png') {
-                                Navigator.of(context).pushNamed(
-                                    '/plannersavereports',
-                                    arguments: {
-                                      'walletId': cubit.wallets![index].id,
-                                      'walletName': cubit.wallets![index].name,
-                                      'walletBalance':
-                                          cubit.wallets![index].balance,
-                                      'currencyId':
-                                          currencyCubit.getCurrencyOfWallet(
-                                              currencyId: cubit
-                                                  .wallets![index].currencyId),
-                                      'image': cubit.wallets![index].icon
-                                    });
+                                Navigator.of(context)
+                                    .pushNamed('/updatePlanerSave', arguments: {
+                                  'walletId': cubit.wallets![index].id,
+                                  'walletName': cubit.wallets![index].name,
+                                  'walletBalance':
+                                      cubit.wallets![index].balance,
+                                  'currencyId':
+                                      currencyCubit.getCurrencyOfWallet(
+                                          currencyId:
+                                              cubit.wallets![index].currencyId),
+                                  'image': cubit.wallets![index].icon
+                                });
                               }
                             },
                             balance: cubit.wallets![index].balance,

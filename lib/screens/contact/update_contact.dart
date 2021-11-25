@@ -3,8 +3,10 @@ import 'package:financial/services/bloc/contact/cubit.dart';
 import 'package:financial/services/bloc/contact/states.dart';
 import 'package:financial/widget/Contact/image.dart';
 import 'package:financial/widget/Contact/update_button_update_cancel.dart';
+import 'package:financial/widget/Wallet/raised_button_wallets.dart';
 import 'package:financial/widget/custom_appBar.dart';
 import 'package:financial/widget/custom_text.dart';
+import 'package:financial/widget/exchange_revenue_categoray/alert_dialog_categoray.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,30 +38,90 @@ class UpdateContact extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          return Container(
-            alignment: Alignment.center,
-            child: SingleChildScrollView(
-                child: Column(children: [
+          ContactCubit cubit = ContactCubit.get(context);
+          return SingleChildScrollView(
+              child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 15,
+              ),
               image(),
               SizedBox(
-                height: 25,
+                height: MediaQuery.of(context).size.height / 15,
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                    child: Custom_Text(
-                        label: "${getLang(context, "Name")}",
-                        controller: nameController =
-                            TextEditingController(text: '$contactName'),
-                        prefix: Icons.person)),
-              ),
+              Custom_Text(
+                  label: "${getLang(context, "Name")}",
+                  controller: nameController =
+                      TextEditingController(text: '$contactName'),
+                  prefix: Icons.person),
               SizedBox(
-                height: 100,
+                height: MediaQuery.of(context).size.height / 7.5,
               ),
-              update_button_update_cancel(
-                  contactId: contactId, nameController: nameController)
-            ])),
-          );
+              RaisedButtonWallets(
+                  onPressed: () {
+                    nameController.text != ""
+                        ? ContactCubit.get(context).insertToDatabase(
+                            contactName: nameController.text,
+                          )
+                        : showDialog(
+                            context: context,
+                            builder: (_) => AlertDialogCategoray(
+                              x: 1,
+                              icon: Icon(
+                                Icons.report_problem_rounded,
+                                color: Colors.amberAccent,
+                                size: 45,
+                              ),
+                              content: "${getLang(context, "dialog Add Name")}",
+                              cancelMethod: () {
+                                Navigator.of(context).pop();
+                              },
+                              submitMethod: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          );
+                  },
+                  text: "${getLang(context, "Update")}"),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 17,
+              ),
+              InkWell(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (_) => AlertDialogCategoray(
+                      x: 0,
+                      color: Colors.red[700],
+                      icon: Icon(
+                        Icons.delete,
+                        color: Colors.red[700],
+                      ),
+                      content: "${getLang(context, "dialog delete Name")}",
+                      cancelMethod: () {
+                        Navigator.of(context).pop();
+                      },
+                      submitMethod: () {
+                        cubit.deleteContactFromDatabase(id: contactId);
+                        Navigator.of(context).pop();
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  );
+                },
+                child: Text(
+                  "${getLang(context, "Delete Name")}",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red[700],
+                  ),
+                ),
+              )
+              // update_button_update_cancel(
+              //     contactId: contactId, nameController: nameController)
+            ]),
+          ));
         },
       ),
     );
