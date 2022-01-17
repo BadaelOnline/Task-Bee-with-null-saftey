@@ -1,15 +1,16 @@
-import 'package:financial/widget/Drawer_Widget.dart';
-import 'package:financial/widget/Home_Page/Muilty_Icon_Group/section_group.dart';
-import 'package:financial/widget/Home_Page/Business_Group/business_group.dart';
-import 'package:financial/widget/Home_Page/Family_Heath_Group/family_health_group.dart';
-import 'package:financial/widget/Home_Page/Public_Widget/appbar.dart';
-import 'package:financial/widget/Home_Page/Public_Widget/buttom_all_transaction.dart';
-import 'package:financial/widget/Home_Page/Public_Widget/calendar.dart';
-import 'package:financial/widget/Home_Page/Public_Widget/container_income.dart';
-import 'package:financial/widget/Home_Page/Public_Widget/container_pay.dart';
-import 'package:financial/widget/Home_Page/Public_Widget/container_subject_title.dart';
-import 'package:financial/widget/Home_Page/Public_Widget/end_text.dart';
-import 'package:financial/widget/Home_Page/Public_Widget/first_date.dart';
+import 'package:taskBee/common/applocal.dart';
+import 'package:taskBee/widget/Drawer_Widget.dart';
+import 'package:taskBee/widget/Home_Page/Muilty_Icon_Group/section_group.dart';
+import 'package:taskBee/widget/Home_Page/Business_Group/business_group.dart';
+import 'package:taskBee/widget/Home_Page/Family_Heath_Group/family_health_group.dart';
+import 'package:taskBee/widget/Home_Page/Public_Widget/appbar.dart';
+import 'package:taskBee/widget/Home_Page/Public_Widget/buttom_all_transaction.dart';
+import 'package:taskBee/widget/Home_Page/Public_Widget/calendar.dart';
+import 'package:taskBee/widget/Home_Page/Public_Widget/container_income.dart';
+import 'package:taskBee/widget/Home_Page/Public_Widget/container_pay.dart';
+import 'package:taskBee/widget/Home_Page/Public_Widget/container_subject_title.dart';
+import 'package:taskBee/widget/Home_Page/Public_Widget/end_text.dart';
+import 'package:taskBee/widget/Home_Page/Public_Widget/first_date.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -21,14 +22,17 @@ class MyHomePage extends StatelessWidget {
       body: SingleChildScrollView(
           child: Column(
         children: [
-          FirstDate(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: FirstDate(),
+          ),
           Padding(
             padding: const EdgeInsets.only(right: 14, left: 14),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                ContainerIncome(),
                 ContainerPay(),
+                ContainerIncome(),
               ],
             ),
           ),
@@ -44,11 +48,11 @@ class MyHomePage extends StatelessWidget {
           ),
           Calendar(),
           Title_container(
-            text: 'Family & Heailth Care',
+            text: "${getLang(context, "Family & Heailth Care")}",
           ),
           Family_Health(),
           Title_container(
-            text: 'Business & projects',
+            text: "${getLang(context, "Business & prjects")}",
           ),
           Business_Project(),
           Slogan(),

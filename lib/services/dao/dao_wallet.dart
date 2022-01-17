@@ -1,4 +1,4 @@
-import 'package:financial/models/wallet.dart';
+import 'package:taskBee/models/wallet.dart';
 import 'package:floor/floor.dart';
 
 @dao

@@ -1,13 +1,14 @@
-import 'package:financial/services/bloc/exchang_category/cubit.dart';
-import 'package:financial/services/bloc/exchang_category/states.dart';
-import 'package:financial/widget/custom_appBar.dart';
-import 'package:financial/widget/custom_raisd_button.dart';
-import 'package:financial/widget/custom_text.dart';
+import 'package:taskBee/common/applocal.dart';
+import 'package:taskBee/services/bloc/exchang_category/cubit.dart';
+import 'package:taskBee/services/bloc/exchang_category/states.dart';
+import 'package:taskBee/widget/Wallet/raised_button_wallets.dart';
+import 'package:taskBee/widget/custom_appBar.dart';
+import 'package:taskBee/widget/custom_raisd_button.dart';
+import 'package:taskBee/widget/custom_text.dart';
+import 'package:taskBee/widget/exchange_revenue_categoray/alert_dialog_categoray.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'revenue_home.dart';
 
 // ignore: must_be_immutable
 class AddRevenueCategory extends StatelessWidget {
@@ -23,7 +24,7 @@ class AddRevenueCategory extends StatelessWidget {
           Image(
             image: AssetImage('assets/homepage/dollar.png'),
           ),
-          'Add Revnue Categoray'),
+          "${getLang(context, "Add Revnue Categoray")}"),
       body: BlocConsumer<ExchangeCubit, ExchangeStates>(
         listener: (context, ExchangeStates state) {
           if (state is InsertExchangesToDatabaseState) {
@@ -32,18 +33,18 @@ class AddRevenueCategory extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          return Container(
-            alignment: Alignment.center,
-            padding: EdgeInsets.all(15),
-            child: SingleChildScrollView(
+          return SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Column(children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 15,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     BlocConsumer<ExchangeCubit, ExchangeStates>(
-                      listener: (context, state) {
-                        // TODO: implement listener
-                      },
+                      listener: (context, state) {},
                       builder: (context, state) {
                         return InkWell(
                           onTap: () {
@@ -51,9 +52,11 @@ class AddRevenueCategory extends StatelessWidget {
                           },
                           child: ExchangeCubit.get(context).chosenImage == ''
                               ? Container(
-                                  height: 100,
-                                  width: 100,
-                                  child: Center(child: Text('Upload Image')),
+                                  height: 120,
+                                  width: 120,
+                                  child: Center(
+                                      child: Text(
+                                          "${getLang(context, "Upload Image")}")),
                                   decoration: BoxDecoration(
                                     color: Colors.grey[100],
                                     borderRadius: BorderRadius.all(
@@ -65,8 +68,8 @@ class AddRevenueCategory extends StatelessWidget {
                                   ),
                                 )
                               : Container(
-                                  height: 100,
-                                  width: 100,
+                                  height: 120,
+                                  width: 120,
                                   decoration: BoxDecoration(
                                     color: Colors.grey[100],
                                     image: DecorationImage(
@@ -89,36 +92,44 @@ class AddRevenueCategory extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 25,
+                  height: MediaQuery.of(context).size.height / 15,
                 ),
                 Custom_Text(
-                  label: ' Name \nCategory',
+                  label: "${getLang(context, "Name")}",
                   controller: nameController,
                 ),
                 SizedBox(
-                  width: 10,
+                  height: MediaQuery.of(context).size.height / 7.5,
                 ),
-                SizedBox(
-                  height: 100,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    CustomRaisdButton(
-                        onPressed: () {
-                          ExchangeCubit.get(context).insertToDatabase(
+                RaisedButtonWallets(
+                    onPressed: () {
+                      nameController!.text.isNotEmpty &&
+                              ExchangeCubit.get(context).chosenImage! != ''
+                          ? ExchangeCubit.get(context).insertToDatabase(
                               isIncome: 1,
                               exchangeName: nameController!.text,
-                              catImage: ExchangeCubit.get(context).chosenImage);
-                        },
-                        text: 'Save'),
-                    CustomRaisdButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        text: 'Cancel'),
-                  ],
-                ),
+                              catImage: ExchangeCubit.get(context).chosenImage)
+                          : showDialog(
+                              context: context,
+                              builder: (_) => AlertDialogCategoray(
+                                color: Colors.amberAccent,
+                                icon: Icon(
+                                  Icons.report_problem_rounded,
+                                  color: Colors.amberAccent,
+                                  size: 45,
+                                ),
+                                content:
+                                    "${getLang(context, "Attention Add Categoray")}",
+                                cancelMethod: () {
+                                  Navigator.of(context).pop();
+                                },
+                                submitMethod: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            );
+                    },
+                    text: "${getLang(context, "Create")}"),
               ]),
             ),
           );

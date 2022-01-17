@@ -1,14 +1,14 @@
-import 'package:financial/models/currency.dart';
-import 'package:financial/screens/shared/HomePage.dart';
+import 'package:taskBee/models/currency.dart';
+import 'package:taskBee/screens/shared/HomePage.dart';
 
-import 'package:financial/screens/wallet/wallet_home.dart';
-import 'package:financial/services/bloc/currency/cubit.dart';
-import 'package:financial/services/bloc/currency/states.dart';
-import 'package:financial/services/bloc/wallet/cubit.dart';
-import 'package:financial/services/bloc/wallet/states.dart';
-import 'package:financial/widget/custom_appBar.dart';
-import 'package:financial/widget/custom_raisd_button.dart';
-import 'package:financial/widget/custom_text.dart';
+import 'package:taskBee/screens/wallet/wallet_home.dart';
+import 'package:taskBee/services/bloc/currency/cubit.dart';
+import 'package:taskBee/services/bloc/currency/states.dart';
+import 'package:taskBee/services/bloc/wallet/cubit.dart';
+import 'package:taskBee/services/bloc/wallet/states.dart';
+import 'package:taskBee/widget/custom_appBar.dart';
+import 'package:taskBee/widget/custom_raisd_button.dart';
+import 'package:taskBee/widget/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

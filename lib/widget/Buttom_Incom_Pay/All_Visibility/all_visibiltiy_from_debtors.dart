@@ -1,5 +1,5 @@
+import 'package:taskBee/common/applocal.dart';
 import 'package:flutter/material.dart';
-import 'Visibility_Note/visibility_note.dart';
 import 'visibility_Image/visibility_image.dart';
 
 // ignore: camel_case_types
@@ -23,10 +23,11 @@ class _AllVisibility_DebtorsState extends State<AllVisibility_Debtors> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height / 13.7;
     return Column(
       children: [
         Container(
-          height: 50,
+          height: height,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             color: Colors.white,
@@ -42,13 +43,29 @@ class _AllVisibility_DebtorsState extends State<AllVisibility_Debtors> {
           ),
           child: InkWell(
             child: isVisabile == false
-                ? Icon(
-                    Icons.arrow_drop_down,
-                    size: 35,
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "${getLang(context, "More options")}".toString(),
+                      ),
+                      Icon(
+                        Icons.arrow_drop_down,
+                        size: 35,
+                      ),
+                    ],
                   )
-                : Icon(
-                    Icons.arrow_drop_up,
-                    size: 35,
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "${getLang(context, "Less options")}".toString(),
+                      ),
+                      Icon(
+                        Icons.arrow_drop_up,
+                        size: 35,
+                      ),
+                    ],
                   ),
             onTap: () {
               setState(() {
@@ -66,7 +83,6 @@ class _AllVisibility_DebtorsState extends State<AllVisibility_Debtors> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Visibility_Image(),
-                Visibility_Note(),
               ],
             ),
           ),

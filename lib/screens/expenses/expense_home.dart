@@ -1,13 +1,13 @@
-import 'package:financial/services/bloc/contact/cubit.dart';
-import 'package:financial/services/bloc/currency/cubit.dart';
-import 'package:financial/services/bloc/currency/states.dart';
-import 'package:financial/services/bloc/exchang_category/cubit.dart';
-import 'package:financial/services/bloc/transaction/cubit.dart';
-import 'package:financial/services/bloc/transaction/states.dart';
-import 'package:financial/services/bloc/wallet/cubit.dart';
-import 'package:financial/widget/TransAction_Card_1.dart';
-import 'package:financial/widget/custom_appBar.dart';
-import 'package:financial/widget/custom_floating_action_button.dart';
+import 'package:taskBee/services/bloc/contact/cubit.dart';
+import 'package:taskBee/services/bloc/currency/cubit.dart';
+import 'package:taskBee/services/bloc/currency/states.dart';
+import 'package:taskBee/services/bloc/exchang_category/cubit.dart';
+import 'package:taskBee/services/bloc/transaction/cubit.dart';
+import 'package:taskBee/services/bloc/transaction/states.dart';
+import 'package:taskBee/services/bloc/wallet/cubit.dart';
+import 'package:taskBee/widget/TransAction_Card_1.dart';
+import 'package:taskBee/widget/custom_appBar.dart';
+import 'package:taskBee/widget/custom_floating_action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

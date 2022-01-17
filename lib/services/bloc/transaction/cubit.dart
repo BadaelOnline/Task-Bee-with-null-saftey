@@ -1,8 +1,8 @@
-import 'package:financial/common/database/database.dart';
-import 'package:financial/models/financial_report.dart';
-import 'package:financial/models/transaction.dart';
-import 'package:financial/services/bloc/transaction/states.dart';
-import 'package:financial/services/dao/dao_transaction.dart';
+import 'package:taskBee/common/database/database.dart';
+import 'package:taskBee/models/financial_report.dart';
+import 'package:taskBee/models/transaction.dart';
+import 'package:taskBee/services/bloc/transaction/states.dart';
+import 'package:taskBee/services/dao/dao_transaction.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

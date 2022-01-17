@@ -1,3 +1,4 @@
+import 'package:taskBee/common/applocal.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
@@ -99,7 +100,15 @@ class _Visibility_ImageState extends State<Visibility_Image> {
               isVisabile3 = !isVisabile3;
             });
           },
-          child: Widget_container(text: 'Image'),
+          child: Widget_container(
+              text: "${getLang(context, "Upload Image")}".toString(),
+              image: Container(
+                child: Image.asset(
+                  'assets/homepage/image.png',
+                  width: 25,
+                  height: 25,
+                ),
+              )),
         ),
         Visibility(
             visible: isVisabile3,
@@ -124,7 +133,8 @@ class _Visibility_ImageState extends State<Visibility_Image> {
                                     width: 8,
                                   ),
                                   Text(
-                                    "Upload Image",
+                                    "${getLang(context, "Upload Image")}"
+                                        .toString(),
                                     style:
                                         TextStyle(fontWeight: FontWeight.bold),
                                   ),

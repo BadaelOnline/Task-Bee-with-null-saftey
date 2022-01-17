@@ -1,23 +1,26 @@
-import 'package:financial/models/currency.dart';
-import 'package:financial/screens/wallet/wallet_home.dart';
-import 'package:financial/services/bloc/currency/cubit.dart';
-import 'package:financial/services/bloc/currency/states.dart';
-import 'package:financial/services/bloc/wallet/cubit.dart';
-import 'package:financial/services/bloc/wallet/states.dart';
-import 'package:financial/widget/Wallet/Image_Text_Wallet/image_wallet.dart';
-import 'package:financial/widget/Wallet/Image_Text_Wallet/name_wallet.dart';
-import 'package:financial/widget/Wallet/checkbox_wallet.dart';
-import 'package:financial/widget/Wallet/text_wallet_balance.dart';
-import 'package:financial/widget/Wallet/text_wallet_currency.dart';
-import 'package:financial/widget/custom_appBar.dart';
-import 'package:financial/widget/custom_raisd_button.dart';
-import 'package:financial/widget/custom_text.dart';
+import 'package:taskBee/common/applocal.dart';
+import 'package:taskBee/screens/wallet/wallet_home.dart';
+import 'package:taskBee/services/bloc/currency/cubit.dart';
+import 'package:taskBee/services/bloc/currency/states.dart';
+import 'package:taskBee/services/bloc/wallet/cubit.dart';
+import 'package:taskBee/services/bloc/wallet/states.dart';
+import 'package:taskBee/widget/Wallet/Image_Text_Wallet/image_wallet.dart';
+import 'package:taskBee/widget/Wallet/Image_Text_Wallet/name_wallet.dart';
+import 'package:taskBee/widget/Wallet/checkbox_wallet.dart';
+import 'package:taskBee/widget/Wallet/raised_button_wallets.dart';
+import 'package:taskBee/widget/Wallet/text_wallet_balance.dart';
+import 'package:taskBee/widget/Wallet/text_wallet_currency.dart';
+import 'package:taskBee/widget/custom_alert_dialog.dart';
+import 'package:taskBee/widget/custom_appBar.dart';
+import 'package:taskBee/widget/custom_raisd_button.dart';
+import 'package:taskBee/widget/custom_text.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// ignore: must_be_immutable
 class UpdateCreditCard extends StatelessWidget {
   int? walletId;
   String? walletName;
@@ -26,8 +29,6 @@ class UpdateCreditCard extends StatelessWidget {
   TextEditingController nameController = TextEditingController();
   TextEditingController balanceController = TextEditingController();
   TextEditingController currencyController = TextEditingController();
-  TextEditingController limitController = TextEditingController();
-  TextEditingController amountpaybaleController = TextEditingController();
 
   int dropdownValue = 1;
 
@@ -38,6 +39,7 @@ class UpdateCreditCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double space1 = MediaQuery.of(context).size.height / 35;
     final Map arguments = ModalRoute.of(context)!.settings.arguments as Map;
     walletId = arguments['walletId'];
     walletName = arguments['walletName'];
@@ -45,7 +47,12 @@ class UpdateCreditCard extends StatelessWidget {
     walletBalance = arguments['walletBalance'];
     image = arguments['image'];
     return Scaffold(
-      appBar: CustomAppBar(Icon(Icons.wallet_giftcard), 'Add Wallet'),
+      appBar: CustomAppBar(
+        Image(
+          image: AssetImage('assets/homepage/wallet.png'),
+        ),
+        "${getLang(context, "Update Wallet")}",
+      ),
       body: BlocConsumer<WalletCubit, WalletStates>(
         listener: (context, state) {
           if (state is UpdateWalletsToDatabaseState) {
@@ -54,59 +61,42 @@ class UpdateCreditCard extends StatelessWidget {
         },
         builder: (context, state) {
           return SingleChildScrollView(
-            padding: EdgeInsets.all(15),
+            padding: EdgeInsets.all(8),
             child: Column(children: [
               Image_Wallet(
                 image: image!,
                 scale: 20.0,
               ),
               SizedBox(
-                height: 20,
+                height: space1,
               ),
               Name_Wallet(
-                name: 'Credit Card',
+                name: "${getLang(context, "Credit Card")}",
               ),
               SizedBox(
-                height: 20,
+                height: space1,
               ),
               Custom_Text(
-                label: 'Name',
+                label: "${getLang(context, "Name")}",
                 controller: nameController =
                     TextEditingController(text: '$walletName'),
                 type: TextInputType.text,
               ),
               SizedBox(
-                height: 20,
+                height: space1,
               ),
               Text_Wallet_Name(
-                label: 'Available\n Balance',
+                label: "${getLang(context, "Total")}",
                 controller: balanceController =
                     TextEditingController(text: '$walletBalance'),
                 type: TextInputType.number,
               ),
               SizedBox(
-                height: 20,
-              ),
-              Text_Wallet_Balance(
-                  label: 'Credit\n limit',
-                  controller: limitController =
-                      TextEditingController(text: '$walletBalance'),
-                  namecurrency: 'S.P',
-                  type: TextInputType.number),
-              SizedBox(
-                height: 20,
-              ),
-              Text_Wallet_Balance(
-                  label: 'Amount\n payable',
-                  controller: amountpaybaleController,
-                  namecurrency: 'S.P',
-                  type: TextInputType.number),
-              SizedBox(
-                height: 20,
+                height: space1,
               ),
               checkbox_wallet(),
               SizedBox(
-                height: 20,
+                height: space1,
               ),
               BlocConsumer<CurrencyCubit, CurrencyStates>(
                 listener: (context, state) {
@@ -122,8 +112,8 @@ class UpdateCreditCard extends StatelessWidget {
                       SizedBox(
                         height: 30,
                       ),
-                      CustomRaisdButton(
-                          text: 'Edit',
+                      RaisedButtonWallets(
+                          text: "${getLang(context, "Edit")}",
                           onPressed: () {
                             WalletCubit.get(context).updateWalletDatabase(
                                 isId: walletId,
@@ -133,15 +123,46 @@ class UpdateCreditCard extends StatelessWidget {
                                 currencyId: CurrencyCubit.get(context)
                                     .getCurrencyId(
                                         currencyName: currencyController.text));
-                            // CurrencyCubit.get(context).insertToDatabase(
-                            //     isId: isID,
-                            //     basselName: currencyController.text,
-                            //     ownerId:WalletCubit.get(context).lastId != null?  WalletCubit.get(context).lastId + 1 : 1);
                           }),
                     ],
                   );
                 },
-              )
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 17,
+              ),
+              BlocConsumer<WalletCubit, WalletStates>(
+                  listener: (BuildContext context, WalletStates state) {},
+                  builder: (BuildContext context, WalletStates state) {
+                    WalletCubit cubit = WalletCubit.get(context);
+                    CurrencyCubit currencyCubit = CurrencyCubit.get(context);
+                    return InkWell(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (_) => AlertDialogWallet(
+                            content:
+                                "${getLang(context, "dialog delete wallet")}",
+                            cancelMethod: () {
+                              Navigator.of(context).pop();
+                            },
+                            submitMethod: () {
+                              cubit.deleteWalletFromDatabase(id: walletId);
+                              Navigator.of(context).pop();
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "${getLang(context, "Delete Wallet")}",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red[700],
+                        ),
+                      ),
+                    );
+                  }),
             ]),
           );
         },

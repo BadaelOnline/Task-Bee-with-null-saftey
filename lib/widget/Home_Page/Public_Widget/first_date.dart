@@ -6,11 +6,10 @@ class FirstDate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Text(
-        formattedDate,
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+    return Text(
+      formattedDate,
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
       ),
     );
   }

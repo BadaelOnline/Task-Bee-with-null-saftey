@@ -1,3 +1,4 @@
+import 'package:taskBee/common/applocal.dart';
 import 'package:flutter/material.dart';
 
 import 'icon_text.dart';
@@ -27,7 +28,7 @@ class Section_Group extends StatelessWidget {
                   height: duoble,
                   width: duoble,
                 ),
-                text: 'Debts',
+                text: "${getLang(context, "Debts")}",
                 onTap: () => Navigator.of(context).pushNamed('/debtsHome')),
             Icon_Text(
               icon: Image.asset(
@@ -35,7 +36,7 @@ class Section_Group extends StatelessWidget {
                 height: duoble,
                 width: duoble,
               ),
-              text: 'Contacts',
+              text: "${getLang(context, "Contact")}",
               onTap: () => Navigator.of(context).pushNamed('/contactHome'),
             ),
             Icon_Text(
@@ -44,7 +45,7 @@ class Section_Group extends StatelessWidget {
                 height: duoble,
                 width: duoble,
               ),
-              text: 'Revnue',
+              text: "${getLang(context, "Revnue")}",
               onTap: () =>
                   Navigator.of(context).pushNamed('/revenueCategoryHome'),
             ),
@@ -54,7 +55,7 @@ class Section_Group extends StatelessWidget {
                 height: duoble,
                 width: duoble,
               ),
-              text: 'Expensise',
+              text: "${getLang(context, "Expensise")}",
               onTap: () => Navigator.of(context).pushNamed('/exchangeHome'),
             ),
             Icon_Text(
@@ -63,7 +64,7 @@ class Section_Group extends StatelessWidget {
                 height: duoble,
                 width: duoble,
               ),
-              text: 'Wallets',
+              text: "${getLang(context, "Wallets")}",
               onTap: () => Navigator.of(context).pushNamed('/walletHome'),
             ),
           ],

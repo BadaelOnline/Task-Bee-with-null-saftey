@@ -1,3 +1,4 @@
+import 'package:taskBee/common/applocal.dart';
 import 'package:flutter/material.dart';
 
 class ContainerIncome extends StatelessWidget {
@@ -41,7 +42,7 @@ class ContainerIncome extends StatelessWidget {
                   height: 5,
                 ),
                 Text(
-                  'Income',
+                  "${getLang(context, "Income")}",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.black54,

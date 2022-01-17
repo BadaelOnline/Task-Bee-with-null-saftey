@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
-class DrawerWidget extends StatelessWidget {
+import '../main.dart';
+
+class DrawerWidget extends StatefulWidget {
   const DrawerWidget({Key? key}) : super(key: key);
+
+  @override
+  _DrawerWidgetState createState() => _DrawerWidgetState();
+}
+
+class _DrawerWidgetState extends State<DrawerWidget> {
+  var lang = mySharedPreferences!.getString('lang');
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +34,26 @@ class DrawerWidget extends StatelessWidget {
             Navigator.of(context).pushNamed('/reportSearch');
           },
         ),
+        ListTile(
+          title: const Text('language English'),
+          onTap: () {
+            setState(() {
+              MyApp.of(context)!.setLocale('en');
+              Navigator.of(context).pop();
+            });
+          },
+        ),
+        ListTile(
+          title: const Text('language Arabic'),
+          onTap: () {
+            setState(() {
+              MyApp.of(context)!.setLocale('ar');
+
+              Navigator.of(context).pop();
+            });
+          },
+        ),
+        Text(lang.toString())
       ]),
     );
   }

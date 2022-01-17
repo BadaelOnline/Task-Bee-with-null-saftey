@@ -1,5 +1,8 @@
+import 'package:taskBee/common/applocal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../main.dart';
 
 class TransactionCard extends StatelessWidget {
   final String? titleExchange;
@@ -41,11 +44,17 @@ class TransactionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang = mySharedPreferences!.getString('lang');
     return Card(
       margin: EdgeInsets.all(10),
-      elevation: 5.0,
+      // elevation: 1.0,
       child: Container(
-        color: Colors.grey[100],
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(
+            Radius.circular(5),
+          ),
+          color: Colors.white,
+        ),
         child: Column(
           children: [
             Container(
@@ -53,19 +62,23 @@ class TransactionCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    padding: EdgeInsets.only(left: 10),
+                    padding: EdgeInsets.only(
+                        left: lang == 'en' ? 10 : 0,
+                        right: lang == 'en' ? 0 : 10),
                     child: Row(children: [
                       Container(
                         width: 30,
                         height: 30,
                         child: Image.asset(
-                          'assets/wallet/dollars.png',
+                          'assets/homepage/masaref.png',
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.only(left: 8),
+                        padding: EdgeInsets.only(
+                            left: lang == 'en' ? 8 : 0,
+                            right: lang == 'en' ? 0 : 8),
                         child: Text(
-                          'Purchases and Spending',
+                          "${getLang(context, "Purchases and Spending")}",
                           style: TextStyle(
                               fontSize: 14.0,
                               fontWeight: FontWeight.bold,
@@ -81,17 +94,6 @@ class TransactionCard extends StatelessWidget {
                       Row(
                         children: [
                           Container(
-                            padding: EdgeInsets.only(left: 8.0),
-                            child: IconButton(
-                              onPressed: deleteTransaction,
-                              icon: Icon(
-                                Icons.delete,
-                                size: 20,
-                              ),
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(left: 8.0),
                             child: IconButton(
                               onPressed: updateTransaction,
                               icon: Icon(
@@ -100,36 +102,37 @@ class TransactionCard extends StatelessWidget {
                               ),
                             ),
                           ),
-                        ],
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(left: 10),
-                        child: Text(
-                          datetime!,
-                          style: TextStyle(
-                            fontSize: 12.0,
+                          Container(
+                            child: IconButton(
+                              onPressed: deleteTransaction,
+                              icon: Icon(
+                                Icons.delete,
+                                size: 20,
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ],
                   ),
                 ],
               ),
             ),
-            Divider(
-              color: Colors.grey[400],
-              endIndent: 13,
-              indent: 13,
+            Container(
+              height: 3,
+              child: Divider(
+                color: Colors.grey[400],
+                endIndent: 13,
+                indent: 13,
+              ),
             ),
             Container(
               padding: EdgeInsets.only(
-                right: 15,
-              ),
+                  right: lang == 'en' ? 15 : 0, left: lang == 'en' ? 0 : 15),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      padding: EdgeInsets.only(left: 10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -138,16 +141,16 @@ class TransactionCard extends StatelessWidget {
                               Row(
                                 children: [
                                   Container(
-                                    width: 45,
-                                    height: 45,
+                                    width: 40,
+                                    height: 40,
                                     child: IconButton(
                                         onPressed: () {}, icon: iconExchange!),
                                   ),
                                   Container(
                                     child: Text(
                                       titleExchange!,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
+                                      // style: TextStyle(
+                                      //     fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                 ],
@@ -159,19 +162,12 @@ class TransactionCard extends StatelessWidget {
                               Row(
                                 children: [
                                   Container(
-                                    width: 45,
-                                    height: 45,
+                                    width: 40,
+                                    height: 40,
                                     child: Icon(
                                       Icons.person,
                                       color: Colors.blue,
-                                      size: 27,
                                     ),
-                                    // child: IconButton(
-                                    //   onPressed: () {},
-                                    //   icon: Image.asset(
-                                    //     'assets/image/user.png',
-                                    //   ),
-                                    // ),
                                   ),
                                   Container(
                                     child: Text(
@@ -184,23 +180,20 @@ class TransactionCard extends StatelessWidget {
                           ),
                           Row(
                             children: [
-                              Row(
-                                children: [
-                                  Container(
-                                      width: 42,
-                                      height: 42,
-                                      child: IconButton(
-                                          onPressed: () {},
-                                          icon: Image.asset(
-                                            'assets/wallet/details.png',
-                                          ))),
-                                  Container(
-                                    child: Text(
-                                      note!,
-                                      maxLines: 1,
-                                    ),
-                                  ),
-                                ],
+                              Container(
+                                  width: 40,
+                                  height: 40,
+                                  child: IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(
+                                        Icons.list,
+                                        color: Colors.grey[500],
+                                      ))),
+                              Container(
+                                child: Text(
+                                  note!,
+                                  maxLines: 1,
+                                ),
                               ),
                             ],
                           ),
@@ -209,6 +202,16 @@ class TransactionCard extends StatelessWidget {
                     ),
                     Column(
                       children: [
+                        Container(
+                          child: Text(
+                            datetime!,
+                            style: TextStyle(
+                                fontSize: 12.0, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -219,76 +222,86 @@ class TransactionCard extends StatelessWidget {
                           height: 10,
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('Total:'),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Text('Payed:'),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Text('Rest:'),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  totalMoney!,
-                                  style: TextStyle(
-                                    color: Colors.grey[700],
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Text(
-                                  paidMoney!,
-                                  style: TextStyle(
-                                    color: Colors.red,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "${getLang(context, "Total")}:"
+                                          .toString(),
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      totalMoney!,
+                                      style: TextStyle(
+                                        color: Colors.grey[700],
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    currency != 'no currency for this wallet'
+                                        ? Text(currency!)
+                                        : CircularProgressIndicator(),
+                                  ],
                                 ),
                                 SizedBox(
                                   height: 5,
                                 ),
-                                Text(
-                                  restMoney!,
-                                  style: TextStyle(
-                                    color: Colors.red[500],
-                                  ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "${getLang(context, "Paid")}:".toString(),
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      paidMoney!,
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    currency != 'no currency for this wallet'
+                                        ? Text(currency!)
+                                        : CircularProgressIndicator(),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                currency != 'no currency for this wallet'
-                                    ? Text(currency!)
-                                    : CircularProgressIndicator(),
                                 SizedBox(
                                   height: 5,
                                 ),
-                                currency != 'no currency for this wallet'
-                                    ? Text(currency!)
-                                    : CircularProgressIndicator(),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                currency != 'no currency for this wallet'
-                                    ? Text(currency!)
-                                    : CircularProgressIndicator(),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "${getLang(context, "Rest")}:".toString(),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      restMoney!,
+                                      style: TextStyle(
+                                        color: Colors.red[500],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    currency != 'no currency for this wallet'
+                                        ? Text(currency!)
+                                        : CircularProgressIndicator(),
+                                  ],
+                                )
                               ],
                             ),
                           ],

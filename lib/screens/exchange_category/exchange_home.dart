@@ -1,7 +1,9 @@
-import 'package:financial/services/bloc/exchang_category/cubit.dart';
-import 'package:financial/services/bloc/exchang_category/states.dart';
-import 'package:financial/widget/custom_appBar.dart';
-import 'package:financial/widget/custom_floating_action_button.dart';
+import 'package:taskBee/common/applocal.dart';
+import 'package:taskBee/services/bloc/exchang_category/cubit.dart';
+import 'package:taskBee/services/bloc/exchang_category/states.dart';
+import 'package:taskBee/widget/custom_appBar.dart';
+import 'package:taskBee/widget/custom_floating_action_button.dart';
+import 'package:taskBee/widget/exchange_revenue_categoray/card_categoray.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,108 +19,69 @@ class ExchangeHome extends StatelessWidget {
                 Image(
                   image: AssetImage('assets/homepage/masaref.png'),
                 ),
-                'Expancies Categoray'),
+                "${getLang(context, "Expensise")}"),
             body: ListView.builder(
-              itemCount: cubit.exchanges!.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  padding: EdgeInsets.all(10),
-                  margin: EdgeInsets.all(1),
-                  color: Colors.white,
-                  child: Column(children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              padding: EdgeInsets.only(left: 8.0),
-                              child: cubit.exchanges![index].icon == ''
-                                  ? Container(
-                                      height: 50,
-                                      width: 50,
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey[100],
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(100.0)),
-                                        border: Border.all(
-                                          color: Colors.amber[400]!,
-                                          width: 2,
-                                        ),
-                                      ),
-                                    )
-                                  : Container(
-                                      height: 50,
-                                      width: 50,
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey[100],
-                                        image: DecorationImage(
-                                          scale: 0.5,
-                                          image: AssetImage(
-                                              cubit.exchanges![index].icon),
-                                        ),
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(100.0)),
-                                        border: Border.all(
-                                          color: Colors.amber[400]!,
-                                          width: 2,
-                                        ),
-                                      ),
-                                    ),
-                            ),
-                            Container(
-                                padding: EdgeInsets.only(left: 8.0),
-                                child: Text(
-                                  cubit.exchanges![index].name,
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black),
-                                )),
-                          ],
-                        ),
-                        Row(
-                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.analytics_outlined,
-                                size: 20,
+                itemCount: cubit.exchanges!.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: EdgeInsets.only(left: 8, right: 8, top: 8),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.of(context)
+                            .pushNamed('/reportpagecategoray', arguments: {
+                          'categoryId': cubit.exchanges![index].id,
+                          'categoryName': cubit.exchanges![index].name,
+                          'categoryIcon': cubit.exchanges![index].icon
+                        });
+                      },
+                      child: Card_Categoray(
+                        image: cubit.exchanges![index].icon == ''
+                            ? Container(
+                                height: 50,
+                                width: 50,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[100],
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(100.0)),
+                                  border: Border.all(
+                                    color: Colors.amber[400]!,
+                                    width: 2,
+                                  ),
+                                ),
+                              )
+                            : Container(
+                                height: 50,
+                                width: 50,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[100],
+                                  image: DecorationImage(
+                                    scale: 0.5,
+                                    image: AssetImage(
+                                        cubit.exchanges![index].icon),
+                                  ),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(100.0)),
+                                  border: Border.all(
+                                    color: Colors.amber[400]!,
+                                    width: 2,
+                                  ),
+                                ),
                               ),
-                            ),
-                            IconButton(
-                              onPressed: () => Navigator.of(context)
-                                  .pushNamed('/updateExchange', arguments: {
-                                'categoryId': cubit.exchanges![index].id,
-                                'categoryName': cubit.exchanges![index].name,
-                                'categoryIcon': cubit.exchanges![index].icon,
-                              }),
-                              icon: Icon(
-                                Icons.edit,
-                                size: 20,
-                              ),
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                cubit.deleteExchangeFromDatabase(
-                                    id: cubit.exchanges![index].id);
-                              },
-                              icon: Icon(
-                                Icons.delete,
-                                size: 20,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+                        title: cubit.exchanges![index].name,
+                        edit: () {
+                          Navigator.of(context).pushNamed(
+                            '/updateExchange',
+                            arguments: {
+                              'categoryId': cubit.exchanges![index].id,
+                              'categoryName': cubit.exchanges![index].name,
+                              'categoryIcon': cubit.exchanges![index].icon,
+                            },
+                          );
+                        },
+                      ),
                     ),
-                  ]),
-                );
-              },
-            ),
+                  );
+                }),
             floatingActionButton: CustomFloatingActionButton(
               icon: Icon(Icons.add),
               onPressed: () => Navigator.of(context).pushNamed('/addExchange'),

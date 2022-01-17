@@ -1,3 +1,4 @@
+import 'package:taskBee/common/applocal.dart';
 import 'package:flutter/material.dart';
 import 'icon_text.dart';
 
@@ -21,7 +22,7 @@ class Business_Project extends StatelessWidget {
               height: duoble,
               width: duoble,
             ),
-            text: 'Teams Managament',
+            text: "${getLang(context, "Teams Managament")}",
           ),
           icon_text(
             icon: Image.asset(
@@ -29,7 +30,7 @@ class Business_Project extends StatelessWidget {
               height: duoble,
               width: duoble,
             ),
-            text: 'Project',
+            text: "${getLang(context, "Project")}",
           )
         ]),
       ),

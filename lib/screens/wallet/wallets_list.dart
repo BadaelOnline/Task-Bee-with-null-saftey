@@ -1,16 +1,19 @@
-import 'package:financial/widget/Wallet/container_list_wallet.dart';
-import 'package:financial/widget/custom_appBar.dart';
+import 'package:taskBee/common/applocal.dart';
+import 'package:taskBee/widget/Wallet/container_list_wallet.dart';
+import 'package:taskBee/widget/custom_appBar.dart';
 import 'package:flutter/material.dart';
 
 class WalletsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    double space = MediaQuery.of(context).size.height / 60;
     return Scaffold(
       appBar: CustomAppBar(
-          Image(
-            image: AssetImage('assets/homepage/wallet.png'),
-          ),
-          'Add Wallet'),
+        Image(
+          image: AssetImage('assets/homepage/wallet.png'),
+        ),
+        "${getLang(context, "Add Wallet")}",
+      ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: SingleChildScrollView(
@@ -19,43 +22,43 @@ class WalletsList extends StatelessWidget {
               children: [
                 Container_List_Wallet(
                   image: Image.asset('assets/wallet/dollar.png'),
-                  text: 'Cash',
+                  text: "${getLang(context, "Cash")}",
                   ontap: () =>
                       Navigator.of(context).pushNamed('/addCashWallet'),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: space,
                 ),
                 Container_List_Wallet(
                   image: Image.asset('assets/wallet/account.png'),
-                  text: 'Bank Account',
+                  text: "${getLang(context, "Bank Account")}",
                   ontap: () =>
                       Navigator.of(context).pushNamed('/addBankAccount'),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: space,
                 ),
                 Container_List_Wallet(
                   image: Image.asset('assets/wallet/card.png'),
-                  text: 'Credit Card',
+                  text: "${getLang(context, "Credit Card")}",
                   ontap: () =>
                       Navigator.of(context).pushNamed('/addCreditCard'),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: space,
                 ),
                 Container_List_Wallet(
                   image: Image.asset('assets/wallet/credit-cards.png'),
-                  text: 'Prepaid Card',
+                  text: "${getLang(context, "Prepaid Card")}",
                   ontap: () =>
                       Navigator.of(context).pushNamed('/addPrepaidCard'),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: space,
                 ),
                 Container_List_Wallet(
                   image: Image.asset('assets/wallet/revenue.png'),
-                  text: 'Planner Save',
+                  text: "${getLang(context, "Saving Wallet")}",
                   ontap: () =>
                       Navigator.of(context).pushNamed('/addPlannerSave'),
                 ),

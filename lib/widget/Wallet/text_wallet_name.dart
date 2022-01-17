@@ -24,6 +24,8 @@ class Text_Namewallet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height / 13.7;
+
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
@@ -36,11 +38,11 @@ class Text_Namewallet extends StatelessWidget {
         Container(
           child: Text(
             label.toString(),
-            style: TextStyle(fontSize: 15),
+            // style: TextStyle(fontSize: 15),
           ),
           alignment: Alignment.center,
           width: MediaQuery.of(context).size.width * 0.2,
-          height: 50,
+          height: height,
           decoration: BoxDecoration(
               color: Colors.grey[200],
               borderRadius: BorderRadius.only(
@@ -49,11 +51,12 @@ class Text_Namewallet extends StatelessWidget {
         Center(
           child: Container(
             alignment: Alignment.bottomCenter,
-            height: 50,
+            height: height,
             width: MediaQuery.of(context).size.width * 0.7,
             child: Padding(
               padding: const EdgeInsets.only(left: 5),
               child: TextFormField(
+                textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,

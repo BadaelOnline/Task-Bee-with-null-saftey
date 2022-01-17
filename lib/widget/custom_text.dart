@@ -1,5 +1,10 @@
+import 'package:taskBee/common/applocal.dart';
+
 import 'package:flutter/material.dart';
 
+import '../main.dart';
+
+// ignore: camel_case_types
 class Custom_Text extends StatelessWidget {
   final TextEditingController? controller;
   final TextInputType? type;
@@ -24,6 +29,9 @@ class Custom_Text extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang = mySharedPreferences!.getString('lang');
+    double height = MediaQuery.of(context).size.height / 13.7;
+
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
@@ -31,7 +39,7 @@ class Custom_Text extends StatelessWidget {
           color: Color(0xffeeeeee),
         ),
       ),
-      height: 50,
+      height: height,
       child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
         Container(
           child: Text(
@@ -40,20 +48,33 @@ class Custom_Text extends StatelessWidget {
           ),
           alignment: Alignment.center,
           width: MediaQuery.of(context).size.width * 0.2,
-          height: 50,
+          height: height,
           decoration: BoxDecoration(
-              color: Colors.grey[200],
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(8), bottomLeft: Radius.circular(8))),
+            color: Colors.grey[200],
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(lang == 'en' ? 7.5 : 0),
+                bottomLeft: Radius.circular(lang == 'en' ? 7.5 : 0),
+                topRight: Radius.circular(lang == 'en' ? 0 : 7.5),
+                bottomRight: Radius.circular(lang == 'en' ? 0 : 7.5)),
+          ),
         ),
         Center(
           child: Container(
-            alignment: Alignment.bottomCenter,
-            height: 50,
+            alignment: Alignment.center,
+            height: height,
             width: MediaQuery.of(context).size.width * 0.7,
             child: Padding(
-              padding: const EdgeInsets.only(left: 5),
+              padding: EdgeInsets.only(
+                  left: lang == 'en' ? 5 : 0, right: lang == 'en' ? 5 : 0),
               child: TextFormField(
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  errorBorder: InputBorder.none,
+                  disabledBorder: InputBorder.none,
+                ),
+                textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -68,17 +89,6 @@ class Custom_Text extends StatelessWidget {
             ),
           ),
         ),
-        // Container(
-        //   alignment: Alignment.center,
-        //   width: MediaQuery.of(context).size.width * 0.2,
-        //   height: 50,
-        //   child: Icon(prefix),
-        //   decoration: BoxDecoration(
-        //       color: Colors.grey[100],
-        //       borderRadius: BorderRadius.only(
-        //           topRight: Radius.circular(8),
-        //           bottomRight: Radius.circular(8))),
-        // ),
       ]),
     );
   }

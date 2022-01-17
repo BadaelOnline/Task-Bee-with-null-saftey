@@ -1,3 +1,4 @@
+import 'package:taskBee/common/applocal.dart';
 import 'package:flutter/material.dart';
 
 class ContainerPay extends StatelessWidget {
@@ -40,7 +41,7 @@ class ContainerPay extends StatelessWidget {
                   width: 33,
                 ),
                 Text(
-                  'Pay',
+                  "${getLang(context, "Pay")}",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.black54,

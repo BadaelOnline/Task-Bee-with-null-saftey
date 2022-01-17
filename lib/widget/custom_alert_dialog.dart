@@ -1,31 +1,50 @@
-
-
+import 'package:taskBee/common/applocal.dart';
 import 'package:flutter/material.dart';
 
-import 'custom_raisd_button.dart';
+class AlertDialogWallet extends StatelessWidget {
+  String? content;
+  Function()? submitMethod;
+  Function()? cancelMethod;
+  AlertDialogWallet(
+      {Key? key, this.cancelMethod, this.submitMethod, this.content})
+      : super(key: key);
 
-Widget customAlertDialog({
-  String? title,
-  String? content,
-  Function()? submitMethod,
-  Function()? cancelMethod,
-}) {
-  return AlertDialog(
-    content: Text(content!),
-    contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-    contentTextStyle: TextStyle(color: Colors.black38, fontSize: 15),
-    actions: [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          CustomRaisdButton(onPressed: submitMethod, text: 'ok'),
-          SizedBox(
-            width: 30,
-          ),
-          CustomRaisdButton(onPressed: cancelMethod, text: 'cancel'),
-        ],
-      ),
-    ],
-  );
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Row(children: [
+        Icon(
+          Icons.delete,
+          color: Colors.red[900],
+        ),
+        SizedBox(
+          width: 10,
+        ),
+        Text("${getLang(context, "Alert")}"),
+      ]),
+      content: Text(content!),
+      contentTextStyle: TextStyle(color: Colors.grey[700], fontSize: 15),
+      actions: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            TextButton(
+                onPressed: submitMethod,
+                child: Text(
+                  "${getLang(context, "Ok")}",
+                  style: TextStyle(color: Colors.red[900]),
+                )),
+            SizedBox(
+              width: 30,
+            ),
+            TextButton(
+                onPressed: cancelMethod,
+                child: Text("${getLang(context, "Cancel")}",
+                    style: TextStyle(color: Colors.black))),
+          ],
+        ),
+      ],
+    );
+  }
 }

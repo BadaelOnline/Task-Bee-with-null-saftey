@@ -1,9 +1,12 @@
-import 'package:financial/services/bloc/contact/cubit.dart';
-import 'package:financial/services/bloc/contact/states.dart';
-import 'package:financial/widget/Contact/button_save_cancel.dart';
-import 'package:financial/widget/Contact/image.dart';
-import 'package:financial/widget/custom_appBar.dart';
-import 'package:financial/widget/custom_text.dart';
+import 'package:taskBee/common/applocal.dart';
+import 'package:taskBee/services/bloc/contact/cubit.dart';
+import 'package:taskBee/services/bloc/contact/states.dart';
+import 'package:taskBee/widget/Contact/button_save_cancel.dart';
+import 'package:taskBee/widget/Contact/image.dart';
+import 'package:taskBee/widget/Wallet/raised_button_wallets.dart';
+import 'package:taskBee/widget/custom_appBar.dart';
+import 'package:taskBee/widget/custom_text.dart';
+import 'package:taskBee/widget/exchange_revenue_categoray/alert_dialog_categoray.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,7 +21,7 @@ class AddContact extends StatelessWidget {
           Image(
             image: AssetImage('assets/homepage/person.png'),
           ),
-          'Add Contact'),
+          "${getLang(context, "Add Contact")}"),
       body: BlocConsumer<ContactCubit, ContactStates>(
         listener: (context, ContactStates state) {
           if (state is InsertContactsToDatabaseState) {
@@ -26,26 +29,54 @@ class AddContact extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          return Container(
-            alignment: Alignment.center,
-            child: SingleChildScrollView(
+          return SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Column(children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 15,
+                ),
                 image(),
                 SizedBox(
-                  height: 25,
+                  height: MediaQuery.of(context).size.height / 15,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Custom_Text(
-                    label: 'Name',
-                    controller: nameController,
-                    prefix: Icons.person,
-                  ),
+                Custom_Text(
+                  label: "${getLang(context, "Name")}",
+                  controller: nameController,
+                  prefix: Icons.person,
                 ),
                 SizedBox(
-                  height: 100,
+                  height: MediaQuery.of(context).size.height / 7.5,
                 ),
-                button_save_cancel(nameController: nameController)
+
+                RaisedButtonWallets(
+                    onPressed: () {
+                      nameController.text != ""
+                          ? ContactCubit.get(context).insertToDatabase(
+                              contactName: nameController.text,
+                            )
+                          : showDialog(
+                              context: context,
+                              builder: (_) => AlertDialogCategoray(
+                                x: 1,
+                                icon: Icon(
+                                  Icons.report_problem_rounded,
+                                  color: Colors.amberAccent,
+                                  size: 45,
+                                ),
+                                content:
+                                    "${getLang(context, "dialog Add Name")}",
+                                cancelMethod: () {
+                                  Navigator.of(context).pop();
+                                },
+                                submitMethod: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            );
+                    },
+                    text: "${getLang(context, "Create")}"),
+                // button_save_cancel(nameController: nameController)
               ]),
             ),
           );

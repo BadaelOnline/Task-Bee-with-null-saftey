@@ -1,9 +1,10 @@
-import 'package:financial/common/constant/constants.dart';
-import 'package:financial/services/bloc/currency/cubit.dart';
-import 'package:financial/services/bloc/currency/cubit.dart';
-import 'package:financial/services/bloc/currency/states.dart';
+import 'package:taskBee/common/constant/constants.dart';
+import 'package:taskBee/services/bloc/currency/cubit.dart';
+import 'package:taskBee/services/bloc/currency/states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../main.dart';
 
 // ignore: camel_case_types
 class Text_Wallet_Balance extends StatelessWidget {
@@ -32,6 +33,8 @@ class Text_Wallet_Balance extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang = mySharedPreferences!.getString('lang');
+    double height = MediaQuery.of(context).size.height / 13.7;
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
@@ -39,26 +42,36 @@ class Text_Wallet_Balance extends StatelessWidget {
           color: Color(0xffeeeeee),
         ),
       ),
-      height: 50,
+      height: height,
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Container(
           child: Text(
             label.toString(),
-            style: TextStyle(fontSize: 15),
           ),
           alignment: Alignment.center,
           width: MediaQuery.of(context).size.width * 0.2,
-          height: 50,
+          height: height,
           decoration: BoxDecoration(
               color: Colors.grey[200],
               borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(8), bottomLeft: Radius.circular(8))),
+                  topLeft: Radius.circular(lang == 'en' ? 7.5 : 0),
+                  bottomLeft: Radius.circular(lang == 'en' ? 7.5 : 0),
+                  topRight: Radius.circular(lang == 'en' ? 0 : 7.5),
+                  bottomRight: Radius.circular(lang == 'en' ? 0 : 7.5))),
         ),
         Container(
-          alignment: Alignment.bottomCenter,
-          height: 50,
+          alignment: Alignment.center,
+          height: height,
           width: MediaQuery.of(context).size.width * 0.5,
           child: TextFormField(
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              focusedBorder: InputBorder.none,
+              enabledBorder: InputBorder.none,
+              errorBorder: InputBorder.none,
+              disabledBorder: InputBorder.none,
+            ),
+            textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -80,9 +93,11 @@ class Text_Wallet_Balance extends StatelessWidget {
             return Container(
               alignment: Alignment.center,
               width: MediaQuery.of(context).size.width * 0.2,
-              height: 50,
+              height: height,
               child: Text(
-                CurrencyCubit.get(context).chosenCurrency != null ? CurrencyCubit.get(context).chosenCurrency!.name : kDefaultCurrency.code,
+                CurrencyCubit.get(context).chosenCurrency != null
+                    ? CurrencyCubit.get(context).chosenCurrency!.name
+                    : kDefaultCurrency.code,
                 style: TextStyle(fontSize: 15),
               ),
               decoration: BoxDecoration(
@@ -96,8 +111,10 @@ class Text_Wallet_Balance extends StatelessWidget {
                     ),
                   ],
                   borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(8),
-                      bottomRight: Radius.circular(8))),
+                      topLeft: Radius.circular(lang == 'en' ? 0 : 7.5),
+                      bottomLeft: Radius.circular(lang == 'en' ? 0 : 7.5),
+                      topRight: Radius.circular(lang == 'en' ? 7.5 : 0),
+                      bottomRight: Radius.circular(lang == 'en' ? 7.5 : 0))),
             );
           },
         ),

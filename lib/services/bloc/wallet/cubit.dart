@@ -1,7 +1,7 @@
-import 'package:financial/common/database/database.dart';
-import 'package:financial/models/wallet.dart';
-import 'package:financial/services/bloc/wallet/states.dart';
-import 'package:financial/services/dao/dao_wallet.dart';
+import 'package:taskBee/common/database/database.dart';
+import 'package:taskBee/models/wallet.dart';
+import 'package:taskBee/services/bloc/wallet/states.dart';
+import 'package:taskBee/services/dao/dao_wallet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -189,6 +189,7 @@ class WalletCubit extends Cubit<WalletStates> {
   }) {
     print('ooooooooooooooooooooooooooooooooo $wallet');
     chosenWallet = wallet;
+
     emit(ChoseWalletFromChooseWalletPageState());
   }
 }

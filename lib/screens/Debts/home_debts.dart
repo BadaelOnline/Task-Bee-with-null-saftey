@@ -1,6 +1,7 @@
-import 'package:financial/widget/custom_appBar.dart';
-import 'package:financial/widget/custom_floating_action_button.dart';
-
+import 'package:taskBee/screens/Debts/tabs/creditors.dart';
+import 'package:taskBee/screens/Debts/tabs/deptiors.dart';
+import 'package:taskBee/widget/custom_appBar.dart';
+import 'package:taskBee/widget/custom_floating_action_button.dart';
 import 'package:flutter/material.dart';
 
 class DebtsHome extends StatefulWidget {
@@ -10,12 +11,12 @@ class DebtsHome extends StatefulWidget {
   _DebtsHomeState createState() => _DebtsHomeState();
 }
 
-class _DebtsHomeState extends State<DebtsHome> {
+class _DebtsHomeState extends State<DebtsHome> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      initialIndex: 1,
+      initialIndex: 0,
       child: Scaffold(
         appBar: CustomAppBar(
           Container(
@@ -25,65 +26,53 @@ class _DebtsHomeState extends State<DebtsHome> {
           ),
           'Debts',
         ),
-        body: Stack(
-          children: [
-            Container(
-              height: 35,
-              color: Colors.white,
-              child: TabBar(
-                // padding: EdgeInsets.all(15),
-                indicatorColor: Colors.amber[400],
-
-                tabs: [
-                  Container(
-                    child: Text(
-                      'Creditors / theirs',
-                      style: TextStyle(color: Colors.red),
-                    ),
-                  ),
-                  Container(
-                    child: Text(
-                      'Debtors / on them',
-                      style: TextStyle(color: Colors.green),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: TabBarView(children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      margin: EdgeInsets.all(10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          ListTile(
-                            leading: Icon(Icons.person),
-                            title: Text('majd'),
-                          ),
-                          // ListTile(
-                          //   leading: Text('500.000'),
-                          //   title: Text('S.P'),
-                          // ),
-                          // IconButton(
-                          //   onPressed: () {},
-                          //   icon: Icon(Icons.info),
-                          // ),
-                        ],
+        body: DefaultTabController(
+            length: 2,
+            child: Column(
+              children: [
+                Container(
+                  // alignment: Alignment.center,
+                  height: 40,
+                  color: Colors.white,
+                  child: TabBar(
+                    indicatorColor: Colors.red,
+                    tabs: [
+                      Container(
+                        alignment: Alignment.center,
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        child: Text(
+                          'Creditors',
+                          style:
+                              TextStyle(color: Colors.grey[800], fontSize: 15),
+                        ),
                       ),
-                    ),
-                  ],
+                      Container(
+                        alignment: Alignment.center,
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        child: Text(
+                          'Debtors',
+                          style:
+                              TextStyle(color: Colors.grey[800], fontSize: 15),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                Icon(Icons.ac_unit),
-              ]),
-            )
-          ],
-        ),
+                Expanded(
+                    child: Container(
+                  child: TabBarView(children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Creditors(),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Debtors(),
+                    )
+                  ]),
+                ))
+              ],
+            )),
         floatingActionButton: CustomFloatingActionButton(
           onPressed: () => Navigator.of(context).pushNamed('/debtsForm'),
         ),

@@ -1,6 +1,6 @@
-import 'package:financial/models/bmi.dart';
-import 'package:financial/services/bloc/bmi/cubit.dart';
-import 'package:financial/services/bloc/bmi/states.dart';
+import 'package:taskBee/models/bmi.dart';
+import 'package:taskBee/services/bloc/bmi/cubit.dart';
+import 'package:taskBee/services/bloc/bmi/states.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,9 +1,10 @@
-import 'package:financial/services/bloc/contact/cubit.dart';
-import 'package:financial/services/bloc/contact/states.dart';
-import 'package:financial/services/bloc/exchang_category/cubit.dart';
-import 'package:financial/services/bloc/exchang_category/states.dart';
-import 'package:financial/services/bloc/wallet/cubit.dart';
-import 'package:financial/services/bloc/wallet/states.dart';
+import 'package:taskBee/common/applocal.dart';
+import 'package:taskBee/services/bloc/contact/cubit.dart';
+import 'package:taskBee/services/bloc/contact/states.dart';
+import 'package:taskBee/services/bloc/exchang_category/cubit.dart';
+import 'package:taskBee/services/bloc/exchang_category/states.dart';
+import 'package:taskBee/services/bloc/wallet/cubit.dart';
+import 'package:taskBee/services/bloc/wallet/states.dart';
 import 'package:flutter/material.dart';
 import 'widget_container.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,7 +35,7 @@ class Column_Wallet_Expancies_contact extends StatelessWidget {
               ),
               text: WalletCubit.get(context).chosenWallet != null
                   ? WalletCubit.get(context).chosenWallet!.name
-                  : 'Wallet',
+                  : "${getLang(context, "Wallet")}".toString(),
               balanc: WalletCubit.get(context).chosenWallet != null
                   ? WalletCubit.get(context).chosenWallet!.balance
                   : '',
@@ -61,8 +62,8 @@ class Column_Wallet_Expancies_contact extends StatelessWidget {
               text: ExchangeCubit.get(context).chosenCategory != null
                   ? ExchangeCubit.get(context).chosenCategory!.name
                   : cat == 'chooseexchang'
-                      ? 'Expancies item'
-                      : 'Revenue item',
+                      ? "${getLang(context, "Expancies item")}".toString()
+                      : "${getLang(context, "Revenue item")}".toString(),
               ontap: () => Navigator.of(context).pushNamed('/$cat'),
             );
           },
@@ -86,7 +87,7 @@ class Column_Wallet_Expancies_contact extends StatelessWidget {
               ),
               text: cubit.chosenContact != null
                   ? cubit.chosenContact!.name
-                  : 'Contact',
+                  : "${getLang(context, "Contacts")}".toString(),
               ontap: () => Navigator.of(context).pushNamed('/choosecontact'),
             );
           },

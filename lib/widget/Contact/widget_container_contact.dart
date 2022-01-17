@@ -14,10 +14,11 @@ class Widget_Container_Contact extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height / 13.7;
     return InkWell(
       onTap: ontap,
       child: Container(
-        height: 50,
+        height: height,
         width: MediaQuery.of(context).size.width,
         child: Row(
           children: [

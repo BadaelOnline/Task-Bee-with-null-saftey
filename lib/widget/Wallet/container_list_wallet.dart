@@ -14,10 +14,12 @@ class Container_List_Wallet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double space1 = MediaQuery.of(context).size.height / 12;
+
     return InkWell(
       onTap: ontap,
       child: Container(
-        height: 55,
+        height: space1,
         width: MediaQuery.of(context).size.width,
         child: Row(
           children: [
