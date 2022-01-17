@@ -1,7 +1,7 @@
-import 'package:financial/common/database/database.dart';
-import 'package:financial/models/contact.dart';
-import 'package:financial/services/bloc/contact/states.dart';
-import 'package:financial/services/dao/dao_contact.dart';
+import 'package:taskBee/common/database/database.dart';
+import 'package:taskBee/models/contact.dart';
+import 'package:taskBee/services/bloc/contact/states.dart';
+import 'package:taskBee/services/dao/dao_contact.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

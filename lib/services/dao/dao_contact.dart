@@ -1,6 +1,6 @@
 // dao/person_dao.dart
 
-import 'package:financial/models/contact.dart';
+import 'package:taskBee/models/contact.dart';
 import 'package:floor/floor.dart';
 
 @dao

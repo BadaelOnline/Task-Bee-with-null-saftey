@@ -1,8 +1,8 @@
-import 'package:financial/common/applocal.dart';
-import 'package:financial/widget/Home_Page/Public_Widget/first_date.dart';
-import 'package:financial/widget/Wallet/widget_reports_wallet/date_day_month_year.dart';
-import 'package:financial/widget/Wallet/widget_reports_wallet/date_year.dart';
-import 'package:financial/widget/Wallet/widget_reports_wallet/multi_date.dart';
+import 'package:taskBee/common/applocal.dart';
+import 'package:taskBee/widget/Home_Page/Public_Widget/first_date.dart';
+import 'package:taskBee/widget/Wallet/widget_reports_wallet/date_day_month_year.dart';
+import 'package:taskBee/widget/Wallet/widget_reports_wallet/date_year.dart';
+import 'package:taskBee/widget/Wallet/widget_reports_wallet/multi_date.dart';
 import 'package:flutter/material.dart';
 import '../../../main.dart';
 import 'detailes_categoray.dart';

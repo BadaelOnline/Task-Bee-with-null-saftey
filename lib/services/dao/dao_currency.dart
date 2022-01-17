@@ -1,4 +1,4 @@
-import 'package:financial/models/currency.dart';
+import 'package:taskBee/models/currency.dart';
 import 'package:floor/floor.dart';
 
 @dao

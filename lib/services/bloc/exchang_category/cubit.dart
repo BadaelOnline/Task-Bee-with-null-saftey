@@ -1,7 +1,7 @@
-import 'package:financial/common/database/database.dart';
-import 'package:financial/models/exchange_category.dart';
-import 'package:financial/services/bloc/exchang_category/states.dart';
-import 'package:financial/services/dao/dao_exchange_category.dart';
+import 'package:taskBee/common/database/database.dart';
+import 'package:taskBee/models/exchange_category.dart';
+import 'package:taskBee/services/bloc/exchang_category/states.dart';
+import 'package:taskBee/services/dao/dao_exchange_category.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

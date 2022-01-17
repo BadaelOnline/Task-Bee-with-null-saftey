@@ -1,11 +1,11 @@
-import 'package:financial/common/applocal.dart';
-import 'package:financial/widget/Wallet/raised_button_wallets.dart';
-import 'package:financial/widget/Wallet/text_wallet_balance.dart';
-import 'package:financial/widget/Wallet/transfer_wallet/all_visibility_wallets.dart';
-import 'package:financial/widget/custom_appBar.dart';
-import 'package:financial/widget/custom_raisd_button.dart';
-import 'package:financial/widget/date_time_widget.dart';
-import 'package:financial/widget/note_when_you_add_transaction.dart';
+import 'package:taskBee/common/applocal.dart';
+import 'package:taskBee/widget/Wallet/raised_button_wallets.dart';
+import 'package:taskBee/widget/Wallet/text_wallet_balance.dart';
+import 'package:taskBee/widget/Wallet/transfer_wallet/all_visibility_wallets.dart';
+import 'package:taskBee/widget/custom_appBar.dart';
+import 'package:taskBee/widget/custom_raisd_button.dart';
+import 'package:taskBee/widget/date_time_widget.dart';
+import 'package:taskBee/widget/note_when_you_add_transaction.dart';
 import 'package:flutter/material.dart';
 import '../../../widget/Wallet/transfer_wallet/column_wallet.dart';
 

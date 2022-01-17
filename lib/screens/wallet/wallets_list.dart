@@ -1,6 +1,6 @@
-import 'package:financial/common/applocal.dart';
-import 'package:financial/widget/Wallet/container_list_wallet.dart';
-import 'package:financial/widget/custom_appBar.dart';
+import 'package:taskBee/common/applocal.dart';
+import 'package:taskBee/widget/Wallet/container_list_wallet.dart';
+import 'package:taskBee/widget/custom_appBar.dart';
 import 'package:flutter/material.dart';
 
 class WalletsList extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:financial/widget/Buttom_Incom_Pay/All_Visibility/widget_container.dart';
+import 'package:taskBee/widget/Buttom_Incom_Pay/All_Visibility/widget_container.dart';
 import 'package:flutter/material.dart';
 import 'Text_debts_installment.dart';
 import 'date_debts.dart';

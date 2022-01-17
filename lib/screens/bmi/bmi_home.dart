@@ -1,6 +1,6 @@
-import 'package:financial/services/bloc/bmi/cubit.dart';
-import 'package:financial/services/bloc/bmi/states.dart';
-import 'package:financial/widget/custom_appBar.dart';
+import 'package:taskBee/services/bloc/bmi/cubit.dart';
+import 'package:taskBee/services/bloc/bmi/states.dart';
+import 'package:taskBee/widget/custom_appBar.dart';
 import 'package:floor/floor.dart';
 
 import 'package:flutter/cupertino.dart';

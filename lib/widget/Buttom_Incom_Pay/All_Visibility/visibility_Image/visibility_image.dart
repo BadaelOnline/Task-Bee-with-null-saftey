@@ -1,4 +1,4 @@
-import 'package:financial/common/applocal.dart';
+import 'package:taskBee/common/applocal.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';

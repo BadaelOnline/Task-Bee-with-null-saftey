@@ -1,10 +1,10 @@
-import 'package:financial/common/applocal.dart';
-import 'package:financial/services/bloc/contact/cubit.dart';
-import 'package:financial/services/bloc/contact/states.dart';
-import 'package:financial/services/bloc/wallet/cubit.dart';
-import 'package:financial/services/bloc/wallet/states.dart';
-import 'package:financial/widget/Buttom_Incom_Pay/All_Visibility/all_visibiltiy_from_debtors.dart';
-import 'package:financial/widget/Buttom_Incom_Pay/Column_wallet_Expancies_Contact/widget_container.dart';
+import 'package:taskBee/common/applocal.dart';
+import 'package:taskBee/services/bloc/contact/cubit.dart';
+import 'package:taskBee/services/bloc/contact/states.dart';
+import 'package:taskBee/services/bloc/wallet/cubit.dart';
+import 'package:taskBee/services/bloc/wallet/states.dart';
+import 'package:taskBee/widget/Buttom_Incom_Pay/All_Visibility/all_visibiltiy_from_debtors.dart';
+import 'package:taskBee/widget/Buttom_Incom_Pay/Column_wallet_Expancies_Contact/widget_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../custom_raisd_button.dart';

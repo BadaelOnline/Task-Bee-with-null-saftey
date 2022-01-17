@@ -1,5 +1,5 @@
-import 'package:financial/widget/Debts/Card_Creditor/card_in_view_contact.dart';
-import 'package:financial/widget/custom_appBar.dart';
+import 'package:taskBee/widget/Debts/Card_Creditor/card_in_view_contact.dart';
+import 'package:taskBee/widget/custom_appBar.dart';
 import 'package:flutter/material.dart';
 
 class ViewDebts_Name_Creditor extends StatelessWidget {

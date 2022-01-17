@@ -1,12 +1,12 @@
-import 'package:financial/models/contact.dart';
-import 'package:financial/screens/contact/preview_contact/preview_debts.dart';
-import 'package:financial/screens/contact/preview_contact/preview_project.dart';
-import 'package:financial/screens/contact/preview_contact/preview_tasks.dart';
-import 'package:financial/screens/contact/preview_contact/preview_team_work.dart';
-import 'package:financial/screens/contact/preview_contact/preview_transaction.dart';
-import 'package:financial/services/bloc/transaction/cubit.dart';
-import 'package:financial/services/bloc/transaction/states.dart';
-import 'package:financial/widget/Contact/widget_container_contact.dart';
+import 'package:taskBee/models/contact.dart';
+import 'package:taskBee/screens/contact/preview_contact/preview_debts.dart';
+import 'package:taskBee/screens/contact/preview_contact/preview_project.dart';
+import 'package:taskBee/screens/contact/preview_contact/preview_tasks.dart';
+import 'package:taskBee/screens/contact/preview_contact/preview_team_work.dart';
+import 'package:taskBee/screens/contact/preview_contact/preview_transaction.dart';
+import 'package:taskBee/services/bloc/transaction/cubit.dart';
+import 'package:taskBee/services/bloc/transaction/states.dart';
+import 'package:taskBee/widget/Contact/widget_container_contact.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

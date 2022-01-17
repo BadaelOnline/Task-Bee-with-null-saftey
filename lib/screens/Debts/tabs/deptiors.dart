@@ -1,4 +1,4 @@
-import 'package:financial/widget/Debts/Card_Debtor/card_in_home_debtor.dart';
+import 'package:taskBee/widget/Debts/Card_Debtor/card_in_home_debtor.dart';
 
 import 'package:flutter/material.dart';
 

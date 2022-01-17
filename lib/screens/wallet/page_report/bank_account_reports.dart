@@ -1,6 +1,6 @@
-import 'package:financial/common/applocal.dart';
-import 'package:financial/widget/Wallet/widget_reports_wallet/card_fix_postions_in_page_reports.dart';
-import 'package:financial/widget/custom_appBar.dart';
+import 'package:taskBee/common/applocal.dart';
+import 'package:taskBee/widget/Wallet/widget_reports_wallet/card_fix_postions_in_page_reports.dart';
+import 'package:taskBee/widget/custom_appBar.dart';
 import 'package:flutter/material.dart';
 
 class BankAccountReports extends StatefulWidget {

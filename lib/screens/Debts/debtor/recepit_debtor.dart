@@ -1,9 +1,9 @@
-import 'package:financial/widget/Buttom_Incom_Pay/Column_wallet_Expancies_Contact/widget_container.dart';
-import 'package:financial/widget/Debts/Text_debts_installment.dart';
-import 'package:financial/widget/Debts/all_visibility_without_installment.dart';
-import 'package:financial/widget/custom_appBar.dart';
-import 'package:financial/widget/date_time_widget.dart';
-import 'package:financial/widget/note_when_you_add_transaction.dart';
+import 'package:taskBee/widget/Buttom_Incom_Pay/Column_wallet_Expancies_Contact/widget_container.dart';
+import 'package:taskBee/widget/Debts/Text_debts_installment.dart';
+import 'package:taskBee/widget/Debts/all_visibility_without_installment.dart';
+import 'package:taskBee/widget/custom_appBar.dart';
+import 'package:taskBee/widget/date_time_widget.dart';
+import 'package:taskBee/widget/note_when_you_add_transaction.dart';
 import 'package:flutter/material.dart';
 
 class Recepitdebtor extends StatelessWidget {
