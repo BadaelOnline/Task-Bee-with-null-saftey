@@ -1,5 +1,5 @@
 // ignore: camel_case_types
-import 'package:financial/common/applocal.dart';
+import 'package:taskBee/common/applocal.dart';
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types

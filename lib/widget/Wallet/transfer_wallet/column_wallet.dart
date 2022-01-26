@@ -1,10 +1,10 @@
-import 'package:financial/common/applocal.dart';
-import 'package:financial/services/bloc/currency/cubit.dart';
+import 'package:taskBee/common/applocal.dart';
+import 'package:taskBee/services/bloc/currency/cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:financial/services/bloc/wallet/cubit.dart';
-import 'package:financial/services/bloc/wallet/states.dart';
+import 'package:taskBee/services/bloc/wallet/cubit.dart';
+import 'package:taskBee/services/bloc/wallet/states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:financial/widget/Wallet/transfer_wallet/custom_container_wallet.dart';
+import 'package:taskBee/widget/Wallet/transfer_wallet/custom_container_wallet.dart';
 
 class Column_Wallet extends StatelessWidget {
   const Column_Wallet({Key? key}) : super(key: key);

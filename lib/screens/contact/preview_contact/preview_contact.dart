@@ -1,8 +1,8 @@
-import 'package:financial/common/applocal.dart';
-import 'package:financial/models/contact.dart';
-import 'package:financial/widget/Contact/column_contact.dart';
-import 'package:financial/widget/Contact/image.dart';
-import 'package:financial/widget/custom_appBar.dart';
+import 'package:taskBee/common/applocal.dart';
+import 'package:taskBee/models/contact.dart';
+import 'package:taskBee/widget/Contact/column_contact.dart';
+import 'package:taskBee/widget/Contact/image.dart';
+import 'package:taskBee/widget/custom_appBar.dart';
 import 'package:flutter/material.dart';
 
 class Preview_Contact extends StatelessWidget {

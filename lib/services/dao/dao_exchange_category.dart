@@ -1,4 +1,4 @@
-import 'package:financial/models/exchange_category.dart';
+import 'package:taskBee/models/exchange_category.dart';
 import 'package:floor/floor.dart';
 
 @dao

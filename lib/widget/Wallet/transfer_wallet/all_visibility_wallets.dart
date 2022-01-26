@@ -1,6 +1,6 @@
-import 'package:financial/common/applocal.dart';
-import 'package:financial/widget/Buttom_Incom_Pay/All_Visibility/Visibility_Note/visibility_note.dart';
-import 'package:financial/widget/Buttom_Incom_Pay/All_Visibility/visibility_Image/visibility_image.dart';
+import 'package:taskBee/common/applocal.dart';
+import 'package:taskBee/widget/Buttom_Incom_Pay/All_Visibility/Visibility_Note/visibility_note.dart';
+import 'package:taskBee/widget/Buttom_Incom_Pay/All_Visibility/visibility_Image/visibility_image.dart';
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types

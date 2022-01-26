@@ -1,7 +1,7 @@
-import 'package:financial/screens/Debts/tabs/creditors.dart';
-import 'package:financial/screens/Debts/tabs/deptiors.dart';
-import 'package:financial/widget/custom_appBar.dart';
-import 'package:financial/widget/custom_floating_action_button.dart';
+import 'package:taskBee/screens/Debts/tabs/creditors.dart';
+import 'package:taskBee/screens/Debts/tabs/deptiors.dart';
+import 'package:taskBee/widget/custom_appBar.dart';
+import 'package:taskBee/widget/custom_floating_action_button.dart';
 import 'package:flutter/material.dart';
 
 class DebtsHome extends StatefulWidget {

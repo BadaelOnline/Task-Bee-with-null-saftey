@@ -1,7 +1,7 @@
-import 'package:financial/common/applocal.dart';
-import 'package:financial/widget/Buttom_Incom_Pay/Buttom_Income/Form_Debtors_Income.dart';
-import 'package:financial/widget/Buttom_Incom_Pay/Buttom_Income/Form_Expencies_Income.dart';
-import 'package:financial/widget/custom_appBar.dart';
+import 'package:taskBee/common/applocal.dart';
+import 'package:taskBee/widget/Buttom_Incom_Pay/Buttom_Income/Form_Debtors_Income.dart';
+import 'package:taskBee/widget/Buttom_Incom_Pay/Buttom_Income/Form_Expencies_Income.dart';
+import 'package:taskBee/widget/custom_appBar.dart';
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types

@@ -1,12 +1,12 @@
-import 'package:financial/common/applocal.dart';
-import 'package:financial/services/bloc/contact/cubit.dart';
-import 'package:financial/services/bloc/contact/states.dart';
-import 'package:financial/widget/Contact/button_save_cancel.dart';
-import 'package:financial/widget/Contact/image.dart';
-import 'package:financial/widget/Wallet/raised_button_wallets.dart';
-import 'package:financial/widget/custom_appBar.dart';
-import 'package:financial/widget/custom_text.dart';
-import 'package:financial/widget/exchange_revenue_categoray/alert_dialog_categoray.dart';
+import 'package:taskBee/common/applocal.dart';
+import 'package:taskBee/services/bloc/contact/cubit.dart';
+import 'package:taskBee/services/bloc/contact/states.dart';
+import 'package:taskBee/widget/Contact/button_save_cancel.dart';
+import 'package:taskBee/widget/Contact/image.dart';
+import 'package:taskBee/widget/Wallet/raised_button_wallets.dart';
+import 'package:taskBee/widget/custom_appBar.dart';
+import 'package:taskBee/widget/custom_text.dart';
+import 'package:taskBee/widget/exchange_revenue_categoray/alert_dialog_categoray.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

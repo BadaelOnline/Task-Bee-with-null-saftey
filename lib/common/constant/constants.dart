@@ -1,4 +1,4 @@
-import 'package:financial/models/currency.dart';
+import 'package:taskBee/models/currency.dart';
 import 'package:flutter/material.dart';
 
 const kDefaultPadding = 20.0;

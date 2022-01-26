@@ -1,5 +1,5 @@
-import 'package:financial/common/applocal.dart';
-import 'package:financial/widget/Home_Page/Public_Widget/first_date.dart';
+import 'package:taskBee/common/applocal.dart';
+import 'package:taskBee/widget/Home_Page/Public_Widget/first_date.dart';
 import 'package:flutter/material.dart';
 import '../../../main.dart';
 import 'date_day_month_year.dart';
@@ -151,7 +151,7 @@ class _Card_Fixpostion_in_Page_reportsState
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text(
-                        "${getLang(context, "Financial Changes")}".toString(),
+                        "${getLang(context, "taskBee Changes")}".toString(),
                       ),
                       Text(
                         '15000',

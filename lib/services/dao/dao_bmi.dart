@@ -1,4 +1,4 @@
-import 'package:financial/models/bmi.dart';
+import 'package:taskBee/models/bmi.dart';
 import 'package:floor/floor.dart';
 
 @dao

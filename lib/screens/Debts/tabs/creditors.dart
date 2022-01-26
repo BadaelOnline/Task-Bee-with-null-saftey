@@ -1,4 +1,4 @@
-import 'package:financial/widget/Debts/Card_Creditor/card_in_home_creditor.dart';
+import 'package:taskBee/widget/Debts/Card_Creditor/card_in_home_creditor.dart';
 import 'package:flutter/material.dart';
 
 class Creditors extends StatelessWidget {

@@ -1,7 +1,7 @@
 // dao/person_dao.dart
 
-import 'package:financial/models/financial_report.dart';
-import 'package:financial/models/transaction.dart';
+import 'package:taskBee/models/financial_report.dart';
+import 'package:taskBee/models/transaction.dart';
 import 'package:floor/floor.dart';
 
 @dao

@@ -1,9 +1,9 @@
-import 'package:financial/common/applocal.dart';
-import 'package:financial/services/bloc/exchang_category/cubit.dart';
-import 'package:financial/services/bloc/exchang_category/states.dart';
-import 'package:financial/widget/custom_appBar.dart';
-import 'package:financial/widget/custom_floating_action_button.dart';
-import 'package:financial/widget/exchange_revenue_categoray/card_categoray.dart';
+import 'package:taskBee/common/applocal.dart';
+import 'package:taskBee/services/bloc/exchang_category/cubit.dart';
+import 'package:taskBee/services/bloc/exchang_category/states.dart';
+import 'package:taskBee/widget/custom_appBar.dart';
+import 'package:taskBee/widget/custom_floating_action_button.dart';
+import 'package:taskBee/widget/exchange_revenue_categoray/card_categoray.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

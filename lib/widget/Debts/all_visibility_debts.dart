@@ -1,5 +1,5 @@
-import 'package:financial/widget/Buttom_Incom_Pay/All_Visibility/visibility_Image/visibility_image.dart';
-import 'package:financial/widget/Debts/visibility_repeted_debts.dart';
+import 'package:taskBee/widget/Buttom_Incom_Pay/All_Visibility/visibility_Image/visibility_image.dart';
+import 'package:taskBee/widget/Debts/visibility_repeted_debts.dart';
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types

@@ -1,4 +1,4 @@
-import 'package:financial/widget/Debts/Card_Debtor/showdialog.dart';
+import 'package:taskBee/widget/Debts/Card_Debtor/showdialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

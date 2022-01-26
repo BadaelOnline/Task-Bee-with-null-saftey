@@ -1,5 +1,5 @@
-import 'package:financial/widget/Debts/form_add_debts.dart';
-import 'package:financial/widget/custom_appBar.dart';
+import 'package:taskBee/widget/Debts/form_add_debts.dart';
+import 'package:taskBee/widget/custom_appBar.dart';
 import 'package:flutter/material.dart';
 
 class DebtsForm extends StatefulWidget {

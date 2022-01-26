@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:financial/common/applocal.dart';
+import 'package:taskBee/common/applocal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
