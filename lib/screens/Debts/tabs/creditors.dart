@@ -44,6 +44,26 @@ class Creditors extends StatelessWidget {
                 currency: 'S.P',
                 totalMoney: '15000',
               ),
+              Card_Home_Creditor(
+                contact: 'Basel Alsafadi',
+                currency: 'S.P',
+                totalMoney: '15000',
+              ),
+              Card_Home_Creditor(
+                contact: 'Basel Alsafadi',
+                currency: 'S.P',
+                totalMoney: '15000',
+              ),
+              Card_Home_Creditor(
+                contact: 'Basel Alsafadi',
+                currency: 'S.P',
+                totalMoney: '15000',
+              ),
+              Card_Home_Creditor(
+                contact: 'Basel Alsafadi',
+                currency: 'S.P',
+                totalMoney: '15000',
+              ),
             ],
           ),
         ),
