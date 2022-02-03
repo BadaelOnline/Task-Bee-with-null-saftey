@@ -5,13 +5,13 @@ import 'package:taskBee/widget/Home_Page/Business_Group/business_group.dart';
 import 'package:taskBee/widget/Home_Page/Family_Heath_Group/family_health_group.dart';
 import 'package:taskBee/widget/Home_Page/Public_Widget/appbar.dart';
 import 'package:taskBee/widget/Home_Page/Public_Widget/buttom_all_transaction.dart';
-import 'package:taskBee/widget/Home_Page/Public_Widget/calendar.dart';
 import 'package:taskBee/widget/Home_Page/Public_Widget/container_income.dart';
 import 'package:taskBee/widget/Home_Page/Public_Widget/container_pay.dart';
 import 'package:taskBee/widget/Home_Page/Public_Widget/container_subject_title.dart';
 import 'package:taskBee/widget/Home_Page/Public_Widget/end_text.dart';
 import 'package:taskBee/widget/Home_Page/Public_Widget/first_date.dart';
 import 'package:flutter/material.dart';
+import 'package:taskBee/widget/Home_Page/Section_Tasks/tasks.dart';
 
 class MyHomePage extends StatelessWidget {
   @override
@@ -46,7 +46,8 @@ class MyHomePage extends StatelessWidget {
             color: Colors.amber,
             thickness: 1,
           ),
-          Calendar(),
+          SectionTasks(),
+          // Calendar(),
           Title_container(
             text: "${getLang(context, "Family & Heailth Care")}",
           ),

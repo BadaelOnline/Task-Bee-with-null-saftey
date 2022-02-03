@@ -42,6 +42,9 @@ import 'package:taskBee/screens/revenues/Add_Revenue.dart';
 import 'package:taskBee/screens/revenues/revenues_home.dart';
 import 'package:taskBee/screens/revenues/update_revenues.dart';
 import 'package:taskBee/screens/shared/HomePage.dart';
+import 'package:taskBee/screens/tasks/CategoraysTask.dart';
+import 'package:taskBee/screens/tasks/TaskHome.dart';
+import 'package:taskBee/screens/tasks/add_task_page.dart';
 import 'package:taskBee/screens/transaction/add_transaction.dart';
 import 'package:taskBee/screens/transaction/transaction_home.dart';
 import 'package:taskBee/screens/wallet/add_wallet/add_bank_account.dart';
@@ -211,7 +214,7 @@ class AppRouter {
             builder: (_) => ReportCategoray(),
             settings: RouteSettings(arguments: settings.arguments));
 
-      /// contacts routes
+      /// contacts routes/////////////////////////////////////////////////////////////////////////////////////////////////////////////
       case '/previewcontact':
         return MaterialPageRoute(
             builder: (_) => Preview_Contact(),
@@ -253,7 +256,7 @@ class AppRouter {
           builder: (_) => Preview_TeamWork(),
         );
 
-      /// currency routes
+      /// currency routes//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       case '/choosecurrency':
         return MaterialPageRoute(
           builder: (_) => ChooseCurrency(),
@@ -285,7 +288,7 @@ class AppRouter {
       //       builder: (_) => UpdateTransaction(),
       //       settings: RouteSettings(arguments: settings.arguments));
 
-      /// revenues routes
+      /// revenues routes/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       case '/revenuesHome':
         return MaterialPageRoute(
           builder: (_) => RevenuesHome(),
@@ -299,7 +302,7 @@ class AppRouter {
             builder: (_) => UpdateRevenues(),
             settings: RouteSettings(arguments: settings.arguments));
 
-      /// expenses routes
+      /// expenses routes /////////////////////////////////////////////////////////////////////////////////////////////
       case '/expensesHome':
         return MaterialPageRoute(
           builder: (_) => ExpenseHome(),
@@ -313,7 +316,7 @@ class AppRouter {
             builder: (_) => UpdateExpense(),
             settings: RouteSettings(arguments: settings.arguments));
 
-      /// reports routes
+      /// reports routes////////////////////////////////////////////////////////////////////////////////////////////
       case '/reportHome':
         return MaterialPageRoute(
           builder: (_) => ReportHome(),
@@ -327,7 +330,7 @@ class AppRouter {
             builder: (_) => ReportSearchResult(),
             settings: RouteSettings(arguments: settings.arguments));
 
-      //////////////////////////////////////////////////// debts
+      //////////////////////////////////////////////////// debts////////////////////////////////////////////////////
       case '/debtsHome':
         return MaterialPageRoute(
             builder: (_) => DebtsHome(),
@@ -366,7 +369,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => Recepitdebtor(),
         );
-      //  bmi routes//////
+      //  bmi routes//////////////////////////////////////////////////////////////////////////////////////////////////////////
       case '/BmiHome':
         return MaterialPageRoute(
             builder: (_) => BmiHome(),
@@ -381,6 +384,25 @@ class AppRouter {
         return MaterialPageRoute(
             builder: (_) => BmiArchives(),
             settings: RouteSettings(arguments: settings.arguments));
+
+      ///// Tasks //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      case '/HomeTask':
+        return MaterialPageRoute(
+            builder: (_) => TasksHome(),
+            settings: RouteSettings(arguments: settings.arguments));
+
+      case '/CategoraysTask':
+        return MaterialPageRoute(
+            builder: (_) => CategorayTask(),
+            settings: RouteSettings(arguments: settings.arguments));
+
+      case '/AddTask':
+        return MaterialPageRoute(
+            builder: (_) => AddTaskPage(),
+            settings: RouteSettings(arguments: settings.arguments));
+
+      /// default ///////
 
       default:
         return MaterialPageRoute(
