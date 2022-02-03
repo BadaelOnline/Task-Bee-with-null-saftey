@@ -41,7 +41,27 @@ class Debtors extends StatelessWidget {
                 contact: 'Adham Adwan',
                 totalMoney: '1000',
                 currency: 'USD',
-              )
+              ),
+              Card_Home_Debtor(
+                contact: 'Adham Adwan',
+                totalMoney: '1000',
+                currency: 'USD',
+              ),
+              Card_Home_Debtor(
+                contact: 'Adham Adwan',
+                totalMoney: '1000',
+                currency: 'USD',
+              ),
+              Card_Home_Debtor(
+                contact: 'Adham Adwan',
+                totalMoney: '1000',
+                currency: 'USD',
+              ),
+              Card_Home_Debtor(
+                contact: 'Adham Adwan',
+                totalMoney: '1000',
+                currency: 'USD',
+              ),
             ],
           ),
         ),
