@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:omni_datetime_picker/omni_datetime_picker.dart';
 import 'package:taskBee/widget/Tasks/ButtonContainerFilterTaskHome.dart';
 import 'package:taskBee/widget/Tasks/ButtonDate.dart';
 import 'package:taskBee/widget/Tasks/CardTask.dart';
@@ -14,16 +15,12 @@ class TasksHome extends StatefulWidget {
 }
 
 class _TasksHomeState extends State<TasksHome> {
-  String month = DateFormat("yyyy MMMM DD EEEE").format(DateTime.now());
+  String month = DateFormat("yyyy MMMM dd EEEE").format(DateTime.now());
   String year = DateFormat("yyyy").format(DateTime.now());
   int? x;
-
-  String yearr = DateFormat("yyyy").format(DateTime.now().add(Duration(
-    days: -365,
-  )));
-  String nextyear = DateFormat("yyyy").format(DateTime.now().add(Duration(
-    days: 365,
-  )));
+  int i = 0;
+  var pickdatetime;
+  var startdate;
 
   @override
   Widget build(BuildContext context) {
@@ -62,11 +59,7 @@ class _TasksHomeState extends State<TasksHome> {
                                   title: 'Month',
                                   icon: Image.asset(
                                       'assets/Tasks/calendaerYear.png'),
-                                  ontap: () {
-                                    setState(() {
-                                      x = 1;
-                                    });
-                                  },
+                                  ontap: () {},
                                 ),
                                 SizedBox(
                                   width: 25,
@@ -75,11 +68,7 @@ class _TasksHomeState extends State<TasksHome> {
                                   title: 'Year',
                                   icon: Image.asset(
                                       'assets/Tasks/calendarMonth.png'),
-                                  ontap: () {
-                                    setState(() {
-                                      x = 2;
-                                    });
-                                  },
+                                  ontap: () {},
                                 ),
                                 SizedBox(
                                   width: 25,
@@ -134,7 +123,11 @@ class _TasksHomeState extends State<TasksHome> {
                       ButtonDate(
                         ontap: () {
                           setState(() {
-                            year = yearr.toString();
+                            i--;
+                            setState(() {
+                              month = DateFormat("yyyy MMMM dd EEEE").format(
+                                  DateTime.now().add(Duration(days: i)));
+                            });
                           });
                         },
                         icon: Icon(Icons.arrow_back_ios_new_rounded),
@@ -146,11 +139,7 @@ class _TasksHomeState extends State<TasksHome> {
                       Padding(
                         padding: const EdgeInsets.only(left: 5, right: 5),
                         child: Text(
-                          x == 1
-                              ? month
-                              : x == 2
-                                  ? year
-                                  : month,
+                          month,
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.bold),
                         ),
@@ -161,8 +150,10 @@ class _TasksHomeState extends State<TasksHome> {
                     children: [
                       ButtonDate(
                         ontap: () {
+                          i++;
                           setState(() {
-                            year = nextyear.toString();
+                            month = DateFormat("yyyy MMMM dd EEEE")
+                                .format(DateTime.now().add(Duration(days: i)));
                           });
                         },
                         icon: Icon(Icons.arrow_forward_ios_rounded),

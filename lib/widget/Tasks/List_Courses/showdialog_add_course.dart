@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'list_color.dart';
-
 class ShowDialog_AddCourse extends StatefulWidget {
-  Function()? submitMethod;
-  Function()? cancelMethod;
   ShowDialog_AddCourse({
     Key? key,
-    this.cancelMethod,
-    this.submitMethod,
   }) : super(key: key);
 
   @override
@@ -16,11 +10,41 @@ class ShowDialog_AddCourse extends StatefulWidget {
 }
 
 class _ShowDialog_AddCourseState extends State<ShowDialog_AddCourse> {
-  TextEditingController namecourse = TextEditingController();
+  List<TextEditingController> namecourse = [
+    for (int i = 1; i < 9; i++) TextEditingController()
+  ];
 
   double height = 170.0;
-
   int itemnumber = 1;
+  // bool visibile = false;
+  List<Color> color = [
+    Color(0xffFF2424),
+    Color(0xff62960E),
+    Color(0xff03FEC2),
+    Color(0xff108AA8),
+    Color(0xff43FF24),
+    Color(0xff9F24FF),
+    Color(0xffFF44D6),
+    Color(0xffFF8D24),
+    Color(0xffFFDB24),
+  ];
+  final List<Color> colors = [
+    Color(0xffFF2424),
+    Color(0xff62960E),
+    Color(0xff03FEC2),
+    Color(0xff108AA8),
+    Color(0xff43FF24),
+    Color(0xff9F24FF),
+    Color(0xffFF44D6),
+    Color(0xffFF8D24),
+    Color(0xffFFDB24),
+  ];
+  List<bool> visibile = [];
+  @override
+  void initState() {
+    super.initState();
+    visibile = List<bool>.filled(10, false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,24 +72,36 @@ class _ShowDialog_AddCourseState extends State<ShowDialog_AddCourse> {
                 child: ListView.builder(
                     shrinkWrap: false,
                     itemCount: itemnumber,
-                    itemBuilder: (context, index) {
+                    itemBuilder: (
+                      context,
+                      index,
+                    ) {
                       return Column(
                         children: [
                           Row(
                             children: [
-                              ListColor(
-                                top: 335.0,
-                                course: [
-                                  Color(0xffFF2424),
-                                  Color(0xff62960E),
-                                  Color(0xff03FEC2),
-                                  Color(0xff108AA8),
-                                  Color(0xff43FF24),
-                                  Color(0xff9F24FF),
-                                  Color(0xffFF44D6),
-                                  Color(0xffFF8D24),
-                                  Color(0xffFFDB24),
-                                ],
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    print(index);
+                                    visibile[index] = !visibile[index];
+                                    visibile[index] == true
+                                        ? height = height + 50
+                                        : height = height - 50;
+                                  });
+                                },
+                                child: Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                      color: color[index],
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(15))),
+                                  child: Image.asset(
+                                    'assets/Tasks/book.png',
+                                    scale: 10,
+                                  ),
+                                ),
                               ),
                               SizedBox(
                                 width: 15,
@@ -81,7 +117,7 @@ class _ShowDialog_AddCourseState extends State<ShowDialog_AddCourse> {
                                   disabledBorder: InputBorder.none,
                                 ),
                                 cursorHeight: 25,
-                                controller: namecourse,
+                                controller: namecourse[index],
                               )),
                               index == 0
                                   ? InkWell(
@@ -117,6 +153,63 @@ class _ShowDialog_AddCourseState extends State<ShowDialog_AddCourse> {
                             child: Divider(
                               thickness: 1,
                               color: Color(0xffDADADA),
+                            ),
+                          ),
+                          Visibility(
+                            visible: visibile[index],
+                            child: Row(
+                              children: [
+                                Container(
+                                  alignment: Alignment.center,
+                                  width: 300,
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.2),
+                                          spreadRadius: 1,
+                                          blurRadius: 1,
+                                          offset: Offset(0,
+                                              1), // changes position of shadow
+                                        ),
+                                      ],
+                                      borderRadius: BorderRadius.circular(4)),
+                                  child: Row(
+                                    children:
+                                        List.generate(colors.length, (indexx) {
+                                      return GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            color[index] = colors[indexx];
+                                            visibile[index] = !visibile[index];
+                                            height = height - 50;
+                                          });
+                                        },
+                                        child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    right: 4.0, left: 4.0),
+                                                child: Container(
+                                                  height: 25,
+                                                  width: 25,
+                                                  decoration: BoxDecoration(
+                                                      color: colors[indexx],
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  15))),
+                                                ),
+                                              ),
+                                            ]),
+                                      );
+                                    }),
+                                  ),
+                                )
+                              ],
                             ),
                           ),
                         ],

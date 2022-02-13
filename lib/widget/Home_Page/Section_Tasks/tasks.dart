@@ -54,45 +54,12 @@ class _SectionTasksState extends State<SectionTasks> {
                   onTap: () =>
                       Navigator.of(context).pushNamed('/CategoraysTask'),
                   child: Icon(
-                    Icons.add,
-                    size: 30,
+                    Icons.add_circle_outline_sharp,
+                    size: 35,
                   ),
                 )
               ],
             ),
-            SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 25,
-                  width: 25,
-                  child: Image.asset('assets/Tasks/pending.png'),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  '2',
-                  style: TextStyle(
-                      color: Color(0xffDB545A),
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'Pending Task',
-                  style: TextStyle(
-                      color: Color(0xffDB545A),
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold),
-                )
-              ],
-            )
           ],
         ),
       ),
