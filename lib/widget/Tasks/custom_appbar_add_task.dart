@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class CustomAppBarTask extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final Widget icon;
+  final Function() ontap;
 
   CustomAppBarTask(
     this.icon,
     this.title,
+    this.ontap,
   );
   @override
   Size get preferredSize => Size.fromHeight(55);
@@ -28,7 +30,7 @@ class CustomAppBarTask extends StatelessWidget implements PreferredSizeWidget {
           child: Row(
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: ontap,
                 child: Text(
                   'Save',
                   style: TextStyle(color: Color(0xff5A5A5A)),

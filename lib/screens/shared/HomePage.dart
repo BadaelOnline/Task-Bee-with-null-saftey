@@ -47,7 +47,6 @@ class MyHomePage extends StatelessWidget {
             thickness: 1,
           ),
           SectionTasks(),
-          // Calendar(),
           Title_container(
             text: "${getLang(context, "Family & Heailth Care")}",
           ),
