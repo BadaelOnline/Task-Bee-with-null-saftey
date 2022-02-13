@@ -52,5 +52,53 @@ class InsertTaskStatusToDatabaseState extends TaskStates {}
 
 class InsertTaskTypeToDatabaseState extends TaskStates {}
 
+class DeleteTaskFromDatabaseState extends TaskStates {}
+
+class DeleteCourseFromDatabaseState extends TaskStates {}
+
+class DeleteAttachmentForTaskFromDatabaseState extends TaskStates {}
+
+class DeleteTaskAttachmentFromDatabaseState extends TaskStates {}
+
+class DeleteTaskContactFromDatabaseState extends TaskStates {}
+
+class DeleteTaskCourseFromDatabaseState extends TaskStates {}
+
+class DeleteTaskImportanceFromDatabaseState extends TaskStates {}
+
+class DeleteTaskNoteFromDatabaseState extends TaskStates {}
+
+class DeleteTaskNotificationFromDatabaseState extends TaskStates {}
+
+class DeleteTaskPlaceFromDatabaseState extends TaskStates {}
+
+class DeleteTaskStatusFromDatabaseState extends TaskStates {}
+
+class DeleteTaskTypeFromDatabaseState extends TaskStates {}
+
+class UpdateTaskFromDatabaseState extends TaskStates {}
+
+class UpdateCourseFromDatabaseState extends TaskStates {}
+
+class UpdateAttachmentForTaskFromDatabaseState extends TaskStates {}
+
+class UpdateTaskAttachmentFromDatabaseState extends TaskStates {}
+
+class UpdateTaskContactFromDatabaseState extends TaskStates {}
+
+class UpdateTaskCourseFromDatabaseState extends TaskStates {}
+
+class UpdateTaskImportanceFromDatabaseState extends TaskStates {}
+
+class UpdateTaskNoteFromDatabaseState extends TaskStates {}
+
+class UpdateTaskNotificationFromDatabaseState extends TaskStates {}
+
+class UpdateTaskPlaceFromDatabaseState extends TaskStates {}
+
+class UpdateTaskStatusFromDatabaseState extends TaskStates {}
+
+class UpdateTaskTypeFromDatabaseState extends TaskStates {}
+
 
 

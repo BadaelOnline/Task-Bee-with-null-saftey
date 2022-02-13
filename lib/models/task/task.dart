@@ -47,7 +47,7 @@ class Task {
   final int isAllDay;
 
   @ColumnInfo(name: 'is_active')
-  final int isActive;
+  late final int isActive;
 
   @ColumnInfo(name: 'is_appear')
   final int isAppear;
