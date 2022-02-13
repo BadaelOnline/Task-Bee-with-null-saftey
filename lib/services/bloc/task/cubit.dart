@@ -343,7 +343,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertCourseToDatabase(
+  Future<int?> insertCourseToDatabase(
       {@required String? name,
         @required String? color,
         @required int? isActive,
@@ -364,7 +364,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertAttachmentForTaskToDatabase(
+  Future<int?> insertAttachmentForTaskToDatabase(
       {@required String? attach,
         @required int? isActive,
         @required int? isAppear,}) async {
@@ -384,7 +384,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertTaskAttachmentToDatabase(
+  Future<int?> insertTaskAttachmentToDatabase(
       {
         @required int? isActive,
         @required int? isAppear,
@@ -406,7 +406,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertTaskContactToDatabase(
+  Future<int?> insertTaskContactToDatabase(
       {
         @required int? isActive,
         @required int? isAppear,
@@ -428,7 +428,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertTaskCourseToDatabase(
+  Future<int?> insertTaskCourseToDatabase(
       {
         @required int? isActive,
         @required int? isAppear,
@@ -450,7 +450,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertTaskImportanceToDatabase(
+  Future<int?> insertTaskImportanceToDatabase(
       {
         @required int? ads,
         @required int? isActive,
@@ -473,7 +473,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertTaskNoteToDatabase(
+  Future<int?> insertTaskNoteToDatabase(
       {
         @required int? isActive,
         @required int? isAppear,
@@ -496,7 +496,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertTaskNotificationToDatabase(
+  Future<int?> insertTaskNotificationToDatabase(
       {
         @required int? isActive,
         @required int? isAppear,
@@ -519,7 +519,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertTaskPlaceToDatabase(
+  Future<int?> insertTaskPlaceToDatabase(
       {
         @required int? isActive,
         @required int? isAppear,
@@ -542,7 +542,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertTaskStatusToDatabase(
+  Future<int?> insertTaskStatusToDatabase(
       {
         @required int? isActive,
         @required int? isAppear,
@@ -563,7 +563,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertTaskTypeToDatabase(
+  Future<int?> insertTaskTypeToDatabase(
       {
         @required int? isActive,
         @required int? ids,
@@ -584,5 +584,306 @@ class TaskCubit extends Cubit<TaskStates> {
         getTaskTypesFromDatabase();
       });
     }
+  }
+
+
+  Future<int?> deleteTaskFromDatabase(
+      {@required Task? task,}) async {
+
+    task!.isActive = 0;
+      return taskDao!
+          .updateTask(task)
+          .then((value) {
+        emit(DeleteTaskFromDatabaseState());
+        getTasksFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteCourseFromDatabase(
+      {@required Course? course,}) async {
+   course!.isActive = 0;
+
+      courseDao!
+          .updateCourse(course)
+          .then((value) {
+        emit(DeleteCourseFromDatabaseState());
+        getCoursesFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteAttachmentForTaskFromDatabase(
+      {@required AttachmentForTask? attach,}) async {
+    attach!.isActive = 0;
+      attachmentForTaskDao!
+          .updateAttachmentForTask(attach)
+          .then((value) {
+        emit(DeleteAttachmentForTaskFromDatabaseState());
+        getAttachmentForTaskFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteTaskAttachmentFromDatabase(
+      {
+        @required TaskAttachment? taskAttachment,}) async {
+
+    taskAttachment!.isActive = 0;
+      taskAttachmentDao!
+          .updateAttachment(taskAttachment)
+          .then((value) {
+        emit(DeleteTaskAttachmentFromDatabaseState());
+        getTaskAttachmentFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteTaskContactFromDatabase(
+      {
+        @required TaskContact? taskContact,}) async {
+   taskContact!.isActive = 0;
+      taskContactDao!
+          .updateContact(taskContact)
+          .then((value) {
+        emit(DeleteTaskContactFromDatabaseState());
+        getTaskContactFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteTaskCourseFromDatabase(
+      {
+        @required TaskCourse? taskCourse,}) async {
+    taskCourse!.isActive = 0;
+      taskCourseDao!
+          .updateCourse(taskCourse)
+          .then((value) {
+        emit(DeleteTaskCourseFromDatabaseState());
+        getTaskCourseFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteTaskImportanceFromDatabase(
+      {
+        @required TaskImportance? taskImportance,}) async {
+    taskImportance!.isActive = 0;
+      taskImportanceDao!
+          .updateImportance(taskImportance)
+          .then((value) {
+        emit(DeleteTaskImportanceFromDatabaseState());
+        getTaskImportanceFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteTaskNoteFromDatabase(
+      {
+        @required TaskNote? taskNote,}) async {
+    taskNote!.isActive = 0;
+      taskNoteDao!
+          .updateNote(taskNote)
+          .then((value) {
+        emit(DeleteTaskNoteFromDatabaseState());
+        getTaskNoteFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteTaskNotificationFromDatabase(
+      {
+        @required TaskNotification? taskNotification,}) async {
+    taskNotification!.isActive = 0;
+      taskNotificationDao!
+          .updateNotification(taskNotification)
+          .then((value) {
+        emit(DeleteTaskNotificationFromDatabaseState());
+        getTaskNotificationsFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteTaskPlaceFromDatabase(
+      {
+        @required TaskPlace? taskPlace,}) async {
+    taskPlace!.isActive = 0 ;
+      taskPlaceDao!
+          .updatePlace(taskPlace)
+          .then((value) {
+        emit(DeleteTaskPlaceFromDatabaseState());
+        getTaskPlacesFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteTaskStatusFromDatabase(
+      {
+        @required TaskStatus? taskStats,}) async {
+    taskStats!.isActive = 0;
+      statusDao!
+          .updateStatus(taskStats)
+          .then((value) {
+        emit(DeleteTaskStatusFromDatabaseState());
+        getTaskStatusFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteTaskTypeFromDatabase(
+      {
+        @required TaskType? taskType,}) async {
+  taskType!.isActive = 0;
+      taskTypeDao!
+          .updateType(taskType)
+          .then((value) {
+        emit(DeleteTaskTypeFromDatabaseState());
+        getTaskTypesFromDatabase();
+      });
+
+  }
+
+  Future<int?> updateTaskFromDatabase(
+      {@required Task? task,}) async {
+
+
+    return taskDao!
+        .updateTask(task!)
+        .then((value) {
+      emit(UpdateTaskFromDatabaseState());
+      getTasksFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateCourseFromDatabase(
+      {@required Course? course,}) async {
+    courseDao!
+        .updateCourse(course!)
+        .then((value) {
+      emit(UpdateCourseFromDatabaseState());
+      getCoursesFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateAttachmentForTaskFromDatabase(
+      {@required AttachmentForTask? attach,}) async {
+    attachmentForTaskDao!
+        .updateAttachmentForTask(attach!)
+        .then((value) {
+      emit(UpdateAttachmentForTaskFromDatabaseState());
+      getAttachmentForTaskFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateTaskAttachmentFromDatabase(
+      {
+        @required TaskAttachment? taskAttachment,}) async {
+
+    taskAttachmentDao!
+        .updateAttachment(taskAttachment!)
+        .then((value) {
+      emit(UpdateTaskAttachmentFromDatabaseState());
+      getTaskAttachmentFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateTaskContactFromDatabase(
+      {
+        @required TaskContact? taskContact,}) async {
+    taskContactDao!
+        .updateContact(taskContact!)
+        .then((value) {
+      emit(UpdateTaskContactFromDatabaseState());
+      getTaskContactFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateTaskCourseFromDatabase(
+      {
+        @required TaskCourse? taskCourse,}) async {
+    taskCourseDao!
+        .updateCourse(taskCourse!)
+        .then((value) {
+      emit(UpdateTaskCourseFromDatabaseState());
+      getTaskCourseFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateTaskImportanceFromDatabase(
+      {
+        @required TaskImportance? taskImportance,}) async {
+    taskImportanceDao!
+        .updateImportance(taskImportance!)
+        .then((value) {
+      emit(UpdateTaskImportanceFromDatabaseState());
+      getTaskImportanceFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateTaskNoteFromDatabase(
+      {
+        @required TaskNote? taskNote,}) async {
+    taskNoteDao!
+        .updateNote(taskNote!)
+        .then((value) {
+      emit(UpdateTaskNoteFromDatabaseState());
+      getTaskNoteFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateTaskNotificationFromDatabase(
+      {
+        @required TaskNotification? taskNotification,}) async {
+    taskNotificationDao!
+        .updateNotification(taskNotification!)
+        .then((value) {
+      emit(UpdateTaskNotificationFromDatabaseState());
+      getTaskNotificationsFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateTaskPlaceFromDatabase(
+      {
+        @required TaskPlace? taskPlace,}) async {
+    taskPlaceDao!
+        .updatePlace(taskPlace!)
+        .then((value) {
+      emit(UpdateTaskPlaceFromDatabaseState());
+      getTaskPlacesFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateTaskStatusFromDatabase(
+      {
+        @required TaskStatus? taskStats,}) async {
+    statusDao!
+        .updateStatus(taskStats!)
+        .then((value) {
+      emit(UpdateTaskStatusFromDatabaseState());
+      getTaskStatusFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateTaskTypeFromDatabase(
+      {
+        @required TaskType? taskType,}) async {
+    taskTypeDao!
+        .updateType(taskType!)
+        .then((value) {
+      emit(UpdateTaskTypeFromDatabaseState());
+      getTaskTypesFromDatabase();
+    });
+
   }
 }
