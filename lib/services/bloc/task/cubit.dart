@@ -106,7 +106,6 @@ class TaskCubit extends Cubit<TaskStates> {
       } else {
         lastTaskId = 0;
       }
-      print("11111111111111111111");
 
       emit(GetTasksFromDatabaseState());
     }).catchError((onError){
@@ -115,9 +114,7 @@ class TaskCubit extends Cubit<TaskStates> {
   }
 
   void getCoursesFromDatabase() {
-    print("22222222222222222222222");
     this.courseDao!.findAllCourses().then((value) {
-      print("333333333333333333333");
       course = value;
       for (int i = 0; i < value!.length; i++) {}
       if (value.length > 0) {
@@ -191,16 +188,15 @@ class TaskCubit extends Cubit<TaskStates> {
   void getTaskImportanceFromDatabase(){
     this.taskImportanceDao!.findAllImportance().then((value) {
       taskImportances = value;
-      print('iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii: ${taskImportances!.length}');
       for (int i = 0; i < value!.length; i++) {}
       if (value.length > 0) {
         lastTaskImportanceId = value[value.length - 1].id;
       } else {
-        insertTaskImportanceToDatabase(ads: 1 ,isActive: 1, isAppear: 1, importance: "very important", color: "red");
-        insertTaskImportanceToDatabase(ads: 2 ,isActive: 1, isAppear: 1, importance: "important", color: "blue");
-        insertTaskImportanceToDatabase(ads: 3 ,isActive: 1, isAppear: 1, importance: "Medium important", color: "green");
-        insertTaskImportanceToDatabase(ads: 4 ,isActive: 1, isAppear: 1, importance: "low important", color: "yellow");
-        insertTaskImportanceToDatabase(ads: 5 ,isActive: 1, isAppear: 1, importance: "not  important", color: "grey");
+        insertTaskImportanceToDatabase(ads: 1 ,isActive: 1, isAppear: 1, importance: "very important", color: "assets/Tasks/A.png");
+        insertTaskImportanceToDatabase(ads: 2 ,isActive: 1, isAppear: 1, importance: "important", color: "assets/Tasks/B.png");
+        insertTaskImportanceToDatabase(ads: 3 ,isActive: 1, isAppear: 1, importance: "Medium important", color: "assets/Tasks/C.png");
+        insertTaskImportanceToDatabase(ads: 4 ,isActive: 1, isAppear: 1, importance: "low important", color: "assets/Tasks/D.png");
+        insertTaskImportanceToDatabase(ads: 5 ,isActive: 1, isAppear: 1, importance: "not  important", color: "assets/Tasks/E.png");
         lastTaskImportanceId = 0;
       }
 
@@ -257,6 +253,9 @@ class TaskCubit extends Cubit<TaskStates> {
       if (value.length > 0) {
         lastTaskStatusId = value[value.length - 1].id;
       } else {
+        insertTaskStatusToDatabase(isActive: 1, isAppear: 1, state: 'done');
+        insertTaskStatusToDatabase(isActive: 1, isAppear: 1, state: 'pending');
+        insertTaskStatusToDatabase(isActive: 1, isAppear: 1, state: 'not done');
         lastTaskStatusId = 0;
       }
 
@@ -267,26 +266,25 @@ class TaskCubit extends Cubit<TaskStates> {
   void getTaskTypesFromDatabase(){
     this.taskTypeDao!.findAllTypes().then((value) {
       taskTypes = value;
-      print('tttttttttttttttttttttttttttttt: ${taskTypes!.length}');
       for (int i = 0; i < value!.length; i++) {}
       if (value.length > 0) {
         lastTaskTypeId = value[value.length - 1].id;
       } else {
-        insertTaskTypeToDatabase(ids: 1, isActive: 1, isAppear: 1, type: "job", image: "");
-        insertTaskTypeToDatabase(ids: 2,isActive: 1, isAppear: 1, type: "purchases", image: "");
-        insertTaskTypeToDatabase(ids: 3,isActive: 1, isAppear: 1, type: "calls", image: "");
-        insertTaskTypeToDatabase(ids: 4,isActive: 1, isAppear: 1, type: "treatment", image: "");
-        insertTaskTypeToDatabase(ids: 5,isActive: 1, isAppear: 1, type: "Occasions", image: "");
-        insertTaskTypeToDatabase(ids: 6,isActive: 1, isAppear: 1, type: "travel", image: "");
-        insertTaskTypeToDatabase(ids: 7,isActive: 1, isAppear: 1, type: "Personal", image: "");
-        insertTaskTypeToDatabase(ids: 8,isActive: 1, isAppear: 1, type: "entertainment", image: "");
-        insertTaskTypeToDatabase(ids: 9,isActive: 1, isAppear: 1, type: "sport", image: "");
-        insertTaskTypeToDatabase(ids: 10,isActive: 1, isAppear: 1, type: "exam", image: "");
-        insertTaskTypeToDatabase(ids: 11,isActive: 1, isAppear: 1, type: "homework", image: "");
-        insertTaskTypeToDatabase(ids: 12,isActive: 1, isAppear: 1, type: "Lectures", image: "");
-        insertTaskTypeToDatabase(ids: 13,isActive: 1, isAppear: 1, type: "Study times", image: "");
-        insertTaskTypeToDatabase(ids: 14,isActive: 1, isAppear: 1, type: "special lesson", image: "");
-        insertTaskTypeToDatabase(ids: 15,isActive: 1, isAppear: 1, type: "Other dates", image: "");
+        insertTaskTypeToDatabase(ids: 1, isActive: 1, isAppear: 1, type: "Work", image: "assets/Tasks/work.png");
+        insertTaskTypeToDatabase(ids: 2,isActive: 1, isAppear: 1, type: "Shopping", image: "assets/Tasks/shopping.png");
+        insertTaskTypeToDatabase(ids: 3,isActive: 1, isAppear: 1, type: "Calls", image: "assets/Tasks/calls.png");
+        insertTaskTypeToDatabase(ids: 4,isActive: 1, isAppear: 1, type: "Treatment", image: "assets/Tasks/doctor.png");
+        insertTaskTypeToDatabase(ids: 5,isActive: 1, isAppear: 1, type: "Suitable", image: "assets/Tasks/suitable.png");
+        insertTaskTypeToDatabase(ids: 6,isActive: 1, isAppear: 1, type: "Travel", image: "assets/Tasks/travile.png");
+        insertTaskTypeToDatabase(ids: 7,isActive: 1, isAppear: 1, type: "Personal", image: "assets/Tasks/personal.png");
+        insertTaskTypeToDatabase(ids: 8,isActive: 1, isAppear: 1, type: "Entertainment", image: "assets/Tasks/entertainment.png");
+        insertTaskTypeToDatabase(ids: 9,isActive: 1, isAppear: 1, type: "Sport", image: "assets/Tasks/sport.png");
+        insertTaskTypeToDatabase(ids: 10,isActive: 1, isAppear: 1, type: "Exam", image: "assets/Tasks/exam.png");
+        insertTaskTypeToDatabase(ids: 11,isActive: 1, isAppear: 1, type: "Homework", image: "assets/Tasks/homework.png");
+        insertTaskTypeToDatabase(ids: 12,isActive: 1, isAppear: 1, type: "Lectures", image: "assets/Tasks/lectures.png");
+        insertTaskTypeToDatabase(ids: 13,isActive: 1, isAppear: 1, type: "Study times", image: "assets/Tasks/studytimes.png");
+        insertTaskTypeToDatabase(ids: 14,isActive: 1, isAppear: 1, type: "special lesson", image: "assets/Tasks/special lesson.png");
+        insertTaskTypeToDatabase(ids: 15,isActive: 1, isAppear: 1, type: "Other", image: "assets/Tasks/other.png");
         lastTaskTypeId = 0;
       }
 
@@ -885,5 +883,9 @@ class TaskCubit extends Cubit<TaskStates> {
       getTaskTypesFromDatabase();
     });
 
+  }
+
+  List<Course>? getCourse(){
+    return course;
   }
 }

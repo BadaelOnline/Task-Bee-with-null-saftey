@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:taskBee/services/bloc/task/cubit.dart';
+import 'package:taskBee/services/bloc/task/states.dart';
 
 class ShowDialog_AddCourse extends StatefulWidget {
   ShowDialog_AddCourse({
@@ -16,6 +19,7 @@ class _ShowDialog_AddCourseState extends State<ShowDialog_AddCourse> {
 
   double height = 170.0;
   int itemnumber = 1;
+
   // bool visibile = false;
   List<Color> color = [
     Color(0xffFF2424),
@@ -40,6 +44,7 @@ class _ShowDialog_AddCourseState extends State<ShowDialog_AddCourse> {
     Color(0xffFFDB24),
   ];
   List<bool> visibile = [];
+
   @override
   void initState() {
     super.initState();
@@ -72,10 +77,8 @@ class _ShowDialog_AddCourseState extends State<ShowDialog_AddCourse> {
                 child: ListView.builder(
                     shrinkWrap: false,
                     itemCount: itemnumber,
-                    itemBuilder: (
-                      context,
-                      index,
-                    ) {
+                    itemBuilder: (context,
+                        index,) {
                       return Column(
                         children: [
                           Row(
@@ -108,44 +111,44 @@ class _ShowDialog_AddCourseState extends State<ShowDialog_AddCourse> {
                               ),
                               Expanded(
                                   child: TextFormField(
-                                decoration: InputDecoration(
-                                  hintText: 'Course Name',
-                                  border: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  enabledBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                  disabledBorder: InputBorder.none,
-                                ),
-                                cursorHeight: 25,
-                                controller: namecourse[index],
-                              )),
+                                    decoration: InputDecoration(
+                                      hintText: 'Course Name',
+                                      border: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      disabledBorder: InputBorder.none,
+                                    ),
+                                    cursorHeight: 25,
+                                    controller: namecourse[index],
+                                  )),
                               index == 0
                                   ? InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          itemnumber = itemnumber + 1;
-                                          height = height + 50;
-                                        });
-                                      },
-                                      child: Icon(
-                                        Icons.add,
-                                        size: 30,
-                                        color: Color(0xff6F6F6F),
-                                      ),
-                                    )
+                                onTap: () {
+                                  setState(() {
+                                    itemnumber = itemnumber + 1;
+                                    height = height + 50;
+                                  });
+                                },
+                                child: Icon(
+                                  Icons.add,
+                                  size: 30,
+                                  color: Color(0xff6F6F6F),
+                                ),
+                              )
                                   : InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          itemnumber = itemnumber - 1;
-                                          height = height - 50;
-                                        });
-                                      },
-                                      child: Icon(
-                                        Icons.close,
-                                        size: 30,
-                                        color: Color(0xff6F6F6F),
-                                      ),
-                                    )
+                                onTap: () {
+                                  setState(() {
+                                    itemnumber = itemnumber - 1;
+                                    height = height - 50;
+                                  });
+                                },
+                                child: Icon(
+                                  Icons.close,
+                                  size: 30,
+                                  color: Color(0xff6F6F6F),
+                                ),
+                              )
                             ],
                           ),
                           Container(
@@ -177,7 +180,7 @@ class _ShowDialog_AddCourseState extends State<ShowDialog_AddCourse> {
                                       borderRadius: BorderRadius.circular(4)),
                                   child: Row(
                                     children:
-                                        List.generate(colors.length, (indexx) {
+                                    List.generate(colors.length, (indexx) {
                                       return GestureDetector(
                                         onTap: () {
                                           setState(() {
@@ -188,7 +191,7 @@ class _ShowDialog_AddCourseState extends State<ShowDialog_AddCourse> {
                                         },
                                         child: Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            MainAxisAlignment.center,
                                             children: [
                                               Padding(
                                                 padding: const EdgeInsets.only(
@@ -199,9 +202,9 @@ class _ShowDialog_AddCourseState extends State<ShowDialog_AddCourse> {
                                                   decoration: BoxDecoration(
                                                       color: colors[indexx],
                                                       borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  15))),
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              15))),
                                                 ),
                                               ),
                                             ]),
@@ -223,12 +226,31 @@ class _ShowDialog_AddCourseState extends State<ShowDialog_AddCourse> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text(
-                      'Add',
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xff494949)),
+                    BlocConsumer<TaskCubit, TaskStates>(
+                      listener: (context, state) {
+                        // TODO: implement listener
+                      },
+                      builder: (context, state) {
+                        TaskCubit taskCubit = TaskCubit.get(context);
+                        return InkWell(
+                          child: Text(
+                            'Add',
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xff494949)),
+                          ),
+                          onTap: () {
+                            print("///////////////////////////${color[0].value.toString()}");
+                            taskCubit.insertCourseToDatabase(name:  namecourse[0].text,
+                                color: color[0].value.toString(),
+                                isActive: 1,
+                                isAppear: 1
+                            );
+                            Navigator.of(context).pop();
+                          },
+                        );
+                      },
                     ),
                     Container(
                       height: 30,
