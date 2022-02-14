@@ -129,13 +129,7 @@ void main() async {
   final database =
       await $FloorAppDatabase.databaseBuilder('database_wallet.db').build();
 
-  runApp(MaterialApp(
-    initialRoute: initialRoute,
-    routes: <String, WidgetBuilder>{
-      NavigationPage.routeName: (_) => NavigationPage(notificationAppLaunchDetails),
-      SecondPage.routeName: (_) => SecondPage(selectedNotificationPayload)
-    },
-  ),);
+  runApp(MyApp());
 }
 Future<void> _configureLocalTimeZone() async {
   tz.initializeTimeZones();
