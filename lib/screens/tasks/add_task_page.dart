@@ -60,7 +60,10 @@ class _AddTaskPageState extends State<AddTaskPage> {
                               height: 35,
                               width: 35,
                               child: InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.of(context)
+                                      .pushNamed('/chooseContactTask');
+                                },
                                 child: Image.asset(
                                     'assets/Tasks/call_contact.png'),
                               ),

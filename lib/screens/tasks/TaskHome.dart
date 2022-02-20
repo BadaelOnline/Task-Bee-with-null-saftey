@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:omni_datetime_picker/omni_datetime_picker.dart';
 import 'package:taskBee/widget/Tasks/ButtonContainerFilterTaskHome.dart';
 import 'package:taskBee/widget/Tasks/ButtonDate.dart';
 import 'package:taskBee/widget/Tasks/CardTask.dart';
@@ -78,6 +77,14 @@ class _TasksHomeState extends State<TasksHome> {
                                   icon: Image.asset('assets/Tasks/yes.png'),
                                   ontap: () {},
                                 ),
+                                SizedBox(
+                                  width: 25,
+                                ),
+                                ButtonContainerFilterTaskHome(
+                                  title: 'Pending',
+                                  icon: Image.asset('assets/Tasks/pending.png'),
+                                  ontap: () {},
+                                ),
                               ],
                             ),
                             Row(
@@ -87,11 +94,15 @@ class _TasksHomeState extends State<TasksHome> {
                                       const EdgeInsets.only(top: 2, bottom: 1),
                                   child: Column(
                                     children: [
-                                      Container(
-                                        height: 23,
-                                        width: 21,
-                                        child: Image.asset(
-                                            'assets/Tasks/filter.png'),
+                                      InkWell(
+                                        onTap: () => Navigator.of(context)
+                                            .pushNamed('/FilterScreenTask'),
+                                        child: Container(
+                                          height: 23,
+                                          width: 21,
+                                          child: Image.asset(
+                                              'assets/Tasks/filter.png'),
+                                        ),
                                       ),
                                       SizedBox(
                                         height: 5,
@@ -163,13 +174,13 @@ class _TasksHomeState extends State<TasksHome> {
                 ],
               ),
             ),
-            Positioned(
-                top: 90,
-                right: 24,
-                child: Container(
-                    height: 25,
-                    width: 21,
-                    child: Image.asset('assets/Tasks/trash.png'))),
+            // Positioned(
+            //     top: 90,
+            //     right: 24,
+            //     child: Container(
+            //         height: 25,
+            //         width: 21,
+            //         child: Image.asset('assets/Tasks/trash.png'))),
             Padding(
               padding: EdgeInsets.only(top: 140, left: 15, right: 15),
               child: SingleChildScrollView(
