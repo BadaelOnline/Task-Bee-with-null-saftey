@@ -17,7 +17,7 @@ class TaskPlace {
   final String place;
 
   @ColumnInfo(name: 'is_active')
-  final int isActive;
+  late final int isActive;
 
   @ColumnInfo(name: 'state')
   final int state;

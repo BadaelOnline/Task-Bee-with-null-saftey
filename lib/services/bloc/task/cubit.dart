@@ -106,7 +106,6 @@ class TaskCubit extends Cubit<TaskStates> {
       } else {
         lastTaskId = 0;
       }
-      print("11111111111111111111");
 
       emit(GetTasksFromDatabaseState());
     }).catchError((onError){
@@ -115,9 +114,7 @@ class TaskCubit extends Cubit<TaskStates> {
   }
 
   void getCoursesFromDatabase() {
-    print("22222222222222222222222");
     this.courseDao!.findAllCourses().then((value) {
-      print("333333333333333333333");
       course = value;
       for (int i = 0; i < value!.length; i++) {}
       if (value.length > 0) {
@@ -191,16 +188,15 @@ class TaskCubit extends Cubit<TaskStates> {
   void getTaskImportanceFromDatabase(){
     this.taskImportanceDao!.findAllImportance().then((value) {
       taskImportances = value;
-      print('iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii: ${taskImportances!.length}');
       for (int i = 0; i < value!.length; i++) {}
       if (value.length > 0) {
         lastTaskImportanceId = value[value.length - 1].id;
       } else {
-        insertTaskImportanceToDatabase(ads: 1 ,isActive: 1, isAppear: 1, importance: "very important", color: "red");
-        insertTaskImportanceToDatabase(ads: 2 ,isActive: 1, isAppear: 1, importance: "important", color: "blue");
-        insertTaskImportanceToDatabase(ads: 3 ,isActive: 1, isAppear: 1, importance: "Medium important", color: "green");
-        insertTaskImportanceToDatabase(ads: 4 ,isActive: 1, isAppear: 1, importance: "low important", color: "yellow");
-        insertTaskImportanceToDatabase(ads: 5 ,isActive: 1, isAppear: 1, importance: "not  important", color: "grey");
+        insertTaskImportanceToDatabase(ads: 1 ,isActive: 1, isAppear: 1, importance: "very important", color: "assets/Tasks/A.png");
+        insertTaskImportanceToDatabase(ads: 2 ,isActive: 1, isAppear: 1, importance: "important", color: "assets/Tasks/B.png");
+        insertTaskImportanceToDatabase(ads: 3 ,isActive: 1, isAppear: 1, importance: "Medium important", color: "assets/Tasks/C.png");
+        insertTaskImportanceToDatabase(ads: 4 ,isActive: 1, isAppear: 1, importance: "low important", color: "assets/Tasks/D.png");
+        insertTaskImportanceToDatabase(ads: 5 ,isActive: 1, isAppear: 1, importance: "not  important", color: "assets/Tasks/E.png");
         lastTaskImportanceId = 0;
       }
 
@@ -257,6 +253,9 @@ class TaskCubit extends Cubit<TaskStates> {
       if (value.length > 0) {
         lastTaskStatusId = value[value.length - 1].id;
       } else {
+        insertTaskStatusToDatabase(isActive: 1, isAppear: 1, state: 'done');
+        insertTaskStatusToDatabase(isActive: 1, isAppear: 1, state: 'pending');
+        insertTaskStatusToDatabase(isActive: 1, isAppear: 1, state: 'not done');
         lastTaskStatusId = 0;
       }
 
@@ -267,26 +266,25 @@ class TaskCubit extends Cubit<TaskStates> {
   void getTaskTypesFromDatabase(){
     this.taskTypeDao!.findAllTypes().then((value) {
       taskTypes = value;
-      print('tttttttttttttttttttttttttttttt: ${taskTypes!.length}');
       for (int i = 0; i < value!.length; i++) {}
       if (value.length > 0) {
         lastTaskTypeId = value[value.length - 1].id;
       } else {
-        insertTaskTypeToDatabase(ids: 1, isActive: 1, isAppear: 1, type: "job", image: "");
-        insertTaskTypeToDatabase(ids: 2,isActive: 1, isAppear: 1, type: "purchases", image: "");
-        insertTaskTypeToDatabase(ids: 3,isActive: 1, isAppear: 1, type: "calls", image: "");
-        insertTaskTypeToDatabase(ids: 4,isActive: 1, isAppear: 1, type: "treatment", image: "");
-        insertTaskTypeToDatabase(ids: 5,isActive: 1, isAppear: 1, type: "Occasions", image: "");
-        insertTaskTypeToDatabase(ids: 6,isActive: 1, isAppear: 1, type: "travel", image: "");
-        insertTaskTypeToDatabase(ids: 7,isActive: 1, isAppear: 1, type: "Personal", image: "");
-        insertTaskTypeToDatabase(ids: 8,isActive: 1, isAppear: 1, type: "entertainment", image: "");
-        insertTaskTypeToDatabase(ids: 9,isActive: 1, isAppear: 1, type: "sport", image: "");
-        insertTaskTypeToDatabase(ids: 10,isActive: 1, isAppear: 1, type: "exam", image: "");
-        insertTaskTypeToDatabase(ids: 11,isActive: 1, isAppear: 1, type: "homework", image: "");
-        insertTaskTypeToDatabase(ids: 12,isActive: 1, isAppear: 1, type: "Lectures", image: "");
-        insertTaskTypeToDatabase(ids: 13,isActive: 1, isAppear: 1, type: "Study times", image: "");
-        insertTaskTypeToDatabase(ids: 14,isActive: 1, isAppear: 1, type: "special lesson", image: "");
-        insertTaskTypeToDatabase(ids: 15,isActive: 1, isAppear: 1, type: "Other dates", image: "");
+        insertTaskTypeToDatabase(ids: 1, isActive: 1, isAppear: 1, type: "Work", image: "assets/Tasks/work.png");
+        insertTaskTypeToDatabase(ids: 2,isActive: 1, isAppear: 1, type: "Shopping", image: "assets/Tasks/shopping.png");
+        insertTaskTypeToDatabase(ids: 3,isActive: 1, isAppear: 1, type: "Calls", image: "assets/Tasks/calls.png");
+        insertTaskTypeToDatabase(ids: 4,isActive: 1, isAppear: 1, type: "Treatment", image: "assets/Tasks/doctor.png");
+        insertTaskTypeToDatabase(ids: 5,isActive: 1, isAppear: 1, type: "Suitable", image: "assets/Tasks/suitable.png");
+        insertTaskTypeToDatabase(ids: 6,isActive: 1, isAppear: 1, type: "Travel", image: "assets/Tasks/travile.png");
+        insertTaskTypeToDatabase(ids: 7,isActive: 1, isAppear: 1, type: "Personal", image: "assets/Tasks/personal.png");
+        insertTaskTypeToDatabase(ids: 8,isActive: 1, isAppear: 1, type: "Entertainment", image: "assets/Tasks/entertainment.png");
+        insertTaskTypeToDatabase(ids: 9,isActive: 1, isAppear: 1, type: "Sport", image: "assets/Tasks/sport.png");
+        insertTaskTypeToDatabase(ids: 10,isActive: 1, isAppear: 1, type: "Exam", image: "assets/Tasks/exam.png");
+        insertTaskTypeToDatabase(ids: 11,isActive: 1, isAppear: 1, type: "Homework", image: "assets/Tasks/homework.png");
+        insertTaskTypeToDatabase(ids: 12,isActive: 1, isAppear: 1, type: "Lectures", image: "assets/Tasks/lectures.png");
+        insertTaskTypeToDatabase(ids: 13,isActive: 1, isAppear: 1, type: "Study times", image: "assets/Tasks/studytimes.png");
+        insertTaskTypeToDatabase(ids: 14,isActive: 1, isAppear: 1, type: "special lesson", image: "assets/Tasks/special lesson.png");
+        insertTaskTypeToDatabase(ids: 15,isActive: 1, isAppear: 1, type: "Other", image: "assets/Tasks/other.png");
         lastTaskTypeId = 0;
       }
 
@@ -343,7 +341,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertCourseToDatabase(
+  Future<int?> insertCourseToDatabase(
       {@required String? name,
         @required String? color,
         @required int? isActive,
@@ -364,7 +362,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertAttachmentForTaskToDatabase(
+  Future<int?> insertAttachmentForTaskToDatabase(
       {@required String? attach,
         @required int? isActive,
         @required int? isAppear,}) async {
@@ -384,7 +382,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertTaskAttachmentToDatabase(
+  Future<int?> insertTaskAttachmentToDatabase(
       {
         @required int? isActive,
         @required int? isAppear,
@@ -406,7 +404,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertTaskContactToDatabase(
+  Future<int?> insertTaskContactToDatabase(
       {
         @required int? isActive,
         @required int? isAppear,
@@ -428,7 +426,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertTaskCourseToDatabase(
+  Future<int?> insertTaskCourseToDatabase(
       {
         @required int? isActive,
         @required int? isAppear,
@@ -450,7 +448,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertTaskImportanceToDatabase(
+  Future<int?> insertTaskImportanceToDatabase(
       {
         @required int? ads,
         @required int? isActive,
@@ -473,7 +471,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertTaskNoteToDatabase(
+  Future<int?> insertTaskNoteToDatabase(
       {
         @required int? isActive,
         @required int? isAppear,
@@ -496,7 +494,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertTaskNotificationToDatabase(
+  Future<int?> insertTaskNotificationToDatabase(
       {
         @required int? isActive,
         @required int? isAppear,
@@ -519,7 +517,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertTaskPlaceToDatabase(
+  Future<int?> insertTaskPlaceToDatabase(
       {
         @required int? isActive,
         @required int? isAppear,
@@ -542,7 +540,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertTaskStatusToDatabase(
+  Future<int?> insertTaskStatusToDatabase(
       {
         @required int? isActive,
         @required int? isAppear,
@@ -563,7 +561,7 @@ class TaskCubit extends Cubit<TaskStates> {
     }
   }
 
-  Future<void> insertTaskTypeToDatabase(
+  Future<int?> insertTaskTypeToDatabase(
       {
         @required int? isActive,
         @required int? ids,
@@ -584,5 +582,310 @@ class TaskCubit extends Cubit<TaskStates> {
         getTaskTypesFromDatabase();
       });
     }
+  }
+
+
+  Future<int?> deleteTaskFromDatabase(
+      {@required Task? task,}) async {
+
+    task!.isActive = 0;
+      return taskDao!
+          .updateTask(task)
+          .then((value) {
+        emit(DeleteTaskFromDatabaseState());
+        getTasksFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteCourseFromDatabase(
+      {@required Course? course,}) async {
+   course!.isActive = 0;
+
+      courseDao!
+          .updateCourse(course)
+          .then((value) {
+        emit(DeleteCourseFromDatabaseState());
+        getCoursesFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteAttachmentForTaskFromDatabase(
+      {@required AttachmentForTask? attach,}) async {
+    attach!.isActive = 0;
+      attachmentForTaskDao!
+          .updateAttachmentForTask(attach)
+          .then((value) {
+        emit(DeleteAttachmentForTaskFromDatabaseState());
+        getAttachmentForTaskFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteTaskAttachmentFromDatabase(
+      {
+        @required TaskAttachment? taskAttachment,}) async {
+
+    taskAttachment!.isActive = 0;
+      taskAttachmentDao!
+          .updateAttachment(taskAttachment)
+          .then((value) {
+        emit(DeleteTaskAttachmentFromDatabaseState());
+        getTaskAttachmentFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteTaskContactFromDatabase(
+      {
+        @required TaskContact? taskContact,}) async {
+   taskContact!.isActive = 0;
+      taskContactDao!
+          .updateContact(taskContact)
+          .then((value) {
+        emit(DeleteTaskContactFromDatabaseState());
+        getTaskContactFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteTaskCourseFromDatabase(
+      {
+        @required TaskCourse? taskCourse,}) async {
+    taskCourse!.isActive = 0;
+      taskCourseDao!
+          .updateCourse(taskCourse)
+          .then((value) {
+        emit(DeleteTaskCourseFromDatabaseState());
+        getTaskCourseFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteTaskImportanceFromDatabase(
+      {
+        @required TaskImportance? taskImportance,}) async {
+    taskImportance!.isActive = 0;
+      taskImportanceDao!
+          .updateImportance(taskImportance)
+          .then((value) {
+        emit(DeleteTaskImportanceFromDatabaseState());
+        getTaskImportanceFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteTaskNoteFromDatabase(
+      {
+        @required TaskNote? taskNote,}) async {
+    taskNote!.isActive = 0;
+      taskNoteDao!
+          .updateNote(taskNote)
+          .then((value) {
+        emit(DeleteTaskNoteFromDatabaseState());
+        getTaskNoteFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteTaskNotificationFromDatabase(
+      {
+        @required TaskNotification? taskNotification,}) async {
+    taskNotification!.isActive = 0;
+      taskNotificationDao!
+          .updateNotification(taskNotification)
+          .then((value) {
+        emit(DeleteTaskNotificationFromDatabaseState());
+        getTaskNotificationsFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteTaskPlaceFromDatabase(
+      {
+        @required TaskPlace? taskPlace,}) async {
+    taskPlace!.isActive = 0 ;
+      taskPlaceDao!
+          .updatePlace(taskPlace)
+          .then((value) {
+        emit(DeleteTaskPlaceFromDatabaseState());
+        getTaskPlacesFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteTaskStatusFromDatabase(
+      {
+        @required TaskStatus? taskStats,}) async {
+    taskStats!.isActive = 0;
+      statusDao!
+          .updateStatus(taskStats)
+          .then((value) {
+        emit(DeleteTaskStatusFromDatabaseState());
+        getTaskStatusFromDatabase();
+      });
+
+  }
+
+  Future<int?> deleteTaskTypeFromDatabase(
+      {
+        @required TaskType? taskType,}) async {
+  taskType!.isActive = 0;
+      taskTypeDao!
+          .updateType(taskType)
+          .then((value) {
+        emit(DeleteTaskTypeFromDatabaseState());
+        getTaskTypesFromDatabase();
+      });
+
+  }
+
+  Future<int?> updateTaskFromDatabase(
+      {@required Task? task,}) async {
+
+
+    return taskDao!
+        .updateTask(task!)
+        .then((value) {
+      emit(UpdateTaskFromDatabaseState());
+      getTasksFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateCourseFromDatabase(
+      {@required Course? course,}) async {
+    courseDao!
+        .updateCourse(course!)
+        .then((value) {
+      emit(UpdateCourseFromDatabaseState());
+      getCoursesFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateAttachmentForTaskFromDatabase(
+      {@required AttachmentForTask? attach,}) async {
+    attachmentForTaskDao!
+        .updateAttachmentForTask(attach!)
+        .then((value) {
+      emit(UpdateAttachmentForTaskFromDatabaseState());
+      getAttachmentForTaskFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateTaskAttachmentFromDatabase(
+      {
+        @required TaskAttachment? taskAttachment,}) async {
+
+    taskAttachmentDao!
+        .updateAttachment(taskAttachment!)
+        .then((value) {
+      emit(UpdateTaskAttachmentFromDatabaseState());
+      getTaskAttachmentFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateTaskContactFromDatabase(
+      {
+        @required TaskContact? taskContact,}) async {
+    taskContactDao!
+        .updateContact(taskContact!)
+        .then((value) {
+      emit(UpdateTaskContactFromDatabaseState());
+      getTaskContactFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateTaskCourseFromDatabase(
+      {
+        @required TaskCourse? taskCourse,}) async {
+    taskCourseDao!
+        .updateCourse(taskCourse!)
+        .then((value) {
+      emit(UpdateTaskCourseFromDatabaseState());
+      getTaskCourseFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateTaskImportanceFromDatabase(
+      {
+        @required TaskImportance? taskImportance,}) async {
+    taskImportanceDao!
+        .updateImportance(taskImportance!)
+        .then((value) {
+      emit(UpdateTaskImportanceFromDatabaseState());
+      getTaskImportanceFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateTaskNoteFromDatabase(
+      {
+        @required TaskNote? taskNote,}) async {
+    taskNoteDao!
+        .updateNote(taskNote!)
+        .then((value) {
+      emit(UpdateTaskNoteFromDatabaseState());
+      getTaskNoteFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateTaskNotificationFromDatabase(
+      {
+        @required TaskNotification? taskNotification,}) async {
+    taskNotificationDao!
+        .updateNotification(taskNotification!)
+        .then((value) {
+      emit(UpdateTaskNotificationFromDatabaseState());
+      getTaskNotificationsFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateTaskPlaceFromDatabase(
+      {
+        @required TaskPlace? taskPlace,}) async {
+    taskPlaceDao!
+        .updatePlace(taskPlace!)
+        .then((value) {
+      emit(UpdateTaskPlaceFromDatabaseState());
+      getTaskPlacesFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateTaskStatusFromDatabase(
+      {
+        @required TaskStatus? taskStats,}) async {
+    statusDao!
+        .updateStatus(taskStats!)
+        .then((value) {
+      emit(UpdateTaskStatusFromDatabaseState());
+      getTaskStatusFromDatabase();
+    });
+
+  }
+
+  Future<int?> updateTaskTypeFromDatabase(
+      {
+        @required TaskType? taskType,}) async {
+    taskTypeDao!
+        .updateType(taskType!)
+        .then((value) {
+      emit(UpdateTaskTypeFromDatabaseState());
+      getTaskTypesFromDatabase();
+    });
+
+  }
+
+  List<Course>? getCourse(){
+    return course;
   }
 }

@@ -17,7 +17,7 @@ class TaskNote {
   final String note;
 
   @ColumnInfo(name: 'is_active')
-  final int isActive;
+  late final int isActive;
 
   @ColumnInfo(name: 'state')
   final int state;
