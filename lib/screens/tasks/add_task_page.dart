@@ -35,23 +35,20 @@ class _AddTaskPageState extends State<AddTaskPage> {
         TaskCubit taskCubit = TaskCubit.get(context);
         return Scaffold(
             appBar: CustomAppBarTask(
-                Image.asset("assets/Tasks/iconTask.png"),
-                'Add Task',
-                    () {
-                  taskCubit.insertTaskToDatabase(
-                      taskName: title.text,
-                      stDate: 'stDate',
-                      enDate: 'enDate',
-                      stTime: 'stTime',
-                      enTime: 'enTime',
-                      isAllDay: 1,
-                      isActive: 1,
-                      isAppear: 1,
-                      typeId: type!.id,
-                      importanceId: 1,
-                      statusId: 1
-                  );
-                    }),
+                Image.asset("assets/Tasks/iconTask.png"), 'Add Task', () {
+              taskCubit.insertTaskToDatabase(
+                  taskName: title.text,
+                  stDate: 'stDate',
+                  enDate: 'enDate',
+                  stTime: 'stTime',
+                  enTime: 'enTime',
+                  isAllDay: 1,
+                  isActive: 1,
+                  isAppear: 1,
+                  typeId: type!.id,
+                  importanceId: 1,
+                  statusId: 1);
+            }),
             body: Padding(
               padding: const EdgeInsets.all(15.0),
               child: SingleChildScrollView(

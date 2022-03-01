@@ -46,6 +46,8 @@ import 'package:taskBee/screens/tasks/CategoraysTask.dart';
 import 'package:taskBee/screens/tasks/TaskHome.dart';
 import 'package:taskBee/screens/tasks/add_task_page.dart';
 import 'package:taskBee/screens/tasks/choose_contact.dart';
+import 'package:taskBee/screens/tasks/filter_screen.dart';
+import 'package:taskBee/screens/tasks/view_result_filter_screen.dart';
 import 'package:taskBee/screens/transaction/add_transaction.dart';
 import 'package:taskBee/screens/transaction/transaction_home.dart';
 import 'package:taskBee/screens/wallet/add_wallet/add_bank_account.dart';
@@ -406,6 +408,16 @@ class AppRouter {
       case '/chooseContactTask':
         return MaterialPageRoute(
             builder: (_) => ChooseContactTasks(),
+            settings: RouteSettings(arguments: settings.arguments));
+
+      case '/FilterScreenTask':
+        return MaterialPageRoute(
+            builder: (_) => FilterTasksScreen(),
+            settings: RouteSettings(arguments: settings.arguments));
+
+      case '/ViewResultFilterScreen':
+        return MaterialPageRoute(
+            builder: (_) => ViewResultFilterScreen(),
             settings: RouteSettings(arguments: settings.arguments));
 
       /// default ///////
